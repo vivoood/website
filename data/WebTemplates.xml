@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<messages xmlns:if="Wt.WTemplate.conditions">
+
+    <message id="hangman.readyToPlay">
+        <div class="readyToPlay">
+            <label class="label">Guess the word, guest!</label>
+        </div>
+    </message>
+    
+    <message id="hangman.newGame">
+        <div class="newGame">
+            <label class="label">NEW GAME</label>
+        </div>
+    <message/>
+    
+    <message id="hangman.guessTheWord">
+        <div class="guessTheWord">
+            <label class="label">FCK</label>
+        </div>
+    </message>
+    
+    <message id="hangman.youHang">
+        <div class="youHang">
+            <label class="label">NO NO NO</label>
+        </div>
+    </message>
+    
+    <message id="hangman.youWin">
+        <div class="youWin">
+            <label class="label"> WIN </label>
+        </div>
+    </message>
+ 
+</messages>

@@ -9,3 +9,6 @@ Website Ivo J
 - CMake for project 0.5h / done
 - VPN ssh access 2h
 - Crypt source 2h
+
+
+EXE example = ./vivoood --docroot . --http-address 0.0.0.0 --http-port 9090
