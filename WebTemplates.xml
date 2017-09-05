@@ -11,7 +11,7 @@
         <div class="newGame">
             <label class="label">NEW GAME</label>
         </div>
-    <message/>
+    </message>
     
     <message id="hangman.guessTheWord">
         <div class="guessTheWord">
