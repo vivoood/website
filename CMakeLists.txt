@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 project(vivoood)
 
+SET(CMAKE_CXX_FLAGS "-std=c++0x")
+
 set(SOURCE WebSite.cpp HangmanWidget.cpp ImagesWidget.cpp)
 
 add_executable(vivoood main.cpp ${SOURCE})
@@ -20,4 +22,4 @@ add_custom_command(
 
 file(COPY ${CMAKE_SOURCE_DIR}/data DESTINATION ${CMAKE_BINARY_DIR})
 
-target_link_libraries(vivoood wt wthttp)
+target_link_libraries(vivoood wt wthttp boost_signals)
