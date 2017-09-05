@@ -11,7 +11,9 @@
 }
 
 .newGame {
-    
+    font-family: "Times New Roman", Times, serif;
+    font-style: oblique;
+    font-size: 30px;
 }
 
 .guessTheWord{
@@ -19,9 +21,38 @@
 }
 
 .youHang{
-    
+    background-color: #c4ffb4;
+    min-height: 30px;
+    text-align: center;
+    padding: 3px;
 }
 
 .youWin{
     
+}
+
+.ComboStyle{
+    background-color: #ff00ff;
+    text-align: left;
+}
+
+.yellow-box {
+    background-color: #ffffb4;
+    border: 1px solid black;
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+}
+
+.green-box {
+    background-color: #c4ffb4;
+    min-height: 30px;
+    text-align: center;
+    padding: 3px;
+}
+
+.blue-box {
+    background-color: #65dae8;
+    min-height: 30px;
+    text-align: center;
+    padding: 3px;
 }

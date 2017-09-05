@@ -39,8 +39,19 @@
     </message>
     
     <message id="hangman.youWin">
-        <div class="youWin">
-            <label class="label"> WIN </label>
+        <div class="ComboStyle">
+       <!--     <label class="label"> WIN </label>-->
+        </div>
+    </message>
+    
+    <message id="WTemplate-example">
+        <div class="form">
+            <p>
+                <label>Please enter your name: ${name-edit}</label>
+            </p>
+            <p>
+                ${save-button} ${cancel-button}
+            </p>
         </div>
     </message>
  

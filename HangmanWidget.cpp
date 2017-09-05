@@ -7,6 +7,11 @@
 #include <Wt/WText>
 #include <Wt/WBreak>
 
+#include <Wt/WLineEdit>
+#include <Wt/WPushButton>
+#include <Wt/WTemplate>
+#include <Wt/WHBoxLayout>
+
 #define MaxGuesses 5
 
 HangmanWidget::HangmanWidget ( const std::string& name, Wt::WContainerWidget* parent )
@@ -16,17 +21,42 @@ HangmanWidget::HangmanWidget ( const std::string& name, Wt::WContainerWidget* pa
 {
     setContentAlignment ( Wt::AlignCenter );
     title_ = new Wt::WText ( tr ( "hangman.readyToPlay" ), this );
+    title_->setStyleClass ( "youHang" );
     statusText_ = new Wt::WText ( this );
     images_ = new ImagesWidget ( MaxGuesses, this );
 
     language_ = new Wt::WComboBox ( this );
-    language_->addItem ( tr ( "hangman.englishWords" ).arg ( 18957 ) );
-    language_->addItem ( tr ( "hangman.dutchWords" ).arg ( 1688 ) );
+    language_->setStyleClass ( "ComboStyle" );
+    language_->addItem ( "English" );
+    language_->addItem ( "German" );
+    language_->addItem ( "Bulgarian" );
 
     new Wt::WBreak ( this );
 
-    newGameButton_ = new Wt::WPushButton ( tr ( "hangman.newGame" ), this );
+    newGameButton_ = new Wt::WPushButton ("New Game", this );
+    newGameButton_->setStyleClass("newGame");
     newGameButton_->clicked().connect ( this, &HangmanWidget::newGame );
+
+
+    Wt::WTemplate *t = new Wt::WTemplate ( Wt::WString::tr ( "WTemplate-example" ) );
+    t->bindWidget ( "name-edit", new Wt::WLineEdit ( this ) );
+    t->bindWidget ( "save-button", new Wt::WPushButton ( "Save", this ) );
+    t->bindWidget ( "cancel-button", new Wt::WPushButton ( "Cancel", this ) );
+
+
+    Wt::WContainerWidget *container = new Wt::WContainerWidget(this);
+    container->setStyleClass ( "yellow-box" );
+
+    Wt::WHBoxLayout *hbox = new Wt::WHBoxLayout(container);
+    container->setLayout ( hbox );
+
+    Wt::WText *item = new Wt::WText ( "Item 1", container );
+    item->setStyleClass ( "green-box" );
+    hbox->addWidget ( item );
+
+    item = new Wt::WText ( "Item 2", container );
+    item->setStyleClass ( "blue-box" );
+    hbox->addWidget ( item );
 }
 
 Wt::Signal<int> & HangmanWidget::scoreUpdated()
