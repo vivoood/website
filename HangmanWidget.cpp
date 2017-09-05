@@ -33,21 +33,14 @@ HangmanWidget::HangmanWidget ( const std::string& name, Wt::WContainerWidget* pa
 
     new Wt::WBreak ( this );
 
-    newGameButton_ = new Wt::WPushButton ("New Game", this );
-    newGameButton_->setStyleClass("newGame");
+    newGameButton_ = new Wt::WPushButton ( "New Game", this );
+    newGameButton_->setStyleClass ( "newGame" );
     newGameButton_->clicked().connect ( this, &HangmanWidget::newGame );
 
-
-    Wt::WTemplate *t = new Wt::WTemplate ( Wt::WString::tr ( "WTemplate-example" ) );
-    t->bindWidget ( "name-edit", new Wt::WLineEdit ( this ) );
-    t->bindWidget ( "save-button", new Wt::WPushButton ( "Save", this ) );
-    t->bindWidget ( "cancel-button", new Wt::WPushButton ( "Cancel", this ) );
-
-
-    Wt::WContainerWidget *container = new Wt::WContainerWidget(this);
+    Wt::WContainerWidget *container = new Wt::WContainerWidget ( this );
     container->setStyleClass ( "yellow-box" );
 
-    Wt::WHBoxLayout *hbox = new Wt::WHBoxLayout(container);
+    Wt::WHBoxLayout *hbox = new Wt::WHBoxLayout ( container );
     container->setLayout ( hbox );
 
     Wt::WText *item = new Wt::WText ( "Item 1", container );
@@ -57,6 +50,12 @@ HangmanWidget::HangmanWidget ( const std::string& name, Wt::WContainerWidget* pa
     item = new Wt::WText ( "Item 2", container );
     item->setStyleClass ( "blue-box" );
     hbox->addWidget ( item );
+
+    Wt::WTemplate *t = new Wt::WTemplate ( Wt::WString::tr ( "WTemplate-example" ) );
+    t->bindWidget ( "name-edit", new Wt::WLineEdit (  ) );
+    t->bindWidget ( "save-button", new Wt::WPushButton ( "Save" ) );
+    t->bindWidget ( "cancel-button", new Wt::WPushButton ( "Cancel" ) );
+    this->addWidget(t);
 }
 
 Wt::Signal<int> & HangmanWidget::scoreUpdated()
