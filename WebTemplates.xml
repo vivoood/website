@@ -2,10 +2,23 @@
 <messages xmlns:if="Wt.WTemplate.conditions">
 
     <message id="hangman.readyToPlay">
-        <div class="readyToPlay">
+        <div class="readyToPlay" style="color:#0000FF">
             <label class="label">Guess the word, guest!</label>
         </div>
     </message>
+    
+    <message id="hangman.englishWords">
+        <div class="englishWords">
+            <label class="label">English words</label>
+        </div>
+    </message>
+    
+        <message id="hangman.dutchWords">
+        <div class="dutchWords">
+            <label class="label">Deutch words</label>
+        </div>
+    </message>
+    
     
     <message id="hangman.newGame">
         <div class="newGame">

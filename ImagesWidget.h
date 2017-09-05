@@ -19,7 +19,7 @@ public:
     };
     ImagesWidget ( int maxGuesses, Wt::WContainerWidget *parent );
     std::vector<Wt::WImage *> images_;
-    void showImage ( int index );
+    void showImage ( bool bShow );
     Wt::WImage *image ( int index ) const;
     int image_;
 };

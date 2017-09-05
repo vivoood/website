@@ -46,7 +46,7 @@ void HangmanWidget::newGame()
 //     word_->init ( RandomWord ( dictionary ) );
 //     letters_->reset();
     badGuesses_ = 0;
-    images_->showImage ( badGuesses_ );
+    images_->showImage ( true );
     statusText_->setText ( "" );
 }
 

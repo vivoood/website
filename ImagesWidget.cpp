@@ -6,7 +6,7 @@
 
 ImagesWidget::ImagesWidget ( int maxGuesses, Wt::WContainerWidget *parent ) : Wt::WContainerWidget ( parent )
 {
-    for ( int i = 0; i <= maxGuesses; ++i )
+    for ( int i = 0; i < maxGuesses; ++i )
     {
         std::string fname = "data/hangman";
         fname += boost::lexical_cast<std::string> ( i ) + ".jpg";
@@ -17,17 +17,19 @@ ImagesWidget::ImagesWidget ( int maxGuesses, Wt::WContainerWidget *parent ) : Wt
     }
 
     Wt::WImage *hurray = new Wt::WImage ( "data/hangmanhurray.jpg", this );
-    hurray->hide();
+    hurray->show();
     images_.push_back ( hurray );
 
-    showImage ( int(EStatus::HURRAY) );
+    showImage ( false );
 }
 
-void ImagesWidget::showImage ( int index )
+void ImagesWidget::showImage ( bool bShow )
 {
-    image ( index )->hide();
-    image_ = index;
-    image ( index )->show();
+    for( unsigned int i = 0; i < images_.size()-1; i++ )
+        bShow ? images_[i]->show() : images_[i]->hide();
+//     image ( index )->hide();
+//     image_ = index;
+//     image ( index )->show();
 }
 
 Wt::WImage *ImagesWidget::image ( int index ) const
