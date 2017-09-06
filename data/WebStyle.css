@@ -72,7 +72,7 @@
 
 .web-site-name-style{
     border: 3px solid blue;
-    color: #FF0000;
+    
     text-align: center;
     background-image: url('pics/airplane_name_bgr.jpg');
     width: 100%;
@@ -81,9 +81,11 @@
 }
 
 .web-site-name-style h1{
+  color: #FF0000;
   font-size: 230%;
 }
 
 .web-site-name-style h4{
-  font-size: 120%;
+  color: #54FF00;
+  font-size: 150%;
 }
