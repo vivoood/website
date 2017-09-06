@@ -8,8 +8,7 @@
 #include <string>
 
 #include "WebSite.h"
-#include <hangman/HangmanWidget.h>
-#include <first_variant/MainWidget.h>
+#include <first_site/MainWidget.h>
 
 uint64_t WebSite::m_nInstanceCounter = 0;
 
@@ -30,14 +29,14 @@ WebSite::WebSite ( const Wt::WEnvironment& env )
     this->useStyleSheet ( "WebStyle.css" );
 
 //     m_handle = dlopen ( "./libhangman.so", RTLD_LAZY );
-    m_handle = dlopen ( "./libfirst_variant.so", RTLD_LAZY );
+    m_handle = dlopen ( "./libfirst_site.so", RTLD_LAZY );
     if ( !m_handle )
     {
         std::cout << "OPEN: The error is " << dlerror() << std::endl;
     }
 
-    m_create= ( create_t* ) dlsym ( m_handle,"create_object" );
-    m_destroy= ( destroy_t* ) dlsym ( m_handle,"destroy_object" );
+    m_create= ( create_t* ) dlsym ( m_handle,"create" );
+    m_destroy= ( destroy_t* ) dlsym ( m_handle,"destroy" );
 
     if ( ( !m_create ) || ( !m_destroy ) )
     {

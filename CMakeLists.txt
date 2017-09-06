@@ -8,7 +8,7 @@ SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
 add_subdirectory(library)
 
 set(SOURCE WebSite.cpp)
-set(internal_libs hangman)
+set(internal_libs first_site)
 
 include_directories(library)
 
