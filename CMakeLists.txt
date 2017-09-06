@@ -3,23 +3,25 @@ project(vivoood)
 
 SET(CMAKE_CXX_FLAGS "-std=c++0x")
 
-set(SOURCE WebSite.cpp HangmanWidget.cpp ImagesWidget.cpp)
+add_subdirectory(library)
+
+set(SOURCE WebSite.cpp)
+set(internal_libs hangman)
+
+include_directories(library)
 
 add_executable(vivoood main.cpp ${SOURCE})
+target_link_libraries(vivoood ${internal_libs} )
 
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD
     
     COMMAND rm ${CMAKE_BINARY_DIR}/WebStyle.css 
-    COMMAND ln -s ${CMAKE_SOURCE_DIR}/WebStyle.css ${CMAKE_BINARY_DIR}
+    COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebStyle.css ${CMAKE_BINARY_DIR}
     
     COMMAND rm ${CMAKE_BINARY_DIR}/WebTemplates.xml 
-    COMMAND ln -s ${CMAKE_SOURCE_DIR}/WebTemplates.xml ${CMAKE_BINARY_DIR}
+    COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebTemplates.xml ${CMAKE_BINARY_DIR}
     
-    COMMAND rm -rf ${CMAKE_BINARY_DIR}/data
-    COMMAND cp -rf ${CMAKE_SOURCE_DIR}/data ${CMAKE_BINARY_DIR}
+    COMMAND rm -rf ${CMAKE_BINARY_DIR}/pics
+    COMMAND cp -rf ${CMAKE_SOURCE_DIR}/data/pics ${CMAKE_BINARY_DIR}
 )
-
-file(COPY ${CMAKE_SOURCE_DIR}/data DESTINATION ${CMAKE_BINARY_DIR})
-
-target_link_libraries(vivoood wt wthttp boost_signals)

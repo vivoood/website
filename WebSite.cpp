@@ -7,7 +7,7 @@
 #include <string>
 
 #include "WebSite.h"
-#include "HangmanWidget.h"
+#include "hangman/HangmanWidget.h"
 
 WebSite::WebSite ( const Wt::WEnvironment& env ) : Wt::WApplication ( env )
 {
