@@ -60,3 +60,30 @@
 .form{
     
 }
+
+.form-inline{
+/*   min-height: 30px; */
+  background-color: #FFdae8;
+}
+
+.form-group{
+  background-color: #65dae8;
+}
+
+.web-site-name-style{
+    border: 3px solid blue;
+    color: #FF0000;
+    text-align: center;
+    background-image: url('pics/airplane_name_bgr.jpg');
+    width: 100%;
+    height: auto;
+    max-width: 1920px;
+}
+
+.web-site-name-style h1{
+  font-size: 230%;
+}
+
+.web-site-name-style h4{
+  font-size: 120%;
+}

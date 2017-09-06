@@ -54,5 +54,30 @@
             </p>
         </div>
     </message>
+    
+    <message id="simpleForm-template">
+  <div class="form-inline">
+    
+    <div class="form-group">
+      ${name}
+    </div>
+    
+    <div class="form-group">
+      ${button}
+    </div>
+    
+    <div class="form-group">
+       ${out}
+    </div>
+    
+  </div>
+</message>
+
+ <message id="web-site-name-template">
+   <div class="web-site-name-style">
+    <h1>${web-site-name}</h1>
+    <h4>${web-site-slogan}</h4>
+  </div>
+ </message>
  
 </messages>
