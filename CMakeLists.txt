@@ -3,6 +3,8 @@ project(vivoood)
 
 SET(CMAKE_CXX_FLAGS "-std=c++0x")
 
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
+
 add_subdirectory(library)
 
 set(SOURCE WebSite.cpp)
