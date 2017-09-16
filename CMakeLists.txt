@@ -15,22 +15,24 @@ include_directories(library)
 add_executable(vivoood main.cpp ${SOURCE})
 target_link_libraries(vivoood ${internal_libs} dl )
 
+option(enable_rm "enable_rm" OFF)
+message(STATUS ">>>>>>>> ENABLE RM IS " ${enable_rm})
+if (${enable_rm} STREQUAL "ON")
+	add_custom_command(
+		TARGET ${PROJECT_NAME} POST_BUILD
+		COMMAND rm ${CMAKE_BINARY_DIR}/WebStyle.css
+		COMMAND rm ${CMAKE_BINARY_DIR}/WebTemplates.xml
+		COMMAND rm -rf ${CMAKE_BINARY_DIR}/pics
+		COMMAND rm ${CMAKE_BINARY_DIR}/autorun.sh
+		COMMAND rm ${CMAKE_BINARY_DIR}/autorun.py
+	)
+endif()
+
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD
-    
-    COMMAND rm ${CMAKE_BINARY_DIR}/WebStyle.css 
     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebStyle.css ${CMAKE_BINARY_DIR}
-    
-    COMMAND rm ${CMAKE_BINARY_DIR}/WebTemplates.xml 
     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebTemplates.xml ${CMAKE_BINARY_DIR}
-     
-    COMMAND rm -rf ${CMAKE_BINARY_DIR}/pics
     COMMAND cp -rf ${CMAKE_SOURCE_DIR}/data/pics ${CMAKE_BINARY_DIR}
-
-    COMMAND rm ${CMAKE_BINARY_DIR}/autorun.sh
     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.sh ${CMAKE_BINARY_DIR}
- 
-    COMMAND rm ${CMAKE_BINARY_DIR}/autorun.py
     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.py ${CMAKE_BINARY_DIR}
-
 )
