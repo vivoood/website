@@ -1,78 +1,5 @@
-.readyToPlay {
-
-}
-
-.englishWords{
-    
-}
-
-.dutchWords{
-    
-}
-
-.newGame {
-    font-family: "Times New Roman", Times, serif;
-    font-style: oblique;
-    font-size: 30px;
-}
-
-.guessTheWord{
-    
-}
-
-.youHang{
-    background-color: #c4ffb4;
-    min-height: 30px;
-    text-align: center;
-    padding: 3px;
-}
-
-.youWin{
-    
-}
-
-.ComboStyle{
-    background-color: #ff00ff;
-    text-align: left;
-}
-
-.yellow-box {
-    background-color: #ffffb4;
-    border: 1px solid black;
-    margin-top: 1ex;
-    margin-bottom: 1ex;
-}
-
-.green-box {
-    background-color: #c4ffb4;
-    min-height: 30px;
-    text-align: center;
-    padding: 3px;
-}
-
-.blue-box {
-    background-color: #65dae8;
-    min-height: 30px;
-    text-align: center;
-    padding: 3px;
-}
-
-.form{
-    
-}
-
-.form-inline{
-/*   min-height: 30px; */
-  background-color: #FFdae8;
-}
-
-.form-group{
-  background-color: #65dae8;
-}
-
 .web-site-name-style{
     border: 3px solid blue;
-    
     text-align: center;
     background-image: url('pics/airplane_name_bgr.jpg');
     background-size: 100% 100%;
@@ -89,4 +16,12 @@
 .web-site-name-style h4{
   color: #54FF00;
   font-size: 150%;
+}
+
+.web-site-menu-style{
+  width: 100px;
+  height: 30px;
+  font-family: verdana;
+  font-size: 1em;
+  color: #88a207;
 }

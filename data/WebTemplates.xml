@@ -1,83 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <messages xmlns:if="Wt.WTemplate.conditions">
 
-    <message id="hangman.readyToPlay">
-        <div class="readyToPlay" style="color:#0000FF">
-            <label class="label">Guess the word, guest!</label>
-        </div>
-    </message>
-    
-    <message id="hangman.englishWords">
-        <div class="englishWords">
-            <label class="label">English words</label>
-        </div>
-    </message>
-    
-        <message id="hangman.dutchWords">
-        <div class="dutchWords">
-            <label class="label">Deutch words</label>
-        </div>
-    </message>
-    
-    
-    <message id="hangman.newGame">
-        <div class="newGame">
-            <label class="label">NEW GAME</label>
-        </div>
-    </message>
-    
-    <message id="hangman.guessTheWord">
-        <div class="guessTheWord">
-            <label class="label">FCK</label>
-        </div>
-    </message>
-    
-    <message id="hangman.youHang">
-        <div class="youHang">
-            <label class="label">NO NO NO</label>
-        </div>
-    </message>
-    
-    <message id="hangman.youWin">
-        <div class="ComboStyle">
-       <!--     <label class="label"> WIN </label>-->
-        </div>
-    </message>
-    
-    <message id="WTemplate-example">
-        <div class="form">
-            <p>
-                <label>Please enter your name: ${name-edit}</label>
-            </p>
-            <p>
-                ${save-button} ${cancel-button}
-            </p>
-        </div>
-    </message>
-    
-    <message id="simpleForm-template">
-  <div class="form-inline">
-    
-    <div class="form-group">
-      ${name}
-    </div>
-    
-    <div class="form-group">
-      ${button}
-    </div>
-    
-    <div class="form-group">
-       ${out}
-    </div>
-    
-  </div>
-</message>
-
  <message id="web-site-name-template">
    <div class="web-site-name-style">
     <h1>${web-site-name}</h1>
     <h4>${web-site-slogan}</h4>
   </div>
+ </message>
+ 
+ <message id="web-site-menu-template">
+   <div class="web-site-menu-style">
+    <ul>
+      <a>${web-site-home}</a>
+      <a>${web-site-news}</a>
+      <a>${web-site-tips}</a>
+      <a>${web-site-contacts}</a>
+      <a>${web-site-about-us}</a>
+      <a>${web-site-faq}</a>
+    </ul>
+   </div>
  </message>
  
 </messages>
