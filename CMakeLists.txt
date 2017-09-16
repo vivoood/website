@@ -13,7 +13,7 @@ set(internal_libs first_site)
 include_directories(library)
 
 add_executable(vivoood main.cpp ${SOURCE})
-target_link_libraries(vivoood ${internal_libs} )
+target_link_libraries(vivoood ${internal_libs} dl )
 
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD
@@ -23,7 +23,10 @@ add_custom_command(
     
     COMMAND rm ${CMAKE_BINARY_DIR}/WebTemplates.xml 
     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebTemplates.xml ${CMAKE_BINARY_DIR}
-    
+     
     COMMAND rm -rf ${CMAKE_BINARY_DIR}/pics
     COMMAND cp -rf ${CMAKE_SOURCE_DIR}/data/pics ${CMAKE_BINARY_DIR}
+
+    COMMAND rm ${CMAKE_BINARY_DIR}/autorun.sh
+    COMMAND cp ${CMAKE_SOURCE_DIR}/data/autorun.sh ${CMAKE_BINARY_DIR} 
 )
