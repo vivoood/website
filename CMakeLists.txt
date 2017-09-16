@@ -28,9 +28,9 @@ add_custom_command(
     COMMAND cp -rf ${CMAKE_SOURCE_DIR}/data/pics ${CMAKE_BINARY_DIR}
 
     COMMAND rm ${CMAKE_BINARY_DIR}/autorun.sh
-    COMMAND cp ${CMAKE_SOURCE_DIR}/data/autorun.sh ${CMAKE_BINARY_DIR}
+    COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.sh ${CMAKE_BINARY_DIR}
  
     COMMAND rm ${CMAKE_BINARY_DIR}/autorun.py
-    COMMAND cp ${CMAKE_SOURCE_DIR}/data/autorun.py ${CMAKE_BINARY_DIR}
+    COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.py ${CMAKE_BINARY_DIR}
 
 )
