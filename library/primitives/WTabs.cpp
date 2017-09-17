@@ -2,34 +2,28 @@
 
 #include <Wt/WTemplate>
 #include <Wt/WPushButton>
+#include <Wt/WGroupBox>
+#include <Wt/WText>
+
+#include "Constants.h"
 
 WTabs::WTabs ( Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
     Wt::WTemplate * templ = new Wt::WTemplate ( Wt::WString::tr ( "web-site-menu-template" ) );
-    
-    Wt::WPushButton * pBtnHome = new Wt::WPushButton("Home");
-    pBtnHome->setStyleClass("web-site-menu-style");
-    templ->bindWidget( "web-site-home", pBtnHome );
-    
-    Wt::WPushButton * pBtnNews = new Wt::WPushButton("News");
-    pBtnNews->setStyleClass("web-site-menu-style");
-    templ->bindWidget( "web-site-news", pBtnNews );
-    
-    Wt::WPushButton * pBtnTips = new Wt::WPushButton("Travel tips");
-    pBtnTips->setStyleClass("web-site-menu-style");
-    templ->bindWidget( "web-site-tips", pBtnTips );
-    
-    Wt::WPushButton * pBtnContacts = new Wt::WPushButton("Contacts");
-    pBtnContacts->setStyleClass("web-site-menu-style");
-    templ->bindWidget( "web-site-contacts", pBtnContacts );
-    
-    Wt::WPushButton * pBtnAbout = new Wt::WPushButton("About us");
-    pBtnAbout->setStyleClass("web-site-menu-style");
-    templ->bindWidget( "web-site-about-us", pBtnAbout );
-    
-    Wt::WPushButton * pBtnFAQ = new Wt::WPushButton("FAQ's");
-    pBtnFAQ->setStyleClass("web-site-menu-style");
-    templ->bindWidget( "web-site-faq", pBtnFAQ );
-    
+
+    for ( unsigned int i = 0; i < gConstants.vTabs.size(); i++ )
+    {
+        Wt::WPushButton * pBtn = new Wt::WPushButton ( gConstants.vTabs[i].first );
+        pBtn->setStyleClass ( "web-site-menu-button-style" );
+        templ->bindWidget ( gConstants.vTabs[i].second, pBtn );
+    }
+
+    Wt::WGroupBox *groupBox = new Wt::WGroupBox ( "A group box" );
+    groupBox->addWidget ( new Wt::WText ( "<p>Some contents.</p>" ) );
+    groupBox->addWidget ( new Wt::WText ( "<p>More contents.</p>" ) );
+    templ->bindWidget ( "groupbox", groupBox );
+
     this->addWidget ( templ );
 }
+
+

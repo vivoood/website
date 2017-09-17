@@ -10,14 +10,15 @@
  
  <message id="web-site-menu-template">
    <div class="web-site-menu-style">
-    <ul>
-      <a>${web-site-home}</a>
-      <a>${web-site-news}</a>
-      <a>${web-site-tips}</a>
-      <a>${web-site-contacts}</a>
-      <a>${web-site-about-us}</a>
-      <a>${web-site-faq}</a>
-    </ul>
+     <th> <a> ${web-site-home} </a> </th>
+     <th> <a> ${web-site-news} </a> </th>
+     <th> <a> ${web-site-tips} </a> </th>
+     <th> <a> ${web-site-contacts} </a> </th>
+     <th> <a> ${web-site-about-us} </a> </th>
+     <th> <a> ${web-site-faq} </a> </th>
+   </div>
+   <div class="web-site-menu-description-style">
+     <fieldset> ${groupbox} </fieldset>
    </div>
  </message>
  

@@ -1,5 +1,5 @@
 .web-site-name-style{
-    border: 3px solid blue;
+    border: 3px solid #88a207;
     text-align: center;
     background-image: url('pics/airplane_name_bgr.jpg');
     background-size: 100% 100%;
@@ -19,9 +19,30 @@
 }
 
 .web-site-menu-style{
+  align: center;
+  width: 100%;
+  max-width: 1920px;
+  height: auto;
+  font-family: verdana;
+  font-size: 1em;
+  color: #88a207;
+  background-color: #88a207;
+  vertical-align: center;
+  border: 3px solid #88a207;
+  text-align: center;
+}
+
+.web-site-menu-button-style{
   width: 100px;
   height: 30px;
   font-family: verdana;
   font-size: 1em;
   color: #88a207;
+  border-radius: 25px;
+}
+
+.web-site-menu-description-style{
+  border: 3px solid #88a207;
+  width: 100%;
+  
 }
