@@ -3,4 +3,4 @@ project(library)
 
 add_subdirectory(first_site)
 add_subdirectory(primitives)
-add_subdirectory(utils)
+# add_subdirectory(utils)
