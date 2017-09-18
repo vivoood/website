@@ -9,6 +9,7 @@
 
 #include "WebSite.h"
 #include <first_site/MainWidget.h>
+#include <primitives/Constants.h>
 
 uint64_t WebSite::m_nInstanceCounter = 0;
 
@@ -23,7 +24,7 @@ WebSite::WebSite ( const Wt::WEnvironment& env )
     m_nInstanceCounter++;
     m_nInstanceId = m_nInstanceCounter;
     
-    this->setTitle ( "Ivaylo Some Title" );
+    this->setTitle ( gConstants.strSiteName );
 
     this->messageResourceBundle().use ( this->appRoot() + "WebTemplates" );
     this->useStyleSheet ( "WebStyle.css" );

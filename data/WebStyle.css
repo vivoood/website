@@ -44,5 +44,7 @@
 .web-site-menu-description-style{
   border: 3px solid #88a207;
   width: 100%;
-  
+  background-color: #e0ed68;
+/*   min-height: 300px; */
+/*   max-height: 300px; */
 }
