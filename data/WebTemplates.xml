@@ -22,4 +22,10 @@
    </div>
  </message>
  
+ <message id="web-site-table-layout-template">
+<!--      <div class="web-site-table-layout-style"> -->
+         <table> ${table-layout} </table>
+<!--      </div> -->
+ </message>
+ 
 </messages>
