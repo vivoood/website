@@ -1,12 +1,9 @@
 .web-site-name-style{
-/*     border: 0px solid #88a207; */
     text-align: center;
     background-image: url('pics/airplane_name_bgr.jpg');
     background-size: 100% 100%;
-/*     width: 100%; */
     height: 150%;
     max-width: 1920px;
-/*     background-color: #88a207; */
 }
 
 .web-site-name-style h1{
@@ -19,40 +16,38 @@
   font-size: 150%;
 }
 
-.web-site-menu-style{
-  align: center;
-  width: 100%;
-  max-width: 1920px;
-  height: auto;
-  font-family: verdana;
-  font-size: 1em;
-  color: #88a207;
-  background-color: #88a207;
-  vertical-align: center;
-  border: 3px solid #88a207;
-  text-align: center;
-}
-
-.web-site-menu-button-style{
+.menu-buttons{
+  vertical-align: top;
   width: 100px;
   height: 30px;
   font-family: verdana;
   font-size: 1em;
   color: #88a207;
   border-radius: 25px;
+  align: center;
 }
 
-.web-site-menu-description-style{
-  border: 3px solid #88a207;
-  width: 100%;
-  background-color: #e0ed68;
-/*   min-height: 300px; */
-/*   max-height: 300px; */
+.menu-buttons-bgr{
+  text-align: center;
+  padding: 10px;
 }
 
-.web-site-table-layout-style{
-/*     text-align: center; */
+.table-layout{
+    text-align: center;
     border: 3px solid #88a207;
     background-color: #FFeFF8;
     height: 1000px;
+}
+
+.table-col-1{
+  border: 3px solid #88a207;
+}
+
+.table-col-2{
+  text-align: center;
+  border: 3px solid #88a207;
+}
+
+.table-col-3{
+  border: 3px solid #88a207;
 }

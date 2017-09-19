@@ -1,8 +1,19 @@
 cmake_minimum_required(VERSION 2.6)
 project(vivoood)
 
-# SET(CMAKE_CXX_FLAGS "-std=c++0x")
-set (CMAKE_CXX_FLAGS "--std=gnu++14 ${CMAKE_CXX_FLAGS}")
+option(enable_rm "gccv" x0)
+
+if (${gccv} STREQUAL "0x")
+	SET(CMAKE_CXX_FLAGS "-std=c++0x")
+endif()
+
+if (${gccv} STREQUAL "11")
+	set (CMAKE_CXX_FLAGS "--std=gnu++11 ${CMAKE_CXX_FLAGS}")
+endif()
+
+if (${gccv} STREQUAL "14")
+	set (CMAKE_CXX_FLAGS "--std=gnu++14 ${CMAKE_CXX_FLAGS}")
+endif()
 
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
 

@@ -8,24 +8,4 @@
   </div>
  </message>
  
- <message id="web-site-menu-template">
-   <div class="web-site-menu-style">
-     <th> <a> ${web-site-home} </a> </th>
-     <th> <a> ${web-site-news} </a> </th>
-     <th> <a> ${web-site-tips} </a> </th>
-     <th> <a> ${web-site-contacts} </a> </th>
-     <th> <a> ${web-site-about-us} </a> </th>
-     <th> <a> ${web-site-faq} </a> </th>
-   </div>
-   <div class="web-site-menu-description-style">
-     <fieldset> ${groupbox} </fieldset>
-   </div>
- </message>
- 
- <message id="web-site-table-layout-template">
-<!--      <div class="web-site-table-layout-style"> -->
-         <table> ${table-layout} </table>
-<!--      </div> -->
- </message>
- 
 </messages>

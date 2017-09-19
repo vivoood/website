@@ -10,27 +10,27 @@
 #include <Wt/WText>
 #include <Wt/WTemplate>
 
+#include "WTabs.h"
+#include "Constants.h"
+#include "Factory.h"
+
 WTableLayout::WTableLayout ( Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
-    Wt::WTemplate * templ = new Wt::WTemplate ( Wt::WString::tr ( "web-site-table-layout-template" ) );
     Wt::WTable *table = new Wt::WTable();
-    table->setStyleClass("web-site-table-layout-style");
+    table->setStyleClass ( "table-layout" );
     table->setWidth ( Wt::WLength ( "100%" ) );
 
-    Wt::WText * p1 = new Wt::WText ( "col1" );
-    table->elementAt ( 0, 0 )->addWidget ( p1 );
-    table->elementAt ( 0, 0 )->setWidth ( Wt::WLength ( "15%" ) );
+    for ( unsigned int i = 0; i < gConstants.vTable.size(); i++ )
+    {
+        for ( unsigned int j = 0; j < gConstants.vTable[i].size(); j++ )
+        {
+            std::cout << i << " | " << j << " = " << gConstants.vTable[i][j].strLenght << std::endl;
+            table->elementAt ( i, j )->addWidget ( Factory::Create ( gConstants.vTable[i][j].strWidgetName ) );
+            table->elementAt ( i, j )->setStyleClass ( gConstants.vTable[i][j].strStyle );
+            table->elementAt ( i, j )->setWidth ( Wt::WLength ( gConstants.vTable[i][j].strLenght.c_str() ) );
+        }
+    }
 
-    Wt::WText * p2 = new Wt::WText ( "col2" );
-    table->elementAt ( 0, 1 )->addWidget ( p2 );
-    table->elementAt ( 0, 1 )->addWidget ( new Wt::WText() );
-    table->elementAt ( 0, 1 )->setWidth ( Wt::WLength ( "65%" ) );
-
-    Wt::WText * p3 = new Wt::WText ( "col3" );
-    table->elementAt ( 0, 2 )->addWidget ( p3 );
-    table->elementAt ( 0, 2 )->setWidth ( Wt::WLength ( "20%" ) );
-
-    templ->bindWidget ( "table-layout", table );
     this->addWidget ( table );
 }
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
