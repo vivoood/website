@@ -60,7 +60,7 @@
     background-color: #FFeFF8;
 }
 
-.offer-style{
+.offer-vienna-style{
     width: 100%;
     height: auto;
     
@@ -73,4 +73,74 @@
     
     background-image: url('pics/vienna.jpg');
     background-size: 100% 100%;
+}
+
+.offer-paris-style{
+    width: 100%;
+    height: auto;
+    
+    font-family: verdana;
+    font-size: 3em;
+    font-weight: bold;
+    
+    color: #bd380f;
+    text-align: center;
+    
+    background-image: url('pics/paris.jpg');
+    background-size: 100% 100%;
+}
+
+.offer-brazil-style{
+    width: 100%;
+    height: auto;
+    
+    font-family: verdana;
+    font-size: 3em;
+    font-weight: bold;
+    
+    color: #bd380f;
+    text-align: center;
+    
+    background-image: url('pics/brazil.jpg');
+    background-size: 100% 100%;
+}
+
+.offer-china-style{
+    width: 100%;
+    height: auto;
+    
+    font-family: verdana;
+    font-size: 3em;
+    font-weight: bold;
+    
+    color: #bd380f;
+    text-align: center;
+    
+    background-image: url('pics/china.jpg');
+    background-size: 100% 100%;
+}
+
+.offer-germany-style{
+    width: 100%;
+    height: auto;
+    
+    font-family: verdana;
+    font-size: 3em;
+    font-weight: bold;
+    
+    color: #bd380f;
+    text-align: center;
+    
+    background-image: url('pics/germany.jpg');
+    background-size: 100% 100%;
+}
+
+.default-offer-button{
+    width: auto;
+    height: auto;
+    font-family: verdana;
+    font-size: 30px;
+    color: #88a207;
+    border-radius: 25px;
+    align: center;
 }

@@ -54,21 +54,55 @@ Constants::Constants()
 
     dTable.strStyle = "table-col-3";
     dTable.strLenght = "25%";
-    dTable.strWidgetName = "CWOffer";
+    dTable.strWidgetName = "CWPublicOffers";
     vTableRow.push_back ( dTable );
 
     m_Table.vTable.push_back ( vTableRow );
 
     /** ******************************************* */
 
-    m_Offer.bOneWay = true;
-    m_Offer.bDirectFlight = true;
+    WidgetData::SOffer o;
+
+    o.bOneWay = true;
+    o.bDirectFlight = true;
+    o.strDirection = "Sofia Viena";
+    o.strPrice = "36$";
+    o.strAirline = "Wizz Air";
+    o.strStyle = "offer-vienna-style";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.bOneWay = false;
+    o.bDirectFlight = true;
+    o.strDirection = "Milano Paris";
+    o.strPrice = "87$";
+    o.strAirline = "Wizz Air";
+    o.strStyle = "offer-paris-style";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.bOneWay = false;
+    o.bDirectFlight = false;
+    o.strDirection = "Rome Brazil";
+    o.strPrice = "135$";
+    o.strAirline = "Asia air";
+    o.strStyle = "offer-brazil-style";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.bOneWay = true;
+    o.bDirectFlight = false;
+    o.strDirection = "Istanbul China";
+    o.strPrice = "77$";
+    o.strAirline = "Asia air";
+    o.strStyle = "offer-china-style";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.bOneWay = true;
+    o.bDirectFlight = true;
+    o.strDirection = "Bulgaria Germany";
+    o.strPrice = "42$";
+    o.strAirline = "Bulgaria air";
+    o.strStyle = "offer-germany-style";
+    m_Offers.m_Offers.push_back ( o );
     
-    m_Offer.strDirection = "Sofia Viena";
-    m_Offer.strPrice = "36$";
-    m_Offer.strAirline = "Wizz Air";
-    
-    m_Offer.strStyle = "offer-style";
 
     /** ******************************************* */
 

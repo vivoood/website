@@ -5,12 +5,13 @@
 #include "CWFooter.h"
 #include "CWHeader.h"
 #include "CWOffer.h"
+#include "CWPublicOffers.h"
 #include "CWTableLayout.h"
 #include "CWTabs.h"
 
 #include "Constants.h"
 
-Wt::WWidget* Factory::Create ( std::string str )
+Wt::WWidget* Factory::Create ( std::string str, IWidgetData * pD )
 {
     if ( str == "WContainerWidget" )
         return new Wt::WContainerWidget();
@@ -28,7 +29,11 @@ Wt::WWidget* Factory::Create ( std::string str )
         return new CWFooter ( &gConstants.m_Footer );
 
     if ( str == "CWOffer" )
-        return new CWOffer ( &gConstants.m_Offer );
+        return new CWOffer ( pD );
+
+    if ( str == "CWPublicOffers" )
+        return new CWPublicOffers ( &gConstants.m_Offers );
+    
 
     return nullptr;
 }

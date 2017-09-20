@@ -25,7 +25,7 @@ public:
     WidgetData::STabs m_Tabs;
     
     /** @One @Offer */
-    WidgetData::SOffer m_Offer;
+    WidgetData::SOffers m_Offers;
 
     /** Footer ******************************************* */
     

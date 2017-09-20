@@ -62,6 +62,11 @@ struct SOffer : public IWidgetData
     std::string strStyle;
 };
 
+struct SOffers : public IWidgetData
+{
+    std::vector<SOffer> m_Offers;
+};
+
 }
 
 #endif // IWIDGETDATA_H
