@@ -37,7 +37,7 @@
     text-align: center;
     border: 3px solid #88a207;
     background-color: #FFeFF8;
-    height: 1000px;
+    height: auto;
 }
 
 .table-col-1{
@@ -54,7 +54,7 @@
 }
 
 .footer-style{  
-    width: 100%;
+    width: auto;
     height: 100px;
     border: 3px solid #88a207;
     background-color: #FFeFF8;
