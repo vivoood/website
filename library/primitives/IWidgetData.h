@@ -60,7 +60,6 @@ struct SOffer : public IWidgetData
     bool bDirectFlight;
     
     std::string strStyle;
-    std::pair<std::string, std::string> strPicAndStyle;
 };
 
 }

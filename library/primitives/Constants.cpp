@@ -64,12 +64,11 @@ Constants::Constants()
     m_Offer.bOneWay = true;
     m_Offer.bDirectFlight = true;
     
-    m_Offer.strDirection = "<span> Sofia-Viena</span>";
-    m_Offer.strPrice = "<span> 36$</span>";
-    m_Offer.strAirline = "<span> Wizz Air</span>";
+    m_Offer.strDirection = "Sofia Viena";
+    m_Offer.strPrice = "36$";
+    m_Offer.strAirline = "Wizz Air";
     
     m_Offer.strStyle = "offer-style";
-    m_Offer.strPicAndStyle = std::pair<std::string, std::string> ( "pics/vienna.jpg" ,"offer-pic-style" );
 
     /** ******************************************* */
 

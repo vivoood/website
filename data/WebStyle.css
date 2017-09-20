@@ -60,13 +60,17 @@
     background-color: #FFeFF8;
 }
 
-.offer-pic-style{
-    width: 100%;
-}
-
 .offer-style{
+    width: 100%;
+    height: auto;
+    
     font-family: verdana;
-    font-size: 2em;
-    color: #88a207;
-    align: center;
+    font-size: 3em;
+    font-weight: bold;
+    
+    color: #bd380f;
+    text-align: center;
+    
+    background-image: url('pics/vienna.jpg');
+    background-size: 100% 100%;
 }
