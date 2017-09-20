@@ -7,7 +7,8 @@
 
 class CWTabs : public Wt::WContainerWidget
 {
-public:
+private:
+    friend class Factory;
     CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
 };
 

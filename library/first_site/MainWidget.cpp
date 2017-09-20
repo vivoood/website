@@ -6,7 +6,8 @@
 MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( perant )
 {
     this->addWidget ( Factory::Create ( "CWHeader" ) );
-    this->addWidget ( Factory::Create ( "WTableLayout" ) );
+    this->addWidget ( Factory::Create ( "CWTableLayout" ) );
+    this->addWidget ( Factory::Create ( "CWFooter" ) );
 }
 
 extern "C" Wt::WObject * create()

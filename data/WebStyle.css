@@ -51,3 +51,10 @@
 .table-col-3{
   border: 3px solid #88a207;
 }
+
+.footer-style{  
+    width: auto;
+    height: 100px;
+    border: 3px solid #88a207;
+    background-color: #FFeFF8;
+}

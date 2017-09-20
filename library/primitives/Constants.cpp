@@ -2,9 +2,13 @@
 
 Constants::Constants()
 {
-    strSiteName.assign ( "Some Title" );
-    strSiteSlogan.assign ( "use some slogan" );
+    m_Header.strTemplateName = "web-site-name-template";
+    m_Header.strBindName = "web-site-name";
+    m_Header.strBindSlogan = "web-site-slogan";
+    m_Header.strTitle = "Some Title";
+    m_Header.strSlogan = "use some slogan";
 
+    /** ******************************************* */
     m_Tabs.strTabStyle = "menu-buttons-bgr";
 
     WidgetData::STabButtonsData d;
@@ -32,6 +36,8 @@ Constants::Constants()
     d.strTabName = "FAQ's";
     d.strTabButtonStyle = "menu-buttons";
     m_Tabs.vTabButtons.push_back ( d );
+    
+    /** ******************************************* */
 
     std::vector<WidgetData::STableData> vTableRow;
     WidgetData::STableData dTable;
@@ -43,7 +49,7 @@ Constants::Constants()
 
     dTable.strStyle = "table-col-2";
     dTable.strLenght = "65%";
-    dTable.strWidgetName = "WTabs";
+    dTable.strWidgetName = "CWTabs";
     vTableRow.push_back ( dTable );
 
     dTable.strStyle = "table-col-3";
@@ -52,6 +58,10 @@ Constants::Constants()
     vTableRow.push_back ( dTable );
 
     m_Table.vTable.push_back ( vTableRow );
+    
+    /** ******************************************* */
+    
+    m_Footer.strStyle = "footer-style";
 }
 
 Constants gConstants;

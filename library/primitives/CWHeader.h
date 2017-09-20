@@ -3,10 +3,14 @@
 
 #include <Wt/WContainerWidget>
 
+#include "IWidgetData.h"
+
 class CWHeader : public Wt::WContainerWidget
 {
-public:
-    CWHeader ( WContainerWidget* parent = 0 );
+private:
+    friend class Factory;
+    CWHeader ( IWidgetData * pD, WContainerWidget* parent = 0 );
 };
 
 #endif // CWHEADER_H
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

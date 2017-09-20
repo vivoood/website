@@ -13,6 +13,15 @@ public:
 namespace WidgetData
 {
 
+struct SHeader : public IWidgetData
+{
+    std::string strTemplateName;
+    std::string strBindName;
+    std::string strBindSlogan;
+    std::string strTitle;
+    std::string strSlogan;
+};
+
 struct STabButtonsData : public IWidgetData
 {
     std::string strTabName;
@@ -35,6 +44,11 @@ struct STableData : public IWidgetData
 struct STable : public IWidgetData
 {
     std::vector< std::vector<WidgetData::STableData> > vTable;
+};
+
+struct SFooter : public IWidgetData
+{
+    std::string strStyle;
 };
 
 }

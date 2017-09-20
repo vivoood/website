@@ -1,14 +1,17 @@
 #include "CWHeader.h"
 
-#include "Constants.h"
-
 #include <Wt/WTemplate>
 #include <Wt/WText>
 
-CWHeader::CWHeader ( Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
+CWHeader::CWHeader ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
-    Wt::WTemplate *templ = new Wt::WTemplate ( Wt::WString::tr ( "web-site-name-template" ) );
-    templ->bindWidget ( "web-site-name", new Wt::WText ( gConstants.strSiteName ) );
-    templ->bindWidget ( "web-site-slogan", new Wt::WText ( gConstants.strSiteSlogan ) );
-    this->addWidget ( templ );
+    WidgetData::SHeader * p = dynamic_cast<WidgetData::SHeader*> ( pD );
+    if ( p != nullptr )
+    {
+        Wt::WTemplate *templ = new Wt::WTemplate ( Wt::WString::tr ( p->strTemplateName ) );
+        templ->bindWidget ( p->strBindName, new Wt::WText ( p->strTitle ) );
+        templ->bindWidget ( p->strBindSlogan, new Wt::WText ( p->strSlogan ) );
+        this->addWidget ( templ );
+    }
 }
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

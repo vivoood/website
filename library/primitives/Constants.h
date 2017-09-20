@@ -11,9 +11,10 @@ public:
 
     Constants();
 
-    /** Header */
-    std::string strSiteName;
-    std::string strSiteSlogan;
+    /** Header ******************************************* */
+    
+    /** @Header */
+    WidgetData::SHeader m_Header;
 
     /** Body ********************************************* */
 
@@ -23,9 +24,11 @@ public:
     /** @MainButtons */
     WidgetData::STabs m_Tabs;
 
-
-
-    /** Footer */
+    /** Footer ******************************************* */
+    
+    /** @Footer */
+    WidgetData::SFooter m_Footer;
+    
 };
 
 extern Constants gConstants;

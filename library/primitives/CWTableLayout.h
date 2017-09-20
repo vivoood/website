@@ -11,7 +11,8 @@
 
 class CWTableLayout  : public Wt::WContainerWidget
 {
-public:
+private:
+    friend class Factory;
     CWTableLayout ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
 };
 
