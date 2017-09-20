@@ -1,8 +1,9 @@
 .web-site-name-style{
+    height: 230px;
     text-align: center;
     background-image: url('pics/airplane_name_bgr.jpg');
     background-size: 100% 100%;
-    height: 150%;
+    
     max-width: 1920px;
 }
 
