@@ -2,24 +2,24 @@
 
 #include <Wt/WContainerWidget>
 
-#include "WTabs.h"
-#include "WTableLayout.h"
-#include "Title.h"
+#include "CWTabs.h"
+#include "CWTableLayout.h"
+#include "CWHeader.h"
 #include "Constants.h"
 
-Wt::WWidget* Factory::Create ( IWidgetData * pWD, std::string str )
+Wt::WWidget* Factory::Create ( std::string str )
 {
     if ( str == "WContainerWidget" )
         return new Wt::WContainerWidget();
 
     if ( str == "WTabs" )
-        return new WTabs ( &gConstants.m_Tabs );
+        return new CWTabs ( &gConstants.m_Tabs );
 
     if ( str == "Title" )
-        return new Title();
+        return new CWHeader();
 
     if ( str == "WTableLayout" )
-        return new WTableLayout ( &gConstants.m_Table );
+        return new CWTableLayout ( &gConstants.m_Table );
 
     return nullptr;
 }

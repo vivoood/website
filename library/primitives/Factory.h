@@ -9,7 +9,7 @@
 class Factory
 {
 public:
-    static Wt::WWidget * Create ( IWidgetData * pWD, std::string str );
+    static Wt::WWidget * Create ( std::string str );
 };
 
 #endif // FACTORY_H

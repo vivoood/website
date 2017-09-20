@@ -1,11 +1,11 @@
-#include "WTabs.h"
+#include "CWTabs.h"
 
 #include <Wt/WTemplate>
 #include <Wt/WPushButton>
 #include <Wt/WGroupBox>
 #include <Wt/WText>
 
-WTabs::WTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
+CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
     WidgetData::STabs * pTabs = dynamic_cast<WidgetData::STabs*> ( pD );
     if ( pTabs != nullptr )

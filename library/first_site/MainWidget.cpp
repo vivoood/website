@@ -1,13 +1,12 @@
 #include "MainWidget.h"
 
-#include "../primitives/Title.h"
+#include "../primitives/CWHeader.h"
 #include "../primitives/Factory.h"
 
 MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( perant )
 {
-    this->addWidget ( new Title () );
-//     this->addWidget( new WTabs() );
-    this->addWidget ( Factory::Create ( nullptr, "WTableLayout" ) );
+    this->addWidget ( new CWHeader () );
+    this->addWidget ( Factory::Create ( "WTableLayout" ) );
 }
 
 extern "C" Wt::WObject * create()

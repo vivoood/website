@@ -9,10 +9,10 @@
 
 #include "IWidgetData.h"
 
-class WTableLayout  : public Wt::WContainerWidget
+class CWTableLayout  : public Wt::WContainerWidget
 {
 public:
-    WTableLayout ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
+    CWTableLayout ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
 };
 
 #endif // WTABLELAYOUT_H

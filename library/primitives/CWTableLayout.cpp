@@ -2,7 +2,7 @@
  * Velislav Velkov
  */
 
-#include "WTableLayout.h"
+#include "CWTableLayout.h"
 
 #include <Wt/WTable>
 #include <Wt/WTableCell>
@@ -12,7 +12,7 @@
 
 #include "Factory.h"
 
-WTableLayout::WTableLayout ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
+CWTableLayout::CWTableLayout ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
     WidgetData::STable * pTable = dynamic_cast<WidgetData::STable*> ( pD );
     if ( pTable != nullptr )
@@ -26,7 +26,7 @@ WTableLayout::WTableLayout ( IWidgetData * pD, Wt::WContainerWidget* parent ) : 
             for ( unsigned int j = 0; j < pTable->vTable[i].size(); j++ )
             {
                 std::cout << i << " | " << j << " = " << pTable->vTable[i][j].strLenght << std::endl;
-                table->elementAt ( i, j )->addWidget ( Factory::Create ( nullptr, pTable->vTable[i][j].strWidgetName ) );
+                table->elementAt ( i, j )->addWidget ( Factory::Create ( pTable->vTable[i][j].strWidgetName ) );
                 table->elementAt ( i, j )->setStyleClass ( pTable->vTable[i][j].strStyle );
                 table->elementAt ( i, j )->setWidth ( Wt::WLength ( pTable->vTable[i][j].strLenght.c_str() ) );
             }

@@ -3,5 +3,5 @@ project(primitives)
 
 set( external_shared_libs wt wthttp boost_signals )
 
-add_library(primitives SHARED Title.cpp WTabs.cpp Constants.cpp WTableLayout.cpp Factory.cpp)
+add_library(primitives SHARED CWHeader.cpp CWTabs.cpp CWTableLayout.cpp Factory.cpp Constants.cpp)
 target_link_libraries(primitives ${external_shared_libs})
