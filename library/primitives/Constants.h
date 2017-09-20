@@ -23,6 +23,9 @@ public:
 
     /** @MainButtons */
     WidgetData::STabs m_Tabs;
+    
+    /** @One @Offer */
+    WidgetData::SOffer m_Offer;
 
     /** Footer ******************************************* */
     

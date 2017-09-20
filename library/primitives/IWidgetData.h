@@ -51,6 +51,18 @@ struct SFooter : public IWidgetData
     std::string strStyle;
 };
 
+struct SOffer : public IWidgetData
+{
+    std::string strDirection;
+    std::string strAirline;
+    std::string strPrice;
+    bool bOneWay;
+    bool bDirectFlight;
+    
+    std::string strStyle;
+    std::pair<std::string, std::string> strPicAndStyle;
+};
+
 }
 
 #endif // IWIDGETDATA_H

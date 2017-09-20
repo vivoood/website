@@ -36,7 +36,7 @@ Constants::Constants()
     d.strTabName = "FAQ's";
     d.strTabButtonStyle = "menu-buttons";
     m_Tabs.vTabButtons.push_back ( d );
-    
+
     /** ******************************************* */
 
     std::vector<WidgetData::STableData> vTableRow;
@@ -54,13 +54,25 @@ Constants::Constants()
 
     dTable.strStyle = "table-col-3";
     dTable.strLenght = "25%";
-    dTable.strWidgetName = "WContainerWidget";
+    dTable.strWidgetName = "CWOffer";
     vTableRow.push_back ( dTable );
 
     m_Table.vTable.push_back ( vTableRow );
-    
+
     /** ******************************************* */
+
+    m_Offer.bOneWay = true;
+    m_Offer.bDirectFlight = true;
     
+    m_Offer.strDirection = "<span> Sofia-Viena</span>";
+    m_Offer.strPrice = "<span> 36$</span>";
+    m_Offer.strAirline = "<span> Wizz Air</span>";
+    
+    m_Offer.strStyle = "offer-style";
+    m_Offer.strPicAndStyle = std::pair<std::string, std::string> ( "pics/vienna.jpg" ,"offer-pic-style" );
+
+    /** ******************************************* */
+
     m_Footer.strStyle = "footer-style";
 }
 

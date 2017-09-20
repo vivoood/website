@@ -2,10 +2,11 @@
 
 #include <Wt/WContainerWidget>
 
-#include "CWTabs.h"
-#include "CWTableLayout.h"
-#include "CWHeader.h"
 #include "CWFooter.h"
+#include "CWHeader.h"
+#include "CWOffer.h"
+#include "CWTableLayout.h"
+#include "CWTabs.h"
 
 #include "Constants.h"
 
@@ -18,7 +19,7 @@ Wt::WWidget* Factory::Create ( std::string str )
         return new CWTabs ( &gConstants.m_Tabs );
 
     if ( str == "CWHeader" )
-        return new CWHeader( &gConstants.m_Header );
+        return new CWHeader ( &gConstants.m_Header );
 
     if ( str == "CWTableLayout" )
         return new CWTableLayout ( &gConstants.m_Table );
@@ -26,6 +27,8 @@ Wt::WWidget* Factory::Create ( std::string str )
     if ( str == "CWFooter" )
         return new CWFooter ( &gConstants.m_Footer );
 
+    if ( str == "CWOffer" )
+        return new CWOffer ( &gConstants.m_Offer );
 
     return nullptr;
 }
