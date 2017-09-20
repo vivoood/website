@@ -5,7 +5,7 @@
 
 MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( perant )
 {
-    this->addWidget ( new CWHeader () );
+    this->addWidget ( Factory::Create ( "CWHeader" ) );
     this->addWidget ( Factory::Create ( "WTableLayout" ) );
 }
 

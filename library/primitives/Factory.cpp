@@ -15,7 +15,7 @@ Wt::WWidget* Factory::Create ( std::string str )
     if ( str == "WTabs" )
         return new CWTabs ( &gConstants.m_Tabs );
 
-    if ( str == "Title" )
+    if ( str == "CWHeader" )
         return new CWHeader();
 
     if ( str == "WTableLayout" )
