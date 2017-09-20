@@ -5,18 +5,23 @@
 #include <Wt/WGroupBox>
 #include <Wt/WText>
 
-#include "Constants.h"
-
-WTabs::WTabs ( Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
+WTabs::WTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
-    for ( unsigned int i = 0; i < gConstants.vMenuButtons.size(); i++ )
+    WidgetData::STabs * pTabs = dynamic_cast<WidgetData::STabs*> ( pD );
+    if ( pTabs != nullptr )
     {
-        Wt::WPushButton * pBtn = new Wt::WPushButton ( gConstants.vMenuButtons[i].strTabName );
-        pBtn->setStyleClass ( "menu-buttons" );
-        this->addWidget ( pBtn );
+        for ( unsigned int i = 0; i < pTabs->vTabButtons.size(); i++ )
+        {
+            Wt::WPushButton * pBtn = new Wt::WPushButton ( pTabs->vTabButtons[i].strTabName );
+            pBtn->setStyleClass ( pTabs->vTabButtons[i].strTabButtonStyle );
+            this->addWidget ( pBtn );
+        }
+
+        this->setStyleClass ( pTabs->strTabStyle );
     }
-    
-    this->setStyleClass("menu-buttons-bgr");
 }
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
+
+
 

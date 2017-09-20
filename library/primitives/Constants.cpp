@@ -1,35 +1,57 @@
 #include "Constants.h"
 
-#include "WTabs.h"
-
 Constants::Constants()
 {
     strSiteName.assign ( "Some Title" );
     strSiteSlogan.assign ( "use some slogan" );
 
-    emptyTabData = { "n/a", "n/a", {"n/a"} };
+    m_Tabs.strTabStyle = "menu-buttons-bgr";
 
-    vMenuButtons.push_back ( { "Home", "web-site-home", {"<p>Home page with common information</p>"} } );
-    vMenuButtons.push_back ( { "News", "web-site-news", {"<p>Here is any news </p>", "<th>air crashes </th>", "<th>ticket offers </th>"} } );
-    vMenuButtons.push_back ( { "Travel tips", "web-site-tips", {"<p>Make list</p>", "<p>Learn Common Phrases of the Local Language</p>", "<p>Always Buy Travel Insurance</p>", "<p>Pre-plan Your Outfits</p>", "<p>Stay Hydrated on Planes</p>"} } );
-    vMenuButtons.push_back ( { "Contacts", "web-site-contacts", {"<p>e-mail, phone, etc</p>"} } );
-    vMenuButtons.push_back ( { "About us", "web-site-about-us", {"<p>Little story</p>", "<p>Funny for us, maybe</p>"} } );
-    vMenuButtons.push_back ( { "FAQ's", "web-site-faq", {"<p>Frequently asked questions about air travel</p>"} } );
+    WidgetData::STabButtonsData d;
 
-    vTable.push_back ( { { "table-col-1", "15%", "WContainerWidget" }, { "table-col-2", "65%", "WTabs" }, { "table-col-3", "20%", "WContainerWidget" } } );
-}
+    d.strTabName = "Home";
+    d.strTabButtonStyle = "menu-buttons";
+    m_Tabs.vTabButtons.push_back ( d );
 
-const Constants::STabButtonsData & Constants::FindTabData ( std::string strKey )
-{
-    for ( unsigned int i = 0; i < vMenuButtons.size(); i++ )
-    {
-        if ( vMenuButtons[i].strTabName == strKey )
-        {
-            return vMenuButtons[i];
-        }
-    }
+    d.strTabName = "News";
+    d.strTabButtonStyle = "menu-buttons";
+    m_Tabs.vTabButtons.push_back ( d );
 
-    return emptyTabData;
+    d.strTabName = "Travel tips";
+    d.strTabButtonStyle = "menu-buttons";
+    m_Tabs.vTabButtons.push_back ( d );
+
+    d.strTabName = "Contacts";
+    d.strTabButtonStyle = "menu-buttons";
+    m_Tabs.vTabButtons.push_back ( d );
+
+    d.strTabName = "About us";
+    d.strTabButtonStyle = "menu-buttons";
+    m_Tabs.vTabButtons.push_back ( d );
+
+    d.strTabName = "FAQ's";
+    d.strTabButtonStyle = "menu-buttons";
+    m_Tabs.vTabButtons.push_back ( d );
+
+    std::vector<WidgetData::STableData> vTableRow;
+    WidgetData::STableData dTable;
+
+    dTable.strStyle = "table-col-1";
+    dTable.strLenght = "15%";
+    dTable.strWidgetName = "WContainerWidget";
+    vTableRow.push_back ( dTable );
+
+    dTable.strStyle = "table-col-2";
+    dTable.strLenght = "65%";
+    dTable.strWidgetName = "WTabs";
+    vTableRow.push_back ( dTable );
+
+    dTable.strStyle = "table-col-3";
+    dTable.strLenght = "25%";
+    dTable.strWidgetName = "WContainerWidget";
+    vTableRow.push_back ( dTable );
+
+    m_Table.vTable.push_back ( vTableRow );
 }
 
 Constants gConstants;

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
 project(vivoood)
 
-option(enable_rm "gccv" x0)
+option(gccv "gccv" 0x)
 
 if (${gccv} STREQUAL "0x")
 	SET(CMAKE_CXX_FLAGS "-std=c++0x")
