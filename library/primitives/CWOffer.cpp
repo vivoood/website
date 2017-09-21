@@ -1,5 +1,6 @@
 #include "CWOffer.h"
 
+#include <Wt/WCssDecorationStyle>
 #include <Wt/WText>
 #include <Wt/WBreak>
 #include <Wt/WPushButton>
@@ -9,15 +10,16 @@ CWOffer::CWOffer ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
     WidgetData::SOffer * p = dynamic_cast<WidgetData::SOffer*> ( pD );
     if ( p != nullptr )
     {
+        this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/" + p->strTo + ".jpg" ) );
         this->setStyleClass ( p->strStyle );
 
-        Wt::WText* pTxt = new Wt::WText ( p->strDirection );
-        this->addWidget ( pTxt );
-
+        this->addWidget ( new Wt::WText ( p->strFrom ) );
         this->addWidget ( new Wt::WBreak () );
-
+        this->addWidget ( new Wt::WText ( p->strTo ) );
+        this->addWidget ( new Wt::WBreak () );
+        
         Wt::WPushButton * pBtn = new Wt::WPushButton ( p->strPrice );
-        pBtn->setStyleClass ( "default-offer-button" );
+        pBtn->setStyleClass ( p->strBtnStyle );
         this->addWidget ( pBtn );
     }
 }

@@ -65,42 +65,43 @@ Constants::Constants()
 
     o.bOneWay = true;
     o.bDirectFlight = true;
-    o.strDirection = "Sofia Viena";
-    o.strPrice = "36$";
+    o.strFrom = "Sofia";
+    o.strTo = "Vienna";
+    o.strPrice = "$ 36";
     o.strAirline = "Wizz Air";
-    o.strStyle = "offer-vienna-style";
+    
     m_Offers.m_Offers.push_back ( o );
 
     o.bOneWay = false;
     o.bDirectFlight = true;
-    o.strDirection = "Milano Paris";
-    o.strPrice = "87$";
+    o.strFrom = "Milano";
+    o.strTo = "Paris";
+    o.strPrice = "$ 87";
     o.strAirline = "Wizz Air";
-    o.strStyle = "offer-paris-style";
     m_Offers.m_Offers.push_back ( o );
 
     o.bOneWay = false;
     o.bDirectFlight = false;
-    o.strDirection = "Rome Brazil";
-    o.strPrice = "135$";
+    o.strFrom = "Rome";
+    o.strTo = "Brazil";
+    o.strPrice = "$ 135";
     o.strAirline = "Asia air";
-    o.strStyle = "offer-brazil-style";
     m_Offers.m_Offers.push_back ( o );
 
     o.bOneWay = true;
     o.bDirectFlight = false;
-    o.strDirection = "Istanbul China";
-    o.strPrice = "77$";
+    o.strFrom = "Istanbul";
+    o.strTo = "China";
+    o.strPrice = "$ 77";
     o.strAirline = "Asia air";
-    o.strStyle = "offer-china-style";
     m_Offers.m_Offers.push_back ( o );
 
     o.bOneWay = true;
     o.bDirectFlight = true;
-    o.strDirection = "Bulgaria Germany";
-    o.strPrice = "42$";
+    o.strFrom = "Bulgaria";
+    o.strTo = "Germany";
+    o.strPrice = "$ 42";
     o.strAirline = "Bulgaria air";
-    o.strStyle = "offer-germany-style";
     m_Offers.m_Offers.push_back ( o );
     
 

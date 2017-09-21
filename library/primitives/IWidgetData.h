@@ -53,13 +53,14 @@ struct SFooter : public IWidgetData
 
 struct SOffer : public IWidgetData
 {
-    std::string strDirection;
-    std::string strAirline;
-    std::string strPrice;
-    bool bOneWay;
-    bool bDirectFlight;
-    
-    std::string strStyle;
+    std::string strFrom = "n/a";
+    std::string strTo = "n/a";
+    std::string strAirline = "n/a";
+    std::string strPrice = "$ 0";
+    std::string strStyle = "default-offer-style";
+    std::string strBtnStyle = "default-offer-button-style";
+    bool bOneWay = false;
+    bool bDirectFlight = false;
 };
 
 struct SOffers : public IWidgetData
