@@ -35,6 +35,7 @@ Constants::Constants()
 
     d.strTabName = "FAQ's";
     d.strTabButtonStyle = "menu-buttons";
+    d.content.strChildWidget = "CWFAQ";
     m_Tabs.vTabButtons.push_back ( d );
 
     /** ******************************************* */
@@ -70,7 +71,7 @@ Constants::Constants()
     o.strTo = "Vienna";
     o.strPrice = "$ 36";
     o.strAirline = "Wizz Air";
-    
+
     m_Offers.m_Offers.push_back ( o );
 
     o.bOneWay = false;
@@ -104,7 +105,7 @@ Constants::Constants()
     o.strPrice = "$ 42";
     o.strAirline = "Bulgaria air";
     m_Offers.m_Offers.push_back ( o );
-    
+
 
     /** ******************************************* */
 
@@ -113,4 +114,5 @@ Constants::Constants()
 
 Constants gConstants;
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
 

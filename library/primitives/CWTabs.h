@@ -10,6 +10,8 @@ class CWTabs : public Wt::WContainerWidget
 private:
     friend class Factory;
     CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
+    Wt::WContainerWidget * m_pContent = nullptr;
 };
 
 #endif // CWTABS_H
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

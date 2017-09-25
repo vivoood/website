@@ -1,6 +1,7 @@
 #include "Factory.h"
 
 #include <Wt/WContainerWidget>
+#include <Wt/WText>
 
 #include "CWFooter.h"
 #include "CWHeader.h"
@@ -33,8 +34,8 @@ Wt::WWidget* Factory::Create ( std::string str, IWidgetData * pD )
 
     if ( str == "CWPublicOffers" )
         return new CWPublicOffers ( &gConstants.m_Offers );
-    
 
-    return nullptr;
+
+    return new Wt::WText ( "n/a" );
 }
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

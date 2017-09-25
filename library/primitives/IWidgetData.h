@@ -22,10 +22,17 @@ struct SHeader : public IWidgetData
     std::string strSlogan;
 };
 
+struct STabButtonsContentData : public IWidgetData
+{
+    std::string strChildWidget = "n/a";
+};
+
 struct STabButtonsData : public IWidgetData
 {
     std::string strTabName;
     std::string strTabButtonStyle;
+    std::string strWidgetStyle;
+    STabButtonsContentData content;
 };
 
 struct STabs : public IWidgetData
@@ -73,3 +80,5 @@ struct SOffers : public IWidgetData
 
 #endif // IWIDGETDATA_H
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
+
