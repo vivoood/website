@@ -36,6 +36,7 @@ struct STabs : public IWidgetData
 
 struct STableData : public IWidgetData
 {
+    std::string strBgrImg = "n/a";
     std::string strStyle;
     std::string strLenght;
     std::string strWidgetName;

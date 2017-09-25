@@ -47,6 +47,7 @@ Constants::Constants()
     dTable.strWidgetName = "WContainerWidget";
     vTableRow.push_back ( dTable );
 
+//     dTable.strBgrImg.assign("airplane_interior");
     dTable.strStyle = "table-col-2";
     dTable.strLenght = "65%";
     dTable.strWidgetName = "CWTabs";
