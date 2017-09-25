@@ -25,13 +25,13 @@ struct SHeader : public IWidgetData
 struct STabButtonsContentData : public IWidgetData
 {
     std::string strChildWidget = "n/a";
+    std::string strWidgetStyle;
 };
 
 struct STabButtonsData : public IWidgetData
 {
     std::string strTabName;
     std::string strTabButtonStyle;
-    std::string strWidgetStyle;
     STabButtonsContentData content;
 };
 

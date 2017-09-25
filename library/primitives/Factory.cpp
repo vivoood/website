@@ -9,6 +9,7 @@
 #include "CWPublicOffers.h"
 #include "CWTableLayout.h"
 #include "CWTabs.h"
+#include "CWFAQ.h"
 
 #include "Constants.h"
 
@@ -32,10 +33,13 @@ Wt::WWidget* Factory::Create ( std::string str, IWidgetData * pD )
     if ( str == "CWOffer" )
         return new CWOffer ( pD );
 
+    if ( str == "CWFAQ" )
+        return new CWFAQ ( pD );
+
     if ( str == "CWPublicOffers" )
         return new CWPublicOffers ( &gConstants.m_Offers );
 
 
-    return new Wt::WText ( "n/a" );
+    return new Wt::WText ( "Ivo samo FAQ raboti za momenta" );
 }
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

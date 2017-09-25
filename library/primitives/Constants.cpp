@@ -35,7 +35,10 @@ Constants::Constants()
 
     d.strTabName = "FAQ's";
     d.strTabButtonStyle = "menu-buttons";
+    
     d.content.strChildWidget = "CWFAQ";
+    d.content.strWidgetStyle = "faq-style";
+    
     m_Tabs.vTabButtons.push_back ( d );
 
     /** ******************************************* */

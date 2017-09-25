@@ -10,6 +10,7 @@
 
 CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
+    Wt::WContainerWidget * pButtonsContainer = new Wt::WContainerWidget();
     m_pContent = new Wt::WContainerWidget();
 
     WidgetData::STabs * p = dynamic_cast<WidgetData::STabs*> ( pD );
@@ -23,24 +24,22 @@ CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWi
 
             Wt::WPushButton * pBtn = new Wt::WPushButton ( d.strTabName );
             pBtn->setStyleClass ( d.strTabButtonStyle );
-            this->addWidget ( pBtn );
+            pButtonsContainer->addWidget ( pBtn );
 
             pBtn->clicked().connect ( std::bind ( [=]()
             {
                 m_pContent->clear();
                 m_pContent->addWidget ( Factory::Create ( d.content.strChildWidget, &p->vTabButtons[i].content ) );
-                m_pContent->setStyleClass ( d.strWidgetStyle );
             } ) );
         }
 
+        m_pContent->addWidget ( Factory::Create ( p->vTabButtons[0].content.strChildWidget, &p->vTabButtons[0].content ) );
+
+        pButtonsContainer->setStyleClass ( p->strTabStyle );
+        this->addWidget ( pButtonsContainer );
         this->addWidget ( new Wt::WBreak() );
         this->addWidget ( m_pContent );
-        this->setStyleClass ( p->strTabStyle );
     }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
-
-
-

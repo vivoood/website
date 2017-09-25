@@ -32,6 +32,7 @@
   text-align: center;
   padding: 10px;
   background-color: #a94500;
+  border: 3px solid #88a207;
 }
 
 .table-layout{
@@ -83,4 +84,9 @@
     color: #88a207;
     border-radius: 25px;
     align: center;
+}
+
+.faq-style{
+    text-align: left;
+    background-color: #FFeFF8;
 }
