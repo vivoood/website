@@ -27,11 +27,14 @@ Constants::Constants()
 
     d.strTabName = "Contacts";
     d.strTabButtonStyle = "menu-buttons";
+    
+    d.content.strChildWidget = "CWContacts";
+    
     m_Tabs.vTabButtons.push_back ( d );
 
-    d.strTabName = "About us";
-    d.strTabButtonStyle = "menu-buttons";
-    m_Tabs.vTabButtons.push_back ( d );
+//     d.strTabName = "About us";
+//     d.strTabButtonStyle = "menu-buttons";
+//     m_Tabs.vTabButtons.push_back ( d );
 
     d.strTabName = "FAQ's";
     d.strTabButtonStyle = "menu-buttons";
