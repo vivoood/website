@@ -68,6 +68,7 @@ struct SOfferBig : public IWidgetData
     std::string strStyle = "default-offer-big-style";
     bool bOneWay = false;
     bool bDirectFlight = false;
+    std::string strHyperlink = "n/a";
 };
 
 struct SOffer : public IWidgetData

@@ -77,7 +77,7 @@ Constants::Constants()
     o.offerBig.strTo = "Vienna";
     o.offerBig.strPrice = "$ 36";
     o.offerBig.strAirline = "Wizz Air";
-
+    o.offerBig.strHyperlink = "https://wizzair.com/";
     m_Offers.m_Offers.push_back ( o );
 
     o.offerBig.bOneWay = false;
@@ -86,6 +86,7 @@ Constants::Constants()
     o.offerBig.strTo = "Paris";
     o.offerBig.strPrice = "$ 87";
     o.offerBig.strAirline = "Wizz Air";
+    o.offerBig.strHyperlink = "https://wizzair.com/";
     m_Offers.m_Offers.push_back ( o );
 
     o.offerBig.bOneWay = false;
@@ -93,7 +94,8 @@ Constants::Constants()
     o.offerBig.strFrom = "Rome";
     o.offerBig.strTo = "Brazil";
     o.offerBig.strPrice = "$ 135";
-    o.offerBig.strAirline = "Asia air";
+    o.offerBig.strAirline = "Air asia";
+    o.offerBig.strHyperlink = "https://www.airasia.com";
     m_Offers.m_Offers.push_back ( o );
 
     o.offerBig.bOneWay = true;
@@ -101,7 +103,8 @@ Constants::Constants()
     o.offerBig.strFrom = "Istanbul";
     o.offerBig.strTo = "China";
     o.offerBig.strPrice = "$ 77";
-    o.offerBig.strAirline = "Asia air";
+    o.offerBig.strAirline = "Air asia";
+    o.offerBig.strHyperlink = "https://www.airasia.com";
     m_Offers.m_Offers.push_back ( o );
 
     o.offerBig.bOneWay = true;
@@ -110,6 +113,7 @@ Constants::Constants()
     o.offerBig.strTo = "Germany";
     o.offerBig.strPrice = "$ 42";
     o.offerBig.strAirline = "Bulgaria air";
+    o.offerBig.strHyperlink = "https://www.air.bg";
     m_Offers.m_Offers.push_back ( o );
 
 
