@@ -5,6 +5,8 @@
 #include <Wt/WBreak>
 #include <Wt/WPushButton>
 
+#include "CWSignals.h"
+
 CWOffer::CWOffer ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
     WidgetData::SOffer * p = dynamic_cast<WidgetData::SOffer*> ( pD );
@@ -17,10 +19,16 @@ CWOffer::CWOffer ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         this->addWidget ( new Wt::WBreak () );
         this->addWidget ( new Wt::WText ( p->strTo ) );
         this->addWidget ( new Wt::WBreak () );
-        
+
         Wt::WPushButton * pBtn = new Wt::WPushButton ( p->strPrice );
+        pBtn->clicked().connect ( std::bind ( [=]()
+        {
+            gCWSignals.offertotab.emit ( "fck u" );
+        } ) );
+
         pBtn->setStyleClass ( p->strBtnStyle );
         this->addWidget ( pBtn );
     }
 }
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

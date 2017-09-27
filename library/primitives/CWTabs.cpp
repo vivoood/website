@@ -7,6 +7,7 @@
 #include <Wt/WBreak>
 
 #include "Factory.h"
+#include "CWSignals.h"
 
 CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
@@ -39,7 +40,15 @@ CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWi
         this->addWidget ( pButtonsContainer );
         this->addWidget ( new Wt::WBreak() );
         this->addWidget ( m_pContent );
+        
+        gCWSignals.offertotab.connect( this, &CWTabs::FillFromSignal );
     }
+}
+
+void CWTabs::FillFromSignal ( std::string str )
+{
+    m_pContent->clear();
+    m_pContent->addWidget ( new Wt::WPushButton ( "BTN" ) );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
