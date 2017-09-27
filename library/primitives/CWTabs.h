@@ -11,7 +11,7 @@ private:
     friend class Factory;
     CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
     Wt::WContainerWidget * m_pContent = nullptr;
-    void FillFromSignal ( std::string str );
+    void FillFromSignal ( std::string strWidgetName, IWidgetData * pD );
 };
 
 #endif // CWTABS_H

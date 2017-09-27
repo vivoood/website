@@ -71,45 +71,45 @@ Constants::Constants()
 
     WidgetData::SOffer o;
 
-    o.bOneWay = true;
-    o.bDirectFlight = true;
-    o.strFrom = "Sofia";
-    o.strTo = "Vienna";
-    o.strPrice = "$ 36";
-    o.strAirline = "Wizz Air";
+    o.offerBig.bOneWay = true;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Sofia";
+    o.offerBig.strTo = "Vienna";
+    o.offerBig.strPrice = "$ 36";
+    o.offerBig.strAirline = "Wizz Air";
 
     m_Offers.m_Offers.push_back ( o );
 
-    o.bOneWay = false;
-    o.bDirectFlight = true;
-    o.strFrom = "Milano";
-    o.strTo = "Paris";
-    o.strPrice = "$ 87";
-    o.strAirline = "Wizz Air";
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Milano";
+    o.offerBig.strTo = "Paris";
+    o.offerBig.strPrice = "$ 87";
+    o.offerBig.strAirline = "Wizz Air";
     m_Offers.m_Offers.push_back ( o );
 
-    o.bOneWay = false;
-    o.bDirectFlight = false;
-    o.strFrom = "Rome";
-    o.strTo = "Brazil";
-    o.strPrice = "$ 135";
-    o.strAirline = "Asia air";
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = false;
+    o.offerBig.strFrom = "Rome";
+    o.offerBig.strTo = "Brazil";
+    o.offerBig.strPrice = "$ 135";
+    o.offerBig.strAirline = "Asia air";
     m_Offers.m_Offers.push_back ( o );
 
-    o.bOneWay = true;
-    o.bDirectFlight = false;
-    o.strFrom = "Istanbul";
-    o.strTo = "China";
-    o.strPrice = "$ 77";
-    o.strAirline = "Asia air";
+    o.offerBig.bOneWay = true;
+    o.offerBig.bDirectFlight = false;
+    o.offerBig.strFrom = "Istanbul";
+    o.offerBig.strTo = "China";
+    o.offerBig.strPrice = "$ 77";
+    o.offerBig.strAirline = "Asia air";
     m_Offers.m_Offers.push_back ( o );
 
-    o.bOneWay = true;
-    o.bDirectFlight = true;
-    o.strFrom = "Bulgaria";
-    o.strTo = "Germany";
-    o.strPrice = "$ 42";
-    o.strAirline = "Bulgaria air";
+    o.offerBig.bOneWay = true;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Bulgaria";
+    o.offerBig.strTo = "Germany";
+    o.offerBig.strPrice = "$ 42";
+    o.offerBig.strAirline = "Bulgaria air";
     m_Offers.m_Offers.push_back ( o );
 
 

@@ -40,15 +40,19 @@ CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWi
         this->addWidget ( pButtonsContainer );
         this->addWidget ( new Wt::WBreak() );
         this->addWidget ( m_pContent );
-        
-        gCWSignals.offertotab.connect( this, &CWTabs::FillFromSignal );
+
+        gCWSignals.offertotab.connect ( this, &CWTabs::FillFromSignal );
     }
 }
 
-void CWTabs::FillFromSignal ( std::string str )
+void CWTabs::FillFromSignal ( std::string strWidgetName, IWidgetData * pD )
 {
-    m_pContent->clear();
-    m_pContent->addWidget ( new Wt::WPushButton ( "BTN" ) );
+    WidgetData::SOfferBig * p = dynamic_cast<WidgetData::SOfferBig*> ( pD );
+    if ( p != nullptr )
+    {
+        m_pContent->clear();
+        m_pContent->addWidget ( Factory::Create ( strWidgetName, pD ) );
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

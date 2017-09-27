@@ -5,10 +5,12 @@
 
 #include <string>
 
+#include "IWidgetData.h"
+
 class CWSignals
 {
 public:
-    Wt::Signal<std::string> offertotab;
+    Wt::Signal<std::string, IWidgetData *> offertotab;
 };
 
 extern CWSignals gCWSignals;

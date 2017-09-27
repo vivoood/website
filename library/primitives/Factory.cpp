@@ -11,6 +11,7 @@
 #include "CWTabs.h"
 #include "CWFAQ.h"
 #include "CWContacts.h"
+#include "CWOfferBig.h"
 
 #include "Constants.h"
 
@@ -42,6 +43,9 @@ Wt::WWidget* Factory::Create ( std::string str, IWidgetData * pD )
 
     if ( str == "CWContacts" )
         return new CWContacts ( pD );
+
+    if ( str == "CWOfferBig" )
+        return new CWOfferBig ( pD );
 
     return new Wt::WText ( "n/a" );
 }

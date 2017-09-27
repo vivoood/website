@@ -59,16 +59,22 @@ struct SFooter : public IWidgetData
     std::string strStyle;
 };
 
-struct SOffer : public IWidgetData
+struct SOfferBig : public IWidgetData
 {
     std::string strFrom = "n/a";
     std::string strTo = "n/a";
     std::string strAirline = "n/a";
     std::string strPrice = "$ 0";
-    std::string strStyle = "default-offer-style";
-    std::string strBtnStyle = "default-offer-button-style";
+    std::string strStyle = "default-offer-big-style";
     bool bOneWay = false;
     bool bDirectFlight = false;
+};
+
+struct SOffer : public IWidgetData
+{
+    SOfferBig offerBig;
+    std::string strStyle = "default-offer-style";
+    std::string strBtnStyle = "default-offer-button-style";
 };
 
 struct SOffers : public IWidgetData
