@@ -13,6 +13,7 @@
 #include "CWContacts.h"
 #include "CWOfferBig.h"
 #include "CWLogin.h"
+#include "CWLeftCol.h"
 
 #include "Constants.h"
 
@@ -50,6 +51,9 @@ Wt::WWidget* Factory::Create ( std::string str, IWidgetData * pD )
 
     if ( str == "CWLogin" )
         return new CWLogin ( pD );
+
+    if ( str == "CWLeftCol" )
+        return new CWLeftCol ( &gConstants.m_LeftCol );
 
     return new Wt::WText ( "n/a" );
 }

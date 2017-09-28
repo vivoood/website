@@ -27,21 +27,17 @@ Constants::Constants()
 
     d.strTabName = "Contacts";
     d.strTabButtonStyle = "menu-buttons";
-    
-    d.content.strChildWidget = "CWContacts";
-    
-    m_Tabs.vTabButtons.push_back ( d );
 
-//     d.strTabName = "About us";
-//     d.strTabButtonStyle = "menu-buttons";
-//     m_Tabs.vTabButtons.push_back ( d );
+    d.content.strChildWidget = "CWContacts";
+
+    m_Tabs.vTabButtons.push_back ( d );
 
     d.strTabName = "FAQ's";
     d.strTabButtonStyle = "menu-buttons";
-    
+
     d.content.strChildWidget = "CWFAQ";
     d.content.strWidgetStyle = "faq-style";
-    
+
     m_Tabs.vTabButtons.push_back ( d );
 
     /** ******************************************* */
@@ -51,7 +47,7 @@ Constants::Constants()
 
     dTable.strStyle = "table-col-1";
     dTable.strLenght = "15%";
-    dTable.strWidgetName = "WContainerWidget";
+    dTable.strWidgetName = "CWLeftCol";
     vTableRow.push_back ( dTable );
 
 //     dTable.strBgrImg.assign("airplane_interior");
@@ -115,6 +111,14 @@ Constants::Constants()
     o.offerBig.strAirline = "Bulgaria air";
     o.offerBig.strHyperlink = "https://www.air.bg";
     m_Offers.m_Offers.push_back ( o );
+
+    /** ******************************************* */
+
+    m_LeftCol.login.strStyleBtns = "login-button-style";
+    m_LeftCol.login.strStyleFields = "login-fields-style";
+    m_LeftCol.login.strStyleCommon = "login-style";
+    m_LeftCol.mapWidgets.insert ( std::pair<std::string, IWidgetData *> ( "CWLogin", &m_LeftCol.login ) );
+
 
 
     /** ******************************************* */

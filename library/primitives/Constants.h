@@ -12,7 +12,7 @@ public:
     Constants();
 
     /** Header ******************************************* */
-    
+
     /** @Header */
     WidgetData::SHeader m_Header;
 
@@ -23,15 +23,18 @@ public:
 
     /** @MainButtons */
     WidgetData::STabs m_Tabs;
-    
+
     /** @One @Offer */
     WidgetData::SOffers m_Offers;
 
+    /** @Left @column */
+    WidgetData::SLeftCol m_LeftCol;
+
     /** Footer ******************************************* */
-    
+
     /** @Footer */
     WidgetData::SFooter m_Footer;
-    
+
 };
 
 extern Constants gConstants;
