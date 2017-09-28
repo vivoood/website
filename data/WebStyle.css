@@ -103,6 +103,10 @@
     background-color: #FFeFF8;
 }
 
+.contacts-style{
+    text-align: right;
+}
+
 .login-style{
     background-color: #c4ffb4;
     min-height: 30px;
@@ -130,4 +134,21 @@
     margin-bottom: 5px;
     
     font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
+}
+
+.email-labels{
+    padding: 5px;
+    margin: 5px;
+    background-color: #ffffb4;
+}
+
+.email-text{
+/*     text-align: right; */
+/*     width: auto; */
+/*     height: auto; */
+    background-color: #ffffb4;
+    padding: 5px;
+    margin: 5px;
+    
+    resize: none;
 }

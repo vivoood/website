@@ -29,6 +29,7 @@ Constants::Constants()
     d.strTabButtonStyle = "menu-buttons";
 
     d.content.strChildWidget = "CWContacts";
+    d.content.strWidgetStyle = "contacts-style";
 
     m_Tabs.vTabButtons.push_back ( d );
 
