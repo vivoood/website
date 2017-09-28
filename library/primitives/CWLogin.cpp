@@ -34,6 +34,10 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         pLoginBtn->setStyleClass ( p->strStyleBtns );
         this->addWidget ( pLoginBtn );
 
+        Wt::WPushButton * pRegBtn = new Wt::WPushButton ( "Register" );
+        pRegBtn->setStyleClass ( p->strStyleBtns );
+        this->addWidget ( pRegBtn );
+
         this->setStyleClass ( p->strStyleCommon );
     }
 }
