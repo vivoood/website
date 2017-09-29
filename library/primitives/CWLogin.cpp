@@ -50,6 +50,10 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 
         Wt::WPushButton * pRegBtn = new Wt::WPushButton ( "Register" );
         pRegBtn->setStyleClass ( p->strStyleBtns );
+        pRegBtn->clicked().connect ( std::bind ( [=]()
+        {
+            gCWSignals.signallogintotabs.emit();
+        } ) );
         this->addWidget ( pRegBtn );
 
         this->setStyleClass ( p->strStyleCommon );

@@ -9,8 +9,8 @@
 class Factory
 {
 public:
-    static Wt::WWidget * Create ( std::string strWidget, std::string strData );
-    static Wt::WWidget * Create ( std::string strWidget, IWidgetData * pD );
+    static Wt::WWidget * Create ( std::string strWidget, std::string strData, void * payload = nullptr );
+    static Wt::WWidget * Create ( std::string strWidget, IWidgetData * pD, void * payload = nullptr );
 };
 
 #endif // FACTORY_H

@@ -15,16 +15,17 @@
 #include "CWLogin.h"
 #include "CWLeftCol.h"
 #include "CWAfterLogin.h"
+#include "CWUserLineInput.h"
 
 #include "Constants.h"
 
-Wt::WWidget* Factory::Create ( std::string strWidget, std::string strData )
+Wt::WWidget* Factory::Create ( std::string strWidget, std::string strData, void * payload )
 {
     IWidgetData * pD = gConstants.GetData ( strData );
-    return Factory::Create ( strWidget, pD );
+    return Factory::Create ( strWidget, pD, payload );
 }
 
-Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
+Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD, void * payload )
 {
     if ( strWidget == "WContainerWidget" )
         return new Wt::WContainerWidget();
@@ -64,7 +65,10 @@ Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
 
     if ( strWidget == "CWAfterLogin" )
         return new CWAfterLogin ( pD );
-
+    
+    if ( strWidget == "CWUserLineInput" )
+        return new CWUserLineInput ( pD, payload );
+    
     return new Wt::WText ( "n/a" );
 }
 

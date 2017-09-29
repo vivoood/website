@@ -39,6 +39,9 @@ private:
     WidgetData::SLeftCol m_LeftColAfterLogin;
     WidgetData::SLogin m_Login;
 
+    /** @User-line-input */
+    WidgetData::SUserLineInput m_UserLineInput;
+
     /** Footer ******************************************* */
 
     /** @Footer */
