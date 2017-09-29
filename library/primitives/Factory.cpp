@@ -16,6 +16,7 @@
 #include "CWLeftCol.h"
 #include "CWAfterLogin.h"
 #include "CWUserLineInput.h"
+#include "CWRegisterAccount.h"
 
 #include "Constants.h"
 
@@ -65,10 +66,13 @@ Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD, void * p
 
     if ( strWidget == "CWAfterLogin" )
         return new CWAfterLogin ( pD );
-    
+
     if ( strWidget == "CWUserLineInput" )
         return new CWUserLineInput ( pD, payload );
-    
+
+    if ( strWidget == "CWRegisterAccount" )
+        return new CWRegisterAccount ( pD );
+
     return new Wt::WText ( "n/a" );
 }
 

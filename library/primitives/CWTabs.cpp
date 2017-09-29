@@ -42,17 +42,14 @@ CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWi
         this->addWidget ( m_pContent );
 
         gCWSignals.signaloffertotab.connect ( this, &CWTabs::FillFromSignal );
+        gCWSignals.signallogintotabs.connect ( this, &CWTabs::FillFromSignal );
     }
 }
 
 void CWTabs::FillFromSignal ( std::string strWidgetName, IWidgetData * pD )
 {
-    WidgetData::SOfferBig * p = dynamic_cast<WidgetData::SOfferBig*> ( pD );
-    if ( p != nullptr )
-    {
-        m_pContent->clear();
-        m_pContent->addWidget ( Factory::Create ( strWidgetName, pD ) );
-    }
+    m_pContent->clear();
+    m_pContent->addWidget ( Factory::Create ( strWidgetName, pD ) );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
