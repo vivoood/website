@@ -4,7 +4,8 @@
 
 CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
-    this->addWidget ( Factory::Create ( "CWUserLineInput", "SUserLineInput" ) );
+    std::string str("vvvvv");
+    this->addWidget ( Factory::Create ( "CWUserLineInput", "SUserLineInput", &str ) );
 
 //     WidgetData::X * p = dynamic_cast<WidgetData::X*> ( pD );
 //     if ( p != nullptr )

@@ -10,7 +10,7 @@ CWUserLineInput::CWUserLineInput ( IWidgetData * pD, void * payload, Wt::WContai
     {
         this->setStyleClass ( p->strStyleContainer );
 
-        Wt::WText * pLabel = new Wt::WText ( "Your e-mail" );
+        Wt::WText * pLabel = new Wt::WText ( ( const char * ) payload );
         pLabel->setStyleClass ( p->strStyleLabel );
         this->addWidget ( pLabel );
 
