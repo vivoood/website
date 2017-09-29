@@ -17,44 +17,88 @@
 
 #include "Constants.h"
 
-Wt::WWidget* Factory::Create ( std::string str, IWidgetData * pD )
+Wt::WWidget* Factory::Create ( std::string strWidget, std::string strData )
 {
-    if ( str == "WContainerWidget" )
+    IWidgetData * pD = gConstants.GetData ( strData );
+
+    if ( strWidget == "WContainerWidget" )
         return new Wt::WContainerWidget();
 
-    if ( str == "CWTabs" )
-        return new CWTabs ( &gConstants.m_Tabs );
+    if ( strWidget == "CWTabs" )
+        return new CWTabs ( pD );
 
-    if ( str == "CWHeader" )
-        return new CWHeader ( &gConstants.m_Header );
+    if ( strWidget == "CWHeader" )
+        return new CWHeader ( pD );
 
-    if ( str == "CWTableLayout" )
-        return new CWTableLayout ( &gConstants.m_Table );
+    if ( strWidget == "CWTableLayout" )
+        return new CWTableLayout ( pD );
 
-    if ( str == "CWFooter" )
-        return new CWFooter ( &gConstants.m_Footer );
+    if ( strWidget == "CWFooter" )
+        return new CWFooter ( pD );
 
-    if ( str == "CWOffer" )
+    if ( strWidget == "CWOffer" )
         return new CWOffer ( pD );
 
-    if ( str == "CWFAQ" )
+    if ( strWidget == "CWFAQ" )
         return new CWFAQ ( pD );
 
-    if ( str == "CWPublicOffers" )
-        return new CWPublicOffers ( &gConstants.m_Offers );
+    if ( strWidget == "CWPublicOffers" )
+        return new CWPublicOffers ( pD );
 
-    if ( str == "CWContacts" )
+    if ( strWidget == "CWContacts" )
         return new CWContacts ( pD );
 
-    if ( str == "CWOfferBig" )
+    if ( strWidget == "CWOfferBig" )
         return new CWOfferBig ( pD );
 
-    if ( str == "CWLogin" )
+    if ( strWidget == "CWLogin" )
         return new CWLogin ( pD );
 
-    if ( str == "CWLeftCol" )
-        return new CWLeftCol ( &gConstants.m_LeftCol );
+    if ( strWidget == "CWLeftCol" )
+        return new CWLeftCol ( pD );
 
     return new Wt::WText ( "n/a" );
 }
+
+Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
+{
+    if ( strWidget == "WContainerWidget" )
+        return new Wt::WContainerWidget();
+
+    if ( strWidget == "CWTabs" )
+        return new CWTabs ( pD );
+
+    if ( strWidget == "CWHeader" )
+        return new CWHeader ( pD );
+
+    if ( strWidget == "CWTableLayout" )
+        return new CWTableLayout ( pD );
+
+    if ( strWidget == "CWFooter" )
+        return new CWFooter ( pD );
+
+    if ( strWidget == "CWOffer" )
+        return new CWOffer ( pD );
+
+    if ( strWidget == "CWFAQ" )
+        return new CWFAQ ( pD );
+
+    if ( strWidget == "CWPublicOffers" )
+        return new CWPublicOffers ( pD );
+
+    if ( strWidget == "CWContacts" )
+        return new CWContacts ( pD );
+
+    if ( strWidget == "CWOfferBig" )
+        return new CWOfferBig ( pD );
+
+    if ( strWidget == "CWLogin" )
+        return new CWLogin ( pD );
+
+    if ( strWidget == "CWLeftCol" )
+        return new CWLeftCol ( pD );
+
+    return new Wt::WText ( "n/a" );
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

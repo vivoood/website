@@ -41,7 +41,7 @@ CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWi
         this->addWidget ( new Wt::WBreak() );
         this->addWidget ( m_pContent );
 
-        gCWSignals.offertotab.connect ( this, &CWTabs::FillFromSignal );
+        gCWSignals.signaloffertotab.connect ( this, &CWTabs::FillFromSignal );
     }
 }
 

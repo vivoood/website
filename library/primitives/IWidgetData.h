@@ -47,6 +47,7 @@ struct STableData : public IWidgetData
     std::string strStyle;
     std::string strLenght;
     std::string strWidgetName;
+    std::string strWidgetData;
 };
 
 struct STable : public IWidgetData
@@ -100,5 +101,3 @@ struct SLeftCol : public IWidgetData
 
 #endif // IWIDGETDATA_H
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
-

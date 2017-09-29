@@ -5,6 +5,10 @@
 #include <Wt/WBreak>
 #include <Wt/WPushButton>
 
+#include <crypto++/sha.h>
+
+#include "CWSignals.h"
+
 CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
     WidgetData::SLogin * p = dynamic_cast<WidgetData::SLogin*> ( pD );
@@ -25,6 +29,7 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         this->addWidget ( pPassLabel );
 
         Wt::WLineEdit * pPassEdit = new Wt::WLineEdit();
+        pPassEdit->setEchoMode ( Wt::WLineEdit::Password );
         pPassEdit->setStyleClass ( p->strStyleFields );
         this->addWidget ( pPassEdit );
 
@@ -32,6 +37,15 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 
         Wt::WPushButton * pLoginBtn = new Wt::WPushButton ( "Login" );
         pLoginBtn->setStyleClass ( p->strStyleBtns );
+        pLoginBtn->clicked().connect ( std::bind ( [=]()
+        {
+            CryptoPP::SHA1 hash;
+            unsigned char arrLoginSha1[ CryptoPP::SHA1::DIGESTSIZE ];
+            std::string strNamePass ( "user" );
+            strNamePass.append ( "Pass" );
+            hash.CalculateDigest ( arrLoginSha1, ( byte* ) strNamePass.c_str(), strNamePass.length() );
+            gCWSignals.signallogintotab.emit();
+        } ) );
         this->addWidget ( pLoginBtn );
 
         Wt::WPushButton * pRegBtn = new Wt::WPushButton ( "Register" );

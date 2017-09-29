@@ -23,7 +23,7 @@ CWOffer::CWOffer ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         Wt::WPushButton * pBtn = new Wt::WPushButton ( p->offerBig.strPrice );
         pBtn->clicked().connect ( std::bind ( [=]()
         {
-            gCWSignals.offertotab.emit ( "CWOfferBig", &p->offerBig );
+            gCWSignals.signaloffertotab.emit ( "CWOfferBig", &p->offerBig );
         } ) );
 
         pBtn->setStyleClass ( p->strBtnStyle );

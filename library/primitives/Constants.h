@@ -10,6 +10,11 @@ class Constants
 public:
 
     Constants();
+    IWidgetData* GetData ( std::string str );
+
+private:
+
+    std::map<std::string, IWidgetData*> m_mapData;
 
     /** Header ******************************************* */
 
@@ -23,6 +28,9 @@ public:
 
     /** @MainButtons */
     WidgetData::STabs m_Tabs;
+
+    /** @MainButtons @login */
+    WidgetData::STabs m_TabsLogin;
 
     /** @One @Offer */
     WidgetData::SOffers m_Offers;

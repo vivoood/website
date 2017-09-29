@@ -9,8 +9,12 @@
 class Factory
 {
 public:
-    static Wt::WWidget * Create ( std::string str, IWidgetData * pD = nullptr );
+    static Wt::WWidget * Create ( std::string strWidget, std::string strData );
+    static Wt::WWidget * Create ( std::string strWidget, IWidgetData * pD );
 };
 
 #endif // FACTORY_H
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
+
+

@@ -9,6 +9,7 @@ Constants::Constants()
     m_Header.strSlogan = "use some slogan";
 
     /** ******************************************* */
+    /** ******************************************* */
     m_Tabs.strTabStyle = "menu-buttons-bgr";
 
     WidgetData::STabButtonsData d;
@@ -42,6 +43,38 @@ Constants::Constants()
     m_Tabs.vTabButtons.push_back ( d );
 
     /** ******************************************* */
+    /** ******************************************* */
+
+    m_TabsLogin.strTabStyle = "menu-buttons-bgr";
+
+    WidgetData::STabButtonsData dlogin;
+
+    dlogin.strTabName = "Home";
+    dlogin.strTabButtonStyle = "menu-buttons";
+    m_TabsLogin.vTabButtons.push_back ( dlogin );
+
+    dlogin.strTabName = "Contacts";
+    dlogin.strTabButtonStyle = "menu-buttons";
+
+    dlogin.content.strChildWidget = "CWContacts";
+    dlogin.content.strWidgetStyle = "contacts-style";
+
+    m_TabsLogin.vTabButtons.push_back ( dlogin );
+
+    dlogin.strTabName = "FAQ's";
+    dlogin.strTabButtonStyle = "menu-buttons";
+
+    dlogin.content.strChildWidget = "CWFAQ";
+    dlogin.content.strWidgetStyle = "faq-style";
+
+    m_TabsLogin.vTabButtons.push_back ( dlogin );
+
+    dlogin.strTabName = "My account";
+    dlogin.strTabButtonStyle = "menu-buttons";
+    m_TabsLogin.vTabButtons.push_back ( dlogin );
+
+    /** ******************************************* */
+    /** ******************************************* */
 
     std::vector<WidgetData::STableData> vTableRow;
     WidgetData::STableData dTable;
@@ -49,17 +82,19 @@ Constants::Constants()
     dTable.strStyle = "table-col-1";
     dTable.strLenght = "15%";
     dTable.strWidgetName = "CWLeftCol";
+    dTable.strWidgetData = "SLeftCol";
     vTableRow.push_back ( dTable );
 
-//     dTable.strBgrImg.assign("airplane_interior");
     dTable.strStyle = "table-col-2";
     dTable.strLenght = "65%";
     dTable.strWidgetName = "CWTabs";
+    dTable.strWidgetData = "STabs";
     vTableRow.push_back ( dTable );
 
     dTable.strStyle = "table-col-3";
     dTable.strLenght = "25%";
     dTable.strWidgetName = "CWPublicOffers";
+    dTable.strWidgetData = "SOffers";
     vTableRow.push_back ( dTable );
 
     m_Table.vTable.push_back ( vTableRow );
@@ -120,14 +155,32 @@ Constants::Constants()
     m_LeftCol.login.strStyleCommon = "login-style";
     m_LeftCol.mapWidgets.insert ( std::pair<std::string, IWidgetData *> ( "CWLogin", &m_LeftCol.login ) );
 
-
-
     /** ******************************************* */
 
     m_Footer.strStyle = "footer-style";
+
+    /** ******************************************* */
+
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SHeader", &m_Header ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STable", &m_Table ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabs", &m_Tabs ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabsLogin", &m_TabsLogin ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffers", &m_Offers ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLeftCol", &m_LeftCol ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SFooter", &m_Footer ) );
+
+//     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "", & ) );
+
+}
+
+IWidgetData * Constants::GetData ( std::string str )
+{
+    std::map<std::string, IWidgetData*>::iterator it;
+    it = m_mapData.find ( str );
+    if ( it == m_mapData.end() )
+        return nullptr;
+    return ( *it ).second;
 }
 
 Constants gConstants;
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
-

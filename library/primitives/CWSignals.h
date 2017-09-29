@@ -10,7 +10,8 @@
 class CWSignals
 {
 public:
-    Wt::Signal<std::string, IWidgetData *> offertotab;
+    Wt::Signal<std::string, IWidgetData *> signaloffertotab;
+    Wt::Signal<void> signallogintotab;
 };
 
 extern CWSignals gCWSignals;

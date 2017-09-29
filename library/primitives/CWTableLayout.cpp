@@ -30,7 +30,7 @@ CWTableLayout::CWTableLayout ( IWidgetData * pD, Wt::WContainerWidget* parent ) 
                 Wt::WTableCell * pCell = table->elementAt ( i, j );
                 WidgetData::STableData d = p->vTable[i][j];
 
-                pCell->addWidget ( Factory::Create ( d.strWidgetName ) );
+                pCell->addWidget ( Factory::Create ( d.strWidgetName, d.strWidgetData ) );
                 pCell->setStyleClass ( d.strStyle );
                 pCell->setWidth ( Wt::WLength ( d.strLenght.c_str() ) );
 
