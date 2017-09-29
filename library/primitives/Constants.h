@@ -25,12 +25,11 @@ private:
 
     /** @MainTable */
     WidgetData::STable m_Table;
+    WidgetData::STable m_TableAfterLogin;
 
     /** @MainButtons */
     WidgetData::STabs m_Tabs;
-
-    /** @MainButtons @login */
-    WidgetData::STabs m_TabsLogin;
+    WidgetData::STabs m_TabsAfterLogin;
 
     /** @One @Offer */
     WidgetData::SOffers m_Offers;
