@@ -93,8 +93,7 @@ struct SLogin : public IWidgetData
 
 struct SLeftCol : public IWidgetData
 {
-    std::map< std::string, IWidgetData* > mapWidgets;
-    SLogin login;
+    std::vector< std::pair< std::string, std::string > > m_vWidgets;
 };
 
 }

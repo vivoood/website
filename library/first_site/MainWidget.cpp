@@ -9,11 +9,19 @@ MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( per
     this->addWidget ( Factory::Create ( "CWTableLayout", "STable" ) );
     this->addWidget ( Factory::Create ( "CWFooter", "SFooter" ) );
 
-    gCWSignals.signallogintotab.connect ( std::bind ( [=]()
+    gCWSignals.signallogintomainwidget.connect ( std::bind ( [=]()
     {
         this->clear();
         this->addWidget ( Factory::Create ( "CWHeader", "SHeader" ) );
         this->addWidget ( Factory::Create ( "CWTableLayout", "STableAfterLogin" ) );
+        this->addWidget ( Factory::Create ( "CWFooter", "SFooter" ) );
+    } ) );
+
+    gCWSignals.signalafterlogintomainwidget.connect ( std::bind ( [=]()
+    {
+        this->clear();
+        this->addWidget ( Factory::Create ( "CWHeader", "SHeader" ) );
+        this->addWidget ( Factory::Create ( "CWTableLayout", "STable" ) );
         this->addWidget ( Factory::Create ( "CWFooter", "SFooter" ) );
     } ) );
 }

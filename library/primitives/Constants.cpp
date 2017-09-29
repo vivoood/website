@@ -107,7 +107,7 @@ Constants::Constants()
     dTableAfterLogin.strStyle = "table-col-1";
     dTableAfterLogin.strLenght = "15%";
     dTableAfterLogin.strWidgetName = "CWLeftCol";
-    dTableAfterLogin.strWidgetData = "SLeftCol";
+    dTableAfterLogin.strWidgetData = "SLeftColAfterLogin";
     vTableRowAfterLogin.push_back ( dTableAfterLogin );
 
     dTableAfterLogin.strStyle = "table-col-2";
@@ -176,10 +176,12 @@ Constants::Constants()
 
     /** ******************************************* */
 
-    m_LeftCol.login.strStyleBtns = "login-button-style";
-    m_LeftCol.login.strStyleFields = "login-fields-style";
-    m_LeftCol.login.strStyleCommon = "login-style";
-    m_LeftCol.mapWidgets.insert ( std::pair<std::string, IWidgetData *> ( "CWLogin", &m_LeftCol.login ) );
+    m_Login.strStyleBtns = "login-button-style";
+    m_Login.strStyleFields = "login-fields-style";
+    m_Login.strStyleCommon = "login-style";
+
+    m_LeftCol.m_vWidgets.push_back ( std::pair<std::string, std::string> ( "CWLogin", "SLogin" ) );
+    m_LeftColAfterLogin.m_vWidgets.push_back ( std::pair<std::string, std::string> ( "CWAfterLogin", "SLogin" ) );
 
     /** ******************************************* */
 
@@ -188,13 +190,21 @@ Constants::Constants()
     /** ******************************************* */
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SHeader", &m_Header ) );
+
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STable", &m_Table ) );
-    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STableAfterLogin", &m_TableAfterLogin ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STableAfterLogin", &m_TableAfterLogin ) )
+    ;
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabs", &m_Tabs ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabsAfterLogin", &m_TabsAfterLogin ) );
+
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffers", &m_Offers ) );
+
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLeftCol", &m_LeftCol ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLeftColAfterLogin", &m_LeftColAfterLogin ) );
+
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SFooter", &m_Footer ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLogin", &m_Login ) );
+
 
 //     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "", & ) );
 

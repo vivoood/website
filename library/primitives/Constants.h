@@ -36,6 +36,8 @@ private:
 
     /** @Left @column */
     WidgetData::SLeftCol m_LeftCol;
+    WidgetData::SLeftCol m_LeftColAfterLogin;
+    WidgetData::SLogin m_Login;
 
     /** Footer ******************************************* */
 

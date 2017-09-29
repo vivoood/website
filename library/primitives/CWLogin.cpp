@@ -44,7 +44,7 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
             std::string strNamePass ( "user" );
             strNamePass.append ( "Pass" );
             hash.CalculateDigest ( arrLoginSha1, ( byte* ) strNamePass.c_str(), strNamePass.length() );
-            gCWSignals.signallogintotab.emit();
+            gCWSignals.signallogintomainwidget.emit();
         } ) );
         this->addWidget ( pLoginBtn );
 

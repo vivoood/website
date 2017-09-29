@@ -7,7 +7,7 @@ CWLeftCol::CWLeftCol ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WConta
     WidgetData::SLeftCol * p = dynamic_cast<WidgetData::SLeftCol*> ( pD );
     if ( p != nullptr )
     {
-        for ( auto const& x : p->mapWidgets )
+        for ( auto const& x : p->m_vWidgets )
         {
             this->addWidget ( Factory::Create ( x.first, x.second ) );
         }
