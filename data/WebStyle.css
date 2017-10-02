@@ -171,3 +171,22 @@
     margin: 5px;
     width: 150px;
 }
+
+.user-combo-input-container{
+    padding-right: 350px;
+    text-align: right;
+    font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
+    color: #88a207;
+    font-size: 20px;
+}
+
+.user-combo-input-label{
+    padding: 5px;
+    margin: 5px;
+}
+
+.user-combo-input-button{
+    padding: 5px;
+    margin: 5px;
+    width: 163px;
+}

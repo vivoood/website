@@ -189,6 +189,10 @@ Constants::Constants()
     m_UserLineInput.strStyleLabel = "user-line-input-label";
     m_UserLineInput.strStyleLineEdit = "user-line-input-button";
 
+    m_UserComboInput.strStyleContainer = "user-combo-input-container";
+    m_UserComboInput.strStyleLabel = "user-combo-input-label";
+    m_UserComboInput.strStyleLineEdit = "user-combo-input-button";
+
     /** ******************************************* */
 
     m_Footer.strStyle = "footer-style";
@@ -212,6 +216,7 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLogin", &m_Login ) );
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SUserLineInput", &m_UserLineInput ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SUserComboInput", &m_UserComboInput ) );
 
 //     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "", & ) );
 

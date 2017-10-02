@@ -17,6 +17,7 @@
 #include "CWAfterLogin.h"
 #include "CWUserLineInput.h"
 #include "CWRegisterAccount.h"
+#include "CWCombo.h"
 
 #include "Constants.h"
 
@@ -78,6 +79,11 @@ Wt::WWidget * Factory::CreateUserLineInput ( std::string value )
     std::stringstream ss;
     ss << value;
     return new CWUserLineInput ( gConstants.GetData ( "SUserLineInput" ), ss );
+}
+
+Wt::WWidget * Factory::CreateComboBox ( const std::string & label, const std::vector<std::string> & values )
+{
+    return new CWCombo ( gConstants.GetData ( "SUserComboInput" ), label, values );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

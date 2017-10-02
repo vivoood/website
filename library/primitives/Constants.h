@@ -40,7 +40,8 @@ private:
     WidgetData::SLogin m_Login;
 
     /** @User-line-input */
-    WidgetData::SUserLineInput m_UserLineInput;
+    WidgetData::SUserInput m_UserLineInput;
+    WidgetData::SUserInput m_UserComboInput;
 
     /** Footer ******************************************* */
 

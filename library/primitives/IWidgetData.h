@@ -96,7 +96,7 @@ struct SLeftCol : public IWidgetData
     std::vector< std::pair< std::string, std::string > > m_vWidgets;
 };
 
-struct SUserLineInput : public IWidgetData
+struct SUserInput : public IWidgetData
 {
     std::string strStyleContainer = "n/a";
     std::string strStyleLabel = "n/a";

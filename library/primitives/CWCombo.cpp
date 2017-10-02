@@ -1,26 +1,24 @@
-#include "CWUserLineInput.h"
+#include "CWCombo.h"
 
 #include <Wt/WText>
-#include <Wt/WLineEdit>
+#include <Wt/WComboBox>
 
-CWUserLineInput::CWUserLineInput ( IWidgetData * pD, std::stringstream &ss, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
+CWCombo::CWCombo ( IWidgetData * pD, const std::string & label, const std::vector<std::string> & values, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
     WidgetData::SUserInput * p = dynamic_cast<WidgetData::SUserInput*> ( pD );
     if ( p != nullptr )
     {
         this->setStyleClass ( p->strStyleContainer );
 
-        std::string str;
-        ss >> str;
-
-        std::replace ( str.begin(), str.end(), '_', ' ' );
-
-        pText = new Wt::WText ( str );
+        pText = new Wt::WText ( label );
         pText->setStyleClass ( p->strStyleLabel );
         this->addWidget ( pText );
 
-        pEdit = new Wt::WLineEdit ( );
+        pEdit = new Wt::WComboBox();
+        for ( auto it : values )
+            pEdit->addItem ( it );
         pEdit->setStyleClass ( p->strStyleLineEdit );
+
         this->addWidget ( pEdit );
     }
 }
