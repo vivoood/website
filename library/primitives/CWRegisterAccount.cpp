@@ -4,14 +4,22 @@
 
 CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
-    std::string str("vvvvv");
-    this->addWidget ( Factory::Create ( "CWUserLineInput", "SUserLineInput", &str ) );
-
-//     WidgetData::X * p = dynamic_cast<WidgetData::X*> ( pD );
-//     if ( p != nullptr )
-//     {
-//
-//     }
+    this->addWidget ( CreateField ( "Username" ) );
+    this->addWidget ( CreateField ( "E-mail_address" ) );
+    this->addWidget ( CreateField ( "Password" ) );
+    this->addWidget ( CreateField ( "Confirm_password" ) );
+    this->addWidget ( CreateField ( "Gender" ) );
+    this->addWidget ( CreateField ( "Country" ) );
+    this->addWidget ( CreateField ( "I'am_not_robot" ) );
+    
 }
+
+Wt::WWidget * CWRegisterAccount::CreateField ( std::string str )
+{
+    std::stringstream ss;
+    ss << str;
+    return Factory::Create ( "CWUserLineInput", "SUserLineInput", ss );
+}
+
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

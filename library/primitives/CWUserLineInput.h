@@ -3,13 +3,16 @@
 
 #include <Wt/WContainerWidget>
 
+#include <sstream>
+
 #include "IWidgetData.h"
 
 class CWUserLineInput : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    CWUserLineInput ( IWidgetData * pD, void * payload, Wt::WContainerWidget* parent = 0 );
+    CWUserLineInput ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
+    CWUserLineInput ( IWidgetData * pD, std::stringstream &ss, Wt::WContainerWidget* parent = 0 );
 };
 
 #endif //CWUSERLINEINPUT_H

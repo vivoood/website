@@ -154,13 +154,20 @@
 }
 
 .user-line-input-container{
-    
+    padding-right: 500px;
+    text-align: right;
+    font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
+    color: #88a207;
+    font-size: 20px;
 }
 
 .user-line-input-label{
-    
+    padding: 5px;
+    margin: 5px;
 }
 
 .user-line-input-button{
-    
+    padding: 5px;
+    margin: 5px;
+    width: 150px;
 }
