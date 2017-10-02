@@ -11,7 +11,6 @@ class CWUserLineInput : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    CWUserLineInput ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
     CWUserLineInput ( IWidgetData * pD, std::stringstream &ss, Wt::WContainerWidget* parent = 0 );
 };
 

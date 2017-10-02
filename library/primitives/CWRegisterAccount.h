@@ -10,7 +10,6 @@ class CWRegisterAccount : public Wt::WContainerWidget
 private:
     friend class Factory;
     CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
-    Wt::WWidget * CreateField ( std::string str );
 };
 
 #endif //CWREGISTERACCOUNT_H
