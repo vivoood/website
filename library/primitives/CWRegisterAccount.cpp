@@ -1,6 +1,7 @@
 #include "CWRegisterAccount.h"
 
 #include <Wt/WLineEdit>
+#include <Wt/WPushButton>
 
 #include "Factory.h"
 #include "CWUserLineInput.h"
@@ -30,6 +31,10 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
 
     this->addWidget ( Factory::CreateUserLineInput ( "Country" ) );
     this->addWidget ( Factory::CreateUserLineInput ( "I'am_not_robot" ) );
+
+    Wt::WPushButton * pBtn = new Wt::WPushButton ( "Continue" );
+    pBtn->setStyleClass ( "menu-buttons" );
+    this->addWidget ( pBtn );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
