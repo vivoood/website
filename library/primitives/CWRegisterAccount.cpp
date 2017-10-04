@@ -10,6 +10,16 @@
 
 CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
+    WidgetData::SRegister * p = dynamic_cast<WidgetData::SRegister*> ( pD );
+    if ( p == nullptr )
+    {
+        // @TODO throw
+        return;
+    }
+
+    Wt::WContainerWidget * containertError = new Wt::WContainerWidget();
+    containertError->setStyleClass ( p->strStyleError );
+
     CWUserLineInput * username = dynamic_cast<CWUserLineInput*> ( Factory::CreateUserLineInput ( "Username" ) );
     if ( username != nullptr )
     {
@@ -27,6 +37,7 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
     CWUserLineInput * password = dynamic_cast<CWUserLineInput*> ( Factory::CreateUserLineInput ( "Password" ) );
     if ( password != nullptr )
     {
+        password->pEdit->setValidator ( new CWValidators::PasswordValidator() );
         password->pEdit->setEchoMode ( Wt::WLineEdit::Password );
         this->addWidget ( password );
     }
@@ -34,6 +45,7 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
     CWUserLineInput * passwordconfirm = dynamic_cast<CWUserLineInput*> ( Factory::CreateUserLineInput ( "Confirm_password" ) );
     if ( passwordconfirm != nullptr )
     {
+        passwordconfirm->pEdit->setValidator ( new CWValidators::PasswordValidator() );
         passwordconfirm->pEdit->setEchoMode ( Wt::WLineEdit::Password );
         this->addWidget ( passwordconfirm );
     }
@@ -46,10 +58,10 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
     this->addWidget ( Factory::CreateUserLineInput ( "I'am_not_robot" ) );
 
     Wt::WPushButton * pBtn = new Wt::WPushButton ( "Continue" );
-    pBtn->setStyleClass ( "menu-buttons" );
+    pBtn->setStyleClass ( p->strStyleButton );
     pBtn->clicked().connect ( std::bind ( [=]()
     {
-        this->addWidget ( new Wt::WBreak() );
+        containertError->clear();
 
         std::vector< std::string > v;
         v.push_back ( CWRegisterAccount::Validate ( this, username->pEdit, "username" ) );
@@ -57,16 +69,24 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
         v.push_back ( CWRegisterAccount::Validate ( this, password->pEdit, "password" ) );
         v.push_back ( CWRegisterAccount::Validate ( this, passwordconfirm->pEdit, "password confirm" ) );
 
-        Wt::WContainerWidget * contError = new Wt::WContainerWidget();
         for ( auto it : v )
         {
-            contError->addWidget ( new Wt::WBreak() );
-            contError->addWidget ( new Wt::WText ( it ) );
+            if ( !it.empty() )
+            {
+                containertError->addWidget ( new Wt::WText ( it ) );
+                containertError->addWidget ( new Wt::WBreak() );
+            }
         }
-        contError->setStyleClass ( "menu-buttons-bgr" );
-        this->addWidget ( contError );
+
+        if ( containertError->count() > 0 )
+        {
+            this->addWidget ( new Wt::WBreak() );
+            this->addWidget ( new Wt::WBreak() );
+            this->addWidget ( containertError );
+        }
 
     } ) );
+
     this->addWidget ( pBtn );
 }
 

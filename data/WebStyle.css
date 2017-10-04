@@ -190,3 +190,11 @@
     margin: 5px;
     width: 163px;
 }
+
+.register-error{
+    color: #a94500;
+    background-color: #88a207;
+    border-radius: 50px;
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 25px;
+}

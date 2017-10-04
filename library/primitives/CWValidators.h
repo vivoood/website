@@ -20,6 +20,13 @@ public:
     virtual Result validate ( const WT_USTRING& input ) const;
 };
 
+class PasswordValidator : public Wt::WValidator
+{
+public:
+    PasswordValidator();
+    virtual Result validate ( const WT_USTRING& input ) const;
+};
+
 }
 
 #endif // CWVALIDATORS_H

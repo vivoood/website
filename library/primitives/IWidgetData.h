@@ -84,11 +84,18 @@ struct SOffers : public IWidgetData
     std::vector<SOffer> m_Offers;
 };
 
+struct SRegister : public IWidgetData
+{
+    std::string strStyleError = "n/a";
+    std::string strStyleButton = "n/a";
+};
+
 struct SLogin : public IWidgetData
 {
     std::string strStyleCommon = "n/a";
     std::string strStyleFields = "n/a";
     std::string strStyleBtns = "n/a";
+    SRegister _register;
 };
 
 struct SLeftCol : public IWidgetData

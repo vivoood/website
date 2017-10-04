@@ -179,6 +179,9 @@ Constants::Constants()
     m_Login.strStyleBtns = "login-button-style";
     m_Login.strStyleFields = "login-fields-style";
     m_Login.strStyleCommon = "login-style";
+    m_Login._register.strStyleButton = "menu-buttons";
+    m_Login._register.strStyleError = "register-error";
+
 
     m_LeftCol.m_vWidgets.push_back ( std::pair<std::string, std::string> ( "CWLogin", "SLogin" ) );
     m_LeftColAfterLogin.m_vWidgets.push_back ( std::pair<std::string, std::string> ( "CWAfterLogin", "SLogin" ) );

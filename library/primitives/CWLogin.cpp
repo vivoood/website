@@ -43,7 +43,7 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 //            unsigned char arrLoginSha1[ CryptoPP::SHA1::DIGESTSIZE ];
 //            std::string strNamePass ( "user" );
 //            strNamePass.append ( "Pass" );
- //           hash.CalculateDigest ( arrLoginSha1, ( byte* ) strNamePass.c_str(), strNamePass.length() );
+//           hash.CalculateDigest ( arrLoginSha1, ( byte* ) strNamePass.c_str(), strNamePass.length() );
             gCWSignals.signallogintomainwidget.emit();
         } ) );
         this->addWidget ( pLoginBtn );
@@ -52,7 +52,7 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         pRegBtn->setStyleClass ( p->strStyleBtns );
         pRegBtn->clicked().connect ( std::bind ( [=]()
         {
-            gCWSignals.signallogintotabs.emit ( "CWRegisterAccount", nullptr );
+            gCWSignals.signallogintotabs.emit ( "CWRegisterAccount", &p->_register );
         } ) );
         this->addWidget ( pRegBtn );
 

@@ -1,5 +1,6 @@
 #include "CWValidators.h"
 
+#include <boost/regex.hpp>
 #include <algorithm>
 
 CWValidators::UsernameValidator::UsernameValidator() : Wt::WValidator ( true )
@@ -51,5 +52,20 @@ Wt::WValidator::Result CWValidators::EmailValidator::validate ( const Wt::WStrin
 
     return Result ( Valid );
 }
+
+CWValidators::PasswordValidator::PasswordValidator() : Wt::WValidator ( true )
+{
+}
+
+Wt::WValidator::Result CWValidators::PasswordValidator::validate ( const Wt::WString& input ) const
+{
+    std::string inputString = input.toUTF8();
+    boost::regex e ( "([0-9]+)" );
+    if ( boost::regex_match ( inputString , e ) == 0 )
+        return Result ( Invalid, "password isn't valid" );
+
+    return Result ( Valid );
+}
+
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
