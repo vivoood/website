@@ -34,7 +34,8 @@ if (${enable_rm} STREQUAL "ON")
 		TARGET ${PROJECT_NAME} POST_BUILD
 		COMMAND rm ${CMAKE_BINARY_DIR}/WebStyle.css
 		COMMAND rm ${CMAKE_BINARY_DIR}/WebTemplates.xml
-		COMMAND rm -rf ${CMAKE_BINARY_DIR}/pics
+		COMMAND rm ${CMAKE_BINARY_DIR}/pics
+		COMMAND rm ${CMAKE_BINARY_DIR}/users
 		COMMAND rm ${CMAKE_BINARY_DIR}/autorun.sh
 		COMMAND rm ${CMAKE_BINARY_DIR}/autorun.py
 	)
@@ -44,7 +45,8 @@ add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebStyle.css ${CMAKE_BINARY_DIR}
     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebTemplates.xml ${CMAKE_BINARY_DIR}
-    COMMAND cp -rf ${CMAKE_SOURCE_DIR}/data/pics ${CMAKE_BINARY_DIR}
+    COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/pics ${CMAKE_BINARY_DIR}
+    COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/users ${CMAKE_BINARY_DIR}
     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.sh ${CMAKE_BINARY_DIR}
     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.py ${CMAKE_BINARY_DIR}
 )

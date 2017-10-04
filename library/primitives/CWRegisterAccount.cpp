@@ -99,6 +99,10 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
                 containertError->clear();
             } ) );
         }
+        else
+        {
+            // create account
+        }
 
     } ) );
 
