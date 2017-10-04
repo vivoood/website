@@ -11,6 +11,7 @@ CWUser::CWUser ( std::string user, std::string sha, std::string mail, std::strin
 
 void CWUser::save()
 {
+    std::lock_guard<std::mutex> lock ( mtx );
     std::ofstream outfile ( "users/" + _user );
     outfile << *this;
     outfile.close();

@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <mutex>
 
 class CWUser
 {
@@ -14,6 +15,7 @@ public:
     bool load ( std::string filename );
     static bool CheckUserExist ( std::string filename );
 private:
+    std::mutex mtx;
     std::string _user = "n/a";
     std::string _sha = "n/a";
     std::string _mail = "n/a";
@@ -21,9 +23,9 @@ private:
     std::string _gender = "n/a";
     friend std::ostream& operator<< ( std::ostream& os, const CWUser& dt );
     friend std::istream& operator>> ( std::istream& is, CWUser& dt );
-
 };
 
 #endif //CWUSER_H
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
