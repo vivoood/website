@@ -4,10 +4,14 @@
 #include <Wt/WPushButton>
 #include <Wt/WBreak>
 #include <Wt/WTimer>
+#include <Wt/WComboBox>
 
 #include "Factory.h"
 #include "CWUserLineInput.h"
+#include "CWCombo.h"
 #include "CWValidators.h"
+#include "CWUser.h"
+#include "CWSignals.h"
 
 CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
@@ -28,7 +32,7 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
         this->addWidget ( username );
     }
 
-    CWUserLineInput * email = dynamic_cast<CWUserLineInput*> ( Factory::CreateUserLineInput ( "E-mail_address" ) );
+    CWUserLineInput * email = dynamic_cast<CWUserLineInput*> ( Factory::CreateUserLineInput ( "e-mail_address" ) );
     if ( email != nullptr )
     {
         email->pEdit->setValidator ( new CWValidators::EmailValidator() );
@@ -53,9 +57,18 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
 
     std::string label ( "Gender" );
     std::vector< std::string > values = { "Male", "Female", "Other" };
-    this->addWidget ( Factory::CreateComboBox ( label, values ) );
+    CWCombo * gender = dynamic_cast<CWCombo*> ( Factory::CreateComboBox ( label, values ) );
+    if ( gender != nullptr )
+    {
+        this->addWidget ( gender );
+    }
 
-    this->addWidget ( Factory::CreateUserLineInput ( "Country" ) );
+    CWUserLineInput * country = dynamic_cast<CWUserLineInput*> ( Factory::CreateUserLineInput ( "Country" ) );
+    if ( country != nullptr )
+    {
+        this->addWidget ( country );
+    }
+
     this->addWidget ( Factory::CreateUserLineInput ( "I'am_not_robot" ) );
 
     Wt::WPushButton * pBtn = new Wt::WPushButton ( "Continue" );
@@ -72,7 +85,12 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
 
         if ( std::string ( password->pEdit->text().toUTF8() ) != std::string ( passwordconfirm->pEdit->text().toUTF8() ) )
         {
-            v.push_back ( "passwords is not equal" );
+            v.push_back ( "confirm password is not equal to password" );
+        }
+
+        if ( CWUser::CheckUserExist ( username->pEdit->text().toUTF8() ) )
+        {
+            v.push_back ( "username is already used" );
         }
 
         for ( auto it : v )
@@ -101,6 +119,14 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
         }
         else
         {
+            CWUser user ( username->pEdit->text().toUTF8(),
+                          password->pEdit->text().toUTF8(),
+                          email->pEdit->text().toUTF8(),
+                          country->pEdit->text().toUTF8(),
+                          gender->pEdit->valueText().toUTF8() );
+            user.save();
+
+            gCWSignals.signallogintomainwidget.emit ( username->pEdit->text().toUTF8() );
             // create account
         }
 

@@ -11,7 +11,7 @@ MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( per
     this->addWidget ( Factory::Create ( "CWTableLayout", "STable" ) );
     this->addWidget ( Factory::Create ( "CWFooter", "SFooter" ) );
 
-    gCWSignals.signallogintomainwidget.connect ( this, &MainWidget::LoginSha );
+    gCWSignals.signallogintomainwidget.connect ( this, &MainWidget::UserLogin );
 
     gCWSignals.signalafterlogintomainwidget.connect ( std::bind ( [=]()
     {
@@ -22,7 +22,7 @@ MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( per
     } ) );
 }
 
-void MainWidget::LoginSha ( std::string s )
+void MainWidget::UserLogin ( std::string s )
 {
     this->clear();
     this->addWidget ( Factory::Create ( "CWHeader", "SHeader" ) );
