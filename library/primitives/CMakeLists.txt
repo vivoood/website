@@ -3,5 +3,5 @@ project(primitives)
 
 set( external_shared_libs wt wthttp boost_signals crypto++ )
 
-add_library(primitives SHARED CWHash.cpp CWSignals.cpp CWValidators.cpp CWLeftCol.cpp CWCombo.cpp CWUserLineInput.cpp CWRegisterAccount.cpp CWAfterLogin.cpp CWLogin.cpp CWHeader.cpp CWTabs.cpp CWTableLayout.cpp CWFooter.cpp CWOffer.cpp CWPublicOffers.cpp CWFAQ.cpp CWContacts.cpp CWOfferBig.cpp Factory.cpp Constants.cpp)
+add_library(primitives SHARED CWHash.cpp CWSignals.cpp CWValidators.cpp CWLeftCol.cpp CWCombo.cpp CWUserLineInput.cpp CWRegisterAccount.cpp CWAfterLogin.cpp CWLogin.cpp CWHeader.cpp CWTabs.cpp CWTableLayout.cpp CWFooter.cpp CWOffer.cpp CWUser.cpp CWPublicOffers.cpp CWFAQ.cpp CWContacts.cpp CWOfferBig.cpp Factory.cpp Constants.cpp)
 target_link_libraries(primitives ${external_shared_libs})
