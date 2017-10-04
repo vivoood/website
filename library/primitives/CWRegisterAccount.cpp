@@ -3,6 +3,7 @@
 #include <Wt/WLineEdit>
 #include <Wt/WPushButton>
 #include <Wt/WBreak>
+#include <Wt/WTimer>
 
 #include "Factory.h"
 #include "CWUserLineInput.h"
@@ -69,6 +70,11 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
         v.push_back ( CWRegisterAccount::Validate ( this, password->pEdit, "password" ) );
         v.push_back ( CWRegisterAccount::Validate ( this, passwordconfirm->pEdit, "password confirm" ) );
 
+        if ( std::string ( password->pEdit->text().toUTF8() ) != std::string ( passwordconfirm->pEdit->text().toUTF8() ) )
+        {
+            v.push_back ( "passwords is not equal" );
+        }
+
         for ( auto it : v )
         {
             if ( !it.empty() )
@@ -83,6 +89,15 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
             this->addWidget ( new Wt::WBreak() );
             this->addWidget ( new Wt::WBreak() );
             this->addWidget ( containertError );
+
+            Wt::WTimer * t = new Wt::WTimer ();
+            t->setInterval ( 3000 );
+            t->setSingleShot ( true );
+            t->start();
+            t->timeout().connect ( std::bind ( [=]()
+            {
+                containertError->clear();
+            } ) );
         }
 
     } ) );
