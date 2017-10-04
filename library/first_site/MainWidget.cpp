@@ -1,5 +1,7 @@
 #include "MainWidget.h"
 
+#include <Wt/WText>
+
 #include "../primitives/Factory.h"
 #include "../primitives/CWSignals.h"
 
@@ -9,13 +11,7 @@ MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( per
     this->addWidget ( Factory::Create ( "CWTableLayout", "STable" ) );
     this->addWidget ( Factory::Create ( "CWFooter", "SFooter" ) );
 
-    gCWSignals.signallogintomainwidget.connect ( std::bind ( [=]()
-    {
-        this->clear();
-        this->addWidget ( Factory::Create ( "CWHeader", "SHeader" ) );
-        this->addWidget ( Factory::Create ( "CWTableLayout", "STableAfterLogin" ) );
-        this->addWidget ( Factory::Create ( "CWFooter", "SFooter" ) );
-    } ) );
+    gCWSignals.signallogintomainwidget.connect ( this, &MainWidget::LoginSha );
 
     gCWSignals.signalafterlogintomainwidget.connect ( std::bind ( [=]()
     {
@@ -24,6 +20,16 @@ MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( per
         this->addWidget ( Factory::Create ( "CWTableLayout", "STable" ) );
         this->addWidget ( Factory::Create ( "CWFooter", "SFooter" ) );
     } ) );
+}
+
+void MainWidget::LoginSha ( std::string s )
+{
+    this->clear();
+    this->addWidget ( Factory::Create ( "CWHeader", "SHeader" ) );
+    this->addWidget ( Factory::Create ( "CWTableLayout", "STableAfterLogin" ) );
+    this->addWidget ( Factory::Create ( "CWFooter", "SFooter" ) );
+
+    this->addWidget ( new Wt::WText ( s ) );
 }
 
 extern "C" Wt::WObject * create()

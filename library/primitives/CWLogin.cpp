@@ -5,9 +5,8 @@
 #include <Wt/WBreak>
 #include <Wt/WPushButton>
 
-//#include <crypto++/sha.h>
-
 #include "CWSignals.h"
+#include "CWHash.h"
 
 CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
@@ -39,12 +38,8 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         pLoginBtn->setStyleClass ( p->strStyleBtns );
         pLoginBtn->clicked().connect ( std::bind ( [=]()
         {
-//            CryptoPP::SHA1 hash;
-//            unsigned char arrLoginSha1[ CryptoPP::SHA1::DIGESTSIZE ];
-//            std::string strNamePass ( "user" );
-//            strNamePass.append ( "Pass" );
-//           hash.CalculateDigest ( arrLoginSha1, ( byte* ) strNamePass.c_str(), strNamePass.length() );
-            gCWSignals.signallogintomainwidget.emit();
+            std::string strNamePass ( std::string ( "user" ) + "Pass" );
+            gCWSignals.signallogintomainwidget.emit ( CWHash::Get ( strNamePass ) );
         } ) );
         this->addWidget ( pLoginBtn );
 

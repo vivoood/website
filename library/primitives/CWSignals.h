@@ -11,7 +11,7 @@ class CWSignals
 {
 public:
     Wt::Signal<std::string, IWidgetData *> signaloffertotab;
-    Wt::Signal<void> signallogintomainwidget;
+    Wt::Signal<std::string> signallogintomainwidget;
     Wt::Signal<std::string, IWidgetData *> signallogintotabs;
     Wt::Signal<void> signalafterlogintomainwidget;
 };
