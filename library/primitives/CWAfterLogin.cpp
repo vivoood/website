@@ -6,6 +6,7 @@
 #include <Wt/WPushButton>
 
 #include "CWSignals.h"
+#include "CWUser.h"
 
 CWAfterLogin::CWAfterLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
@@ -14,7 +15,10 @@ CWAfterLogin::CWAfterLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : 
     {
         this->addWidget ( new Wt::WBreak() );
 
-        Wt::WText * pUserLabel = new Wt::WText ( "Welcome " + std::string ( "username" ) );
+        CWUser u;
+        u.load ( p->strHash );
+
+        Wt::WText * pUserLabel = new Wt::WText ( "Welcome " + u.user() );
         pUserLabel->setStyleClass ( p->strStyleFields );
         this->addWidget ( pUserLabel );
 

@@ -225,12 +225,14 @@ Constants::Constants()
 
 }
 
-IWidgetData * Constants::GetData ( std::string str )
+IWidgetData * Constants::GetData ( std::string str, std::string strHash )
 {
     std::map<std::string, IWidgetData*>::iterator it;
     it = m_mapData.find ( str );
     if ( it == m_mapData.end() )
         return nullptr;
+
+    ( *it ).second->strHash = strHash;
     return ( *it ).second;
 }
 

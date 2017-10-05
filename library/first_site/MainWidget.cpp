@@ -22,14 +22,12 @@ MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( per
     } ) );
 }
 
-void MainWidget::UserLogin ( std::string s )
+void MainWidget::UserLogin ( std::string strHash )
 {
     this->clear();
-    this->addWidget ( Factory::Create ( "CWHeader", "SHeader" ) );
-    this->addWidget ( Factory::Create ( "CWTableLayout", "STableAfterLogin" ) );
-    this->addWidget ( Factory::Create ( "CWFooter", "SFooter" ) );
-
-    this->addWidget ( new Wt::WText ( s ) );
+    this->addWidget ( Factory::Create ( "CWHeader", "SHeader", strHash ) );
+    this->addWidget ( Factory::Create ( "CWTableLayout", "STableAfterLogin", strHash ) );
+    this->addWidget ( Factory::Create ( "CWFooter", "SFooter", strHash ) );
 }
 
 extern "C" Wt::WObject * create()

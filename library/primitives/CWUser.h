@@ -14,6 +14,7 @@ public:
     void save();
     bool load ( std::string filename );
     std::string hash();
+    std::string user();
     static bool CheckUserExist ( std::string filename );
 private:
     std::mutex mtx;

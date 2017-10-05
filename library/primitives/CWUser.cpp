@@ -14,7 +14,7 @@ CWUser::CWUser ( std::string user, std::string sha, std::string mail, std::strin
 void CWUser::save()
 {
     std::lock_guard<std::mutex> lock ( mtx );
-    std::ofstream outfile ( "users/" + _user );
+    std::ofstream outfile ( "users/" + hash() );
     outfile << *this;
     outfile.close();
 }
@@ -36,7 +36,12 @@ bool CWUser::load ( std::string filename )
 
 std::string CWUser::hash()
 {
-    return CWHash::Get ( _user + _sha + _mail );
+    return CWHash::Get ( _user + _sha );
+}
+
+std::string CWUser::user()
+{
+    return _user;
 }
 
 bool CWUser::CheckUserExist ( std::string filename )

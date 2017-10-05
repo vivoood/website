@@ -7,6 +7,7 @@
 
 #include "CWSignals.h"
 #include "CWHash.h"
+#include "CWUser.h"
 
 CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
@@ -38,8 +39,17 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         pLoginBtn->setStyleClass ( p->strStyleBtns );
         pLoginBtn->clicked().connect ( std::bind ( [=]()
         {
-            std::string strNamePass ( std::string ( "user" ) + "Pass" );
-            gCWSignals.signallogintomainwidget.emit ( CWHash::Get ( strNamePass ) );
+            std::string strHash ( CWHash::Get ( pUserEdit->text().toUTF8() + pPassEdit->text().toUTF8() ) );
+            CWUser u;
+            if ( u.load ( strHash ) )
+            {
+                gCWSignals.signallogintomainwidget.emit ( strHash );
+            }
+            else
+            {
+                //set error msg
+            }
+
         } ) );
         this->addWidget ( pLoginBtn );
 
@@ -56,3 +66,7 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
+
+
+

@@ -21,9 +21,9 @@
 
 #include "Constants.h"
 
-Wt::WWidget* Factory::Create ( std::string strWidget, std::string strData )
+Wt::WWidget* Factory::Create ( std::string strWidget, std::string strData, std::string strHash )
 {
-    IWidgetData * pD = gConstants.GetData ( strData );
+    IWidgetData * pD = gConstants.GetData ( strData, strHash );
     return Factory::Create ( strWidget, pD );
 }
 

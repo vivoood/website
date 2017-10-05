@@ -7,6 +7,7 @@
 class IWidgetData
 {
 public:
+    std::string strHash = "n/a";
     virtual ~IWidgetData() {}
 };
 

@@ -10,7 +10,7 @@ class Constants
 public:
 
     Constants();
-    IWidgetData* GetData ( std::string str );
+    IWidgetData* GetData ( std::string str, std::string strHash = "n/a" );
 
 private:
 

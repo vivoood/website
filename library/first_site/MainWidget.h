@@ -8,7 +8,7 @@ class MainWidget : public Wt::WContainerWidget
 public:
     MainWidget ( WContainerWidget * perant = nullptr );
 private:
-    void UserLogin ( std::string s );
+    void UserLogin ( std::string strHash );
 };
 
 #endif // MAINWIDGET_H

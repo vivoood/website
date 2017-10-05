@@ -9,7 +9,7 @@
 class Factory
 {
 public:
-    static Wt::WWidget * Create ( std::string strWidget, std::string strData );
+    static Wt::WWidget * Create ( std::string strWidget, std::string strData, std::string strHash = "n/a" );
     static Wt::WWidget * Create ( std::string strWidget, IWidgetData * pD );
     static Wt::WWidget * CreateUserLineInput ( std::string value );
     static Wt::WWidget * CreateComboBox ( const std::string & label, const std::vector<std::string> & values );
