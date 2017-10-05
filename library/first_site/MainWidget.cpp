@@ -4,6 +4,7 @@
 
 #include "../primitives/Factory.h"
 #include "../primitives/CWSignals.h"
+#include "../primitives/CWUser.h"
 
 MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( perant )
 {
@@ -25,6 +26,13 @@ MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( per
 void MainWidget::UserLogin ( std::string strHash )
 {
     this->clear();
+
+    if ( CWUser::CheckOwner ( strHash ) )
+    {
+        this->addWidget ( Factory::Create ( "CWTableLayout", "STableOwnerLogin", strHash ) );
+        return;
+    }
+
     this->addWidget ( Factory::Create ( "CWHeader", "SHeader", strHash ) );
     this->addWidget ( Factory::Create ( "CWTableLayout", "STableAfterLogin", strHash ) );
     this->addWidget ( Factory::Create ( "CWFooter", "SFooter", strHash ) );

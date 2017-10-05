@@ -16,6 +16,7 @@ public:
     std::string hash();
     std::string user();
     static bool CheckUserExist ( std::string filename );
+    static bool CheckOwner ( std::string filename );
 private:
     std::mutex mtx;
     std::string _user = "n/a";

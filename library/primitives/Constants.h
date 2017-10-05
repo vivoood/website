@@ -26,6 +26,7 @@ private:
     /** @MainTable */
     WidgetData::STable m_Table;
     WidgetData::STable m_TableAfterLogin;
+    WidgetData::STable m_TableOwnerLogin;
 
     /** @MainButtons */
     WidgetData::STabs m_Tabs;

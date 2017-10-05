@@ -52,6 +52,13 @@ bool CWUser::CheckUserExist ( std::string filename )
     return bExist;
 }
 
+bool CWUser::CheckOwner ( std::string filename )
+{
+    if ( filename == "88b8216858cc70dfa70f4a112a2cbd4797f313f6" )
+        return true;
+    return false;
+}
+
 std::ostream& operator<< ( std::ostream& os, const CWUser& dt )
 {
     os << dt._user << "," << dt._sha << "," << dt._mail << "," << dt._country << "," << dt._gender;

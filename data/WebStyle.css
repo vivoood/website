@@ -61,6 +61,11 @@
     border: 3px solid #88a207;
 }
 
+.table-col-4{
+    background-size: 100% 100%;
+    border: 3px solid #88a207;
+}
+
 .footer-style{  
     width: auto;
     height: 100px;

@@ -86,13 +86,13 @@ Constants::Constants()
     vTableRow.push_back ( dTable );
 
     dTable.strStyle = "table-col-2";
-    dTable.strLenght = "65%";
+    dTable.strLenght = "70%";
     dTable.strWidgetName = "CWTabs";
     dTable.strWidgetData = "STabs";
     vTableRow.push_back ( dTable );
 
     dTable.strStyle = "table-col-3";
-    dTable.strLenght = "25%";
+    dTable.strLenght = "15%";
     dTable.strWidgetName = "CWPublicOffers";
     dTable.strWidgetData = "SOffers";
     vTableRow.push_back ( dTable );
@@ -111,18 +111,49 @@ Constants::Constants()
     vTableRowAfterLogin.push_back ( dTableAfterLogin );
 
     dTableAfterLogin.strStyle = "table-col-2";
-    dTableAfterLogin.strLenght = "65%";
+    dTableAfterLogin.strLenght = "70%";
     dTableAfterLogin.strWidgetName = "CWTabs";
     dTableAfterLogin.strWidgetData = "STabsAfterLogin";
     vTableRowAfterLogin.push_back ( dTableAfterLogin );
 
     dTableAfterLogin.strStyle = "table-col-3";
-    dTableAfterLogin.strLenght = "25%";
+    dTableAfterLogin.strLenght = "15%";
     dTableAfterLogin.strWidgetName = "CWPublicOffers";
     dTableAfterLogin.strWidgetData = "SOffers";
     vTableRowAfterLogin.push_back ( dTableAfterLogin );
 
     m_TableAfterLogin.vTable.push_back ( vTableRowAfterLogin );
+
+    /** ******************************************* */
+
+    std::vector<WidgetData::STableData> vTableRowOwnerLogin;
+    WidgetData::STableData dTableOwnerLogin;
+
+    dTableOwnerLogin.strStyle = "table-col-1";
+    dTableOwnerLogin.strLenght = "10%";
+    dTableOwnerLogin.strWidgetName = "CWLeftCol";
+    dTableOwnerLogin.strWidgetData = "SLeftColAfterLogin";
+    vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
+
+    dTableOwnerLogin.strStyle = "table-col-2";
+    dTableOwnerLogin.strLenght = "30%";
+    dTableOwnerLogin.strWidgetName = "WContainerWidget";
+    dTableOwnerLogin.strWidgetData = "";
+    vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
+
+    dTableOwnerLogin.strStyle = "table-col-3";
+    dTableOwnerLogin.strLenght = "30%";
+    dTableOwnerLogin.strWidgetName = "WContainerWidget";
+    dTableOwnerLogin.strWidgetData = "";
+    vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
+
+    dTableOwnerLogin.strStyle = "table-col-4";
+    dTableOwnerLogin.strLenght = "30%";
+    dTableOwnerLogin.strWidgetName = "WContainerWidget";
+    dTableOwnerLogin.strWidgetData = "";
+    vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
+
+    m_TableOwnerLogin.vTable.push_back ( vTableRowOwnerLogin );
 
     /** ******************************************* */
     /** ******************************************* */
@@ -205,8 +236,9 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SHeader", &m_Header ) );
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STable", &m_Table ) );
-    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STableAfterLogin", &m_TableAfterLogin ) )
-    ;
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STableAfterLogin", &m_TableAfterLogin ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STableOwnerLogin", &m_TableOwnerLogin ) );
+
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabs", &m_Tabs ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabsAfterLogin", &m_TabsAfterLogin ) );
 
