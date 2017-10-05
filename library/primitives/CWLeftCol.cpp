@@ -9,7 +9,7 @@ CWLeftCol::CWLeftCol ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WConta
     {
         for ( auto const& x : p->m_vWidgets )
         {
-            this->addWidget ( Factory::Create ( x.first, x.second ) );
+            this->addWidget ( Factory::Create ( x.first, x.second, p->strHash ) );
         }
     }
 }
