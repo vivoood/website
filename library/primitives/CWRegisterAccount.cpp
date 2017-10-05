@@ -119,14 +119,17 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
         }
         else
         {
-            CWUser user ( username->pEdit->text().toUTF8(),
-                          password->pEdit->text().toUTF8(),
-                          email->pEdit->text().toUTF8(),
+            std::string strUser = username->pEdit->text().toUTF8();
+            std::string strPass = password->pEdit->text().toUTF8();
+            std::string strEmail = email->pEdit->text().toUTF8();
+
+            CWUser user ( strUser,
+                          strPass,
+                          strEmail,
                           country->pEdit->text().toUTF8(),
                           gender->pEdit->valueText().toUTF8() );
             user.save();
-
-            gCWSignals.signallogintomainwidget.emit ( username->pEdit->text().toUTF8() );
+            gCWSignals.signallogintomainwidget.emit ( user.hash() );
             // create account
         }
 

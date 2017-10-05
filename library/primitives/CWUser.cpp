@@ -1,5 +1,7 @@
 #include "CWUser.h"
 
+#include "CWHash.h"
+
 CWUser::CWUser ( std::string user, std::string sha, std::string mail, std::string coutry, std::string gender )
 {
     _user = user;
@@ -32,6 +34,11 @@ bool CWUser::load ( std::string filename )
     return true;
 }
 
+std::string CWUser::hash()
+{
+    return CWHash::Get ( _user + _sha + _mail );
+}
+
 bool CWUser::CheckUserExist ( std::string filename )
 {
     std::ifstream infile ( "users/" + filename );
@@ -62,6 +69,8 @@ std::istream& operator>> ( std::istream& is, CWUser& dt )
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
+
 
 
 

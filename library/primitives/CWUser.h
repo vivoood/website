@@ -13,6 +13,7 @@ public:
     CWUser ( std::string user, std::string sha, std::string mail, std::string coutry, std::string gender );
     void save();
     bool load ( std::string filename );
+    std::string hash();
     static bool CheckUserExist ( std::string filename );
 private:
     std::mutex mtx;
@@ -28,4 +29,5 @@ private:
 #endif //CWUSER_H
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
 
