@@ -18,6 +18,7 @@
 #include "CWUserLineInput.h"
 #include "CWRegisterAccount.h"
 #include "CWCombo.h"
+#include "CWAccount.h"
 
 #include "Constants.h"
 
@@ -70,6 +71,9 @@ Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
 
     if ( strWidget == "CWRegisterAccount" )
         return new CWRegisterAccount ( pD );
+
+    if ( strWidget == "CWAccount" )
+        return new CWAccount ( pD );
 
     return new Wt::WText ( "n/a" );
 }

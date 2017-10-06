@@ -111,6 +111,11 @@ struct SUserInput : public IWidgetData
     std::string strStyleLineEdit = "n/a";
 };
 
+struct SAccount : public IWidgetData
+{
+    std::string strStyle;
+};
+
 }
 
 #endif // IWIDGETDATA_H

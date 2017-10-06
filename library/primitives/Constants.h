@@ -40,6 +40,9 @@ private:
     WidgetData::SLeftCol m_LeftColAfterLogin;
     WidgetData::SLogin m_Login;
 
+    /** @Account */
+    WidgetData::SAccount m_MyAccount;
+
     /** @User-line-input */
     WidgetData::SUserInput m_UserLineInput;
     WidgetData::SUserInput m_UserComboInput;
