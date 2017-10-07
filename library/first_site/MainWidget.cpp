@@ -8,8 +8,8 @@
 
 MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( perant )
 {
-    this->addWidget ( Factory::Create ( "CWAccount", "SMyAccount", "ivaylo" ) );
-    return;
+//     this->addWidget ( Factory::Create ( "CWAccount", "SMyAccount", "ivaylo" ) );
+//     return;
     
     
     this->addWidget ( Factory::Create ( "CWHeader", "SHeader", "n/a" ) );
