@@ -11,10 +11,15 @@ private:
     friend class Factory;
     CWContiCtryForm ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
     WidgetData::SContiCtry * p = nullptr;
+    Wt::WContainerWidget * pContainer = nullptr;
     std::vector< std::string > GetConti ();
     std::vector< std::string > GetCtry ( std::string str );
+    void Create ( IWidgetData * pD, Wt::WContainerWidget * container, std::string continent );
+    static int magic;
 };
 
 #endif //CWCONTICTRYFORM_H
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
+
