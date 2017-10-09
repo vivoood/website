@@ -20,6 +20,7 @@
 #include "CWCombo.h"
 #include "CWAccount.h"
 #include "CWRadioButtons.h"
+#include "CWContiCtryForm.h"
 
 #include "Constants.h"
 
@@ -75,9 +76,12 @@ Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
 
     if ( strWidget == "CWAccount" )
         return new CWAccount ( pD );
-    
+
     if ( strWidget == "CWRadioButtons" )
         return new CWRadioButtons ( pD );
+
+    if ( strWidget == "CWContiCtryForm" )
+        return new CWContiCtryForm ( pD );
 
     return new Wt::WText ( "n/a" );
 }
@@ -89,9 +93,9 @@ Wt::WWidget * Factory::CreateUserLineInput ( std::string value )
     return new CWUserLineInput ( gConstants.GetData ( "SUserLineInput" ), ss );
 }
 
-Wt::WWidget * Factory::CreateComboBox ( const std::string & label, const std::vector<std::string> & values )
+Wt::WWidget * Factory::CreateComboBox ( std::string data, const std::string & label, const std::vector<std::string> & values )
 {
-    return new CWCombo ( gConstants.GetData ( "SUserComboInput" ), label, values );
+    return new CWCombo ( gConstants.GetData ( data ), label, values );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

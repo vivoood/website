@@ -57,7 +57,7 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
 
     std::string label ( "Gender" );
     std::vector< std::string > values = { "Male", "Female", "Other" };
-    CWCombo * gender = dynamic_cast<CWCombo*> ( Factory::CreateComboBox ( label, values ) );
+    CWCombo * gender = dynamic_cast<CWCombo*> ( Factory::CreateComboBox ( "SUserComboInput", label, values ) );
     if ( gender != nullptr )
     {
         this->addWidget ( gender );

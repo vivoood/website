@@ -227,6 +227,10 @@ Constants::Constants()
     m_UserComboInput.strStyleLabel = "user-combo-input-label";
     m_UserComboInput.strStyleLineEdit = "user-combo-input-button";
 
+    m_ContiCtryInput.strStyleContainer = "contictry";
+    m_ContiCtryInput.strStyleLabel = "";
+    m_ContiCtryInput.strStyleLineEdit = "";
+
     /** ******************************************* */
 
     m_MyAccount.strStyle = "my-account";
@@ -265,9 +269,234 @@ Constants::Constants()
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SUserLineInput", &m_UserLineInput ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SUserComboInput", &m_UserComboInput ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtryInput", &m_ContiCtryInput ) );
+    
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtry", &m_ContiCtry ) );
 
 //     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "", & ) );
 
+
+    /** ******************************************* */
+    /** ******************************************* */
+    /** ******************************************* */
+
+    m_ContiCtry._list.insert ( std::pair< std::string, std::vector< std::string > > ( "Africa",
+    {
+        "Algeria",
+        "Angola",
+        "Benin",
+        "Botswana",
+        "Burkina",
+        "Burundi",
+        "Cameroon",
+        "Cape Verde",
+        "Central African Republic",
+        "Chad",
+        "Comoros",
+        "Congo",
+        "Congo, Democratic Republic of",
+        "Djibouti",
+        "Egypt",
+        "Equatorial Guinea",
+        "Eritrea",
+        "Ethiopia",
+        "Gabon",
+        "Gambia",
+        "Ghana",
+        "Guinea",
+        "Guinea-Bissau",
+        "Ivory Coast",
+        "Kenya",
+        "Lesotho",
+        "Liberia",
+        "Libya",
+        "Madagascar",
+        "Malawi",
+        "Mali",
+        "Mauritania",
+        "Mauritius",
+        "Morocco",
+        "Mozambique",
+        "Namibia",
+        "Niger",
+        "Nigeria",
+        "Rwanda",
+        "Sao Tome and Principe",
+        "Senegal",
+        "Seychelles",
+        "Sierra Leone",
+        "Somalia",
+        "South Africa",
+        "South Sudan",
+        "Sudan",
+        "Swaziland",
+        "Tanzania",
+        "Togo",
+        "Tunisia",
+        "Uganda",
+        "Zambia",
+        "Zimbabwe"
+    } ) );
+
+    m_ContiCtry._list.insert ( std::pair< std::string, std::vector< std::string > > ( "Asia",
+    {
+        "Afghanistan",
+        "Bahrain",
+        "Bangladesh",
+        "Bhutan",
+        "Brunei",
+        "Burma ( Myanmar )",
+        "Cambodia",
+        "China",
+        "East Timor",
+        "India",
+        "Indonesia",
+        "Iran",
+        "Iraq",
+        "Israel",
+        "Japan",
+        "Jordan",
+        "Kazakhstan",
+        "Korea, North",
+        "Korea, South",
+        "Kuwait",
+        "Kyrgyzstan",
+        "Laos",
+        "Lebanon",
+        "Malaysia",
+        "Maldives",
+        "Mongolia",
+        "Nepal",
+        "Oman",
+        "Pakistan",
+        "Philippines",
+        "Qatar",
+        "Russian Federation",
+        "Saudi Arabia",
+        "Singapore",
+        "Sri Lanka",
+        "Syria",
+        "Tajikistan",
+        "Thailand",
+        "Turkey",
+        "Turkmenistan",
+        "United Arab Emirates",
+        "Uzbekistan",
+        "Vietnam",
+        "Yemen"
+    } ) );
+
+    m_ContiCtry._list.insert ( std::pair< std::string, std::vector< std::string > > ( "Europe",
+    {
+        "Albania",
+        "Andorra",
+        "Armenia",
+        "Austria",
+        "Azerbaijan",
+        "Belarus",
+        "Belgium",
+        "Bosnia and Herzegovina",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Georgia",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Iceland",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Liechtenstein",
+        "Lithuania",
+        "Luxembourg",
+        "Macedonia",
+        "Malta",
+        "Moldova",
+        "Monaco",
+        "Montenegro",
+        "Netherlands",
+        "Norway",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "San Marino",
+        "Serbia",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Switzerland",
+        "Ukraine",
+        "United Kingdom",
+        "Vatican City"
+    } ) );
+
+    m_ContiCtry._list.insert ( std::pair< std::string, std::vector< std::string > > ( "North America",
+    {
+        "Antigua and Barbuda",
+        "Bahamas",
+        "Barbados",
+        "Belize",
+        "Canada",
+        "Costa Rica",
+        "Cuba",
+        "Dominica",
+        "Dominican Republic",
+        "El Salvador",
+        "Grenada",
+        "Guatemala",
+        "Haiti",
+        "Honduras",
+        "Jamaica",
+        "Mexico",
+        "Nicaragua",
+        "Panama",
+        "Saint Kitts and Nevis",
+        "Saint Lucia",
+        "Saint Vincent and the Grenadines",
+        "Trinidad and Tobago",
+        "United States"
+    } ) );
+
+    m_ContiCtry._list.insert ( std::pair< std::string, std::vector< std::string > > ( "Oceania",
+    {
+        "Australia",
+        "Fiji",
+        "Kiribati",
+        "Marshall Islands",
+        "Micronesia",
+        "Nauru",
+        "New Zealand",
+        "Palau",
+        "Papua New Guinea",
+        "Samoa",
+        "Solomon Islands",
+        "Tonga",
+        "Tuvalu",
+        "Vanuatu"
+    } ) );
+
+    m_ContiCtry._list.insert ( std::pair< std::string, std::vector< std::string > > ( "South America",
+    {
+        "Argentina",
+        "Bolivia",
+        "Brazil",
+        "Chile",
+        "Colombia",
+        "Ecuador",
+        "Guyana",
+        "Paraguay",
+        "Peru",
+        "Suriname",
+        "Uruguay",
+        "Venezuela"
+    } ) );
 }
 
 IWidgetData * Constants::GetData ( std::string str, std::string strHash )

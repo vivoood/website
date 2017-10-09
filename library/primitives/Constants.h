@@ -47,11 +47,15 @@ private:
     /** @User-line-input */
     WidgetData::SUserInput m_UserLineInput;
     WidgetData::SUserInput m_UserComboInput;
+    WidgetData::SUserInput m_ContiCtryInput;
 
     /** Footer ******************************************* */
 
     /** @Footer */
     WidgetData::SFooter m_Footer;
+
+    /** @SContiCtry */
+    WidgetData::SContiCtry m_ContiCtry;
 
 };
 

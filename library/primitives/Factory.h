@@ -12,7 +12,7 @@ public:
     static Wt::WWidget * Create ( std::string strWidget, std::string strData, std::string strHash );
     static Wt::WWidget * Create ( std::string strWidget, IWidgetData * pD );
     static Wt::WWidget * CreateUserLineInput ( std::string value );
-    static Wt::WWidget * CreateComboBox ( const std::string & label, const std::vector<std::string> & values );
+    static Wt::WWidget * CreateComboBox ( std::string data, const std::string & label, const std::vector<std::string> & values );
 };
 
 #endif // FACTORY_H

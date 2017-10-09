@@ -123,6 +123,11 @@ struct SRadioButtons : public IWidgetData
     std::vector< std::pair < std::string, std::string > > content;
 };
 
+struct SContiCtry : public IWidgetData
+{
+    std::map< std::string, std::vector< std::string > > _list;
+};
+
 }
 
 #endif // IWIDGETDATA_H
