@@ -9,11 +9,8 @@
 #include "Factory.h"
 #include "CWCombo.h"
 
-int CWContiCtryForm::magic = 0;
-
 CWContiCtryForm::CWContiCtryForm ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
-    magic++;
     pContainer = new Wt::WContainerWidget();
     Create ( pD, pContainer, "n/a" );
     this->addWidget ( pContainer );
@@ -53,24 +50,14 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
     p = dynamic_cast<WidgetData::SContiCtry*> ( pD );
     if ( p != nullptr )
     {
-        Wt::WTable *table = new Wt::WTable();
-        table->setWidth ( Wt::WLength ( "100%" ) );
-        Wt::WTableCell * pCell = nullptr;
-
-        pCell = table->elementAt ( 0, 0 );
-
-        std::string label = ( ( CWContiCtryForm::magic % 2 == 0 ) ? "To:" : "From:" );
-        pCell->addWidget ( new Wt::WText ( label ) );
-
         std::vector<std::string> conti = this->GetConti();
         Wt::WWidget * w = Factory::CreateComboBox ( "SContiCtryInput", "", conti );
-        w->setMargin ( 10, Wt::Side::Left );
+        Format ( w );
         CWCombo * combo = dynamic_cast<CWCombo*> ( w );
+        container->addWidget ( combo );
+
         if ( combo != nullptr )
         {
-            pCell = table->elementAt ( 0, 1 );
-            pCell->addWidget ( combo );
-
             if ( continent != "n/a" )
             {
                 combo->pEdit->setValueText ( continent );
@@ -87,16 +74,21 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
 
         std::vector<std::string> ctry = this->GetCtry ( combo->pEdit->valueText().toUTF8() );
         Wt::WWidget * w2 = Factory::CreateComboBox ( "SContiCtryInput", "", ctry );
-        w2->setMargin ( 10, Wt::Side::Left );
+        Format ( w2 );
+        container->addWidget ( w2 );
 
-        pCell = table->elementAt ( 0, 2 );
-        pCell->addWidget ( w2 );
-
-        pCell = table->elementAt ( 0, 3 );
-        pCell->addWidget ( new Wt::WLineEdit ( ) );
-
-        container->addWidget ( table );
+        Wt::WLineEdit * line = new Wt::WLineEdit();
+        Format ( line );
+        container->addWidget ( line );
     }
 }
 
+void CWContiCtryForm::Format ( Wt::WWidget* item )
+{
+    item->setInline ( true );
+    item->setMargin ( 10, Wt::Side::Left );
+    item->setWidth ( 150 );
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+

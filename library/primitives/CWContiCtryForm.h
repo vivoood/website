@@ -15,7 +15,7 @@ private:
     std::vector< std::string > GetConti ();
     std::vector< std::string > GetCtry ( std::string str );
     void Create ( IWidgetData * pD, Wt::WContainerWidget * container, std::string continent );
-    static int magic;
+    void Format ( Wt::WWidget * item );
 };
 
 #endif //CWCONTICTRYFORM_H

@@ -294,7 +294,7 @@ Constants::Constants()
         "Chad",
         "Comoros",
         "Congo",
-        "Congo, Democratic Republic of",
+//         "Congo, Democratic Republic of",
         "Djibouti",
         "Egypt",
         "Equatorial Guinea",
