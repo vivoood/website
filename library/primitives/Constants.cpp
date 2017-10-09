@@ -231,6 +231,12 @@ Constants::Constants()
 
     m_MyAccount.strStyle = "my-account";
 
+    m_radioButtons.strStyle = "paybonam";
+    m_radioButtons.strMainMsg = "Choose payment abonament";
+    m_radioButtons.content.push_back ( std::make_pair<std::string, std::string> ( "2.99$", "cheap variant - description ?!?!?!" ) );
+    m_radioButtons.content.push_back ( std::make_pair<std::string, std::string> ( "4.99$", "middle variant - description ?!?!?!" ) );
+    m_radioButtons.content.push_back ( std::make_pair<std::string, std::string> ( "5.99$", "expensive variant - description ?!?!?!" ) );
+
     /** ******************************************* */
 
     m_Footer.strStyle = "footer-style";
@@ -250,8 +256,9 @@ Constants::Constants()
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLeftCol", &m_LeftCol ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLeftColAfterLogin", &m_LeftColAfterLogin ) );
-    
+
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SMyAccount", &m_MyAccount ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SRadioButtons", &m_radioButtons ) );
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SFooter", &m_Footer ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLogin", &m_Login ) );

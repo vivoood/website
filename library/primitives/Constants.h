@@ -42,6 +42,7 @@ private:
 
     /** @Account */
     WidgetData::SAccount m_MyAccount;
+    WidgetData::SRadioButtons m_radioButtons;
 
     /** @User-line-input */
     WidgetData::SUserInput m_UserLineInput;

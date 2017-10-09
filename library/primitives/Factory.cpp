@@ -19,6 +19,7 @@
 #include "CWRegisterAccount.h"
 #include "CWCombo.h"
 #include "CWAccount.h"
+#include "CWRadioButtons.h"
 
 #include "Constants.h"
 
@@ -74,6 +75,9 @@ Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
 
     if ( strWidget == "CWAccount" )
         return new CWAccount ( pD );
+    
+    if ( strWidget == "CWRadioButtons" )
+        return new CWRadioButtons ( pD );
 
     return new Wt::WText ( "n/a" );
 }

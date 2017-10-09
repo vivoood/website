@@ -116,6 +116,13 @@ struct SAccount : public IWidgetData
     std::string strStyle;
 };
 
+struct SRadioButtons : public IWidgetData
+{
+    std::string strStyle;
+    std::string strMainMsg;
+    std::vector< std::pair < std::string, std::string > > content;
+};
+
 }
 
 #endif // IWIDGETDATA_H

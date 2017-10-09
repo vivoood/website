@@ -1,17 +1,20 @@
 cmake_minimum_required(VERSION 2.6)
 project(vivoood)
 
-option(gccv "gccv" 0x)
+option(gccv "gccv" 11)
 
 if (${gccv} STREQUAL "0x")
+    message(STATUS ">>>>>>>> GCC IS 0x")
 	SET(CMAKE_CXX_FLAGS "-std=c++0x")
 endif()
 
 if (${gccv} STREQUAL "11")
+    message(STATUS ">>>>>>>> GCC IS 11")
 	set (CMAKE_CXX_FLAGS "--std=gnu++11 ${CMAKE_CXX_FLAGS}")
 endif()
 
 if (${gccv} STREQUAL "14")
+    message(STATUS ">>>>>>>> GCC IS 14")
 	set (CMAKE_CXX_FLAGS "--std=gnu++14 ${CMAKE_CXX_FLAGS}")
 endif()
 
@@ -29,6 +32,7 @@ target_link_libraries(vivoood ${internal_libs} dl )
 
 option(enable_rm "enable_rm" OFF)
 message(STATUS ">>>>>>>> ENABLE RM IS " ${enable_rm})
+
 if (${enable_rm} STREQUAL "ON")
 	add_custom_command(
 		TARGET ${PROJECT_NAME} POST_BUILD
