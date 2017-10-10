@@ -101,6 +101,16 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
     }
 }
 
+void CWContiCtryForm::SetLabel ( std::string str )
+{
+    strLabel = str;
+
+    Wt::WTableCell * pCell = table->elementAt ( 0, 0 );
+    pCell->clear();
+
+    pCell->addWidget ( new Wt::WText ( strLabel ) );
+}
+
 void CWContiCtryForm::Format ( Wt::WWidget* item )
 {
     item->setInline ( true );

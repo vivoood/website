@@ -8,7 +8,7 @@
 class CWContiCtryForm : public Wt::WContainerWidget
 {
 public:
-    std::string strLabel = "n/a";
+    void SetLabel ( std::string str );
 private:
     friend class Factory;
     CWContiCtryForm ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
@@ -19,6 +19,7 @@ private:
     std::vector< std::string > GetCtry ( std::string str );
     void Create ( IWidgetData * pD, Wt::WContainerWidget * container, std::string continent );
     void Format ( Wt::WWidget * item );
+    std::string strLabel = "n/a";
 };
 
 #endif //CWCONTICTRYFORM_H
