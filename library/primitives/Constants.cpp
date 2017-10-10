@@ -55,6 +55,24 @@ Constants::Constants()
     dlogin.content.strWidgetStyle = "";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
+    dlogin.strTabName = "My account";
+    dlogin.strTabButtonStyle = "menu-buttons";
+    dlogin.content.strChildWidget = "";
+    dlogin.content.strWidgetStyle = "";
+    m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
+
+    dlogin.strTabName = "Queries";
+    dlogin.strTabButtonStyle = "menu-buttons";
+    dlogin.content.strChildWidget = "";
+    dlogin.content.strWidgetStyle = "";
+    m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
+
+    dlogin.strTabName = "Add query";
+    dlogin.strTabButtonStyle = "menu-buttons";
+    dlogin.content.strChildWidget = "";
+    dlogin.content.strWidgetStyle = "";
+    m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
+
     dlogin.strTabName = "Contacts";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.content.strChildWidget = "CWContacts";
@@ -65,12 +83,6 @@ Constants::Constants()
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.content.strChildWidget = "CWFAQ";
     dlogin.content.strWidgetStyle = "faq-style";
-    m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
-
-    dlogin.strTabName = "My account";
-    dlogin.strTabButtonStyle = "menu-buttons";
-    dlogin.content.strChildWidget = "";
-    dlogin.content.strWidgetStyle = "";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     /** ******************************************* */
@@ -270,7 +282,7 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SUserLineInput", &m_UserLineInput ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SUserComboInput", &m_UserComboInput ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtryInput", &m_ContiCtryInput ) );
-    
+
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtry", &m_ContiCtry ) );
 
 //     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "", & ) );

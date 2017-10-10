@@ -59,7 +59,6 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
         Wt::WWidget * w = Factory::CreateComboBox ( "SContiCtryInput", "", conti );
         Format ( w );
         CWCombo * combo = dynamic_cast<CWCombo*> ( w );
-//         container->addWidget ( combo );
 
         if ( combo != nullptr )
         {
@@ -80,11 +79,10 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
         std::vector<std::string> ctry = this->GetCtry ( combo->pEdit->valueText().toUTF8() );
         Wt::WWidget * w2 = Factory::CreateComboBox ( "SContiCtryInput", "", ctry );
         Format ( w2 );
-//         container->addWidget ( w2 );
 
         Wt::WLineEdit * line = new Wt::WLineEdit();
+        line->setPlaceholderText ( "   City" );
         Format ( line );
-//         container->addWidget ( line );
 
         pCell = table->elementAt ( 0, 0 );
         pCell->setWidth ( "25%" );
