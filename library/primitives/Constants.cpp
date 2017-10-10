@@ -69,8 +69,8 @@ Constants::Constants()
 
     dlogin.strTabName = "Add query";
     dlogin.strTabButtonStyle = "menu-buttons";
-    dlogin.content.strChildWidget = "";
-    dlogin.content.strWidgetStyle = "";
+    dlogin.content.strChildWidget = "CWQuery";
+    dlogin.content.strWidgetStyle = "SQuery";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "Contacts";
@@ -275,6 +275,8 @@ Constants::Constants()
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SMyAccount", &m_MyAccount ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SRadioButtons", &m_radioButtons ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtry", &m_ContiCtry ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SQuery", &m_Query ) );
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SFooter", &m_Footer ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLogin", &m_Login ) );
@@ -283,7 +285,7 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SUserComboInput", &m_UserComboInput ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtryInput", &m_ContiCtryInput ) );
 
-    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtry", &m_ContiCtry ) );
+    
 
 //     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "", & ) );
 

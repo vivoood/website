@@ -129,6 +129,10 @@ struct SContiCtry : public IWidgetData
     std::map< std::string, std::vector< std::string > > _list;
 };
 
+struct SQuery : public IWidgetData
+{
+};
+
 }
 
 #endif // IWIDGETDATA_H

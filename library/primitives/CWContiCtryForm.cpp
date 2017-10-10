@@ -81,10 +81,11 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
         Format ( w2 );
 
         Wt::WLineEdit * line = new Wt::WLineEdit();
-        line->setPlaceholderText ( "   City" );
+        line->setPlaceholderText ( "City..." );
         Format ( line );
 
         pCell = table->elementAt ( 0, 0 );
+        pCell->setContentAlignment ( Wt::AlignRight );
         pCell->setWidth ( "25%" );
         pCell->addWidget ( new Wt::WText ( strLabel ) );
         pCell = table->elementAt ( 0, 1 );
@@ -107,7 +108,7 @@ void CWContiCtryForm::SetLabel ( std::string str )
 
     Wt::WTableCell * pCell = table->elementAt ( 0, 0 );
     pCell->clear();
-
+    pCell->setContentAlignment ( Wt::AlignRight );
     pCell->addWidget ( new Wt::WText ( strLabel ) );
 }
 

@@ -43,6 +43,8 @@ private:
     /** @Account */
     WidgetData::SAccount m_MyAccount;
     WidgetData::SRadioButtons m_radioButtons;
+    WidgetData::SContiCtry m_ContiCtry;
+    WidgetData::SQuery m_Query;
 
     /** @User-line-input */
     WidgetData::SUserInput m_UserLineInput;
@@ -53,9 +55,6 @@ private:
 
     /** @Footer */
     WidgetData::SFooter m_Footer;
-
-    /** @SContiCtry */
-    WidgetData::SContiCtry m_ContiCtry;
 
 };
 

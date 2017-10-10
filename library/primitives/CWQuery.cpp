@@ -5,6 +5,7 @@
 #include <Wt/WDate>
 #include <Wt/WDateEdit>
 #include <Wt/WText>
+#include <Wt/WBreak>
 
 #include "Factory.h"
 #include "CWContiCtryForm.h"
@@ -24,6 +25,8 @@ CWQuery::CWQuery ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
     w31->SetLabel ( "To: " );
     this->addWidget ( w3 );
 
+    this->addWidget ( new Wt::WBreak() );
+
     Wt::WText * label = new Wt::WText ( "Choose date of flight " );
     label->setInline ( true );
     this->addWidget ( label );
@@ -35,11 +38,26 @@ CWQuery::CWQuery ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
     de1->setMargin ( 10, Wt::Side::Left );
     this->addWidget ( de1 );
 
+    Wt::WLineEdit * line = new Wt::WLineEdit();
+    line->setPlaceholderText ( "Adults..." );
+    line->setMargin ( 10, Wt::Side::Left );
+    line->setWidth ( 50 );
+    this->addWidget ( line );
+
+    Wt::WLineEdit * line2 = new Wt::WLineEdit();
+    line2->setPlaceholderText ( "Budget..." );
+    line2->setMargin ( 10, Wt::Side::Left );
+    line2->setWidth ( 50 );
+    this->addWidget ( line2 );
+
+    this->setWidth ( "52%" );
+
 //     WidgetData::X * p = dynamic_cast<WidgetData::X*> ( pD );
 //     if ( p != nullptr )
 //     {
-// 
+//
 //     }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
