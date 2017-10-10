@@ -280,6 +280,7 @@ Constants::Constants()
     /** ******************************************* */
     /** ******************************************* */
 
+    m_ContiCtry.strStyle = "contictry";
     m_ContiCtry._list.insert ( std::pair< std::string, std::vector< std::string > > ( "Africa",
     {
         "Algeria",
@@ -294,7 +295,7 @@ Constants::Constants()
         "Chad",
         "Comoros",
         "Congo",
-//         "Congo, Democratic Republic of",
+        "Congo, Democratic ",
         "Djibouti",
         "Egypt",
         "Equatorial Guinea",
@@ -459,7 +460,7 @@ Constants::Constants()
         "Panama",
         "Saint Kitts and Nevis",
         "Saint Lucia",
-        "Saint Vincent and the Grenadines",
+//         "Saint Vincent and the Grenadines",
         "Trinidad and Tobago",
         "United States"
     } ) );

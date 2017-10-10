@@ -50,11 +50,16 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
     p = dynamic_cast<WidgetData::SContiCtry*> ( pD );
     if ( p != nullptr )
     {
+        Wt::WTableCell * pCell = nullptr;
+        table = new Wt::WTable();
+        table->setWidth ( Wt::WLength ( "100%" ) );
+
+
         std::vector<std::string> conti = this->GetConti();
         Wt::WWidget * w = Factory::CreateComboBox ( "SContiCtryInput", "", conti );
         Format ( w );
         CWCombo * combo = dynamic_cast<CWCombo*> ( w );
-        container->addWidget ( combo );
+//         container->addWidget ( combo );
 
         if ( combo != nullptr )
         {
@@ -75,11 +80,26 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
         std::vector<std::string> ctry = this->GetCtry ( combo->pEdit->valueText().toUTF8() );
         Wt::WWidget * w2 = Factory::CreateComboBox ( "SContiCtryInput", "", ctry );
         Format ( w2 );
-        container->addWidget ( w2 );
+//         container->addWidget ( w2 );
 
         Wt::WLineEdit * line = new Wt::WLineEdit();
         Format ( line );
-        container->addWidget ( line );
+//         container->addWidget ( line );
+
+        pCell = table->elementAt ( 0, 0 );
+        pCell->setWidth ( "25%" );
+        pCell->addWidget ( new Wt::WText ( strLabel ) );
+        pCell = table->elementAt ( 0, 1 );
+        pCell->setWidth ( "25%" );
+        pCell->addWidget ( combo );
+        pCell = table->elementAt ( 0, 2 );
+        pCell->setWidth ( "25%" );
+        pCell->addWidget ( w2 );
+        pCell = table->elementAt ( 0, 3 );
+        pCell->setWidth ( "25%" );
+        pCell->addWidget ( line );
+        container->addWidget ( table );
+        container->setStyleClass ( p->strStyle );
     }
 }
 

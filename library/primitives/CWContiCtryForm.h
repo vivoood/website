@@ -7,10 +7,13 @@
 
 class CWContiCtryForm : public Wt::WContainerWidget
 {
+public:
+    std::string strLabel = "n/a";
 private:
     friend class Factory;
     CWContiCtryForm ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
     WidgetData::SContiCtry * p = nullptr;
+    Wt::WTable * table = nullptr;
     Wt::WContainerWidget * pContainer = nullptr;
     std::vector< std::string > GetConti ();
     std::vector< std::string > GetCtry ( std::string str );
