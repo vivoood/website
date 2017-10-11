@@ -22,12 +22,25 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
         return;
     }
 
+    CWUser u;
+    bool bChangePass = bool ( p->strHash != "n/a" );
+    if ( bChangePass )
+    {
+        u.load ( p->strHash );
+    }
+
     Wt::WContainerWidget * containertError = new Wt::WContainerWidget();
     containertError->setStyleClass ( p->strStyleError );
 
     CWUserLineInput * username = dynamic_cast<CWUserLineInput*> ( Factory::CreateUserLineInput ( "Username" ) );
     if ( username != nullptr )
     {
+        if ( bChangePass )
+        {
+            username->pEdit->setEnabled ( false );
+            username->pEdit->setValueText ( u._user );
+        }
+
         username->pEdit->setValidator ( new CWValidators::UsernameValidator() );
         this->addWidget ( username );
     }
@@ -35,6 +48,12 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
     CWUserLineInput * email = dynamic_cast<CWUserLineInput*> ( Factory::CreateUserLineInput ( "e-mail_address" ) );
     if ( email != nullptr )
     {
+        if ( bChangePass )
+        {
+            email->pEdit->setEnabled ( false );
+            email->pEdit->setValueText ( u._mail );
+        }
+
         email->pEdit->setValidator ( new CWValidators::EmailValidator() );
         this->addWidget ( email );
     }
@@ -60,16 +79,34 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
     CWCombo * gender = dynamic_cast<CWCombo*> ( Factory::CreateComboBox ( "SUserComboInput", label, values ) );
     if ( gender != nullptr )
     {
+        if ( bChangePass )
+        {
+            gender->pEdit->setEnabled ( false );
+            gender->pEdit->setValueText ( u._gender );
+        }
+
         this->addWidget ( gender );
     }
 
     CWUserLineInput * country = dynamic_cast<CWUserLineInput*> ( Factory::CreateUserLineInput ( "Country" ) );
     if ( country != nullptr )
     {
+        if ( bChangePass )
+        {
+            country->pEdit->setEnabled ( false );
+            country->pEdit->setValueText ( u._country );
+        }
+
         this->addWidget ( country );
     }
 
-    this->addWidget ( Factory::CreateUserLineInput ( "I'am_not_robot" ) );
+    if ( bChangePass )
+    {
+    }
+    else
+    {
+        this->addWidget ( Factory::CreateUserLineInput ( "I'am_not_robot" ) );
+    }
 
     Wt::WPushButton * pBtn = new Wt::WPushButton ( "Continue" );
     pBtn->setStyleClass ( p->strStyleButton );

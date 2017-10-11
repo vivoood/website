@@ -17,13 +17,15 @@ public:
     std::string user();
     static bool CheckUserExist ( std::string filename );
     static bool CheckOwner ( std::string filename );
-private:
-    std::mutex mtx;
+
     std::string _user = "n/a";
     std::string _sha = "n/a";
     std::string _mail = "n/a";
     std::string _country = "n/a";
     std::string _gender = "n/a";
+
+private:
+    std::mutex mtx;
     friend std::ostream& operator<< ( std::ostream& os, const CWUser& dt );
     friend std::istream& operator>> ( std::istream& is, CWUser& dt );
 };

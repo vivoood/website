@@ -58,6 +58,7 @@ Constants::Constants()
     dlogin.strTabName = "My account";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.content.strChildWidget = "CWRegisterAccount";
+    dlogin.content.strChildData = "SRegister";
     dlogin.content.strWidgetStyle = "";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 

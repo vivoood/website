@@ -30,7 +30,15 @@ CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWi
             pBtn->clicked().connect ( std::bind ( [=]()
             {
                 m_pContent->clear();
-                m_pContent->addWidget ( Factory::Create ( d.content.strChildWidget, &p->vTabButtons[i].content ) );
+                if ( p->vTabButtons[i].content.strChildData == "n/a" )
+                {
+                    m_pContent->addWidget ( Factory::Create ( d.content.strChildWidget, &p->vTabButtons[i].content ) );
+                }
+                else
+                {
+                    m_pContent->addWidget ( Factory::Create ( d.content.strChildWidget, p->vTabButtons[i].content.strChildData, p->strHash ) );
+                }
+
             } ) );
         }
 

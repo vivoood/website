@@ -26,6 +26,7 @@ struct SHeader : public IWidgetData
 struct STabButtonsContentData : public IWidgetData
 {
     std::string strChildWidget = "n/a";
+    std::string strChildData = "n/a";
     std::string strWidgetStyle;
 };
 
