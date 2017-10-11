@@ -6,6 +6,7 @@
 
 std::string CWHash::Get ( std::string s )
 {
+    std::string hstr = "5345@asd#" + s + "fslkdjf34";
     CryptoPP::SHA1 hash;
     unsigned char _sha1[ CryptoPP::SHA1::DIGESTSIZE ];
     hash.CalculateDigest ( _sha1, ( byte* ) s.c_str(), s.length() );

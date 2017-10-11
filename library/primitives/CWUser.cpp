@@ -36,7 +36,7 @@ bool CWUser::load ( std::string filename )
 
 std::string CWUser::hash()
 {
-    return CWHash::Get ( _user + _sha );
+    return CWHash::Get ( _mail );
 }
 
 std::string CWUser::user()
