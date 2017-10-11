@@ -19,7 +19,7 @@ public:
     static bool CheckOwner ( std::string filename );
 
     std::string _user = "n/a";
-    std::string _sha = "n/a";
+    std::string _pass = "n/a";
     std::string _mail = "n/a";
     std::string _country = "n/a";
     std::string _gender = "n/a";

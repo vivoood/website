@@ -5,7 +5,7 @@
 CWUser::CWUser ( std::string user, std::string sha, std::string mail, std::string coutry, std::string gender )
 {
     _user = user;
-    _sha = sha;
+    _pass = sha;
     _mail = mail;
     _country = coutry;
     _gender = gender;
@@ -61,7 +61,7 @@ bool CWUser::CheckOwner ( std::string filename )
 
 std::ostream& operator<< ( std::ostream& os, const CWUser& dt )
 {
-    os << dt._user << "," << dt._sha << "," << dt._mail << "," << dt._country << "," << dt._gender;
+    os << dt._user << "," << dt._pass << "," << dt._mail << "," << dt._country << "," << dt._gender;
     return os;
 }
 
@@ -72,7 +72,7 @@ std::istream& operator>> ( std::istream& is, CWUser& dt )
 
     std::istringstream ss ( str );
     std::getline ( ss, dt._user, ',' );
-    std::getline ( ss, dt._sha, ',' );
+    std::getline ( ss, dt._pass, ',' );
     std::getline ( ss, dt._mail, ',' );
     std::getline ( ss, dt._country, ',' );
     std::getline ( ss, dt._gender, ',' );

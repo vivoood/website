@@ -14,7 +14,7 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
     WidgetData::SLogin * p = dynamic_cast<WidgetData::SLogin*> ( pD );
     if ( p != nullptr )
     {
-        Wt::WText * pUserLabel = new Wt::WText ( "Username" );
+        Wt::WText * pUserLabel = new Wt::WText ( "_e-mail_" );
         pUserLabel->setStyleClass ( p->strStyleFields );
         this->addWidget ( pUserLabel );
 
@@ -39,15 +39,24 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         pLoginBtn->setStyleClass ( p->strStyleBtns );
         pLoginBtn->clicked().connect ( std::bind ( [=]()
         {
-            std::string strHash ( CWHash::Get ( pUserEdit->text().toUTF8() + pPassEdit->text().toUTF8() ) );
+            std::string strHash ( CWHash::Get ( pUserEdit->text().toUTF8() ) );
             CWUser u;
             if ( u.load ( strHash ) )
             {
-                gCWSignals.signallogintomainwidget.emit ( strHash );
+                if ( u._pass == pPassEdit->text().toUTF8() )
+                {
+                    gCWSignals.signallogintomainwidget.emit ( strHash );
+                }
+                else
+                {
+                    this->addWidget ( new Wt::WBreak() );
+                    this->addWidget ( new Wt::WText ( "Invalid user or Password" ) );
+                }
             }
             else
             {
-                //set error msg
+                this->addWidget ( new Wt::WBreak() );
+                this->addWidget ( new Wt::WText ( "Invalid User or password" ) );
             }
 
         } ) );
