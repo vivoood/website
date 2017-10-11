@@ -6,6 +6,7 @@
 #include <Wt/WDateEdit>
 #include <Wt/WText>
 #include <Wt/WBreak>
+#include <Wt/WPushButton>
 
 #include "Factory.h"
 #include "CWContiCtryForm.h"
@@ -20,6 +21,8 @@ CWQuery::CWQuery ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
     w21->SetLabel ( "From: " );
     this->addWidget ( w2 );
 
+    this->addWidget ( new Wt::WBreak() );
+    
     Wt::WWidget * w3 = Factory::Create ( "CWContiCtryForm", "SContiCtry", "n/a" );
     CWContiCtryForm * w31 = dynamic_cast<CWContiCtryForm*> ( w3 );
     w31->SetLabel ( "To: " );
@@ -40,23 +43,19 @@ CWQuery::CWQuery ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 
     Wt::WLineEdit * line = new Wt::WLineEdit();
     line->setPlaceholderText ( "Adults..." );
-    line->setMargin ( 10, Wt::Side::Left );
+    line->setMargin ( 40, Wt::Side::Left );
     line->setWidth ( 50 );
     this->addWidget ( line );
 
     Wt::WLineEdit * line2 = new Wt::WLineEdit();
     line2->setPlaceholderText ( "Budget..." );
-    line2->setMargin ( 10, Wt::Side::Left );
+    line2->setMargin ( 40, Wt::Side::Left );
     line2->setWidth ( 50 );
     this->addWidget ( line2 );
 
-    this->setWidth ( "52%" );
-
-//     WidgetData::X * p = dynamic_cast<WidgetData::X*> ( pD );
-//     if ( p != nullptr )
-//     {
-//
-//     }
+    Wt::WPushButton * btn = new Wt::WPushButton("Create this query");
+    btn->setMargin ( 40, Wt::Side::Left );
+    this->addWidget ( btn );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
