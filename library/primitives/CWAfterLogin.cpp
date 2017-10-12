@@ -18,7 +18,7 @@ CWAfterLogin::CWAfterLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : 
         CWUser u;
         u.load ( p->strHash );
 
-        Wt::WText * pUserLabel = new Wt::WText ( "Welcome " + u.user() );
+        Wt::WText * pUserLabel = new Wt::WText ( "Welcome " + u._user );
         pUserLabel->setStyleClass ( p->strStyleFields );
         this->addWidget ( pUserLabel );
 

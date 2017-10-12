@@ -4,11 +4,20 @@
 
 CWUser::CWUser ( std::string user, std::string sha, std::string mail, std::string coutry, std::string gender )
 {
-    _user = user;
-    _pass = sha;
-    _mail = mail;
-    _country = coutry;
-    _gender = gender;
+    if ( !user.empty() )
+        _user = user;
+
+    if ( !sha.empty() )
+        _pass = sha;
+
+    if ( !mail.empty() )
+        _mail = mail;
+
+    if ( !coutry.empty() )
+        _country = coutry;
+
+    if ( !gender.empty() )
+        _gender = gender;
 }
 
 void CWUser::save()
@@ -21,6 +30,9 @@ void CWUser::save()
 
 bool CWUser::load ( std::string filename )
 {
+    if ( filename.empty() )
+        return false;
+
     std::string dir ( "users/" );
     dir.append ( filename );
 
@@ -37,11 +49,6 @@ bool CWUser::load ( std::string filename )
 std::string CWUser::hash()
 {
     return CWHash::Get ( _mail );
-}
-
-std::string CWUser::user()
-{
-    return _user;
 }
 
 bool CWUser::CheckUserExist ( std::string filename )
@@ -61,29 +68,94 @@ bool CWUser::CheckOwner ( std::string filename )
 
 std::ostream& operator<< ( std::ostream& os, const CWUser& dt )
 {
-    os << dt._user << "," << dt._pass << "," << dt._mail << "," << dt._country << "," << dt._gender;
+    os << dt._user << std::endl;
+    os << dt._pass << std::endl;
+    os << dt._mail << std::endl;
+    os << dt._country << std::endl;
+    os << dt._gender << std::endl;
+    os << dt._abonCnt << std::endl;
+    for ( auto it : dt._vAbon )
+        os << it << std::endl;;
     return os;
 }
 
 std::istream& operator>> ( std::istream& is, CWUser& dt )
 {
-    std::string str;
-    is >> str;
-
-    std::istringstream ss ( str );
-    std::getline ( ss, dt._user, ',' );
-    std::getline ( ss, dt._pass, ',' );
-    std::getline ( ss, dt._mail, ',' );
-    std::getline ( ss, dt._country, ',' );
-    std::getline ( ss, dt._gender, ',' );
+    is >> dt._user;
+    is >> dt._pass;
+    is >> dt._mail;
+    is >> dt._country;
+    is >> dt._gender;
+    is >> dt._abonCnt;
+    for ( int i = 0; i < dt._abonCnt; i++ )
+    {
+        CWUser::SAbon tmp;
+        is >> tmp;
+        dt._vAbon.push_back ( tmp );
+    }
 
     return is;
 }
 
+std::ostream& operator<< ( std::ostream& os, const CWUser::SAbon& dt )
+{
+    os << dt._abon << std::endl;
+    os << dt._from << std::endl;
+    os << dt._to << std::endl;
+    os << dt._date << std::endl;
+    os << dt._adults << std::endl;
+    os << dt._budget << std::endl;
+    os << dt._payd;
+    return os;
+}
+
+std::istream& operator>> ( std::istream& is, CWUser::SAbon& dt )
+{
+    is >> dt._abon;
+    is >> dt._from;
+    is >> dt._to;
+    is >> dt._date;
+    is >> dt._adults;
+    is >> dt._budget;
+    is >> dt._payd;
+    return is;
+}
+
+std::ostream& operator<< ( std::ostream& os, const CWUser::SContiCtry& dt )
+{
+    os << dt._conti << std::endl;
+    os << dt._ctry << std::endl;
+    os << dt._city;
+    return os;
+}
+
+std::istream& operator>> ( std::istream& is, CWUser::SContiCtry& dt )
+{
+    is >> dt._conti;
+    is >> dt._ctry;
+    is >> dt._city;
+    return is;
+}
+
+void CWUser::print()
+{
+    std::cout << "User: " << _user << std::endl;
+    std::cout << "Pass: " << _pass << std::endl;
+    std::cout << "Mail: " << _mail << std::endl;
+    std::cout << "Ctry: " << _country << std::endl;
+    std::cout << "Gndr: " << _gender << std::endl;
+
+    for ( const auto & it : _vAbon )
+    {
+        std::cout << "#" << it._abon << std::endl;
+        std::cout << "#" << it._from._conti << " " << it._from._ctry << " " << it._from._city << std::endl;
+        std::cout << "#" << it._to._conti << " " << it._to._ctry << " " << it._to._city << std::endl;
+        std::cout << "#" << it._date << std::endl;
+        std::cout << "#" << it._adults << std::endl;
+        std::cout << "#" << it._budget << std::endl;
+        std::cout << "#" << ( it._payd ? "payd" : "not payd" ) << std::endl;
+    }
+}
+
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
-
-
-
-
-
