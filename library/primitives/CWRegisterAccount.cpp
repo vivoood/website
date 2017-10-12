@@ -145,7 +145,7 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
             this->addWidget ( new Wt::WBreak() );
             this->addWidget ( containertError );
 
-            Wt::WTimer * t = new Wt::WTimer ();
+            Wt::WTimer * t = new Wt::WTimer ( this );
             t->setInterval ( 3000 );
             t->setSingleShot ( true );
             t->start();

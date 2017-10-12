@@ -9,6 +9,7 @@
 #include <Wt/WPushButton>
 #include <Wt/WButtonGroup>
 #include <Wt/WComboBox>
+#include <Wt/WTimer>
 
 #include "Factory.h"
 #include "CWContiCtryForm.h"
@@ -17,52 +18,76 @@
 
 CWQuery::CWQuery ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
+    container = new Wt::WContainerWidget();
+    outmsg = new Wt::WContainerWidget();
+    Create ( container, outmsg, pD );
+    this->addWidget ( container );
+    this->addWidget ( outmsg );
+}
+
+void CWQuery::Create ( Wt::WContainerWidget* c, Wt::WContainerWidget * m, IWidgetData * pD )
+{
     Wt::WWidget * w1 =  Factory::Create ( "CWRadioButtons", "SRadioButtons", "n/a" );
-    this->addWidget ( w1 );
+    c->addWidget ( w1 );
 
     Wt::WWidget * w2 = Factory::Create ( "CWContiCtryForm", "SContiCtry", "n/a" );
     CWContiCtryForm * w21 = dynamic_cast<CWContiCtryForm*> ( w2 );
     w21->SetLabel ( "From: " );
-    this->addWidget ( w2 );
+    c->addWidget ( w2 );
 
-    this->addWidget ( new Wt::WBreak() );
+    c->addWidget ( new Wt::WBreak() );
 
     Wt::WWidget * w3 = Factory::Create ( "CWContiCtryForm", "SContiCtry", "n/a" );
     CWContiCtryForm * w31 = dynamic_cast<CWContiCtryForm*> ( w3 );
     w31->SetLabel ( "To: " );
-    this->addWidget ( w3 );
+    c->addWidget ( w3 );
 
-    this->addWidget ( new Wt::WBreak() );
+    c->addWidget ( new Wt::WBreak() );
 
     Wt::WText * label = new Wt::WText ( "Choose date of flight " );
     label->setInline ( true );
-    this->addWidget ( label );
+    c->addWidget ( label );
 
     Wt::WDateEdit * de1 = new Wt::WDateEdit();
     de1->setDate ( Wt::WDate::currentServerDate() );
     de1->setBottom ( Wt::WDate::currentServerDate() );
     de1->setInline ( true );
     de1->setMargin ( 10, Wt::Side::Left );
-    this->addWidget ( de1 );
+    c->addWidget ( de1 );
 
     Wt::WLineEdit * line = new Wt::WLineEdit();
     line->setPlaceholderText ( "Adults..." );
     line->setMargin ( 40, Wt::Side::Left );
     line->setWidth ( 50 );
-    this->addWidget ( line );
+    c->addWidget ( line );
 
     Wt::WLineEdit * line2 = new Wt::WLineEdit();
     line2->setPlaceholderText ( "Budget..." );
     line2->setMargin ( 40, Wt::Side::Left );
     line2->setWidth ( 50 );
-    this->addWidget ( line2 );
+    c->addWidget ( line2 );
 
     Wt::WPushButton * btn = new Wt::WPushButton ( "Create this query" );
     btn->setMargin ( 40, Wt::Side::Left );
-    this->addWidget ( btn );
+    c->addWidget ( btn );
+
+    Wt::WTimer * t = new Wt::WTimer ( c );
+    t->setInterval ( 3000 );
+    t->setSingleShot ( true );
+    t->timeout().connect ( std::bind ( [=]()
+    {
+        m->clear();
+        c->clear();
+        Create ( c, m, pD );
+    } ) );
 
     btn->clicked().connect ( std::bind ( [=]()
     {
+        if ( t->isActive() )
+        {
+            return;
+        }
+
         CWUser u;
         if ( u.load ( pD->strHash ) )
         {
@@ -85,13 +110,16 @@ CWQuery::CWQuery ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 
             u.AddAbon ( ab );
             u.save();
+
+            m->addWidget ( new Wt::WText ( "Saved - see all queries on /My Queries/" ) );
+            t->start();
         }
         else
         {
-            this->addWidget ( new Wt::WText ( "cant load" ) );
+            m->addWidget ( new Wt::WText ( "ERROR can't load this user" + pD->strHash ) );
+            t->start();
         }
     } ) );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
