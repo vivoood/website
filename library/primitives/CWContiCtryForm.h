@@ -5,9 +5,18 @@
 
 #include "IWidgetData.h"
 
+namespace Wt
+{
+    class WComboBox;
+    class WLineEdit;
+}
+
 class CWContiCtryForm : public Wt::WContainerWidget
 {
 public:
+    Wt::WComboBox * continents = nullptr;
+    Wt::WComboBox * country = nullptr;
+    Wt::WLineEdit * city = nullptr;
     void SetLabel ( std::string str );
 private:
     friend class Factory;

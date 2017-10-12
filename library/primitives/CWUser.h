@@ -26,8 +26,8 @@ public:
         SContiCtry  _from;
         SContiCtry  _to;
         std::string _date = "n/a";
-        int         _adults = 0;
-        int         _budget = 0;
+        std::string _adults = "n/a";
+        std::string _budget = "n/a";
         bool        _payd = false;
     };
 
@@ -51,6 +51,7 @@ private:
     friend class CWAfterLogin;
     friend class CWLogin;
     friend class CWRegisterAccount;
+    friend class CWQuery;
 
     std::string _user = "n/a";
     std::string _pass = "n/a";

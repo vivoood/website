@@ -13,11 +13,11 @@ class WText;
 
 class CWRadioButtons : public Wt::WContainerWidget
 {
+public:
+    Wt::WButtonGroup * group = nullptr;
 private:
     friend class Factory;
     CWRadioButtons ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
-
-    Wt::WButtonGroup * group = nullptr;
     Wt::WText *outMsg = nullptr;
     void Click ( Wt::WRadioButton *selection );
     WidgetData::SRadioButtons * p = nullptr;

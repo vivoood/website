@@ -59,7 +59,7 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
         Wt::WWidget * w = Factory::CreateComboBox ( "SContiCtryInput", "", conti );
         Format ( w );
         CWCombo * combo = dynamic_cast<CWCombo*> ( w );
-
+        continents = combo->pEdit;
         if ( combo != nullptr )
         {
             if ( continent != "n/a" )
@@ -78,11 +78,12 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
 
         std::vector<std::string> ctry = this->GetCtry ( combo->pEdit->valueText().toUTF8() );
         Wt::WWidget * w2 = Factory::CreateComboBox ( "SContiCtryInput", "", ctry );
+        country = dynamic_cast<CWCombo*> ( w2 )->pEdit;
         Format ( w2 );
 
-        Wt::WLineEdit * line = new Wt::WLineEdit();
-        line->setPlaceholderText ( "City..." );
-        Format ( line );
+        city = new Wt::WLineEdit();
+        city->setPlaceholderText ( "City..." );
+        Format ( city );
 
         pCell = table->elementAt ( 0, 0 );
         pCell->setContentAlignment ( Wt::AlignRight );
@@ -96,7 +97,7 @@ void CWContiCtryForm::Create ( IWidgetData * pD, Wt::WContainerWidget * containe
         pCell->addWidget ( w2 );
         pCell = table->elementAt ( 0, 3 );
         pCell->setWidth ( "25%" );
-        pCell->addWidget ( line );
+        pCell->addWidget ( city );
         container->addWidget ( table );
         container->setStyleClass ( p->strStyle );
     }
