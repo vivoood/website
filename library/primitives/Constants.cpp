@@ -62,7 +62,7 @@ Constants::Constants()
     dlogin.content.strWidgetStyle = "";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
-    dlogin.strTabName = "Queries";
+    dlogin.strTabName = "My queries";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.content.strChildWidget = "";
     dlogin.content.strWidgetStyle = "";
@@ -280,6 +280,7 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SRadioButtons", &m_radioButtons ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtry", &m_ContiCtry ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SQuery", &m_Query ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SMyQueries", &m_MyQueries ) );
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SFooter", &m_Footer ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLogin", &m_Login ) );

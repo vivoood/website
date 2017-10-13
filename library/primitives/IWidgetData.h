@@ -134,6 +134,10 @@ struct SQuery : public IWidgetData
 {
 };
 
+struct SMyQueries : public IWidgetData
+{
+};
+
 }
 
 #endif // IWIDGETDATA_H

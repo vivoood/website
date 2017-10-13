@@ -22,6 +22,7 @@
 #include "CWRadioButtons.h"
 #include "CWContiCtryForm.h"
 #include "CWQuery.h"
+#include "CWMyQueries.h"
 
 #include "Constants.h"
 
@@ -86,7 +87,10 @@ Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
 
     if ( strWidget == "CWQuery" )
         return new CWQuery ( pD );
-
+    
+    if ( strWidget == "CWMyQueries" )
+        return new CWMyQueries ( pD );
+    
     return new Wt::WText ( "n/a" );
 }
 
