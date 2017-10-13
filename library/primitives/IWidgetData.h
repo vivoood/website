@@ -23,17 +23,12 @@ struct SHeader : public IWidgetData
     std::string strSlogan;
 };
 
-struct STabButtonsContentData : public IWidgetData
-{
-    std::string strChildWidget = "n/a";
-    std::string strWidgetStyle = "n/a";
-};
-
 struct STabButtonsData : public IWidgetData
 {
     std::string strTabName = "n/a";
     std::string strTabButtonStyle = "n/a";
-    STabButtonsContentData content;
+    std::string strChildWidget = "n/a";
+    std::string strChildWidgetData = "n/a";
 };
 
 struct STabs : public IWidgetData

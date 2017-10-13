@@ -30,14 +30,14 @@ Constants::Constants()
 
     d.strTabName = "Contacts";
     d.strTabButtonStyle = "menu-buttons";
-    d.content.strChildWidget = "CWContacts";
-    d.content.strWidgetStyle = "contacts-style";
+    d.strChildWidget = "CWContacts";
+    d.strChildWidgetData = "";
     m_Tabs.vTabButtons.push_back ( d );
 
     d.strTabName = "FAQ's";
     d.strTabButtonStyle = "menu-buttons";
-    d.content.strChildWidget = "CWFAQ";
-    d.content.strWidgetStyle = "faq-style";
+    d.strChildWidget = "CWFAQ";
+    d.strChildWidgetData = "n/a";
     m_Tabs.vTabButtons.push_back ( d );
 
     /** ******************************************* */
@@ -53,26 +53,26 @@ Constants::Constants()
 
     dlogin.strTabName = "My queries";
     dlogin.strTabButtonStyle = "menu-buttons";
-    dlogin.content.strChildWidget = "CWMyQueries";
-    dlogin.content.strWidgetStyle = "";
+    dlogin.strChildWidget = "CWMyQueries";
+    dlogin.strChildWidgetData = "n/a";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "Add query";
     dlogin.strTabButtonStyle = "menu-buttons";
-    dlogin.content.strChildWidget = "CWQuery";
-    dlogin.content.strWidgetStyle = "";
+    dlogin.strChildWidget = "CWQuery";
+    dlogin.strChildWidgetData = "n/a";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "Contacts";
     dlogin.strTabButtonStyle = "menu-buttons";
-    dlogin.content.strChildWidget = "CWContacts";
-    dlogin.content.strWidgetStyle = "contacts-style";
+    dlogin.strChildWidget = "CWContacts";
+    dlogin.strChildWidgetData = "n/a";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "FAQ's";
     dlogin.strTabButtonStyle = "menu-buttons";
-    dlogin.content.strChildWidget = "CWFAQ";
-    dlogin.content.strWidgetStyle = "faq-style";
+    dlogin.strChildWidget = "CWFAQ";
+    dlogin.strChildWidgetData = "n/a";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     /** ******************************************* */

@@ -8,10 +8,10 @@
 
 CWContacts::CWContacts ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
-    WidgetData::STabButtonsContentData * p = dynamic_cast<WidgetData::STabButtonsContentData*> ( pD );
-    if ( p != nullptr )
+//     WidgetData::STabButtonsContentData * p = dynamic_cast<WidgetData::STabButtonsContentData*> ( pD );
+//     if ( p != nullptr )
     {
-        this->setStyleClass ( p->strWidgetStyle );
+//         this->setStyleClass ( p->strWidgetStyle );
 
         Wt::WContainerWidget * pLabelsContainer = new Wt::WContainerWidget();
 
@@ -47,10 +47,10 @@ CWContacts::CWContacts ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WCon
         this->addWidget ( pTextContainer );
 
     }
-    else
-    {
-        this->addWidget ( new Wt::WText ( "CWContacts can't get STabButtonsContentData from IWidgetData for user: " + pD->strHash ) );
-    }
+//     else
+//     {
+//         this->addWidget ( new Wt::WText ( "CWContacts can't get STabButtonsContentData from IWidgetData for user: " + pD->strHash ) );
+//     }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

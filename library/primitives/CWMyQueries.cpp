@@ -9,8 +9,8 @@
 
 CWMyQueries::CWMyQueries ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
-    WidgetData::STabButtonsContentData * p = dynamic_cast<WidgetData::STabButtonsContentData*> ( pD );
-    if ( p != nullptr )
+//     WidgetData::STabButtonsContentData * p = dynamic_cast<WidgetData::STabButtonsContentData*> ( pD );
+//     if ( p != nullptr )
     {
         CWUser u;
         if ( u.load ( pD->strHash ) )
@@ -52,10 +52,10 @@ CWMyQueries::CWMyQueries ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WC
             this->addWidget ( new Wt::WText ( "Cant load user: " + pD->strHash ) );
         }
     }
-    else
-    {
-        this->addWidget ( new Wt::WText ( "CWMyQueries can't get STabButtonsContentData from IWidgetData for user: " + pD->strHash ) );
-    }
+//     else
+//     {
+//         this->addWidget ( new Wt::WText ( "CWMyQueries can't get STabButtonsContentData from IWidgetData for user: " + pD->strHash ) );
+//     }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
