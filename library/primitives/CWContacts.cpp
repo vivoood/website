@@ -47,6 +47,10 @@ CWContacts::CWContacts ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WCon
         this->addWidget ( pTextContainer );
 
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "Can't get STabButtonsContentData from IWidgetData " + pD->strHash ) );
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

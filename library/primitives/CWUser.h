@@ -52,6 +52,7 @@ private:
     friend class CWLogin;
     friend class CWRegisterAccount;
     friend class CWQuery;
+    friend class CWMyQueries;
 
     std::string _user = "n/a";
     std::string _pass = "n/a";

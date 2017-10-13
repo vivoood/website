@@ -40,6 +40,10 @@ CWFAQ::CWFAQ ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidg
         this->addWidget ( new Wt::WText ( "<h2>- What other protection might I have?</h2>" ) );
         this->addWidget ( new Wt::WText ( "<p><cite>It's always worth thinking about good travel insurance cover before booking a flight, and you may want to consider whether your policy has scheduled airline failure insurance (Safi) included.</cite></p>" ) );
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "Can't get STabButtonsContentData from IWidgetData " + pD->strHash ) );
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

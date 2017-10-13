@@ -44,8 +44,6 @@ private:
     WidgetData::SAccount m_MyAccount;
     WidgetData::SRadioButtons m_radioButtons;
     WidgetData::SContiCtry m_ContiCtry;
-    WidgetData::SQuery m_Query;
-    WidgetData::SMyQueries m_MyQueries;
 
     /** @User-line-input */
     WidgetData::SUserInput m_UserLineInput;

@@ -28,7 +28,6 @@ Constants::Constants()
 
     d.strTabName = "Contacts";
     d.strTabButtonStyle = "menu-buttons";
-
     d.content.strChildWidget = "CWContacts";
     d.content.strWidgetStyle = "contacts-style";
 
@@ -36,7 +35,6 @@ Constants::Constants()
 
     d.strTabName = "FAQ's";
     d.strTabButtonStyle = "menu-buttons";
-
     d.content.strChildWidget = "CWFAQ";
     d.content.strWidgetStyle = "faq-style";
 
@@ -64,14 +62,14 @@ Constants::Constants()
 
     dlogin.strTabName = "My queries";
     dlogin.strTabButtonStyle = "menu-buttons";
-    dlogin.content.strChildWidget = "";
+    dlogin.content.strChildWidget = "CWMyQueries";
     dlogin.content.strWidgetStyle = "";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "Add query";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.content.strChildWidget = "CWQuery";
-    dlogin.content.strWidgetStyle = "SQuery";
+    dlogin.content.strWidgetStyle = "";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "Contacts";
@@ -250,9 +248,9 @@ Constants::Constants()
 
     m_radioButtons.strStyle = "paybonam";
     m_radioButtons.strMainMsg = "Choose payment abonament";
-    m_radioButtons.content.push_back ( std::make_pair<std::string, std::string> ( "2.99$", "cheap variant - description ?!?!?!" ) );
-    m_radioButtons.content.push_back ( std::make_pair<std::string, std::string> ( "4.99$", "middle variant - description ?!?!?!" ) );
-    m_radioButtons.content.push_back ( std::make_pair<std::string, std::string> ( "5.99$", "expensive variant - description ?!?!?!" ) );
+    m_radioButtons.content.push_back ( std::make_pair<std::string, std::string> ( "2.99$", "cheap variant - description ........... ?!?!?!" ) );
+    m_radioButtons.content.push_back ( std::make_pair<std::string, std::string> ( "4.99$", "middle variant - description ........... ?!?!?!" ) );
+    m_radioButtons.content.push_back ( std::make_pair<std::string, std::string> ( "9.99$", "expensive variant - description ........... ?!?!?!" ) );
 
     /** ******************************************* */
 
@@ -276,11 +274,9 @@ Constants::Constants()
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SMyAccount", &m_MyAccount ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SRegister", &m_Login._register ) );
-    
+
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SRadioButtons", &m_radioButtons ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtry", &m_ContiCtry ) );
-    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SQuery", &m_Query ) );
-    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SMyQueries", &m_MyQueries ) );
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SFooter", &m_Footer ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLogin", &m_Login ) );
@@ -289,7 +285,7 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SUserComboInput", &m_UserComboInput ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtryInput", &m_ContiCtryInput ) );
 
-    
+
 
 //     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "", & ) );
 
