@@ -30,14 +30,12 @@ Constants::Constants()
     d.strTabButtonStyle = "menu-buttons";
     d.content.strChildWidget = "CWContacts";
     d.content.strWidgetStyle = "contacts-style";
-
     m_Tabs.vTabButtons.push_back ( d );
 
     d.strTabName = "FAQ's";
     d.strTabButtonStyle = "menu-buttons";
     d.content.strChildWidget = "CWFAQ";
     d.content.strWidgetStyle = "faq-style";
-
     m_Tabs.vTabButtons.push_back ( d );
 
     /** ******************************************* */
@@ -49,15 +47,6 @@ Constants::Constants()
 
     dlogin.strTabName = "Home";
     dlogin.strTabButtonStyle = "menu-buttons";
-    dlogin.content.strChildWidget = "";
-    dlogin.content.strWidgetStyle = "";
-    m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
-
-    dlogin.strTabName = "My account";
-    dlogin.strTabButtonStyle = "menu-buttons";
-    dlogin.content.strChildWidget = "CWRegisterAccount";
-    dlogin.content.strChildData = "SRegister";
-    dlogin.content.strWidgetStyle = "";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "My queries";

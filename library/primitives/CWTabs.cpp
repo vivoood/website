@@ -30,15 +30,7 @@ CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWi
             pBtn->clicked().connect ( std::bind ( [=]()
             {
                 m_pContent->clear();
-                if ( p->vTabButtons[i].content.strChildData == "n/a" )
-                {
-                    m_pContent->addWidget ( Factory::Create ( d.content.strChildWidget, &p->vTabButtons[i].content ) );
-                }
-                else
-                {
-                    m_pContent->addWidget ( Factory::Create ( d.content.strChildWidget, p->vTabButtons[i].content.strChildData, p->strHash ) );
-                }
-
+                m_pContent->addWidget ( Factory::Create ( d.content.strChildWidget, &p->vTabButtons[i].content ) );
             } ) );
         }
 
@@ -65,3 +57,4 @@ void CWTabs::FillFromSignal ( std::string strWidgetName, IWidgetData * pD )
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
