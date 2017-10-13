@@ -4,10 +4,10 @@
 
 CWFAQ::CWFAQ ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
-//     WidgetData::STabButtonsContentData * p = dynamic_cast<WidgetData::STabButtonsContentData*> ( pD );
-//     if ( p != nullptr )
+    WidgetData::SFaq * p = dynamic_cast<WidgetData::SFaq*> ( pD );
+    if ( p != nullptr )
     {
-//         this->setStyleClass ( p->strWidgetStyle );
+        this->setStyleClass ( p->strContainerStyle );
 
         this->addWidget ( new Wt::WText ( "<h2>- How do I choose the right airline?</h2>" ) );
         this->addWidget ( new Wt::WText ( "<p><cite>Low-cost airlines: The cheapest option but eliminate many of the standard flight benefits such as meals and complimentary drinks</cite></p>" ) );
@@ -42,7 +42,7 @@ CWFAQ::CWFAQ ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidg
     }
 //     else
 //     {
-//         this->addWidget ( new Wt::WText ( "CWFAQ can't get STabButtonsContentData from IWidgetData for user: " + pD->strHash ) );
+//         this->addWidget ( new Wt::WText ( "CWFAQ can't get SFaq from IWidgetData for user: " + pD->strHash ) );
 //     }
 }
 

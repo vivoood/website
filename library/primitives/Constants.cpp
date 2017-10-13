@@ -31,13 +31,13 @@ Constants::Constants()
     d.strTabName = "Contacts";
     d.strTabButtonStyle = "menu-buttons";
     d.strChildWidget = "CWContacts";
-    d.strChildWidgetData = "";
+    d.strChildWidgetData = "SContacts";
     m_Tabs.vTabButtons.push_back ( d );
 
     d.strTabName = "FAQ's";
     d.strTabButtonStyle = "menu-buttons";
     d.strChildWidget = "CWFAQ";
-    d.strChildWidgetData = "n/a";
+    d.strChildWidgetData = "SFaq";
     m_Tabs.vTabButtons.push_back ( d );
 
     /** ******************************************* */
@@ -54,25 +54,25 @@ Constants::Constants()
     dlogin.strTabName = "My queries";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "CWMyQueries";
-    dlogin.strChildWidgetData = "n/a";
+    dlogin.strChildWidgetData = "SMyQuery";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "Add query";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "CWQuery";
-    dlogin.strChildWidgetData = "n/a";
+    dlogin.strChildWidgetData = "SQuery";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "Contacts";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "CWContacts";
-    dlogin.strChildWidgetData = "n/a";
+    dlogin.strChildWidgetData = "SContacts";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "FAQ's";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "CWFAQ";
-    dlogin.strChildWidgetData = "n/a";
+    dlogin.strChildWidgetData = "SFaq";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     /** ******************************************* */
@@ -140,19 +140,19 @@ Constants::Constants()
     dTableOwnerLogin.strStyle = "table-col-2";
     dTableOwnerLogin.strLenght = "30%";
     dTableOwnerLogin.strWidgetName = "WContainerWidget";
-    dTableOwnerLogin.strWidgetData = "";
+    dTableOwnerLogin.strWidgetData = "n/a";
     vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
 
     dTableOwnerLogin.strStyle = "table-col-3";
     dTableOwnerLogin.strLenght = "30%";
     dTableOwnerLogin.strWidgetName = "WContainerWidget";
-    dTableOwnerLogin.strWidgetData = "";
+    dTableOwnerLogin.strWidgetData = "n/a";
     vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
 
     dTableOwnerLogin.strStyle = "table-col-4";
     dTableOwnerLogin.strLenght = "30%";
     dTableOwnerLogin.strWidgetName = "WContainerWidget";
-    dTableOwnerLogin.strWidgetData = "";
+    dTableOwnerLogin.strWidgetData = "n/a";
     vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
 
     m_TableOwnerLogin.vTable.push_back ( vTableRowOwnerLogin );
@@ -230,8 +230,8 @@ Constants::Constants()
     m_UserComboInput.strStyleLineEdit = "user-combo-input-button";
 
     m_ContiCtryInput.strStyleContainer = "contictry";
-    m_ContiCtryInput.strStyleLabel = "";
-    m_ContiCtryInput.strStyleLineEdit = "";
+    m_ContiCtryInput.strStyleLabel = "n/a";
+    m_ContiCtryInput.strStyleLineEdit = "n/a";
 
     /** ******************************************* */
 
@@ -275,10 +275,11 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SUserLineInput", &m_UserLineInput ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SUserComboInput", &m_UserComboInput ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContiCtryInput", &m_ContiCtryInput ) );
-
-
-
-//     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "", & ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SQuery", &m_Query ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SMyQuery", &m_MyQuery ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContacts", &m_Contacts ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SFaq", &m_Faq ) );
+    
 
 
     /** ******************************************* */
@@ -505,6 +506,8 @@ Constants::Constants()
     } ) );
 }
 
+#include "Debug.h"
+
 IWidgetData * Constants::GetData ( std::string str, std::string strHash )
 {
     std::map<std::string, IWidgetData*>::iterator it;
@@ -522,6 +525,7 @@ IWidgetData * Constants::GetData ( std::string str, std::string strHash )
             return &m_Offers.m_Offers[i];
     }
 
+    Debug::print_backtrace();
     return nullptr;
 }
 

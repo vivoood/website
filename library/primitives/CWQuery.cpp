@@ -27,6 +27,13 @@ CWQuery::CWQuery ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 
 void CWQuery::Create ( Wt::WContainerWidget* c, Wt::WContainerWidget * m, IWidgetData * pD )
 {
+    WidgetData::SQuery * p = dynamic_cast<WidgetData::SQuery*> ( pD );
+    if ( p == nullptr )
+    {
+        this->addWidget ( new Wt::WText ( "CWQuery can't get SQuery from IWidgetData for user: " + pD->strHash ) );
+        return;
+    }
+
     Wt::WWidget * w1 =  Factory::Create ( "CWRadioButtons", "SRadioButtons", "n/a" );
     c->addWidget ( w1 );
 

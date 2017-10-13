@@ -124,6 +124,24 @@ struct SContiCtry : public IWidgetData
     std::map< std::string, std::vector< std::string > > _list;
 };
 
+struct SQuery : public IWidgetData
+{
+};
+
+struct SMyQuery : public IWidgetData
+{
+};
+
+struct SContacts : public IWidgetData
+{
+    std::string strContainerStyle = "contacts-style";
+};
+
+struct SFaq : public IWidgetData
+{
+    std::string strContainerStyle = "faq-style";
+};
+
 }
 
 #endif // IWIDGETDATA_H
