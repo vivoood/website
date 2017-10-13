@@ -3,6 +3,7 @@
 #include <Wt/WText>
 
 #include "Factory.h"
+#include "CWHash.h"
 
 CWPublicOffers::CWPublicOffers ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
@@ -11,7 +12,7 @@ CWPublicOffers::CWPublicOffers ( IWidgetData * pD, Wt::WContainerWidget* parent 
     {
         for ( unsigned int i = 0; i < p->m_Offers.size(); i++ )
         {
-            this->addWidget ( Factory::Create ( "CWOffer", &p->m_Offers[i] ) );
+            this->addWidget ( Factory::Create ( "CWOffer", CWHash::Get ( p->m_Offers[i].offerBig.strFrom + p->m_Offers[i].offerBig.strTo ), p->strHash ) );
         }
     }
     else

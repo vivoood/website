@@ -7,10 +7,10 @@
 #include "IWidgetData.h"
 
 class Factory
-{
-public:
-    static Wt::WWidget * Create ( std::string strWidget, std::string strData, std::string strHash );
+{public:
     static Wt::WWidget * Create ( std::string strWidget, IWidgetData * pD );
+
+    static Wt::WWidget * Create ( std::string strWidget, std::string strData, std::string strHash );
     static Wt::WWidget * CreateUserLineInput ( std::string value );
     static Wt::WWidget * CreateComboBox ( std::string data, const std::string & label, const std::vector<std::string> & values );
 };

@@ -6,6 +6,7 @@
 #include <Wt/WPushButton>
 
 #include "CWSignals.h"
+#include "CWHash.h"
 
 CWOffer::CWOffer ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
@@ -23,7 +24,7 @@ CWOffer::CWOffer ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         Wt::WPushButton * pBtn = new Wt::WPushButton ( p->offerBig.strPrice );
         pBtn->clicked().connect ( std::bind ( [=]()
         {
-            gCWSignals.signaloffertotab.emit ( "CWOfferBig", &p->offerBig );
+            gCWSignals.signaloffertotab.emit ( "CWOfferBig", CWHash::Get ( p->offerBig.strFrom + p->offerBig.strTo ), p->strHash );
         } ) );
 
         pBtn->setStyleClass ( p->strBtnStyle );
@@ -36,3 +37,4 @@ CWOffer::CWOffer ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+

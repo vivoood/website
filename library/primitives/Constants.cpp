@@ -1,5 +1,7 @@
 #include "Constants.h"
 
+#include "CWHash.h"
+
 Constants::Constants()
 {
     m_Header.strTemplateName = "web-site-name-template";
@@ -507,11 +509,20 @@ IWidgetData * Constants::GetData ( std::string str, std::string strHash )
 {
     std::map<std::string, IWidgetData*>::iterator it;
     it = m_mapData.find ( str );
-    if ( it == m_mapData.end() )
-        return nullptr;
+    if ( it != m_mapData.end() )
+    {
+        ( *it ).second->strHash = strHash;
+        return ( *it ).second;
+    }
 
-    ( *it ).second->strHash = strHash;
-    return ( *it ).second;
+    for ( unsigned int i = 0; i < m_Offers.m_Offers.size(); i++ )
+    {
+        std::string h1 = CWHash::Get ( m_Offers.m_Offers[i].offerBig.strFrom + m_Offers.m_Offers[i].offerBig.strTo );
+        if ( h1 == str )
+            return &m_Offers.m_Offers[i];
+    }
+
+    return nullptr;
 }
 
 Constants gConstants;

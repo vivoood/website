@@ -50,10 +50,10 @@ CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWi
     }
 }
 
-void CWTabs::FillFromSignal ( std::string strWidgetName, IWidgetData * pD )
+void CWTabs::FillFromSignal ( std::string strWidgetName, std::string strData, std::string strHash )
 {
     m_pContent->clear();
-    m_pContent->addWidget ( Factory::Create ( strWidgetName, pD ) );
+    m_pContent->addWidget ( Factory::Create ( strWidgetName, strData, strHash ) );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

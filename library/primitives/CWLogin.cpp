@@ -66,7 +66,7 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         pRegBtn->setStyleClass ( p->strStyleBtns );
         pRegBtn->clicked().connect ( std::bind ( [=]()
         {
-            gCWSignals.signallogintotabs.emit ( "CWRegisterAccount", &p->_register );
+            gCWSignals.signallogintotabs.emit ( "CWRegisterAccount", "SRegister", p->strHash );
         } ) );
         this->addWidget ( pRegBtn );
 

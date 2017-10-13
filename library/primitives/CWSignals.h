@@ -10,9 +10,9 @@
 class CWSignals
 {
 public:
-    Wt::Signal<std::string, IWidgetData *> signaloffertotab;
+    Wt::Signal<std::string, std::string, std::string> signaloffertotab;
     Wt::Signal<std::string> signallogintomainwidget;
-    Wt::Signal<std::string, IWidgetData *> signallogintotabs;
+    Wt::Signal<std::string, std::string, std::string> signallogintotabs;
     Wt::Signal<void> signalafterlogintomainwidget;
 };
 
