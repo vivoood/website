@@ -54,7 +54,7 @@ CWMyQueries::CWMyQueries ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WC
     }
     else
     {
-        this->addWidget ( new Wt::WText ( "Can't get STabButtonsContentData from IWidgetData " + pD->strHash ) );
+        this->addWidget ( new Wt::WText ( "CWMyQueries can't get STabButtonsContentData from IWidgetData for user: " + pD->strHash ) );
     }
 }
 

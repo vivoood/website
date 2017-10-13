@@ -21,6 +21,10 @@ CWCombo::CWCombo ( IWidgetData * pD, const std::string & label, const std::vecto
 
         this->addWidget ( pEdit );
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWCombo can't get SUserInput from IWidgetData for user: " + pD->strHash ) );
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

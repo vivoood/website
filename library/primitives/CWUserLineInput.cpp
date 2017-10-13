@@ -23,6 +23,10 @@ CWUserLineInput::CWUserLineInput ( IWidgetData * pD, std::stringstream &ss, Wt::
         pEdit->setStyleClass ( p->strStyleLineEdit );
         this->addWidget ( pEdit );
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWUserLineInput can't get SUserInput from IWidgetData for user: " + pD->strHash ) );
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

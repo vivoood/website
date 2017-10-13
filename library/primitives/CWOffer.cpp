@@ -29,6 +29,10 @@ CWOffer::CWOffer ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
         pBtn->setStyleClass ( p->strBtnStyle );
         this->addWidget ( pBtn );
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWOffer can't get SOffer from IWidgetData for user: " + pD->strHash ) );
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

@@ -1,5 +1,7 @@
 #include "CWPublicOffers.h"
 
+#include <Wt/WText>
+
 #include "Factory.h"
 
 CWPublicOffers::CWPublicOffers ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
@@ -12,5 +14,10 @@ CWPublicOffers::CWPublicOffers ( IWidgetData * pD, Wt::WContainerWidget* parent 
             this->addWidget ( Factory::Create ( "CWOffer", &p->m_Offers[i] ) );
         }
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWPublicOffers can't get SOffers from IWidgetData for user: " + pD->strHash ) );
+    }
 }
 
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

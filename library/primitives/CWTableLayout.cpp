@@ -43,5 +43,9 @@ CWTableLayout::CWTableLayout ( IWidgetData * pD, Wt::WContainerWidget* parent ) 
 
         this->addWidget ( table );
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWTableLayout can't get STable from IWidgetData for user: " + pD->strHash ) );
+    }
 }
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

@@ -30,6 +30,10 @@ CWOfferBig::CWOfferBig ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WCon
         Wt::WAnchor * pAnchor = new Wt::WAnchor ( Wt::WLink ( p->strHyperlink ), "buy a ticket from the seller" );
         this->addWidget ( pAnchor );
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWOfferBig can't get SOfferBig from IWidgetData for user: " + pD->strHash ) );
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

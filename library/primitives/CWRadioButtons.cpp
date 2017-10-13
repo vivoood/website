@@ -31,6 +31,10 @@ CWRadioButtons::CWRadioButtons ( IWidgetData * pD, Wt::WContainerWidget* parent 
 
         this->addWidget ( container );
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWRadioButtons can't get SRadioButtons from IWidgetData for user: " + pD->strHash ) );
+    }
 }
 
 void CWRadioButtons::Click ( Wt::WRadioButton* selection )

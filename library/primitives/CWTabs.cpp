@@ -52,6 +52,10 @@ CWTabs::CWTabs ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWi
         gCWSignals.signaloffertotab.connect ( this, &CWTabs::FillFromSignal );
         gCWSignals.signallogintotabs.connect ( this, &CWTabs::FillFromSignal );
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWTabs can't get STabs from IWidgetData for user: " + pD->strHash ) );
+    }
 }
 
 void CWTabs::FillFromSignal ( std::string strWidgetName, IWidgetData * pD )

@@ -18,7 +18,7 @@ CWRegisterAccount::CWRegisterAccount ( IWidgetData * pD, Wt::WContainerWidget* p
     WidgetData::SRegister * p = dynamic_cast<WidgetData::SRegister*> ( pD );
     if ( p == nullptr )
     {
-        // @TODO throw
+        this->addWidget ( new Wt::WText ( "CWRegisterAccount can't get SRegister from IWidgetData for user: " + pD->strHash ) );
         return;
     }
 

@@ -42,7 +42,7 @@ CWFAQ::CWFAQ ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidg
     }
     else
     {
-        this->addWidget ( new Wt::WText ( "Can't get STabButtonsContentData from IWidgetData " + pD->strHash ) );
+        this->addWidget ( new Wt::WText ( "CWFAQ can't get STabButtonsContentData from IWidgetData for user: " + pD->strHash ) );
     }
 }
 

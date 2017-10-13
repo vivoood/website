@@ -72,10 +72,10 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 
         this->setStyleClass ( p->strStyleCommon );
     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWLogin can't get SLogin from IWidgetData for user: " + pD->strHash ) );
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
-
-
-
