@@ -9,8 +9,8 @@
 
 CWMyQueries::CWMyQueries ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
-//     WidgetData::STabButtonsContentData * p = dynamic_cast<WidgetData::STabButtonsContentData*> ( pD );
-//     if ( p != nullptr )
+    WidgetData::SMyQuery * p = dynamic_cast<WidgetData::SMyQuery*> ( pD );
+    if ( p != nullptr )
     {
         CWUser u;
         if ( u.load ( pD->strHash ) )
@@ -20,9 +20,13 @@ CWMyQueries::CWMyQueries ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WC
             table->setWidth ( Wt::WLength ( "100%" ) );
 
             table->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "#" ) );
-            table->elementAt ( 0, 1 )->addWidget ( new Wt::WText ( "First Name" ) );
-            table->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "Last Name" ) );
-            table->elementAt ( 0, 3 )->addWidget ( new Wt::WText ( "Pay" ) );
+            table->elementAt ( 0, 1 )->addWidget ( new Wt::WText ( "Price" ) );
+            table->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "From" ) );
+            table->elementAt ( 0, 3 )->addWidget ( new Wt::WText ( "To" ) );
+            table->elementAt ( 0, 4 )->addWidget ( new Wt::WText ( "Date" ) );
+            table->elementAt ( 0, 5 )->addWidget ( new Wt::WText ( "Adult(s)" ) );
+            table->elementAt ( 0, 6 )->addWidget ( new Wt::WText ( "Budget" ) );
+            table->elementAt ( 0, 3 )->addWidget ( new Wt::WText ( "" ) );
 
             const std::vector<CWUser::SAbon> & v = u._vAbon;
 
@@ -52,10 +56,10 @@ CWMyQueries::CWMyQueries ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WC
             this->addWidget ( new Wt::WText ( "Cant load user: " + pD->strHash ) );
         }
     }
-//     else
-//     {
-//         this->addWidget ( new Wt::WText ( "CWMyQueries can't get STabButtonsContentData from IWidgetData for user: " + pD->strHash ) );
-//     }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWMyQueries can't get SMyQuery from IWidgetData for user: " + pD->strHash ) );
+    }
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

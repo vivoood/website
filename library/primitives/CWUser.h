@@ -29,6 +29,7 @@ public:
         std::string _adults = "n/a";
         std::string _budget = "n/a";
         bool        _payd = false;
+        void Normalize();
     };
 
     CWUser() {}
@@ -45,7 +46,7 @@ public:
     static bool CheckUserExist ( std::string filename );
     static bool CheckOwner ( std::string filename );
 
-    void print();
+//     void print();
 
 private:
     friend class CWAfterLogin;

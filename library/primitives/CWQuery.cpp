@@ -115,6 +115,8 @@ void CWQuery::Create ( Wt::WContainerWidget* c, Wt::WContainerWidget * m, IWidge
             ab._adults = line->valueText().toUTF8();
             ab._budget = line2->valueText().toUTF8();
 
+            ab.Normalize();
+            
             u.AddAbon ( ab );
             u.save();
 

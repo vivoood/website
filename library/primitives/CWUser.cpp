@@ -137,25 +137,40 @@ std::istream& operator>> ( std::istream& is, CWUser::SContiCtry& dt )
     return is;
 }
 
-void CWUser::print()
+void CWUser::SAbon::Normalize()
 {
-    std::cout << "User: " << _user << std::endl;
-    std::cout << "Pass: " << _pass << std::endl;
-    std::cout << "Mail: " << _mail << std::endl;
-    std::cout << "Ctry: " << _country << std::endl;
-    std::cout << "Gndr: " << _gender << std::endl;
+    if ( _from._city.empty() )
+        _from._city = "n/a";
 
-    for ( const auto & it : _vAbon )
-    {
-        std::cout << "#" << it._abon << std::endl;
-        std::cout << "#" << it._from._conti << " " << it._from._ctry << " " << it._from._city << std::endl;
-        std::cout << "#" << it._to._conti << " " << it._to._ctry << " " << it._to._city << std::endl;
-        std::cout << "#" << it._date << std::endl;
-        std::cout << "#" << it._adults << std::endl;
-        std::cout << "#" << it._budget << std::endl;
-        std::cout << "#" << ( it._payd ? "payd" : "not payd" ) << std::endl;
-    }
+    if ( _to._city.empty() )
+        _to._city = "n/a";
+
+    if ( _adults.empty() )
+        _adults = "n/a";
+
+    if ( _budget.empty() )
+        _budget = "n/a";
 }
+
+// void CWUser::print()
+// {
+//     std::cout << "User: " << _user << std::endl;
+//     std::cout << "Pass: " << _pass << std::endl;
+//     std::cout << "Mail: " << _mail << std::endl;
+//     std::cout << "Ctry: " << _country << std::endl;
+//     std::cout << "Gndr: " << _gender << std::endl;
+//
+//     for ( const auto & it : _vAbon )
+//     {
+//         std::cout << "#" << it._abon << std::endl;
+//         std::cout << "#" << it._from._conti << " " << it._from._ctry << " " << it._from._city << std::endl;
+//         std::cout << "#" << it._to._conti << " " << it._to._ctry << " " << it._to._city << std::endl;
+//         std::cout << "#" << it._date << std::endl;
+//         std::cout << "#" << it._adults << std::endl;
+//         std::cout << "#" << it._budget << std::endl;
+//         std::cout << "#" << ( it._payd ? "payd" : "not payd" ) << std::endl;
+//     }
+// }
 
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
