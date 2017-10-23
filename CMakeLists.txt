@@ -42,7 +42,11 @@ if (${enable_rm} STREQUAL "ON")
 		COMMAND rm ${CMAKE_BINARY_DIR}/users
 		COMMAND rm ${CMAKE_BINARY_DIR}/autorun.sh
 		COMMAND rm ${CMAKE_BINARY_DIR}/autorun.py
-		
+		)
+endif()
+
+add_custom_command(
+	TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebStyle.css ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebTemplates.xml ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/pics ${CMAKE_BINARY_DIR}
@@ -50,14 +54,3 @@ if (${enable_rm} STREQUAL "ON")
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.sh ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.py ${CMAKE_BINARY_DIR}
 	)
-endif()
-
-# add_custom_command(
-#     TARGET ${PROJECT_NAME} POST_BUILD
-#     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebStyle.css ${CMAKE_BINARY_DIR}
-#     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebTemplates.xml ${CMAKE_BINARY_DIR}
-#     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/pics ${CMAKE_BINARY_DIR}
-#     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/users ${CMAKE_BINARY_DIR}
-#     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.sh ${CMAKE_BINARY_DIR}
-#     COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.py ${CMAKE_BINARY_DIR}
-# )
