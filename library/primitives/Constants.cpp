@@ -20,7 +20,7 @@ Constants::Constants()
     d.strTabButtonStyle = "menu-buttons";
     m_Tabs.vTabButtons.push_back ( d );
 
-    d.strTabName = "News";
+    d.strTabName = "How it works";
     d.strTabButtonStyle = "menu-buttons";
     m_Tabs.vTabButtons.push_back ( d );
 
@@ -51,6 +51,10 @@ Constants::Constants()
     dlogin.strTabButtonStyle = "menu-buttons";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
+    dlogin.strTabName = "How it works";
+    dlogin.strTabButtonStyle = "menu-buttons";
+    m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
+
     dlogin.strTabName = "My queries";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "CWMyQueries";
@@ -67,6 +71,10 @@ Constants::Constants()
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "CWContacts";
     dlogin.strChildWidgetData = "SContacts";
+    m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
+
+    dlogin.strTabName = "Client report";
+    dlogin.strTabButtonStyle = "menu-buttons";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "FAQ's";
@@ -279,7 +287,7 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SMyQuery", &m_MyQuery ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContacts", &m_Contacts ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SFaq", &m_Faq ) );
-    
+
 
 
     /** ******************************************* */
