@@ -1,5 +1,7 @@
 #include "CWUser.h"
 
+#include <algorithm>
+
 #include "CWHash.h"
 
 CWUser::CWUser ( std::string user, std::string sha, std::string mail, std::string coutry, std::string gender )
@@ -150,6 +152,8 @@ void CWUser::SAbon::Normalize()
 
     if ( _budget.empty() )
         _budget = "n/a";
+
+    std::replace ( _date.begin(), _date.end(), ' ', '-' );
 }
 
 // void CWUser::print()
