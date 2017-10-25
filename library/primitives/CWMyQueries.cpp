@@ -4,6 +4,7 @@
 #include <Wt/WTableCell>
 #include <Wt/WPushButton>
 #include <Wt/WText>
+#include <Wt/WCssDecorationStyle>
 
 #include "CWUser.h"
 
@@ -73,7 +74,10 @@ CWMyQueries::CWMyQueries ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WC
                 table->elementAt ( row, 6 )->addWidget ( new Wt::WText ( ab._budget ) );
                 table->elementAt ( row, 6 )->setContentAlignment ( Wt::AlignLeft );
 
-                Wt::WPushButton * btn = new Wt::WPushButton ( ( ab._payd ? "paid" : "pay" ) );
+                Wt::WPushButton * btn = new Wt::WPushButton ( "" );
+                btn->setEnabled ( !ab._payd );
+                btn->setLink ( Wt::WLink ( "https://paypal.com/" ) );
+                btn->setIcon ( Wt::WLink ( "pics/paypal.png" ) );
                 table->elementAt ( row, 7 )->addWidget ( btn );
                 table->elementAt ( row, 7 )->setContentAlignment ( Wt::AlignLeft );
             }
