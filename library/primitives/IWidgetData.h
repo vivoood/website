@@ -75,9 +75,20 @@ struct SOffer : public IWidgetData
     std::string strBtnStyle = "default-offer-button-style";
 };
 
+struct SOffersLeftRightBase : public IWidgetData
+{
+    std::vector<SOffer> m_Offers;
+};
+
 struct SOffers : public IWidgetData
 {
     std::vector<SOffer> m_Offers;
+
+    const int cnLeftSize = 4;
+    SOffersLeftRightBase m_left;
+
+    const int cnRightSize = 5;
+    SOffersLeftRightBase m_right;
 };
 
 struct SRegister : public IWidgetData

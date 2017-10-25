@@ -1,5 +1,7 @@
 #include "Constants.h"
 
+#include <algorithm>
+
 #include "CWHash.h"
 
 Constants::Constants()
@@ -116,7 +118,7 @@ Constants::Constants()
     dTable.strStyle = "table-col-3";
     dTable.strLenght = "15%";
     dTable.strWidgetName = "CWPublicOffers";
-    dTable.strWidgetData = "SOffers";
+    dTable.strWidgetData = "SOffersRight";
     vTableRow.push_back ( dTable );
 
     m_Table.vTable.push_back ( vTableRow );
@@ -141,7 +143,7 @@ Constants::Constants()
     dTableAfterLogin.strStyle = "table-col-3";
     dTableAfterLogin.strLenght = "15%";
     dTableAfterLogin.strWidgetName = "CWPublicOffers";
-    dTableAfterLogin.strWidgetData = "SOffers";
+    dTableAfterLogin.strWidgetData = "SOffersRight";
     vTableRowAfterLogin.push_back ( dTableAfterLogin );
 
     m_TableAfterLogin.vTable.push_back ( vTableRowAfterLogin );
@@ -227,6 +229,144 @@ Constants::Constants()
     o.offerBig.strHyperlink = "https://www.air.bg";
     m_Offers.m_Offers.push_back ( o );
 
+    o.offerBig.bOneWay = true;
+    o.offerBig.bDirectFlight = false;
+    o.offerBig.strFrom = "Istanbul";
+    o.offerBig.strTo = "China";
+    o.offerBig.strPrice = "$ 77";
+    o.offerBig.strAirline = "Air asia";
+    o.offerBig.strHyperlink = "https://www.airasia.com";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = true;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Sofia";
+    o.offerBig.strTo = "Vienna";
+    o.offerBig.strPrice = "$ 36";
+    o.offerBig.strAirline = "Wizz Air";
+    o.offerBig.strHyperlink = "https://wizzair.com/";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Milano";
+    o.offerBig.strTo = "Paris";
+    o.offerBig.strPrice = "$ 87";
+    o.offerBig.strAirline = "Wizz Air";
+    o.offerBig.strHyperlink = "https://wizzair.com/";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Milano";
+    o.offerBig.strTo = "Paris";
+    o.offerBig.strPrice = "$ 87";
+    o.offerBig.strAirline = "Wizz Air";
+    o.offerBig.strHyperlink = "https://wizzair.com/";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = false;
+    o.offerBig.strFrom = "Rome";
+    o.offerBig.strTo = "Brazil";
+    o.offerBig.strPrice = "$ 135";
+    o.offerBig.strAirline = "Air asia";
+    o.offerBig.strHyperlink = "https://www.airasia.com";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Milano";
+    o.offerBig.strTo = "Paris";
+    o.offerBig.strPrice = "$ 87";
+    o.offerBig.strAirline = "Wizz Air";
+    o.offerBig.strHyperlink = "https://wizzair.com/";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = false;
+    o.offerBig.strFrom = "Rome";
+    o.offerBig.strTo = "Brazil";
+    o.offerBig.strPrice = "$ 135";
+    o.offerBig.strAirline = "Air asia";
+    o.offerBig.strHyperlink = "https://www.airasia.com";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = true;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Sofia";
+    o.offerBig.strTo = "Vienna";
+    o.offerBig.strPrice = "$ 36";
+    o.offerBig.strAirline = "Wizz Air";
+    o.offerBig.strHyperlink = "https://wizzair.com/";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Milano";
+    o.offerBig.strTo = "Paris";
+    o.offerBig.strPrice = "$ 87";
+    o.offerBig.strAirline = "Wizz Air";
+    o.offerBig.strHyperlink = "https://wizzair.com/";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Milano";
+    o.offerBig.strTo = "Paris";
+    o.offerBig.strPrice = "$ 87";
+    o.offerBig.strAirline = "Wizz Air";
+    o.offerBig.strHyperlink = "https://wizzair.com/";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = false;
+    o.offerBig.strFrom = "Rome";
+    o.offerBig.strTo = "Brazil";
+    o.offerBig.strPrice = "$ 135";
+    o.offerBig.strAirline = "Air asia";
+    o.offerBig.strHyperlink = "https://www.airasia.com";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = true;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Sofia";
+    o.offerBig.strTo = "Vienna";
+    o.offerBig.strPrice = "$ 36";
+    o.offerBig.strAirline = "Wizz Air";
+    o.offerBig.strHyperlink = "https://wizzair.com/";
+    m_Offers.m_Offers.push_back ( o );
+
+    o.offerBig.bOneWay = false;
+    o.offerBig.bDirectFlight = true;
+    o.offerBig.strFrom = "Milano";
+    o.offerBig.strTo = "Paris";
+    o.offerBig.strPrice = "$ 87";
+    o.offerBig.strAirline = "Wizz Air";
+    o.offerBig.strHyperlink = "https://wizzair.com/";
+    m_Offers.m_Offers.push_back ( o );
+
+    if ( m_Offers.m_Offers.size() < ( m_Offers.cnLeftSize + m_Offers.cnRightSize ) )
+    {
+        for ( unsigned int i = 0; i < m_Offers.m_Offers.size(); i++ )
+        {
+            ( i % 2 == 0 ) ? m_Offers.m_right.m_Offers.push_back ( m_Offers.m_Offers[i] ) : m_Offers.m_left.m_Offers.push_back ( m_Offers.m_Offers[i] );
+        }
+    }
+    else
+    {
+        std::random_shuffle ( m_Offers.m_Offers.begin(), m_Offers.m_Offers.end() );
+        for ( unsigned int i = 0; i < m_Offers.cnLeftSize; i++ )
+        {
+            m_Offers.m_left.m_Offers.push_back ( m_Offers.m_Offers[i] );
+        }
+
+        for ( unsigned int i = 0; i < m_Offers.cnRightSize; i++ )
+        {
+            m_Offers.m_right.m_Offers.push_back ( m_Offers.m_Offers[i] );
+        }
+    }
+
     /** ******************************************* */
 
     m_Login.strStyleBtns = "login-button-style";
@@ -237,7 +377,10 @@ Constants::Constants()
 
 
     m_LeftCol.m_vWidgets.push_back ( std::pair<std::string, std::string> ( "CWLogin", "SLogin" ) );
+    m_LeftCol.m_vWidgets.push_back ( std::pair<std::string, std::string> ( "CWPublicOffers", "SOffersLeft" ) );
+
     m_LeftColAfterLogin.m_vWidgets.push_back ( std::pair<std::string, std::string> ( "CWAfterLogin", "SLogin" ) );
+    m_LeftColAfterLogin.m_vWidgets.push_back ( std::pair<std::string, std::string> ( "CWPublicOffers", "SOffersLeft" ) );
 
     /** ******************************************* */
 
@@ -278,7 +421,9 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabs", &m_Tabs ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabsAfterLogin", &m_TabsAfterLogin ) );
 
-    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffers", &m_Offers ) );
+//     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffers", &m_Offers ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffersLeft", &m_Offers.m_left ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffersRight", &m_Offers.m_right ) );
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLeftCol", &m_LeftCol ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLeftColAfterLogin", &m_LeftColAfterLogin ) );
