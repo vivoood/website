@@ -75,9 +75,14 @@ CWMyQueries::CWMyQueries ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WC
                 table->elementAt ( row, 6 )->setContentAlignment ( Wt::AlignLeft );
 
                 Wt::WPushButton * btn = new Wt::WPushButton ( "" );
-                btn->setEnabled ( !ab._payd );
                 btn->setLink ( Wt::WLink ( "https://paypal.com/" ) );
                 btn->setIcon ( Wt::WLink ( "pics/paypal.png" ) );
+                if ( ab._payd )
+                {
+                    btn->setEnabled ( false );
+                    btn->decorationStyle().setBackgroundColor ( Wt::WColor ( Wt::gray ) );
+                }
+
                 table->elementAt ( row, 7 )->addWidget ( btn );
                 table->elementAt ( row, 7 )->setContentAlignment ( Wt::AlignLeft );
             }

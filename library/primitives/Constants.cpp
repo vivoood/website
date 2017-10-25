@@ -49,10 +49,14 @@ Constants::Constants()
 
     dlogin.strTabName = "Home";
     dlogin.strTabButtonStyle = "menu-buttons";
+    dlogin.strChildWidget = "n/a";
+    dlogin.strChildWidgetData = "n/a";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "How it works";
     dlogin.strTabButtonStyle = "menu-buttons";
+    dlogin.strChildWidget = "n/a";
+    dlogin.strChildWidgetData = "n/a";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "My queries";
@@ -67,6 +71,12 @@ Constants::Constants()
     dlogin.strChildWidgetData = "SQuery";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
+    dlogin.strTabName = "?";
+    dlogin.strTabButtonStyle = "menu-buttons";
+    dlogin.strChildWidget = "n/a";
+    dlogin.strChildWidgetData = "n/a";
+    m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
+
     dlogin.strTabName = "Contacts";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "CWContacts";
@@ -75,6 +85,8 @@ Constants::Constants()
 
     dlogin.strTabName = "Client report";
     dlogin.strTabButtonStyle = "menu-buttons";
+    dlogin.strChildWidget = "n/a";
+    dlogin.strChildWidgetData = "n/a";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "FAQ's";

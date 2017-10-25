@@ -1,6 +1,13 @@
 #include "CWFooter.h"
 
 #include <Wt/WText>
+#include <Wt/WCssDecorationStyle>
+#include <Wt/WLink>
+#include <Wt/WAnchor>
+
+#include <sstream>
+
+#include "Factory.h"
 
 CWFooter::CWFooter ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
@@ -8,6 +15,10 @@ CWFooter::CWFooter ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContain
     if ( p != nullptr )
     {
         this->setStyleClass ( p->strStyle );
+        this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/continents.png" ), Wt::WCssDecorationStyle::NoRepeat, Wt::CenterX );
+
+        Wt::WAnchor * pAnchor = new Wt::WAnchor ( Wt::WLink ( "https://flightradar24.com" ), "Flight radar" );
+        this->addWidget ( pAnchor );
     }
     else
     {

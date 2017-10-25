@@ -1473,9 +1473,12 @@ table.x-grid3-row-table {
 
 .footer-style{  
     width: auto;
-    height: 100px;
+    height: 150px;
     border: 3px solid #88a207;
     background-color: #FFeFF8;
+    background-size: 100% 100%;
+    
+    text-align: center;
 }
 
 .default-offer-style{
