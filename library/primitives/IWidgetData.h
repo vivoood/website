@@ -21,6 +21,8 @@ struct SHeader : public IWidgetData
     std::string strBindSlogan;
     std::string strTitle;
     std::string strSlogan;
+    
+    std::string strStyle = "web-site-name-style";
 };
 
 struct STabButtonsData : public IWidgetData

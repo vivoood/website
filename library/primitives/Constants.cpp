@@ -61,19 +61,19 @@ Constants::Constants()
     dlogin.strChildWidgetData = "n/a";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
-    dlogin.strTabName = "My queries";
-    dlogin.strTabButtonStyle = "menu-buttons";
-    dlogin.strChildWidget = "CWMyQueries";
-    dlogin.strChildWidgetData = "SMyQuery";
-    m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
-
     dlogin.strTabName = "Add query";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "CWQuery";
     dlogin.strChildWidgetData = "SQuery";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
-    dlogin.strTabName = "?";
+    dlogin.strTabName = "My queries";
+    dlogin.strTabButtonStyle = "menu-buttons";
+    dlogin.strChildWidget = "CWMyQueries";
+    dlogin.strChildWidgetData = "SMyQuery";
+    m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
+
+    dlogin.strTabName = "My history";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "n/a";
     dlogin.strChildWidgetData = "n/a";

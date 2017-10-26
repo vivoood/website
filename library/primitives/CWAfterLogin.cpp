@@ -15,6 +15,7 @@ CWAfterLogin::CWAfterLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : 
     if ( p != nullptr )
     {
         this->addWidget ( new Wt::WBreak() );
+        this->addWidget ( new Wt::WBreak() );
 
         this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/login_bgr.png" ), Wt::WCssDecorationStyle::NoRepeat, Wt::CenterX );
 

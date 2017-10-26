@@ -1404,12 +1404,11 @@ table.x-grid3-row-table {
 
 
 .web-site-name-style{
-    height: 230px;
-    text-align: center;
-    background-image: url('pics/airplane_name_bgr.jpg');
+    border: 3px solid #88a207;
     background-size: 100% 100%;
-    
-    max-width: 1920px;
+    height: 230px;
+    color: #bd380f;
+    text-align: center;
 }
 
 .web-site-name-style h1{
