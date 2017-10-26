@@ -4,6 +4,7 @@
 #include <Wt/WText>
 #include <Wt/WBreak>
 #include <Wt/WPushButton>
+#include <Wt/WCssDecorationStyle>
 
 #include "CWSignals.h"
 #include "CWHash.h"
@@ -14,7 +15,16 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
     WidgetData::SLogin * p = dynamic_cast<WidgetData::SLogin*> ( pD );
     if ( p != nullptr )
     {
-        Wt::WText * pUserLabel = new Wt::WText ( "_e-mail_" );
+        this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/login_bgr.png" ), Wt::WCssDecorationStyle::NoRepeat, Wt::CenterX );
+
+        this->addWidget ( new Wt::WBreak() );
+
+        Wt::WFont f ( Wt::WFont::SansSerif );
+        f.setSize ( "20" );
+        f.setWeight ( Wt::WFont::Bold );
+
+        Wt::WText * pUserLabel = new Wt::WText ( "_e-mail__" );
+        pUserLabel->decorationStyle().setFont ( f );
         pUserLabel->setStyleClass ( p->strStyleFields );
         this->addWidget ( pUserLabel );
 
@@ -24,7 +34,8 @@ CWLogin::CWLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 
         this->addWidget ( new Wt::WBreak() );
 
-        Wt::WText * pPassLabel = new Wt::WText ( "Password" );
+        Wt::WText * pPassLabel = new Wt::WText ( "__pass__" );
+        pPassLabel->decorationStyle().setFont ( f );
         pPassLabel->setStyleClass ( p->strStyleFields );
         this->addWidget ( pPassLabel );
 

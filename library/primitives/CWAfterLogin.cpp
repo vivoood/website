@@ -4,6 +4,7 @@
 #include <Wt/WText>
 #include <Wt/WBreak>
 #include <Wt/WPushButton>
+#include <Wt/WCssDecorationStyle>
 
 #include "CWSignals.h"
 #include "CWUser.h"
@@ -15,10 +16,17 @@ CWAfterLogin::CWAfterLogin ( IWidgetData * pD, Wt::WContainerWidget* parent ) : 
     {
         this->addWidget ( new Wt::WBreak() );
 
+        this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/login_bgr.png" ), Wt::WCssDecorationStyle::NoRepeat, Wt::CenterX );
+
+        Wt::WFont f ( Wt::WFont::SansSerif );
+        f.setSize ( "20" );
+        f.setWeight ( Wt::WFont::Bold );
+
         CWUser u;
         u.load ( p->strHash );
 
         Wt::WText * pUserLabel = new Wt::WText ( "Welcome " + u._user );
+        pUserLabel->decorationStyle().setFont ( f );
         pUserLabel->setStyleClass ( p->strStyleFields );
         this->addWidget ( pUserLabel );
 
