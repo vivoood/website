@@ -4,6 +4,9 @@
 #include <Wt/WLink>
 #include <Wt/WText>
 #include <Wt/WBreak>
+#include <Wt/WTable>
+#include <Wt/WPushButton>
+#include <Wt/WCssDecorationStyle>
 
 CWOfferBig::CWOfferBig ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
@@ -11,24 +14,54 @@ CWOfferBig::CWOfferBig ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WCon
     if ( p != nullptr )
     {
         this->setStyleClass ( p->offerBig.strStyle );
+//         this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/" + p->offerBig.strTo + ".jpg" ), Wt::WCssDecorationStyle::NoRepeat, Wt::CenterX );
 
-        this->addWidget ( new Wt::WText ( "From " + p->offerBig.strFrom + " to " + p->offerBig.strTo ) );
-        this->addWidget ( new Wt::WBreak() );
+        Wt::WContainerWidget * pContainer = new Wt::WContainerWidget();
+        pContainer->setContentAlignment ( Wt::AlignCenter );
+        pContainer->addWidget ( new Wt::WText ( "You can take low cost holiday to" ) );
+        pContainer->addWidget ( new Wt::WBreak() );
+        pContainer->addWidget ( new Wt::WText ( p->offerBig.strTo ) );
+        pContainer->addWidget ( new Wt::WBreak() );
+        pContainer->addWidget ( new Wt::WText ( "air travel will cost only " + p->offerBig.strPrice + " instead " + p->offerBig.strInstead ) );
+        pContainer->addWidget ( new Wt::WBreak() );
+        std::string btnName = "Show details";
+        Wt::WPushButton * btn = new Wt::WPushButton ( btnName );
+        pContainer->addWidget ( btn );
+        this->addWidget ( pContainer );
 
-        this->addWidget ( new Wt::WText ( "Airline is " + p->offerBig.strAirline ) );
-        this->addWidget ( new Wt::WBreak() );
+        Wt::WContainerWidget * pContainer2 = new Wt::WContainerWidget();
+        pContainer2->hide();
 
-        this->addWidget ( new Wt::WText ( "Only for " + p->offerBig.strPrice ) );
-        this->addWidget ( new Wt::WBreak() );
+        Wt::WTable *table = new Wt::WTable();
+        table->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "Price" ) );
+        table->elementAt ( 0, 1 )->addWidget ( new Wt::WText ( p->offerBig.strPrice ) );
+        table->elementAt ( 1, 0 )->addWidget ( new Wt::WText ( "Airline" ) );
+        table->elementAt ( 1, 1 )->addWidget ( new Wt::WText ( p->offerBig.strAirline ) );
+        table->elementAt ( 2, 0 )->addWidget ( new Wt::WText ( "Way" ) );
+        table->elementAt ( 2, 1 )->addWidget ( new Wt::WText ( p->offerBig.bOneWay ? "one" : "two" ) );
+        table->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Direct" ) );
+        table->elementAt ( 3, 1 )->addWidget ( new Wt::WText ( p->offerBig.bDirectFlight ? "yes" : "no" ) );
+        table->elementAt ( 4, 0 )->addWidget ( new Wt::WText ( "Website" ) );
+        table->elementAt ( 4, 1 )->addWidget ( new Wt::WAnchor ( Wt::WLink ( p->offerBig.strHyperlink ), "link" ) );
 
-        this->addWidget ( new Wt::WText ( "Ticket is " + std::string ( p->offerBig.bOneWay ? "One way" : "Two way" ) ) );
-        this->addWidget ( new Wt::WBreak() );
+        pContainer2->addWidget ( table );
+        this->addWidget ( pContainer2 );
 
-        this->addWidget ( new Wt::WText ( "Flight " + std::string ( p->offerBig.bDirectFlight ? "is direct" : "need a jump" ) ) );
-        this->addWidget ( new Wt::WBreak() );
+        btn->clicked().connect ( std::bind ( [=]()
+        {
+            std::string t = btn->text().toUTF8();
+            if ( t == btnName )
+            {
+                btn->setText ( "Hide" );
+                pContainer2->show();
+            }
+            else
+            {
+                btn->setText ( btnName );
+                pContainer2->hide();
+            }
 
-        Wt::WAnchor * pAnchor = new Wt::WAnchor ( Wt::WLink ( p->offerBig.strHyperlink ), "buy a ticket from the seller" );
-        this->addWidget ( pAnchor );
+        } ) );
     }
     else
     {
@@ -37,4 +70,3 @@ CWOfferBig::CWOfferBig ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WCon
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-

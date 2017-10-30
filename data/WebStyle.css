@@ -1499,6 +1499,7 @@ table.x-grid3-row-table {
     font-size: 20px;
     font-weight: bold;
     color: #bd380f;
+    background-size: 100% 100%;
 }
 
 .default-offer-button-style{

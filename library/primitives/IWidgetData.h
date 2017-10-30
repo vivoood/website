@@ -64,6 +64,7 @@ struct SOfferBig : public IWidgetData
     std::string strTo = "n/a";
     std::string strAirline = "n/a";
     std::string strPrice = "$ 0";
+    std::string strInstead = "$ 999";
     std::string strStyle = "default-offer-big-style";
     bool bOneWay = false;
     bool bDirectFlight = false;
