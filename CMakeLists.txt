@@ -21,6 +21,7 @@ endif()
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
 
 add_subdirectory(library)
+add_subdirectory(deamon)
 
 set(SOURCE WebSite.cpp)
 set(internal_libs first_site)
@@ -41,7 +42,11 @@ if (${enable_rm} STREQUAL "ON")
 		COMMAND rm ${CMAKE_BINARY_DIR}/pics
 		COMMAND rm ${CMAKE_BINARY_DIR}/users
 		COMMAND rm ${CMAKE_BINARY_DIR}/autorun.sh
+		COMMAND rm ${CMAKE_BINARY_DIR}/restarter.sh
 		COMMAND rm ${CMAKE_BINARY_DIR}/autorun.py
+		
+		#deamon
+		COMMAND rm ${CMAKE_BINARY_DIR}/restarter
 		)
 endif()
 
@@ -52,5 +57,9 @@ add_custom_command(
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/pics ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/users ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.sh ${CMAKE_BINARY_DIR}
+        COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/restarter.sh ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.py ${CMAKE_BINARY_DIR}
+        
+        #deamon
+        COMMAND ln -s ${CMAKE_BINARY_DIR}/deamon/restarter ${CMAKE_BINARY_DIR}
 	)
