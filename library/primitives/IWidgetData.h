@@ -21,7 +21,7 @@ struct SHeader : public IWidgetData
     std::string strBindSlogan;
     std::string strTitle;
     std::string strSlogan;
-    
+
     std::string strStyle = "web-site-name-style";
 };
 
@@ -156,7 +156,36 @@ struct SFaq : public IWidgetData
     std::string strContainerStyle = "faq-style";
 };
 
+struct SOwnerFreeOffers : public IWidgetData
+{
+    enum class EID
+    {
+        from = 0, to, price, instead, airl, oneway, direct, link
+    };
+
+    struct Data
+    {
+        EID id;
+        std::string label;
+        std::string widget;
+    };
+
+    std::vector<SOwnerFreeOffers::Data> v;
+    std::string Find ( EID id )
+    {
+        for ( unsigned int i = 0; i < v.size(); i++ )
+        {
+            if ( v[i].id == id )
+            {
+                return v[i].label;
+            }
+        }
+    }
+};
+
 }
+
+typedef WidgetData::SOwnerFreeOffers::EID OwnerEID;
 
 #endif // IWIDGETDATA_H
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

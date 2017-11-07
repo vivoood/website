@@ -41,6 +41,7 @@ if (${enable_rm} STREQUAL "ON")
 		COMMAND rm ${CMAKE_BINARY_DIR}/WebTemplates.xml
 		COMMAND rm ${CMAKE_BINARY_DIR}/pics
 		COMMAND rm ${CMAKE_BINARY_DIR}/users
+		COMMAND rm ${CMAKE_BINARY_DIR}/owner
 		COMMAND rm ${CMAKE_BINARY_DIR}/autorun.sh
 		COMMAND rm ${CMAKE_BINARY_DIR}/restarter.sh
 		COMMAND rm ${CMAKE_BINARY_DIR}/autorun.py
@@ -56,6 +57,7 @@ add_custom_command(
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/WebTemplates.xml ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/pics ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/users ${CMAKE_BINARY_DIR}
+        COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/owner ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.sh ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/restarter.sh ${CMAKE_BINARY_DIR}
         COMMAND ln -s ${CMAKE_SOURCE_DIR}/data/autorun.py ${CMAKE_BINARY_DIR}

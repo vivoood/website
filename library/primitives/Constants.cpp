@@ -412,6 +412,11 @@ Constants::Constants()
 
     /** ******************************************* */
 
+    m_OwnerFreeOffers.v = { {OwnerEID::from, "From", "WLineEdit"}, {OwnerEID::to, "To", "WLineEdit"}, {OwnerEID::price, "Price", "WLineEdit"}, {OwnerEID::instead, "Instead", "WLineEdit"}, {OwnerEID::airl, "Airline", "WLineEdit"}, {OwnerEID::oneway, "One way ticket", "WCheckBox"}, {OwnerEID::direct, "Direct flight", "WCheckBox"}, {OwnerEID::link, "Link", "WLineEdit"} };
+
+    /** ******************************************* */
+
+
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SHeader", &m_Header ) );
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STable", &m_Table ) );
@@ -445,6 +450,7 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SContacts", &m_Contacts ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SFaq", &m_Faq ) );
 
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOwnerFreeOffers", &m_OwnerFreeOffers ) );
 
 
     /** ******************************************* */
@@ -696,3 +702,4 @@ IWidgetData * Constants::GetData ( std::string str, std::string strHash )
 
 Constants gConstants;
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+

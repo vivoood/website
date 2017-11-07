@@ -54,6 +54,9 @@ private:
     WidgetData::SUserInput m_UserLineInput;
     WidgetData::SUserInput m_UserComboInput;
     WidgetData::SUserInput m_ContiCtryInput;
+    
+    /** @Owner */
+    WidgetData::SOwnerFreeOffers m_OwnerFreeOffers;
 
     /** Footer ******************************************* */
 

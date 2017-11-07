@@ -2,6 +2,8 @@
 
 #include <Wt/WContainerWidget>
 #include <Wt/WText>
+#include <Wt/WLineEdit>
+#include <Wt/WCheckBox>
 
 #include "CWFooter.h"
 #include "CWHeader.h"
@@ -23,6 +25,7 @@
 #include "CWContiCtryForm.h"
 #include "CWQuery.h"
 #include "CWMyQueries.h"
+#include "CWOwnerFreeOffers.h"
 
 #include "Constants.h"
 
@@ -87,9 +90,18 @@ Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
 
     if ( strWidget == "CWQuery" )
         return new CWQuery ( pD );
-    
+
     if ( strWidget == "CWMyQueries" )
         return new CWMyQueries ( pD );
+
+    if ( strWidget == "CWOwnerFreeOffers" )
+        return new CWOwnerFreeOffers ( pD );
+
+    if ( strWidget == "WLineEdit" )
+        return new Wt::WLineEdit ();
+    
+    if ( strWidget == "WCheckBox" )
+        return new Wt::WCheckBox ();
     
     return new Wt::WText ( "n/a" );
 }
