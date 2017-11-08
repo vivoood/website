@@ -696,6 +696,9 @@ IWidgetData * Constants::GetData ( std::string str, std::string strHash )
             return &m_Offers.m_Offers[i];
     }
 
+    if ( str == "empty" )
+        return nullptr;
+
     Debug::print_backtrace();
     return nullptr;
 }

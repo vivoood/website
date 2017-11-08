@@ -26,6 +26,8 @@
 #include "CWQuery.h"
 #include "CWMyQueries.h"
 #include "CWOwnerFreeOffers.h"
+#include "CWOwnerFreeOffersView.h"
+#include "CWDreamTeam.h"
 
 #include "Constants.h"
 
@@ -99,10 +101,16 @@ Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
 
     if ( strWidget == "WLineEdit" )
         return new Wt::WLineEdit ();
-    
+
     if ( strWidget == "WCheckBox" )
         return new Wt::WCheckBox ();
-    
+
+    if ( strWidget == "CWOwnerFreeOffersView" )
+        return new CWOwnerFreeOffersView ( pD );
+
+    if ( strWidget == "CWDreamTeam" )
+        return new CWDreamTeam ( pD );
+
     return new Wt::WText ( "n/a" );
 }
 

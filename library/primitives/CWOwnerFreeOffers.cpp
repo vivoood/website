@@ -85,7 +85,7 @@ CWOwnerFreeOffers::CWOwnerFreeOffers ( IWidgetData * pD, Wt::WContainerWidget* p
             pCell = table->elementAt ( i, 0 );
             pCell->addWidget ( new Wt::WText ( p->v[i].label ) );
 
-            Wt::WWidget * w = Factory::Create ( p->v[i].widget, "", "" );
+            Wt::WWidget * w = Factory::Create ( p->v[i].widget, "empty", "" );
             SetIntValidator ( i, w );
 
             pCell = table->elementAt ( i, 1 );
