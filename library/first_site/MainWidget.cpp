@@ -8,11 +8,11 @@
 
 MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( perant )
 {
-    this->addWidget ( Factory::Create ( "CWDreamTeam", "empty", "my-name" ) );
-//     this->addWidget ( Factory::Create ( "CWOwnerFreeOffers", "SOwnerFreeOffers", "my-name" ) );
+//     this->addWidget ( Factory::Create ( "CWDreamTeam", "empty", "my-name" ) );
+//     this->addWidget ( Factory::Create ( "CWOwnerFreeOffersView", "SOwnerFreeOffers", "my-name" ) );
     
     
-    return;
+//     return;
     
     
     this->addWidget ( Factory::Create ( "CWHeader", "SHeader", "n/a" ) );

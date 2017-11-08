@@ -117,15 +117,23 @@ public:
         v.push_back ( d );
     }
 
-    bool exist ( std::string name )
+    std::vector<std::string> getNames ()
     {
+        std::vector<std::string> v1;
+
+        for ( auto & i : this->v )
+        {
+            v1.push_back ( i.name );
+        }
+
+        return v1;
     }
 
 private:
     std::mutex mtx;
 };
 
-void Update ( Wt::WContainerWidget * p )
+void Update ( Wt::WContainerWidget * p, Wt::WComboBox * c )
 {
     p->clear();
 
@@ -136,34 +144,56 @@ void Update ( Wt::WContainerWidget * p )
     table->setWidth ( Wt::WLength ( "20%" ) );
 
     int cnt = 0;
+    int cnt2 = 0;
     for ( unsigned int i = 0; i < u.v.size(); i++ )
     {
         if ( u.v[i].date == "24/11/17" )
             ++cnt;
 
+        if ( u.v[i].date == "01/12/17" )
+            ++cnt2;
+
         Wt::WText * name = new Wt::WText ( u.v[i].name );
         if ( u.v[i].admin )
             name->decorationStyle().setForegroundColor ( Wt::red );
 
+        if ( u.v[i].date == "nqma_da_doida" )
+            name->decorationStyle().setForegroundColor ( Wt::gray );
+
         table->elementAt ( i, 0 )->addWidget ( name );
         table->elementAt ( i, 0 )->setContentAlignment ( Wt::AlignCenter );
 
-        table->elementAt ( i, 1 )->addWidget ( new Wt::WText ( u.v[i].date ) );
+        Wt::WText * tnqma = new Wt::WText ( u.v[i].date );
+        if ( u.v[i].date == "nqma_da_doida" )
+        {
+            tnqma->setText ( "" );
+            tnqma->decorationStyle().setForegroundColor ( Wt::gray );
+        }
+
+        if ( u.v[i].admin )
+        {
+            tnqma->decorationStyle().setForegroundColor ( Wt::red );
+        }
+
+        table->elementAt ( i, 1 )->addWidget ( tnqma );
         table->elementAt ( i, 1 )->setContentAlignment ( Wt::AlignCenter );
     }
 
-    Wt::WText * txt = new Wt::WText ( "izbrana data" );
+    Wt::WText * txt = new Wt::WText ( Wt::WString ( "izbrana data {1}/{2}" ).arg ( std::max ( cnt,cnt2 ) ).arg ( std::min ( cnt,cnt2 ) ) );
     txt->decorationStyle().setForegroundColor ( Wt::blue );
 
-    Wt::WText * txt2 = new Wt::WText ( "izbrana data" );
+    Wt::WText * txt2 = new Wt::WText ( "" );
     txt2->decorationStyle().setForegroundColor ( Wt::blue );
 
     table->elementAt ( u.v.size(), 0 )->addWidget ( txt );
     table->elementAt ( u.v.size(), 0 )->setContentAlignment ( Wt::AlignCenter );
 
-    if ( cnt == ( u.v.size() - cnt ) )
+    if ( cnt == cnt2 )
+    {
         txt2->setText ( "50/50" );
-    else if ( cnt > ( u.v.size() - cnt ) )
+        txt2->decorationStyle().setForegroundColor ( Wt::magenta );
+    }
+    else if ( cnt > cnt2 )
         txt2->setText ( "24/11/17" );
     else
         txt2->setText ( "01/12/17" );
@@ -193,7 +223,6 @@ CWDreamTeam::CWDreamTeam ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WC
     this->addWidget ( tit );
 
     Wt::WContainerWidget * list = new Wt::WContainerWidget();
-    Update ( list );
 
     Wt::WContainerWidget * err = new Wt::WContainerWidget();
     err->hide();
@@ -202,15 +231,39 @@ CWDreamTeam::CWDreamTeam ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WC
     table->setHeaderCount ( 1 );
     table->setWidth ( Wt::WLength ( "40%" ) );
 
-    std::vector<std::string> v = GetNames();
-    sort ( v.begin(),v.end() );
+
+
+    std::vector<std::string> v1 = GetNames();
+
+    users mu;
+    mu.load();
+    std::vector<std::string> v2 = mu.getNames();
+
+    for ( int i = 0; i < v2.size(); i++ )
+    {
+        std::string idt = v2[i];
+        std::vector<std::string>::iterator it;
+        it = std::find ( v1.begin(), v1.end(), idt );
+        if ( it != v1.end() )
+        {
+            v1.erase ( it );
+        }
+    }
+
+
+
+    sort ( v1.begin(),v1.end() );
     Wt::WComboBox * pEdit = new Wt::WComboBox();
-    for ( auto it : v )
+    for ( auto it : v1 )
         pEdit->addItem ( it );
+
+    Update ( list, pEdit );
 
     Wt::WComboBox * pEditDate = new Wt::WComboBox();
     pEditDate->addItem ( "24/11/17" );
     pEditDate->addItem ( "01/12/17" );
+    pEditDate->addItem ( "bez_zna4enie" );
+    pEditDate->addItem ( "nqma_da_doida" );
 
     Wt::WCheckBox * cbox = new Wt::WCheckBox();
     Wt::WPushButton * btn = new Wt::WPushButton ( "Add me" );
@@ -296,20 +349,15 @@ CWDreamTeam::CWDreamTeam ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WC
         u.add ( u1 );
         u.save();
 
-        Update ( list );
+        Update ( list, pEdit );
 
     } ) );
 
     btn2->clicked().connect ( std::bind ( [=]()
     {
-        Update ( list );
+        Update ( list, pEdit );
     } ) );
 
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
-
-
-
-
