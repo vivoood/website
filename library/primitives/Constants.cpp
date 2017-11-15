@@ -20,14 +20,20 @@ Constants::Constants()
 
     d.strTabName = "Home";
     d.strTabButtonStyle = "menu-buttons";
+    d.strChildWidget = "n/a";
+    d.strChildWidgetData = "empty";
     m_Tabs.vTabButtons.push_back ( d );
 
     d.strTabName = "How it works";
     d.strTabButtonStyle = "menu-buttons";
+    d.strChildWidget = "n/a";
+    d.strChildWidgetData = "empty";
     m_Tabs.vTabButtons.push_back ( d );
 
     d.strTabName = "Travel tips";
     d.strTabButtonStyle = "menu-buttons";
+    d.strChildWidget = "n/a";
+    d.strChildWidgetData = "empty";
     m_Tabs.vTabButtons.push_back ( d );
 
     d.strTabName = "Contacts";
@@ -52,13 +58,13 @@ Constants::Constants()
     dlogin.strTabName = "Home";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "n/a";
-    dlogin.strChildWidgetData = "n/a";
+    dlogin.strChildWidgetData = "empty";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "How it works";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "n/a";
-    dlogin.strChildWidgetData = "n/a";
+    dlogin.strChildWidgetData = "empty";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "Add query";
@@ -76,7 +82,7 @@ Constants::Constants()
     dlogin.strTabName = "My history";
     dlogin.strTabButtonStyle = "menu-buttons";
     dlogin.strChildWidget = "n/a";
-    dlogin.strChildWidgetData = "n/a";
+    dlogin.strChildWidgetData = "empty";
     m_TabsAfterLogin.vTabButtons.push_back ( dlogin );
 
     dlogin.strTabName = "Contacts";
@@ -154,27 +160,21 @@ Constants::Constants()
     WidgetData::STableData dTableOwnerLogin;
 
     dTableOwnerLogin.strStyle = "table-col-1";
-    dTableOwnerLogin.strLenght = "10%";
+    dTableOwnerLogin.strLenght = "15%";
     dTableOwnerLogin.strWidgetName = "CWLeftCol";
     dTableOwnerLogin.strWidgetData = "SLeftColAfterLogin";
     vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
 
     dTableOwnerLogin.strStyle = "table-col-2";
-    dTableOwnerLogin.strLenght = "30%";
-    dTableOwnerLogin.strWidgetName = "WContainerWidget";
-    dTableOwnerLogin.strWidgetData = "n/a";
+    dTableOwnerLogin.strLenght = "70%";
+    dTableOwnerLogin.strWidgetName = "CWOwnerContainer";
+    dTableOwnerLogin.strWidgetData = "empty";
     vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
 
     dTableOwnerLogin.strStyle = "table-col-3";
-    dTableOwnerLogin.strLenght = "30%";
-    dTableOwnerLogin.strWidgetName = "WContainerWidget";
-    dTableOwnerLogin.strWidgetData = "n/a";
-    vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
-
-    dTableOwnerLogin.strStyle = "table-col-4";
-    dTableOwnerLogin.strLenght = "30%";
-    dTableOwnerLogin.strWidgetName = "WContainerWidget";
-    dTableOwnerLogin.strWidgetData = "n/a";
+    dTableOwnerLogin.strLenght = "15%";
+    dTableOwnerLogin.strWidgetName = "CWPublicOffers";
+    dTableOwnerLogin.strWidgetData = "SOffersRight";
     vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
 
     m_TableOwnerLogin.vTable.push_back ( vTableRowOwnerLogin );
@@ -699,7 +699,7 @@ IWidgetData * Constants::GetData ( std::string str, std::string strHash )
     if ( str == "empty" )
         return nullptr;
 
-    Debug::print_backtrace();
+    Debug::print_backtrace ( strHash );
     return nullptr;
 }
 

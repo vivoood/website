@@ -5,6 +5,7 @@
 #include <Wt/WWidget>
 
 #include "IWidgetData.h"
+#include "Debug.h"
 
 class Factory
 {

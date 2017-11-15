@@ -63,7 +63,7 @@ bool CWUser::CheckUserExist ( std::string filename )
 
 bool CWUser::CheckOwner ( std::string filename )
 {
-    if ( filename == "88b8216858cc70dfa70f4a112a2cbd4797f313f6" )
+    if ( filename == "43e0f29aa1f2e636542c65cbaa8690ca97749b4d" )
         return true;
     return false;
 }

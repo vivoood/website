@@ -5,6 +5,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <iomanip>
 
 void Debug::full_write ( int fd, const char *buf, size_t len )
 {
@@ -20,10 +21,12 @@ void Debug::full_write ( int fd, const char *buf, size_t len )
     }
 }
 
-void Debug::print_backtrace ( void )
+void Debug::print_backtrace ( std::string str )
 {
-    static const char start[] = "BACKTRACE ------------\n";
-    static const char end[] = "----------------------\n";
+    std::cout << "BACKTRACE -------------------" << str << "-----------------" << std::endl;
+
+    static const char start[] = "------------------------------------------------------------------\n";
+    static const char end[] = "------------------------------------------------------------------\n";
 
     void *bt[1024];
     int bt_size;
@@ -41,6 +44,14 @@ void Debug::print_backtrace ( void )
     }
     Debug::full_write ( STDERR_FILENO, end, strlen ( end ) );
     free ( bt_syms );
+}
+
+void Debug::print_msg ( std::string msgFrom, std::string msg )
+{
+    std::cout << std::endl << std::setfill ( '-' ) << std::setw ( 40 ) << "-" << "----------" << std::endl;
+    std::cout << std::setfill ( '-' ) << std::setw ( 40 ) << msgFrom << "----------" << std::endl;
+    std::cout << std::setfill ( '-' ) << std::setw ( 40 ) << msg << "----------" << std::endl;
+    std::cout << std::setfill ( '-' ) << std::setw ( 40 ) << "-" << "----------" << std::endl << std::endl;
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

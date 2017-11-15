@@ -8,13 +8,12 @@
 
 MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( perant )
 {
-//     this->addWidget ( Factory::Create ( "CWDreamTeam", "empty", "my-name" ) );
-//     this->addWidget ( Factory::Create ( "CWOwnerFreeOffersView", "SOwnerFreeOffers", "my-name" ) );
-    
-    
+//     this->addWidget ( Factory::Create ( "CWOwnerFreeOffers", "SOwnerFreeOffers", "my-name" ) );
+
+
 //     return;
-    
-    
+
+
     this->addWidget ( Factory::Create ( "CWHeader", "SHeader", "n/a" ) );
     this->addWidget ( Factory::Create ( "CWTableLayout", "STable", "n/a" ) );
     this->addWidget ( Factory::Create ( "CWFooter", "SFooter", "n/a" ) );
@@ -34,14 +33,11 @@ void MainWidget::UserLogin ( std::string strHash )
 {
     this->clear();
 
-    if ( CWUser::CheckOwner ( strHash ) )
-    {
-        this->addWidget ( Factory::Create ( "CWTableLayout", "STableOwnerLogin", strHash ) );
-        return;
-    }
-
     this->addWidget ( Factory::Create ( "CWHeader", "SHeader", strHash ) );
-    this->addWidget ( Factory::Create ( "CWTableLayout", "STableAfterLogin", strHash ) );
+    if ( CWUser::CheckOwner ( strHash ) )
+        this->addWidget ( Factory::Create ( "CWTableLayout", "STableOwnerLogin", strHash ) );
+    else
+        this->addWidget ( Factory::Create ( "CWTableLayout", "STableAfterLogin", strHash ) );
     this->addWidget ( Factory::Create ( "CWFooter", "SFooter", strHash ) );
 }
 
