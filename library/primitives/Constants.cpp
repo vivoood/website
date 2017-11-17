@@ -3,6 +3,7 @@
 #include <algorithm>
 
 #include "CWHash.h"
+#include "CWOwnerData.h"
 
 Constants::Constants()
 {
@@ -207,172 +208,22 @@ Constants::Constants()
     /** ******************************************* */
     /** ******************************************* */
 
-    WidgetData::SOffer o;
+    CWOwnerData owner;
+    owner.LoadFreeOffers();
+    for ( auto & i : owner.mapFreeOffers )
+    {
+        WidgetData::SOffer o;
+        o.offerBig.bOneWay = i.second.bOneWay;
+        o.offerBig.bDirectFlight = i.second.bDirectFlight;
+        o.offerBig.strFrom = i.second.strFrom;
+        o.offerBig.strTo = i.second.strTo;
+        o.offerBig.strPrice = i.second.strPrice;
+        o.offerBig.strInstead = i.second.strInstead;
+        o.offerBig.strAirline = i.second.strAirline;
+        o.offerBig.strHyperlink = i.second.strHyperlink;
+        m_Offers.m_Offers.push_back ( o );
+    }
 
-    o.offerBig.bOneWay = true;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Sofia";
-    o.offerBig.strTo = "Vienna";
-    o.offerBig.strPrice = "$ 36";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Milano";
-    o.offerBig.strTo = "Paris";
-    o.offerBig.strPrice = "$ 87";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = false;
-    o.offerBig.strFrom = "Rome";
-    o.offerBig.strTo = "Brazil";
-    o.offerBig.strPrice = "$ 135";
-    o.offerBig.strAirline = "Air asia";
-    o.offerBig.strHyperlink = "https://www.airasia.com";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = true;
-    o.offerBig.bDirectFlight = false;
-    o.offerBig.strFrom = "Istanbul";
-    o.offerBig.strTo = "China";
-    o.offerBig.strPrice = "$ 77";
-    o.offerBig.strAirline = "Air asia";
-    o.offerBig.strHyperlink = "https://www.airasia.com";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = true;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Bulgaria";
-    o.offerBig.strTo = "Germany";
-    o.offerBig.strPrice = "$ 42";
-    o.offerBig.strAirline = "Bulgaria air";
-    o.offerBig.strHyperlink = "https://www.air.bg";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = true;
-    o.offerBig.bDirectFlight = false;
-    o.offerBig.strFrom = "Istanbul";
-    o.offerBig.strTo = "China";
-    o.offerBig.strPrice = "$ 77";
-    o.offerBig.strAirline = "Air asia";
-    o.offerBig.strHyperlink = "https://www.airasia.com";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = true;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Sofia";
-    o.offerBig.strTo = "Vienna";
-    o.offerBig.strPrice = "$ 36";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Milano";
-    o.offerBig.strTo = "Paris";
-    o.offerBig.strPrice = "$ 87";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Milano";
-    o.offerBig.strTo = "Paris";
-    o.offerBig.strPrice = "$ 87";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = false;
-    o.offerBig.strFrom = "Rome";
-    o.offerBig.strTo = "Brazil";
-    o.offerBig.strPrice = "$ 135";
-    o.offerBig.strAirline = "Air asia";
-    o.offerBig.strHyperlink = "https://www.airasia.com";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Milano";
-    o.offerBig.strTo = "Paris";
-    o.offerBig.strPrice = "$ 87";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = false;
-    o.offerBig.strFrom = "Rome";
-    o.offerBig.strTo = "Brazil";
-    o.offerBig.strPrice = "$ 135";
-    o.offerBig.strAirline = "Air asia";
-    o.offerBig.strHyperlink = "https://www.airasia.com";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = true;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Sofia";
-    o.offerBig.strTo = "Vienna";
-    o.offerBig.strPrice = "$ 36";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Milano";
-    o.offerBig.strTo = "Paris";
-    o.offerBig.strPrice = "$ 87";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Milano";
-    o.offerBig.strTo = "Paris";
-    o.offerBig.strPrice = "$ 87";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = false;
-    o.offerBig.strFrom = "Rome";
-    o.offerBig.strTo = "Brazil";
-    o.offerBig.strPrice = "$ 135";
-    o.offerBig.strAirline = "Air asia";
-    o.offerBig.strHyperlink = "https://www.airasia.com";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = true;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Sofia";
-    o.offerBig.strTo = "Vienna";
-    o.offerBig.strPrice = "$ 36";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    o.offerBig.bOneWay = false;
-    o.offerBig.bDirectFlight = true;
-    o.offerBig.strFrom = "Milano";
-    o.offerBig.strTo = "Paris";
-    o.offerBig.strPrice = "$ 87";
-    o.offerBig.strAirline = "Wizz Air";
-    o.offerBig.strHyperlink = "https://wizzair.com/";
-    m_Offers.m_Offers.push_back ( o );
-
-    
-    
     if ( m_Offers.m_Offers.size() < ( m_Offers.cnLeftSize + m_Offers.cnRightSize ) )
     {
         for ( unsigned int i = 0; i < m_Offers.m_Offers.size(); i++ )
