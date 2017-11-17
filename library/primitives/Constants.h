@@ -31,6 +31,7 @@ private:
     /** @MainButtons */
     WidgetData::STabs m_Tabs;
     WidgetData::STabs m_TabsAfterLogin;
+    WidgetData::STabs m_TabsOwner;
     WidgetData::SQuery m_Query;
     WidgetData::SMyQuery m_MyQuery;
     WidgetData::SContacts m_Contacts;

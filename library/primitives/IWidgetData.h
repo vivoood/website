@@ -168,6 +168,7 @@ struct SOwnerFreeOffers : public IWidgetData
         EID id;
         std::string label;
         std::string widget;
+        std::string style;
     };
 
     std::vector<SOwnerFreeOffers::Data> v;

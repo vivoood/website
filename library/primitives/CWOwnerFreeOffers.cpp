@@ -49,7 +49,8 @@ void GetValueFromLineEdit ( Wt::WTable * t, OwnerEID e, std::string & val, bool 
     Wt::WLineEdit * edit = dynamic_cast<Wt::WLineEdit *> ( w );
 
     val = edit->text().toUTF8();
-
+    std::replace ( val.begin(), val.end(), ' ', ':' );
+    
     if ( clear )
         edit->setText ( "" );
 }
@@ -76,7 +77,7 @@ CWOwnerFreeOffers::CWOwnerFreeOffers ( IWidgetData * pD, Wt::WContainerWidget* p
         this->setContentAlignment ( Wt::AlignCenter );
 
         Wt::WTable * table = new Wt::WTable();
-        table->setWidth ( Wt::WLength ( "100%" ) );
+        table->setWidth ( Wt::WLength ( "50%" ) );
 
         Wt::WTableCell * pCell = nullptr;
 
@@ -86,6 +87,9 @@ CWOwnerFreeOffers::CWOwnerFreeOffers ( IWidgetData * pD, Wt::WContainerWidget* p
             pCell->addWidget ( new Wt::WText ( p->v[i].label ) );
 
             Wt::WWidget * w = Factory::Create ( p->v[i].widget, "empty", "" );
+            if ( ! p->v[i].style.empty() )
+                w->setStyleClass ( p->v[i].style );
+
             SetIntValidator ( i, w );
 
             pCell = table->elementAt ( i, 1 );

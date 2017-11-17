@@ -1423,7 +1423,7 @@ table.x-grid3-row-table {
 
 .menu-buttons{
     vertical-align: top;
-    width: 100px;
+    width: 150px;
     height: 30px;
     font-family: verdana;
     font-size: 1em;
@@ -1626,4 +1626,8 @@ table.x-grid3-row-table {
 .contictry{
 /*     text-align: right; */
 /*     border: 3px solid #88a207; */
+}
+
+.style-free-offer-owner{
+    width: 200px;
 }

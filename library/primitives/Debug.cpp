@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <iomanip>
+#include <sstream>
 
 void Debug::full_write ( int fd, const char *buf, size_t len )
 {
@@ -52,6 +53,32 @@ void Debug::print_msg ( std::string msgFrom, std::string msg )
     std::cout << std::setfill ( '-' ) << std::setw ( 40 ) << msgFrom << "----------" << std::endl;
     std::cout << std::setfill ( '-' ) << std::setw ( 40 ) << msg << "----------" << std::endl;
     std::cout << std::setfill ( '-' ) << std::setw ( 40 ) << "-" << "----------" << std::endl << std::endl;
+}
+
+void Debug::print_msg ( std::string msgFrom, void* p )
+{
+    if ( nullptr == p )
+    {
+        Debug::print_msg ( msgFrom, "nullptr" );
+        return;
+    }
+
+    std::stringstream ss;
+    ss << p;
+    Debug::print_msg ( msgFrom, ss.str() );
+
+}
+
+void Debug::print_msg ( std::string msgFrom, int n )
+{
+    std::stringstream ss;
+    ss << n;
+    Debug::print_msg ( msgFrom, ss.str() );
+}
+
+void Debug::print_msg ( std::string msgFrom )
+{
+    Debug::print_msg ( msgFrom, "" );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

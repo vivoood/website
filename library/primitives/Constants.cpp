@@ -105,6 +105,31 @@ Constants::Constants()
 
     /** ******************************************* */
     /** ******************************************* */
+    m_TabsOwner.strTabStyle = "menu-buttons-bgr";
+
+    WidgetData::STabButtonsData downer;
+
+    downer.strTabName = "Settings";
+    downer.strTabButtonStyle = "menu-buttons";
+    downer.strChildWidget = "n/a";
+    downer.strChildWidgetData = "empty";
+    m_TabsOwner.vTabButtons.push_back ( downer );
+
+    downer.strTabName = "Add free offers";
+    downer.strTabButtonStyle = "menu-buttons";
+    downer.strChildWidget = "CWOwnerFreeOffers";
+    downer.strChildWidgetData = "SOwnerFreeOffers";
+    m_TabsOwner.vTabButtons.push_back ( downer );
+
+    downer.strTabName = "View free offers";
+    downer.strTabButtonStyle = "menu-buttons";
+    downer.strChildWidget = "CWOwnerFreeOffersView";
+    downer.strChildWidgetData = "SOwnerFreeOffers";
+    m_TabsOwner.vTabButtons.push_back ( downer );
+
+
+    /** ******************************************* */
+    /** ******************************************* */
 
     std::vector<WidgetData::STableData> vTableRow;
     WidgetData::STableData dTable;
@@ -167,8 +192,8 @@ Constants::Constants()
 
     dTableOwnerLogin.strStyle = "table-col-2";
     dTableOwnerLogin.strLenght = "70%";
-    dTableOwnerLogin.strWidgetName = "CWOwnerContainer";
-    dTableOwnerLogin.strWidgetData = "empty";
+    dTableOwnerLogin.strWidgetName = "CWTabs";
+    dTableOwnerLogin.strWidgetData = "STabsOwner";
     vTableRowOwnerLogin.push_back ( dTableOwnerLogin );
 
     dTableOwnerLogin.strStyle = "table-col-3";
@@ -346,6 +371,8 @@ Constants::Constants()
     o.offerBig.strHyperlink = "https://wizzair.com/";
     m_Offers.m_Offers.push_back ( o );
 
+    
+    
     if ( m_Offers.m_Offers.size() < ( m_Offers.cnLeftSize + m_Offers.cnRightSize ) )
     {
         for ( unsigned int i = 0; i < m_Offers.m_Offers.size(); i++ )
@@ -412,7 +439,7 @@ Constants::Constants()
 
     /** ******************************************* */
 
-    m_OwnerFreeOffers.v = { {OwnerEID::from, "From", "WLineEdit"}, {OwnerEID::to, "To", "WLineEdit"}, {OwnerEID::price, "Price", "WLineEdit"}, {OwnerEID::instead, "Instead", "WLineEdit"}, {OwnerEID::airl, "Airline", "WLineEdit"}, {OwnerEID::oneway, "One way ticket", "WCheckBox"}, {OwnerEID::direct, "Direct flight", "WCheckBox"}, {OwnerEID::link, "Link", "WLineEdit"} };
+    m_OwnerFreeOffers.v = { {OwnerEID::from, "From", "WLineEdit", "style-free-offer-owner"}, {OwnerEID::to, "To", "WLineEdit", "style-free-offer-owner"}, {OwnerEID::price, "Price", "WLineEdit", "style-free-offer-owner"}, {OwnerEID::instead, "Instead", "WLineEdit", "style-free-offer-owner"}, {OwnerEID::airl, "Airline", "WLineEdit", "style-free-offer-owner"}, {OwnerEID::oneway, "One way ticket", "WCheckBox", ""}, {OwnerEID::direct, "Direct flight", "WCheckBox", ""}, {OwnerEID::link, "Link", "WLineEdit", "style-free-offer-owner"} };
 
     /** ******************************************* */
 
@@ -425,6 +452,7 @@ Constants::Constants()
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabs", &m_Tabs ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabsAfterLogin", &m_TabsAfterLogin ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabsOwner", &m_TabsOwner ) );
 
 //     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffers", &m_Offers ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffersLeft", &m_Offers.m_left ) );

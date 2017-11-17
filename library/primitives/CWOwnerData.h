@@ -7,6 +7,7 @@
 
 class CWFreeOffersData
 {
+    friend class CWOwnerData;
 public:
     std::string strFrom = "n/a";
     std::string strTo = "n/a";

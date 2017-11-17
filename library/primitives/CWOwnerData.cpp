@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 #include "CWHash.h"
 
@@ -77,6 +78,9 @@ bool CWOwnerData::LoadFreeOffers()
     std::lock_guard<std::mutex> lock ( mtx );
     std::ifstream infile ( "owner/free_offers" );
     infile >> nFreeOffersCnt;
+    
+    mapFreeOffers.clear();
+    
     for ( int i = 0; i < nFreeOffersCnt; i++ )
     {
         CWFreeOffersData d;
@@ -103,7 +107,6 @@ bool CWOwnerData::RemoveFreeOffer ( std::string hash )
     mapFreeOffers.erase ( it );
     return true;
 }
-
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
 
