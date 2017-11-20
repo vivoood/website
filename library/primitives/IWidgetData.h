@@ -16,12 +16,6 @@ namespace WidgetData
 
 struct SHeader : public IWidgetData
 {
-    std::string strTemplateName;
-    std::string strBindName;
-    std::string strBindSlogan;
-    std::string strTitle;
-    std::string strSlogan;
-
     std::string strStyle = "web-site-name-style";
 };
 
@@ -58,40 +52,18 @@ struct SFooter : public IWidgetData
     std::string strStyle;
 };
 
-struct SOfferBig : public IWidgetData
-{
-    std::string strFrom = "n/a";
-    std::string strTo = "n/a";
-    std::string strAirline = "n/a";
-    std::string strPrice = "0";
-    std::string strInstead = "999";
-    std::string strStyle = "default-offer-big-style";
-    bool bOneWay = false;
-    bool bDirectFlight = false;
-    std::string strHyperlink = "n/a";
-};
-
 struct SOffer : public IWidgetData
 {
-    SOfferBig offerBig;
     std::string strStyle = "default-offer-style";
     std::string strBtnStyle = "default-offer-button-style";
+    std::string strBigStyle = "default-offer-big-style";
 };
 
 struct SOffersLeftRightBase : public IWidgetData
 {
-    std::vector<SOffer> m_Offers;
-};
-
-struct SOffers : public IWidgetData
-{
-    std::vector<SOffer> m_Offers;
-
-    const int cnLeftSize = 4;
-    SOffersLeftRightBase m_left;
-
-    const int cnRightSize = 5;
-    SOffersLeftRightBase m_right;
+    static const int cnLeftSize = 4;
+    static const int cnRightSize = 5;
+    std::vector<std::string> m_OffersHashList;
 };
 
 struct SRegister : public IWidgetData

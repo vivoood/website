@@ -7,12 +7,6 @@
 
 Constants::Constants()
 {
-    m_Header.strTemplateName = "web-site-name-template";
-    m_Header.strBindName = "web-site-name";
-    m_Header.strBindSlogan = "web-site-slogan";
-    m_Header.strTitle = "Some Title";
-    m_Header.strSlogan = "use some slogan";
-
     /** ******************************************* */
     /** ******************************************* */
     m_Tabs.strTabStyle = "menu-buttons-bgr";
@@ -210,38 +204,31 @@ Constants::Constants()
 
     CWOwnerData owner;
     owner.LoadFreeOffers();
+
+    std::vector<std::string> vOffers;
     for ( auto & i : owner.mapFreeOffers )
     {
-        WidgetData::SOffer o;
-        o.offerBig.bOneWay = i.second.bOneWay;
-        o.offerBig.bDirectFlight = i.second.bDirectFlight;
-        o.offerBig.strFrom = i.second.strFrom;
-        o.offerBig.strTo = i.second.strTo;
-        o.offerBig.strPrice = i.second.strPrice;
-        o.offerBig.strInstead = i.second.strInstead;
-        o.offerBig.strAirline = i.second.strAirline;
-        o.offerBig.strHyperlink = i.second.strHyperlink;
-        m_Offers.m_Offers.push_back ( o );
+        vOffers.push_back ( i.first );
     }
 
-    if ( m_Offers.m_Offers.size() < ( m_Offers.cnLeftSize + m_Offers.cnRightSize ) )
+    if ( vOffers.size() < ( WidgetData::SOffersLeftRightBase::cnLeftSize + WidgetData::SOffersLeftRightBase::cnRightSize ) )
     {
-        for ( unsigned int i = 0; i < m_Offers.m_Offers.size(); i++ )
+        for ( unsigned int i = 0; i < vOffers.size(); i++ )
         {
-            ( i % 2 == 0 ) ? m_Offers.m_right.m_Offers.push_back ( m_Offers.m_Offers[i] ) : m_Offers.m_left.m_Offers.push_back ( m_Offers.m_Offers[i] );
+            ( i % 2 == 0 ) ? m_OffersRight.m_OffersHashList.push_back ( vOffers[i] ) : m_OffersLeft.m_OffersHashList.push_back ( vOffers[i] );
         }
     }
     else
     {
-        std::random_shuffle ( m_Offers.m_Offers.begin(), m_Offers.m_Offers.end() );
-        for ( unsigned int i = 0; i < m_Offers.cnLeftSize; i++ )
+        std::random_shuffle ( vOffers.begin(), vOffers.end() );
+        for ( unsigned int i = 0; i < WidgetData::SOffersLeftRightBase::cnLeftSize; i++ )
         {
-            m_Offers.m_left.m_Offers.push_back ( m_Offers.m_Offers[i] );
+            m_OffersLeft.m_OffersHashList.push_back ( vOffers[i] );
         }
 
-        for ( unsigned int i = 0; i < m_Offers.cnRightSize; i++ )
+        for ( unsigned int i = 0; i < WidgetData::SOffersLeftRightBase::cnRightSize; i++ )
         {
-            m_Offers.m_right.m_Offers.push_back ( m_Offers.m_Offers[i] );
+            m_OffersRight.m_OffersHashList.push_back ( vOffers[i] );
         }
     }
 
@@ -305,9 +292,9 @@ Constants::Constants()
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabsAfterLogin", &m_TabsAfterLogin ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STabsOwner", &m_TabsOwner ) );
 
-//     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffers", &m_Offers ) );
-    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffersLeft", &m_Offers.m_left ) );
-    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffersRight", &m_Offers.m_right ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffer", &m_Offer ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffersLeft", &m_OffersLeft ) );
+    m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SOffersRight", &m_OffersRight ) );
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLeftCol", &m_LeftCol ) );
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "SLeftColAfterLogin", &m_LeftColAfterLogin ) );
@@ -566,13 +553,6 @@ IWidgetData * Constants::GetData ( std::string str, std::string strHash )
     {
         ( *it ).second->strHash = strHash;
         return ( *it ).second;
-    }
-
-    for ( unsigned int i = 0; i < m_Offers.m_Offers.size(); i++ )
-    {
-        std::string h1 = CWHash::Get ( m_Offers.m_Offers[i].offerBig.strFrom + m_Offers.m_Offers[i].offerBig.strTo );
-        if ( h1 == str )
-            return &m_Offers.m_Offers[i];
     }
 
     if ( str == "empty" )

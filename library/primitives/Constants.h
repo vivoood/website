@@ -39,7 +39,9 @@ private:
 
 
     /** @One @Offer */
-    WidgetData::SOffers m_Offers;
+    WidgetData::SOffer m_Offer;
+    WidgetData::SOffersLeftRightBase m_OffersRight;
+    WidgetData::SOffersLeftRightBase m_OffersLeft;
 
     /** @Left @column */
     WidgetData::SLeftCol m_LeftCol;

@@ -10,9 +10,9 @@ CWPublicOffers::CWPublicOffers ( IWidgetData * pD, Wt::WContainerWidget* parent 
     WidgetData::SOffersLeftRightBase * p = dynamic_cast<WidgetData::SOffersLeftRightBase*> ( pD );
     if ( p != nullptr )
     {
-        for ( unsigned int i = 0; i < p->m_Offers.size(); i++ )
+        for ( auto & i : p->m_OffersHashList )
         {
-            this->addWidget ( Factory::Create ( "CWOffer", CWHash::Get ( p->m_Offers[i].offerBig.strFrom + p->m_Offers[i].offerBig.strTo ), p->strHash ) );
+            this->addWidget ( Factory::Create ( "CWOffer", "SOffer", i ) );
         }
     }
     else
