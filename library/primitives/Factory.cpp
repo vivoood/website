@@ -29,6 +29,7 @@
 #include "CWOwnerFreeOffersView.h"
 #include "CWDreamTeam.h"
 #include "CWOwnerContainer.h"
+#include "CWOwnerSettings.h"
 
 #include "Constants.h"
 
@@ -114,7 +115,10 @@ Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
 
     if ( strWidget == "CWOwnerContainer" )
         return new CWOwnerContainer ( pD );
-
+    
+    if ( strWidget == "CWOwnerSettings" )
+        return new CWOwnerSettings ( pD );
+    
     return new Wt::WText ( "n/a" );
 }
 

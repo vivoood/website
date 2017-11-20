@@ -112,7 +112,7 @@ Constants::Constants()
 
     downer.strTabName = "Settings";
     downer.strTabButtonStyle = "menu-buttons";
-    downer.strChildWidget = "n/a";
+    downer.strChildWidget = "CWOwnerSettings";
     downer.strChildWidgetData = "empty";
     m_TabsOwner.vTabButtons.push_back ( downer );
 

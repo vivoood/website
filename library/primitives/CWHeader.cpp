@@ -5,6 +5,8 @@
 #include <Wt/WBreak>
 #include <Wt/WCssDecorationStyle>
 
+#include "CWOwnerData.h"
+
 CWHeader::CWHeader ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
 {
     WidgetData::SHeader * p = dynamic_cast<WidgetData::SHeader*> ( pD );
@@ -17,12 +19,15 @@ CWHeader::CWHeader ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContain
         this->setStyleClass ( p->strStyle );
         this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/airplane_name_bgr.png" ), Wt::WCssDecorationStyle::NoRepeat, Wt::CenterX );
 
-        Wt::WText * t = new Wt::WText ( "Title" );
+        CWOwnerData od;
+        od.LoadSettings();
+
+        Wt::WText * t = new Wt::WText ( od.settingsData.strTitle );
         t->decorationStyle().setFont ( f );
         t->decorationStyle().setForegroundColor ( Wt::blue );
 
         f.setSize ( "35" );
-        Wt::WText * t2 = new Wt::WText ( "...........Slogan........." );
+        Wt::WText * t2 = new Wt::WText ( od.settingsData.strSlogan );
         t2->decorationStyle().setFont ( f );
         t2->decorationStyle().setForegroundColor ( Wt::yellow );
 

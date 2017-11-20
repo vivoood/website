@@ -24,6 +24,17 @@ private:
     friend std::istream& operator>> ( std::istream& is, CWFreeOffersData& dt );
 };
 
+class CWSettingsData
+{
+    friend class CWOwnerData;
+public:
+    std::string strTitle = "n/a";
+    std::string strSlogan = "n/a";
+private:
+    friend std::ostream& operator<< ( std::ostream& os, CWSettingsData& dt );
+    friend std::istream& operator>> ( std::istream& is, CWSettingsData& dt );
+};
+
 class CWOwnerData
 {
 public:
@@ -34,10 +45,15 @@ public:
     bool RemoveFreeOffer ( std::string hash );
     int nFreeOffersCnt = 0;
     void print();
-
     std::map<std::string, CWFreeOffersData> mapFreeOffers;
+
+    void SaveSettings ();
+    bool LoadSettings ();
+    CWSettingsData settingsData;
+
 private:
     std::mutex mtx;
+    std::mutex mtxSett;
 };
 
 #endif // CWOWNERDATA_H

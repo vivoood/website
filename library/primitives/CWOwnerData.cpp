@@ -57,6 +57,28 @@ std::istream& operator>> ( std::istream& is, CWFreeOffersData& dt )
     return is;
 }
 
+std::ostream& operator<< ( std::ostream& os, CWSettingsData& dt )
+{
+    std::replace ( dt.strTitle.begin(), dt.strTitle.end(), ' ', '_' );
+    os << dt.strTitle << std::endl;
+
+    std::replace ( dt.strSlogan.begin(), dt.strSlogan.end(), ' ', '_' );
+    os << dt.strSlogan << std::endl;
+
+    return os;
+}
+
+std::istream& operator>> ( std::istream& is, CWSettingsData& dt )
+{
+    is >> dt.strTitle;
+    std::replace ( dt.strTitle.begin(), dt.strTitle.end(), '_', ' ' );
+
+    is >> dt.strSlogan;
+    std::replace ( dt.strSlogan.begin(), dt.strSlogan.end(), '_', ' ' );
+
+    return is;
+}
+
 std::string CWFreeOffersData::GetHash()
 {
     return CWHash::Get ( strFrom + strTo + strAirline + strPrice + strInstead + strHyperlink );
@@ -78,9 +100,9 @@ bool CWOwnerData::LoadFreeOffers()
     std::lock_guard<std::mutex> lock ( mtx );
     std::ifstream infile ( "owner/free_offers" );
     infile >> nFreeOffersCnt;
-    
+
     mapFreeOffers.clear();
-    
+
     for ( int i = 0; i < nFreeOffersCnt; i++ )
     {
         CWFreeOffersData d;
@@ -108,7 +130,22 @@ bool CWOwnerData::RemoveFreeOffer ( std::string hash )
     return true;
 }
 
+void CWOwnerData::SaveSettings()
+{
+    std::lock_guard<std::mutex> lock ( mtxSett );
+    std::ofstream outfile ( "owner/settings" );
+    outfile << settingsData;
+    outfile.close();
+}
+
+bool CWOwnerData::LoadSettings()
+{
+    std::lock_guard<std::mutex> lock ( mtxSett );
+    std::ifstream infile ( "owner/settings" );
+    infile >> settingsData;
+    infile.close();
+
+    return true;
+}
+
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
-
-
