@@ -24,7 +24,7 @@ WebSite::WebSite ( const Wt::WEnvironment& env )
     m_nInstanceCounter++;
     m_nInstanceId = m_nInstanceCounter;
 
-    this->setTitle ( "Change Title"/*gConstants.m_Header.strTitle*/ );
+    this->setTitle ( "Change Title" );
 
     this->messageResourceBundle().use ( this->appRoot() + "WebTemplates" );
     this->useStyleSheet ( "WebStyle.css" );

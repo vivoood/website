@@ -35,7 +35,7 @@ std::vector<std::string> CWContiCtryForm::GetCtry ( std::string str )
     std::vector< std::string > c;
     if ( p != nullptr )
     {
-        std::map< std::string, std::vector< std::string > >::iterator it = p->_list.find ( str );
+        std::map< std::string, std::vector< std::string > & >::iterator it = p->_list.find ( str );
         if ( it != p->_list.end() )
         {
             c = ( *it ).second;

@@ -8,7 +8,7 @@
 class Constants
 {
 public:
-
+    
     Constants();
     IWidgetData* GetData ( std::string str, std::string strHash = "n/a" );
 
@@ -67,8 +67,6 @@ private:
     WidgetData::SFooter m_Footer;
 
 };
-
-extern Constants gConstants;
 
 #endif // CONSTANTS_H
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

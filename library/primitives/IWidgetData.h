@@ -107,7 +107,7 @@ struct SRadioButtons : public IWidgetData
 struct SContiCtry : public IWidgetData
 {
     std::string strStyle;
-    std::map< std::string, std::vector< std::string > > _list;
+    std::map< std::string, std::vector< std::string > & > _list;
 };
 
 struct SQuery : public IWidgetData

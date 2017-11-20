@@ -33,6 +33,8 @@
 
 #include "Constants.h"
 
+thread_local Constants gConstants;
+
 Wt::WWidget* Factory::Create ( std::string strWidget, std::string strData, std::string strHash )
 {
     IWidgetData * pD = gConstants.GetData ( strData, strHash );
