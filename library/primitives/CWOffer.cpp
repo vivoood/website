@@ -41,6 +41,11 @@ CWOffer::CWOffer ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainer
 
             pBtn->setStyleClass ( p->strBtnStyle );
             this->addWidget ( pBtn );
+
+            Wt::WPushButton * pBtnInstead = new Wt::WPushButton ( fod->strInstead );
+            pBtnInstead->setStyleClass ( p->strBtnInsteadStyle );
+            pBtnInstead->setEnabled ( false );
+            this->addWidget ( pBtnInstead );
         }
         else
         {

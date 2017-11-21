@@ -1503,7 +1503,7 @@ table.x-grid3-row-table {
 }
 
 .default-offer-button-style{
-    width: auto;
+    width: 100px;
     font-family: verdana;
     font-size: 1em;
     color: #88a207;
@@ -1511,6 +1511,15 @@ table.x-grid3-row-table {
     align: center;
 }
 
+.default-offer-button-instead-style{
+    width: 100px;
+    font-family: verdana;
+    font-size: 1em;
+    color: #FF0000;
+    background-color: #ada397;
+    border-radius: 25px;
+    align: center;
+}
 .faq-style{
     text-align: left;
     background-color: #FFeFF8;

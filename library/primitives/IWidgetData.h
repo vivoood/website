@@ -56,6 +56,7 @@ struct SOffer : public IWidgetData
 {
     std::string strStyle = "default-offer-style";
     std::string strBtnStyle = "default-offer-button-style";
+    std::string strBtnInsteadStyle = "default-offer-button-instead-style";
     std::string strBigStyle = "default-offer-big-style";
 };
 
