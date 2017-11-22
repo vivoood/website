@@ -18,6 +18,10 @@ public:
         std::string _conti = "n/a";
         std::string _ctry = "n/a";
         std::string _city = "n/a";
+        std::string Export()
+        {
+            return _conti + " / " + _ctry + " / " + _city;
+        }
     };
 
     struct SAbon
@@ -30,6 +34,8 @@ public:
         std::string _budget = "n/a";
         bool        _payd = false;
         void Normalize();
+        std::vector<std::string> Export();
+        std::vector<std::string> GetHeaders();
     };
 
     CWUser() {}
@@ -45,10 +51,11 @@ public:
 
     static bool CheckUserExist ( std::string filename );
     static bool CheckOwner ( std::string filename );
+    std::vector<std::vector<std::string>> ExportAbonaments ( CWUser & ref );
 
 //     void print();
 
-private:
+// private:
     friend class CWAfterLogin;
     friend class CWLogin;
     friend class CWRegisterAccount;

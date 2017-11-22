@@ -13,8 +13,6 @@ CWUserLineInput::CWUserLineInput ( IWidgetData * pD, std::stringstream &ss, Wt::
         std::string str;
         ss >> str;
 
-        std::replace ( str.begin(), str.end(), '_', ' ' );
-
         pText = new Wt::WText ( str );
         pText->setStyleClass ( p->strStyleLabel );
         this->addWidget ( pText );

@@ -30,6 +30,7 @@
 #include "CWDreamTeam.h"
 #include "CWOwnerContainer.h"
 #include "CWOwnerSettings.h"
+#include "CWOwnerQueries.h"
 
 #include "Constants.h"
 
@@ -120,6 +121,9 @@ Wt::WWidget* Factory::Create ( std::string strWidget, IWidgetData * pD )
     
     if ( strWidget == "CWOwnerSettings" )
         return new CWOwnerSettings ( pD );
+    
+    if ( strWidget == "CWOwnerQueries" )
+        return new CWOwnerQueries ( pD );
     
     return new Wt::WText ( "n/a" );
 }

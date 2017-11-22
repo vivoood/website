@@ -123,6 +123,12 @@ Constants::Constants()
     downer.strChildWidgetData = "SOwnerFreeOffers";
     m_TabsOwner.vTabButtons.push_back ( downer );
 
+    downer.strTabName = "View queries";
+    downer.strTabButtonStyle = "menu-buttons";
+    downer.strChildWidget = "CWOwnerQueries";
+    downer.strChildWidgetData = "empty";
+    m_TabsOwner.vTabButtons.push_back ( downer );
+
 
     /** ******************************************* */
     /** ******************************************* */

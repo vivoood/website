@@ -11,12 +11,6 @@
 namespace
 {
 
-std::string ConvertStr ( std::string str )
-{
-    std::replace ( str.begin(), str.end(), ':', ' ' );
-    return str;
-}
-
 void Update ( Wt::WContainerWidget * root, WidgetData::SOwnerFreeOffers * p )
 {
     root->clear();
@@ -49,10 +43,10 @@ void Update ( Wt::WContainerWidget * root, WidgetData::SOwnerFreeOffers * p )
         table->elementAt ( i, 0 )->addWidget ( new Wt::WText ( Wt::WString ( "{1}" ).arg ( cnt ) ) );
         table->elementAt ( i, 0 )->setContentAlignment ( Wt::AlignCenter );
 
-        table->elementAt ( i, 1 )->addWidget ( new Wt::WText ( ConvertStr ( it->second.strFrom ) ) );
+        table->elementAt ( i, 1 )->addWidget ( new Wt::WText ( it->second.strFrom ) );
         table->elementAt ( i, 1 )->setContentAlignment ( Wt::AlignCenter );
 
-        table->elementAt ( i, 2 )->addWidget ( new Wt::WText ( ConvertStr ( it->second.strTo ) ) );
+        table->elementAt ( i, 2 )->addWidget ( new Wt::WText ( it->second.strTo ) );
         table->elementAt ( i, 2 )->setContentAlignment ( Wt::AlignCenter );
 
         table->elementAt ( i, 3 )->addWidget ( new Wt::WText ( it->second.strPrice ) );
@@ -61,7 +55,7 @@ void Update ( Wt::WContainerWidget * root, WidgetData::SOwnerFreeOffers * p )
         table->elementAt ( i, 4 )->addWidget ( new Wt::WText ( it->second.strInstead ) );
         table->elementAt ( i, 4 )->setContentAlignment ( Wt::AlignCenter );
 
-        table->elementAt ( i, 5 )->addWidget ( new Wt::WText ( ConvertStr ( it->second.strAirline ) ) );
+        table->elementAt ( i, 5 )->addWidget ( new Wt::WText ( it->second.strAirline ) );
         table->elementAt ( i, 5 )->setContentAlignment ( Wt::AlignCenter );
 
         Wt::WCheckBox * ch1 = new Wt::WCheckBox();

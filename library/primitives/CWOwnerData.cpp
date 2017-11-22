@@ -6,6 +6,21 @@
 
 #include "CWHash.h"
 
+namespace
+{
+
+std::string ConvertStr ( std::string str, bool tofile )
+{
+    if ( tofile )
+        std::replace ( str.begin(), str.end(), ' ', ':' );
+    else
+        std::replace ( str.begin(), str.end(), ':', ' ' );
+
+    return str;
+}
+
+}
+
 void CWFreeOffersData::print()
 {
     std::cout << strFrom << std::endl;
@@ -33,48 +48,58 @@ void CWOwnerData::print()
 
 std::ostream& operator<< ( std::ostream& os, const CWFreeOffersData& dt )
 {
-    os << dt.strFrom << std::endl;
-    os << dt.strTo << std::endl;
-    os << dt.strAirline << std::endl;
-    os << dt.strPrice << std::endl;
-    os << dt.strInstead << std::endl;
+    os << ConvertStr ( dt.strFrom, true ) << std::endl;
+    os << ConvertStr ( dt.strTo, true ) << std::endl;
+    os << ConvertStr ( dt.strAirline, true ) << std::endl;
+    os << ConvertStr ( dt.strPrice, true ) << std::endl;
+    os << ConvertStr ( dt.strInstead, true ) << std::endl;
     os << dt.bOneWay << std::endl;
     os << dt.bDirectFlight << std::endl;
-    os << dt.strHyperlink << std::endl;
+    os << ConvertStr ( dt.strHyperlink, true ) << std::endl;
     return os;
 }
 
 std::istream& operator>> ( std::istream& is, CWFreeOffersData& dt )
 {
     is >> dt.strFrom;
+    dt.strFrom = ConvertStr ( dt.strFrom, false );
+
     is >> dt.strTo;
+    dt.strTo = ConvertStr ( dt.strTo, false );
+
     is >> dt.strAirline;
+    dt.strAirline = ConvertStr ( dt.strAirline, false );
+
     is >> dt.strPrice;
+    dt.strPrice = ConvertStr ( dt.strPrice, false );
+
     is >> dt.strInstead;
+    dt.strInstead = ConvertStr ( dt.strInstead, false );
+
     is >> dt.bOneWay;
+
     is >> dt.bDirectFlight;
+
     is >> dt.strHyperlink;
+    dt.strHyperlink = ConvertStr ( dt.strHyperlink, false );
+
     return is;
 }
 
 std::ostream& operator<< ( std::ostream& os, CWSettingsData& dt )
 {
-    std::replace ( dt.strTitle.begin(), dt.strTitle.end(), ' ', '_' );
-    os << dt.strTitle << std::endl;
-
-    std::replace ( dt.strSlogan.begin(), dt.strSlogan.end(), ' ', '_' );
-    os << dt.strSlogan << std::endl;
-
+    os << ConvertStr ( dt.strTitle, true ) << std::endl;
+    os << ConvertStr ( dt.strSlogan, true ) << std::endl;
     return os;
 }
 
 std::istream& operator>> ( std::istream& is, CWSettingsData& dt )
 {
     is >> dt.strTitle;
-    std::replace ( dt.strTitle.begin(), dt.strTitle.end(), '_', ' ' );
+    dt.strTitle = ConvertStr ( dt.strTitle, false );
 
     is >> dt.strSlogan;
-    std::replace ( dt.strSlogan.begin(), dt.strSlogan.end(), '_', ' ' );
+    dt.strSlogan = ConvertStr ( dt.strSlogan, false );
 
     return is;
 }

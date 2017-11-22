@@ -3,6 +3,22 @@
 #include <algorithm>
 
 #include "CWHash.h"
+#include "Factory.h"
+
+namespace
+{
+
+std::string ConvertStr ( std::string str, bool tofile )
+{
+    if ( tofile )
+        std::replace ( str.begin(), str.end(), ' ', ':' );
+    else
+        std::replace ( str.begin(), str.end(), ':', ' ' );
+
+    return str;
+}
+
+}
 
 CWUser::CWUser ( std::string user, std::string sha, std::string mail, std::string coutry, std::string gender )
 {
@@ -68,13 +84,28 @@ bool CWUser::CheckOwner ( std::string filename )
     return false;
 }
 
+std::vector<std::vector<std::string>> CWUser::ExportAbonaments ( CWUser& ref )
+{
+    std::vector<std::vector<std::string>> v;
+
+    std::vector<std::string> headers;
+    if ( !ref._vAbon.empty() )
+        v.push_back ( ref._vAbon.front().GetHeaders() );
+
+    std::vector<SAbon> & ab = ref._vAbon;
+    for ( auto & i : ab )
+        v.push_back ( i.Export() );
+
+    return v;
+}
+
 std::ostream& operator<< ( std::ostream& os, const CWUser& dt )
 {
-    os << dt._user << std::endl;
-    os << dt._pass << std::endl;
-    os << dt._mail << std::endl;
-    os << dt._country << std::endl;
-    os << dt._gender << std::endl;
+    os << ConvertStr ( dt._user, true ) << std::endl;
+    os << ConvertStr ( dt._pass, true ) << std::endl;
+    os << ConvertStr ( dt._mail, true ) << std::endl;
+    os << ConvertStr ( dt._country, true ) << std::endl;
+    os << ConvertStr ( dt._gender, true ) << std::endl;
     os << dt._abonCnt << std::endl;
     for ( auto it : dt._vAbon )
         os << it << std::endl;;
@@ -84,10 +115,20 @@ std::ostream& operator<< ( std::ostream& os, const CWUser& dt )
 std::istream& operator>> ( std::istream& is, CWUser& dt )
 {
     is >> dt._user;
+    dt._user = ConvertStr ( dt._user, false );
+
     is >> dt._pass;
+    dt._pass = ConvertStr ( dt._pass, false );
+
     is >> dt._mail;
+    dt._mail = ConvertStr ( dt._mail, false );
+
     is >> dt._country;
+    dt._country = ConvertStr ( dt._country, false );
+
     is >> dt._gender;
+    dt._gender = ConvertStr ( dt._gender, false );
+
     is >> dt._abonCnt;
     for ( int i = 0; i < dt._abonCnt; i++ )
     {
@@ -104,9 +145,9 @@ std::ostream& operator<< ( std::ostream& os, const CWUser::SAbon& dt )
     os << dt._abon << std::endl;
     os << dt._from << std::endl;
     os << dt._to << std::endl;
-    os << dt._date << std::endl;
-    os << dt._adults << std::endl;
-    os << dt._budget << std::endl;
+    os << ConvertStr ( dt._date, true ) << std::endl;
+    os << ConvertStr ( dt._adults, true ) << std::endl;
+    os << ConvertStr ( dt._budget, true ) << std::endl;
     os << dt._payd;
     return os;
 }
@@ -116,26 +157,39 @@ std::istream& operator>> ( std::istream& is, CWUser::SAbon& dt )
     is >> dt._abon;
     is >> dt._from;
     is >> dt._to;
+
     is >> dt._date;
+    dt._date = ConvertStr ( dt._date, false );
+
     is >> dt._adults;
+    dt._adults = ConvertStr ( dt._adults, false );
+
     is >> dt._budget;
+    dt._budget = ConvertStr ( dt._budget, false );
+
     is >> dt._payd;
     return is;
 }
 
 std::ostream& operator<< ( std::ostream& os, const CWUser::SContiCtry& dt )
 {
-    os << dt._conti << std::endl;
-    os << dt._ctry << std::endl;
-    os << dt._city;
+    os << ConvertStr ( dt._conti, true ) << std::endl;
+    os << ConvertStr ( dt._ctry, true ) << std::endl;
+    os << ConvertStr ( dt._city, true );
     return os;
 }
 
 std::istream& operator>> ( std::istream& is, CWUser::SContiCtry& dt )
 {
     is >> dt._conti;
+    dt._conti = ConvertStr ( dt._conti, false );
+
     is >> dt._ctry;
+    dt._ctry = ConvertStr ( dt._ctry, false );
+
     is >> dt._city;
+    dt._city = ConvertStr ( dt._city, false );
+
     return is;
 }
 
@@ -152,8 +206,32 @@ void CWUser::SAbon::Normalize()
 
     if ( _budget.empty() )
         _budget = "n/a";
+}
 
-    std::replace ( _date.begin(), _date.end(), ' ', '-' );
+std::vector<std::string> CWUser::SAbon::Export()
+{
+    std::vector<std::string> abonam = { "2.99$", "4.99$", "9.99$" };
+
+    std::vector<std::string> v;
+    v.push_back ( _from.Export() );
+    v.push_back ( _to.Export() );
+    v.push_back ( _date );
+    v.push_back ( _adults );
+    v.push_back ( _budget );
+    v.push_back ( abonam[_abon] );
+    return v;
+}
+
+std::vector<std::string> CWUser::SAbon::GetHeaders()
+{
+    std::vector<std::string> v;
+    v.push_back ( "From" );
+    v.push_back ( "To" );
+    v.push_back ( "Date" );
+    v.push_back ( "Adults" );
+    v.push_back ( "Budget" );
+    v.push_back ( "Price" );
+    return v;
 }
 
 // void CWUser::print()

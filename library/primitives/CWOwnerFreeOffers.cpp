@@ -49,7 +49,6 @@ void GetValueFromLineEdit ( Wt::WTable * t, OwnerEID e, std::string & val, bool 
     Wt::WLineEdit * edit = dynamic_cast<Wt::WLineEdit *> ( w );
 
     val = edit->text().toUTF8();
-    std::replace ( val.begin(), val.end(), ' ', ':' );
     
     if ( clear )
         edit->setText ( "" );
