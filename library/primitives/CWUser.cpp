@@ -93,8 +93,10 @@ std::vector<std::vector<std::string>> CWUser::ExportAbonaments ( CWUser& ref )
         v.push_back ( ref._vAbon.front().GetHeaders() );
 
     std::vector<SAbon> & ab = ref._vAbon;
-    for ( auto & i : ab )
-        v.push_back ( i.Export() );
+    for ( unsigned int i = 0; i < ab.size(); i++ )
+    {
+        v.push_back ( ab[i].Export ( i + 1 ) );
+    }
 
     return v;
 }
@@ -208,11 +210,15 @@ void CWUser::SAbon::Normalize()
         _budget = "n/a";
 }
 
-std::vector<std::string> CWUser::SAbon::Export()
+std::vector<std::string> CWUser::SAbon::Export ( unsigned int id )
 {
     std::vector<std::string> abonam = { "2.99$", "4.99$", "9.99$" };
+    std::stringstream ss;
+    ss << id;
+
 
     std::vector<std::string> v;
+    v.push_back ( ss.str() );
     v.push_back ( _from.Export() );
     v.push_back ( _to.Export() );
     v.push_back ( _date );
@@ -225,6 +231,7 @@ std::vector<std::string> CWUser::SAbon::Export()
 std::vector<std::string> CWUser::SAbon::GetHeaders()
 {
     std::vector<std::string> v;
+    v.push_back ( "#" );
     v.push_back ( "From" );
     v.push_back ( "To" );
     v.push_back ( "Date" );
@@ -233,26 +240,5 @@ std::vector<std::string> CWUser::SAbon::GetHeaders()
     v.push_back ( "Price" );
     return v;
 }
-
-// void CWUser::print()
-// {
-//     std::cout << "User: " << _user << std::endl;
-//     std::cout << "Pass: " << _pass << std::endl;
-//     std::cout << "Mail: " << _mail << std::endl;
-//     std::cout << "Ctry: " << _country << std::endl;
-//     std::cout << "Gndr: " << _gender << std::endl;
-//
-//     for ( const auto & it : _vAbon )
-//     {
-//         std::cout << "#" << it._abon << std::endl;
-//         std::cout << "#" << it._from._conti << " " << it._from._ctry << " " << it._from._city << std::endl;
-//         std::cout << "#" << it._to._conti << " " << it._to._ctry << " " << it._to._city << std::endl;
-//         std::cout << "#" << it._date << std::endl;
-//         std::cout << "#" << it._adults << std::endl;
-//         std::cout << "#" << it._budget << std::endl;
-//         std::cout << "#" << ( it._payd ? "payd" : "not payd" ) << std::endl;
-//     }
-// }
-
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

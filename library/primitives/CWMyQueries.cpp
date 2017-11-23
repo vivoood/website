@@ -16,75 +16,33 @@ CWMyQueries::CWMyQueries ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WC
         CWUser u;
         if ( u.load ( pD->strHash ) )
         {
+            std::vector< std::vector< std::string > > v = u.ExportAbonaments ( u );
+
             Wt::WTable * table = new Wt::WTable();
             table->setHeaderCount ( 1 );
             table->setWidth ( Wt::WLength ( "100%" ) );
 
-            table->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "#" ) );
-            table->elementAt ( 0, 0 )->setContentAlignment ( Wt::AlignLeft );
-
-            table->elementAt ( 0, 1 )->addWidget ( new Wt::WText ( "Price" ) );
-            table->elementAt ( 0, 1 )->setContentAlignment ( Wt::AlignLeft );
-
-            table->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "From" ) );
-            table->elementAt ( 0, 2 )->setContentAlignment ( Wt::AlignLeft );
-
-            table->elementAt ( 0, 3 )->addWidget ( new Wt::WText ( "To" ) );
-            table->elementAt ( 0, 3 )->setContentAlignment ( Wt::AlignLeft );
-
-            table->elementAt ( 0, 4 )->addWidget ( new Wt::WText ( "Date" ) );
-            table->elementAt ( 0, 4 )->setContentAlignment ( Wt::AlignLeft );
-
-            table->elementAt ( 0, 5 )->addWidget ( new Wt::WText ( "Adult(s)" ) );
-            table->elementAt ( 0, 5 )->setContentAlignment ( Wt::AlignLeft );
-
-            table->elementAt ( 0, 6 )->addWidget ( new Wt::WText ( "Budget" ) );
-            table->elementAt ( 0, 6 )->setContentAlignment ( Wt::AlignLeft );
-
-            table->elementAt ( 0, 7 )->addWidget ( new Wt::WText ( "" ) );
-            table->elementAt ( 0, 7 )->setContentAlignment ( Wt::AlignLeft );
-
-            const std::vector<CWUser::SAbon> & v = u._vAbon;
-
-            std::vector<std::string> abonam = { "2.99$", "4.99$", "9.99$" };
-
             for ( unsigned int i = 0; i < v.size(); ++i )
             {
-                const CWUser::SAbon & ab = v[i];
-                int row = i + 1;
+                for ( unsigned int j = 0; j < v[i].size(); ++j )
+                {
+                    table->elementAt ( i, j )->addWidget ( new Wt::WText ( v[i][j] ) );
+                    table->elementAt ( i, j )->setContentAlignment ( Wt::AlignLeft );
+                }
+            }
 
-                table->elementAt ( row, 0 )->addWidget ( new Wt::WText ( Wt::WString ( "{1}" ) .arg ( row ) ) );
-                table->elementAt ( row, 0 )->setContentAlignment ( Wt::AlignLeft );
-
-                table->elementAt ( row, 1 )->addWidget ( new Wt::WText ( abonam[ab._abon % abonam.size()] ) );
-                table->elementAt ( row, 1 )->setContentAlignment ( Wt::AlignLeft );
-
-                table->elementAt ( row, 2 )->addWidget ( new Wt::WText ( ab._from._conti + " / " + ab._from._ctry + " / " + ab._from._city ) );
-                table->elementAt ( row, 2 )->setContentAlignment ( Wt::AlignLeft );
-
-                table->elementAt ( row, 3 )->addWidget ( new Wt::WText ( ab._to._conti + " / " + ab._to._ctry + " / " + ab._to._city ) );
-                table->elementAt ( row, 3 )->setContentAlignment ( Wt::AlignLeft );
-
-                table->elementAt ( row, 4 )->addWidget ( new Wt::WText ( ab._date ) );
-                table->elementAt ( row, 4 )->setContentAlignment ( Wt::AlignLeft );
-
-                table->elementAt ( row, 5 )->addWidget ( new Wt::WText ( ab._adults ) );
-                table->elementAt ( row, 5 )->setContentAlignment ( Wt::AlignLeft );
-
-                table->elementAt ( row, 6 )->addWidget ( new Wt::WText ( ab._budget ) );
-                table->elementAt ( row, 6 )->setContentAlignment ( Wt::AlignLeft );
-
+            for ( unsigned int i = 1; i < v.size(); ++i )
+            {
                 Wt::WPushButton * btn = new Wt::WPushButton ( "" );
                 btn->setLink ( Wt::WLink ( "https://paypal.com/" ) );
                 btn->setIcon ( Wt::WLink ( "pics/paypal.png" ) );
-                if ( ab._payd )
+                if ( u._vAbon[i-1]._payd )
                 {
                     btn->setEnabled ( false );
                     btn->decorationStyle().setBackgroundColor ( Wt::WColor ( Wt::gray ) );
                 }
-
-                table->elementAt ( row, 7 )->addWidget ( btn );
-                table->elementAt ( row, 7 )->setContentAlignment ( Wt::AlignLeft );
+                table->elementAt ( i, v[i].size() )->addWidget ( btn );
+                table->elementAt ( i, v[i].size() )->setContentAlignment ( Wt::AlignLeft );
             }
 
             this->addWidget ( table );
