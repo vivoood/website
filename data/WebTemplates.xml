@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <messages xmlns:if="Wt.WTemplate.conditions">
 
- <message id="web-site-name-template">
-   <div class="web-site-name-style">
-    <h1>${web-site-name}</h1>
-    <h4>${web-site-slogan}</h4>
-  </div>
- </message>
+
  
 </messages>

@@ -32,9 +32,9 @@
 #include "CWOwnerSettings.h"
 #include "CWOwnerQueries.h"
 
-#include "Constants.h"
+#include "LWConstants.h"
 
-thread_local Constants gConstants;
+thread_local LWConstants gConstants;
 
 Wt::WWidget* Factory::Create ( std::string strWidget, std::string strData, std::string strHash )
 {

@@ -7,9 +7,9 @@
 #include <dlfcn.h>
 #include <string>
 
+#include <Wt/WContainerWidget>
+
 #include "WebSite.h"
-#include <first_site/MainWidget.h>
-#include <primitives/Constants.h>
 
 uint64_t WebSite::m_nInstanceCounter = 0;
 
@@ -27,7 +27,7 @@ WebSite::WebSite ( const Wt::WEnvironment& env )
     this->setTitle ( "Change Title" );
 
     this->messageResourceBundle().use ( this->appRoot() + "WebTemplates" );
-    this->useStyleSheet ( "WebStyle.css" );
+    this->useStyleSheet ( "WebStyleLW.css" );
 
 //     m_handle = dlopen ( "./libhangman.so", RTLD_LAZY );
     m_handle = dlopen ( "./libfirst_site.so", RTLD_LAZY );
