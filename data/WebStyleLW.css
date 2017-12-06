@@ -1401,21 +1401,20 @@ table.x-grid3-row-table {
 /**************************************************************************************************************************/
 
 
-.table-col-1{
-    height: 200px;
+.table-layout{
     background-color: #ffffb4;
-    border: 2px solid #88a207;
 }
 
-.table-col-2{
-    height: 200px;
-    background-color: #ffffb4;
-    border: 2px solid #88a207;
+.default-offer-style{
+    border: 3px solid #88a207;
+    
+    background-size: 100% 100%;
+    height: auto;
+    
+    font-family: verdana;
+    font-size: 40px;
+    font-weight: bold;
+    
+    color: #bd380f;
+    text-align: center;
 }
-
-.table-col-3{
-    height: 200px;
-    background-color: #ffffb4;
-    border: 2px solid #88a207;
-}
-

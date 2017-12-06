@@ -139,6 +139,14 @@ bool CWOwnerData::LoadFreeOffers()
     return nFreeOffersCnt == mapFreeOffers.size();
 }
 
+std::vector< std::string > CWOwnerData::GetFreeOffers()
+{
+    std::vector< std::string > v;
+    for ( std::map<std::string, CWFreeOffersData>::iterator it = mapFreeOffers.begin(); it != mapFreeOffers.end(); ++it )
+        v.push_back ( it->first );
+    return v;
+}
+
 void CWOwnerData::AddFreeOffer ( CWFreeOffersData d )
 {
     mapFreeOffers.insert ( std::pair<std::string, CWFreeOffersData> ( d.GetHash(), d ) );
@@ -174,8 +182,3 @@ bool CWOwnerData::LoadSettings()
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
-
-
-
-

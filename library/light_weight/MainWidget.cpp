@@ -1,10 +1,12 @@
 #include "MainWidget.h"
 
-#include "../primitives/Factory.h"
+#include "CWTableLayout.h"
 
 MainWidget::MainWidget ( Wt::WContainerWidget* perant ) : WContainerWidget ( perant )
 {
-    this->addWidget ( Factory::Create ( "CWTableLayout", "STable", "n/a" ) );
+    CWTableLayout::TABLE t;
+    t.push_back ( std::vector< std::string > { "FreeOffers" } );
+    this->addWidget ( new CWTableLayout ( t, "n/a" ) );
 }
 
 extern "C" Wt::WObject * create()

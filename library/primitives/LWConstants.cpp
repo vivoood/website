@@ -5,25 +5,41 @@ LWConstants::LWConstants()
     std::vector<WidgetData::STableData> vTableRow;
     WidgetData::STableData dTable;
 
-    dTable.strStyle = "table-col-1";
-    dTable.strLenght = "15%";
+    /** *************************************** */
     dTable.strWidgetName = "CWOwnerSettings";
     dTable.strWidgetData = "empty";
-    vTableRow.push_back ( dTable );
 
-    dTable.strStyle = "table-col-2";
-    dTable.strLenght = "70%";
+    vTableRow.clear();
+    vTableRow.push_back ( dTable );
+    m_Table.vTable.push_back ( vTableRow );
+    /** *************************************** */
+
+    /** *************************************** */
     dTable.strWidgetName = "CWOwnerQueries";
     dTable.strWidgetData = "empty";
-    vTableRow.push_back ( dTable );
 
-    dTable.strStyle = "table-col-3";
-    dTable.strLenght = "15%";
+    vTableRow.clear();
+    vTableRow.push_back ( dTable );
+    m_Table.vTable.push_back ( vTableRow );
+    /** *************************************** */
+
+    /** *************************************** */
     dTable.strWidgetName = "CWOwnerSettings";
     dTable.strWidgetData = "empty";
-    vTableRow.push_back ( dTable );
 
+    vTableRow.clear();
+    vTableRow.push_back ( dTable );
     m_Table.vTable.push_back ( vTableRow );
+    /** *************************************** */
+
+    /** *************************************** */
+    dTable.strWidgetName = "CWPublicOffers";
+    dTable.strWidgetData = "SOffersRight";
+
+    vTableRow.clear();
+    vTableRow.push_back ( dTable );
+    m_Table.vTable.push_back ( vTableRow );
+    /** *************************************** */
 
     m_mapData.insert ( std::pair<std::string, IWidgetData*> ( "STable", &m_Table ) );
 }

@@ -1,6 +1,7 @@
 #ifndef CWOWNERDATA_H
 #define CWOWNERDATA_H
 
+#include <vector>
 #include <string>
 #include <map>
 #include <mutex>

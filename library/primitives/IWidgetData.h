@@ -36,10 +36,10 @@ struct STabs : public IWidgetData
 struct STableData : public IWidgetData
 {
     std::string strBgrImg = "n/a";
-    std::string strStyle;
-    std::string strLenght;
-    std::string strWidgetName;
-    std::string strWidgetData;
+    std::string strStyle = "n/a";
+    std::string strLenght = "100%";
+    std::string strWidgetName = "n/a";
+    std::string strWidgetData = "n/a";
 };
 
 struct STable : public IWidgetData
