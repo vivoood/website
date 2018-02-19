@@ -50,6 +50,31 @@ CWCenterColumn::CWCenterColumn ( std::string usrhash, Wt::WContainerWidget* pare
         pTablePrices->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
     this->addWidget ( pTablePrices );
 
+    CWTable * pTableBestDeals = new CWTable();
+
+    for ( int i = 0; i < 2; i++ )
+        pTableBestDeals->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
+    pTableBestDeals->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 1)......." ) );
+
+    for ( int i = 0; i < 2; i++ )
+        pTableBestDeals->elementAt ( 1, 0 )->addWidget ( new Wt::WBreak() );
+    pTableBestDeals->elementAt ( 1, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 2)......." ) );
+
+    for ( int i = 0; i < 2; i++ )
+        pTableBestDeals->elementAt ( 2, 0 )->addWidget ( new Wt::WBreak() );
+    pTableBestDeals->elementAt ( 2, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 3)......." ) );
+
+    for ( int i = 0; i < 2; i++ )
+        pTableBestDeals->elementAt ( 3, 0 )->addWidget ( new Wt::WBreak() );
+    pTableBestDeals->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 4)......." ) );
+
+    for ( int i = 0; i < 2; i++ )
+        pTableBestDeals->elementAt ( 4, 0 )->addWidget ( new Wt::WBreak() );
+    pTableBestDeals->elementAt ( 4, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 5)......." ) );
+
+
+    this->addWidget ( pTableBestDeals );
+
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

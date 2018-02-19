@@ -6,8 +6,6 @@
 #include "Factory.h"
 #include "CWTable.h"
 
-#include "CWCenterColumn.h"
-
 namespace
 {
 
