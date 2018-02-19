@@ -1,27 +1,44 @@
 #include "EntryOne.h"
 
+#include <Wt/WBreak>
 #include <Wt/WText>
-#include <Wt/WTable>
-#include <Wt/WTableCell>
+
+#include "Factory.h"
+#include "CWTable.h"
+
+#include "CWCenterColumn.h"
+
+namespace
+{
+
+void CreateEntry ( std::string strUserHash, Wt::WContainerWidget * p )
+{
+    p->addWidget ( Factory::Create ( "CWCenterColumn", "n/a", strUserHash ) );
+}
+
+}
 
 EntryOne::EntryOne ( Wt::WApplication * pApp )
 {
     pApp->setTitle ( "Change Title" );
-
     pApp->messageResourceBundle().use ( pApp->appRoot() + "WebTemplates" );
     pApp->useStyleSheet ( "WebStyleLW.css" );
 
-    Wt::WTable *table = new Wt::WTable();
+    Wt::WTableCell * pCell = nullptr;
+    CWTable *table = new CWTable();
     table->setWidth ( Wt::WLength ( "100%" ) );
 
-    table->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "col-1" ) );
-    table->elementAt ( 0, 0 )->setWidth ( Wt::WLength ( "15%" ) );
+    pCell = table->elementAt ( 0, 0 );
+    pCell->setWidth ( Wt::WLength ( "12%" ) );
+    pCell->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/bluebgr.png" ) );
 
-    table->elementAt ( 0, 1 )->addWidget ( new Wt::WText ( "col-1" ) );
-    table->elementAt ( 0, 1 )->setWidth ( Wt::WLength ( "70%" ) );
+    pCell = table->elementAt ( 0, 1 );
+    CreateEntry ( "Guest", pCell );
+    pCell->setWidth ( Wt::WLength ( "76%" ) );
 
-    table->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "col-1" ) );
-    table->elementAt ( 0, 2 )->setWidth ( Wt::WLength ( "15%" ) );
+    pCell = table->elementAt ( 0, 2 );
+    pCell->setWidth ( Wt::WLength ( "12%" ) );
+    pCell->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/bluebgr.png" ) );
 
     this->addWidget ( table );
 }

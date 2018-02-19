@@ -5,6 +5,7 @@
 #include <Wt/WWidget>
 
 #include "IWidgetData.h"
+#include "Debug.h"
 
 class Factory
 {
@@ -15,6 +16,7 @@ public:
 
 #endif // FACTORY_H
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
 
 
 

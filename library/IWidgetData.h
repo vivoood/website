@@ -7,7 +7,8 @@
 class IWidgetData
 {
 public:
-    std::string strHash = "n/a";
+    std::string strUserHash = "n/a";
+    std::string strStyleClass = "n/a";
     virtual ~IWidgetData() {}
 };
 
