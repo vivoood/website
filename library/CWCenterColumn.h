@@ -9,7 +9,7 @@ class CWCenterColumn : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    CWCenterColumn ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
+    CWCenterColumn ( std::string usrhash, Wt::WContainerWidget* parent = 0 );
 };
 
 #endif //CWCENTERCOLUMN_H

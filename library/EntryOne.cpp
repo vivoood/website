@@ -13,7 +13,7 @@ namespace
 
 void CreateEntry ( std::string strUserHash, Wt::WContainerWidget * p )
 {
-    p->addWidget ( Factory::Create ( "CWCenterColumn", "n/a", strUserHash ) );
+    p->addWidget ( Factory::Create ( "CWCenterColumn", strUserHash ) );
 }
 
 }
@@ -26,7 +26,6 @@ EntryOne::EntryOne ( Wt::WApplication * pApp )
 
     Wt::WTableCell * pCell = nullptr;
     CWTable *table = new CWTable();
-    table->setWidth ( Wt::WLength ( "100%" ) );
 
     pCell = table->elementAt ( 0, 0 );
     pCell->setWidth ( Wt::WLength ( "12%" ) );
