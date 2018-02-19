@@ -18,12 +18,7 @@ WebSite::WebSite ( const Wt::WEnvironment& env )
     ++m_nInstanceCounter;
     m_nInstanceId = m_nInstanceCounter;
 
-    this->setTitle ( "Change Title" );
-
-    this->messageResourceBundle().use ( this->appRoot() + "WebTemplates" );
-    this->useStyleSheet ( "WebStyleLW.css" );
-
-    m_pWebSite = new EntryOne ( nullptr );
+    m_pWebSite = new EntryOne ( this );
     root()->addWidget ( m_pWebSite );
 }
 
