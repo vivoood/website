@@ -33,18 +33,10 @@ void GetFilesFromDir ( std::string currDir, std::vector<std::string> & files )
     closedir ( dp );
 }
 
-void SetTableContent ( Wt::WTable * pT, int x, int y, std::string val )
+void SetTableContent ( Wt::WTableCell * pTC, std::string val )
 {
-    Wt::WTableCell * pTC = pT->elementAt ( x, y );
     pTC->addWidget ( new Wt::WText ( val ) );
     pTC->setContentAlignment ( Wt::AlignRight );
-}
-
-void SetTableContent ( Wt::WTable * pT, int x, int y, int val )
-{
-    std::stringstream ss;
-    ss << val;
-    SetTableContent ( pT, x, y, ss.str() );
 }
 
 class CWTableAbonaments : public Wt::WContainerWidget
@@ -58,19 +50,9 @@ public:
         table->setHeaderCount ( 1 );
         table->setWidth ( Wt::WLength ( "100%" ) );
 
-        table->elementAt ( 0, 0 )->setContentAlignment ( Wt::AlignRight );
-        table->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "#" ) );
-
         for ( unsigned int i = 0; i < v.size(); ++i )
-        {
             for ( unsigned int j = 0; j < v[i].size(); ++j )
-            {
-                SetTableContent ( table, i, j + 1, v[i][j] );
-                if ( i > 0 )
-                    if ( j == 0 )
-                        SetTableContent ( table, i, j, i );
-            }
-        }
+                SetTableContent ( table->elementAt ( i, j ), v[i][j] );
 
         this->setContentAlignment ( Wt::AlignCenter );
         this->addWidget ( new Wt::WBreak() );

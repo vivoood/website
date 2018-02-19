@@ -34,7 +34,7 @@ public:
         std::string _budget = "n/a";
         bool        _payd = false;
         void Normalize();
-        std::vector<std::string> Export();
+        std::vector<std::string> Export ( unsigned int id );
         std::vector<std::string> GetHeaders();
     };
 
@@ -52,8 +52,6 @@ public:
     static bool CheckUserExist ( std::string filename );
     static bool CheckOwner ( std::string filename );
     std::vector<std::vector<std::string>> ExportAbonaments ( CWUser & ref );
-
-//     void print();
 
 // private:
     friend class CWAfterLogin;

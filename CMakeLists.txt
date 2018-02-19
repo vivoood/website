@@ -24,7 +24,7 @@ add_subdirectory(library)
 add_subdirectory(deamon)
 
 set(SOURCE WebSite.cpp)
-set(internal_libs first_site)
+set(internal_libs extender)
 
 include_directories(library)
 

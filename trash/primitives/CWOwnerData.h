@@ -41,6 +41,8 @@ public:
 
     void SaveFreeOffers ();
     bool LoadFreeOffers ();
+    std::vector< std::string > GetFreeOffers();
+    
     void AddFreeOffer ( CWFreeOffersData d );
     bool RemoveFreeOffer ( std::string hash );
     int nFreeOffersCnt = 0;
