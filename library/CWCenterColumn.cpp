@@ -14,6 +14,21 @@ CWCenterColumn::CWCenterColumn ( std::string usrhash, Wt::WContainerWidget* pare
     pTable->elementAt ( 1, 5 )->addWidget ( new Wt::WText ( "login" ) );
     this->addWidget ( pTable );
 
+    CWTable * pTableContinentLocation = new CWTable();
+    pTableContinentLocation->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "empty" ) );
+
+    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
+    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
+    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
+    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WText ( "Choose your continent location to see cheap flights" ) );
+    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
+    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
+    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
+    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
+
+    pTableContinentLocation->elementAt ( 0, 8 )->addWidget ( new Wt::WText ( "empty" ) );
+    this->addWidget ( pTableContinentLocation );
+
     CWTable * pTableFreeOffers = new CWTable();
     for ( int i = 0; i < 8; ++i )
     {
@@ -72,8 +87,23 @@ CWCenterColumn::CWCenterColumn ( std::string usrhash, Wt::WContainerWidget* pare
         pTableBestDeals->elementAt ( 4, 0 )->addWidget ( new Wt::WBreak() );
     pTableBestDeals->elementAt ( 4, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 5)......." ) );
 
-
     this->addWidget ( pTableBestDeals );
+
+
+    CWTable * pTableSuccessStories = new CWTable();
+    for ( int i = 0; i < 2; i++ )
+    {
+        for ( int j = 0; j < 3; j++ )
+        {
+            std::stringstream ss;
+            ss << "Success stories id[" << i + 1 << "][" << j + 1 << "]";
+            pTableSuccessStories->elementAt ( i, j )->addWidget ( new Wt::WBreak() );
+            pTableSuccessStories->elementAt ( i, j )->addWidget ( new Wt::WText ( ss.str() ) );
+            pTableSuccessStories->elementAt ( i, j )->addWidget ( new Wt::WBreak() );
+            pTableSuccessStories->elementAt ( i, j )->addWidget ( new Wt::WBreak() );
+        }
+    }
+    this->addWidget ( pTableSuccessStories );
 
 }
 
