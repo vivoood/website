@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
-project(library)
+project(extender)
 
-add_subdirectory(light_weight)
+set( external_shared_libs wt wthttp boost_signals crypto++ )
+
+add_library(extender SHARED CWHash.cpp CWUser.cpp Factory.cpp Debug.cpp EntryOne.cpp )
+target_link_libraries(extender ${external_shared_libs})
