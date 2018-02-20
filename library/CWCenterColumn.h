@@ -3,13 +3,11 @@
 
 #include <Wt/WContainerWidget>
 
-#include "IWidgetData.h"
-
 class CWCenterColumn : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    CWCenterColumn ( std::string usrhash, Wt::WContainerWidget* parent = 0 );
+    CWCenterColumn ( std::__cxx11::string usrhash, Wt::WContainerWidget* parent = 0 );
 };
 
 #endif //CWCENTERCOLUMN_H

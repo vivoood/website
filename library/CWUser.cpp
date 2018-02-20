@@ -1,9 +1,11 @@
 #include "CWUser.h"
 
 #include <algorithm>
+#include <sstream>
+#include <iomanip>
+#include <crypto++/sha.h>
 
-#include "CWHash.h"
-#include "Factory.h"
+#include "CWUser.h"
 
 namespace
 {
@@ -20,13 +22,13 @@ std::string ConvertStr ( std::string str, bool tofile )
 
 }
 
-CWUser::CWUser ( std::string user, std::string sha, std::string mail, std::string coutry, std::string gender )
+CWUser::CWUser ( std::string user, std::string pass, std::string mail, std::string coutry, std::string gender )
 {
     if ( !user.empty() )
         _user = user;
 
-    if ( !sha.empty() )
-        _pass = sha;
+    if ( !pass.empty() )
+        _pass = pass;
 
     if ( !mail.empty() )
         _mail = mail;
@@ -66,7 +68,7 @@ bool CWUser::load ( std::string filename )
 
 std::string CWUser::hash()
 {
-    return CWHash::Get ( _mail );
+    return CWUser::CreateHash ( _mail + _pass );
 }
 
 bool CWUser::CheckUserExist ( std::string filename )
@@ -84,21 +86,23 @@ bool CWUser::CheckOwner ( std::string filename )
     return false;
 }
 
-std::vector<std::vector<std::string>> CWUser::ExportAbonaments ( CWUser& ref )
+std::string CWUser::CreateHash ( std::string s )
 {
-    std::vector<std::vector<std::string>> v;
+    std::string hstr = "5345@asd#" + s + "fslkdjf34";
+    CryptoPP::SHA1 hash;
+    unsigned char _sha1[ CryptoPP::SHA1::DIGESTSIZE ];
+    hash.CalculateDigest ( _sha1, ( byte* ) s.c_str(), s.length() );
 
-    std::vector<std::string> headers;
-    if ( !ref._vAbon.empty() )
-        v.push_back ( ref._vAbon.front().GetHeaders() );
+    const unsigned char * Bytes = _sha1;
+    size_t Length = CryptoPP::SHA1::DIGESTSIZE;
 
-    std::vector<SAbon> & ab = ref._vAbon;
-    for ( unsigned int i = 0; i < ab.size(); i++ )
-    {
-        v.push_back ( ab[i].Export ( i + 1 ) );
-    }
+    std::ostringstream os;
+    os.fill ( '0' );
+    os << std::hex;
+    for ( const unsigned char * ptr=Bytes; ptr<Bytes+Length; ptr++ )
+        os << std::setw ( 2 ) << ( unsigned int ) *ptr;
 
-    return v;
+    return os.str();
 }
 
 std::ostream& operator<< ( std::ostream& os, const CWUser& dt )
@@ -108,9 +112,6 @@ std::ostream& operator<< ( std::ostream& os, const CWUser& dt )
     os << ConvertStr ( dt._mail, true ) << std::endl;
     os << ConvertStr ( dt._country, true ) << std::endl;
     os << ConvertStr ( dt._gender, true ) << std::endl;
-    os << dt._abonCnt << std::endl;
-    for ( auto it : dt._vAbon )
-        os << it << std::endl;;
     return os;
 }
 
@@ -131,114 +132,8 @@ std::istream& operator>> ( std::istream& is, CWUser& dt )
     is >> dt._gender;
     dt._gender = ConvertStr ( dt._gender, false );
 
-    is >> dt._abonCnt;
-    for ( int i = 0; i < dt._abonCnt; i++ )
-    {
-        CWUser::SAbon tmp;
-        is >> tmp;
-        dt._vAbon.push_back ( tmp );
-    }
-
     return is;
-}
-
-std::ostream& operator<< ( std::ostream& os, const CWUser::SAbon& dt )
-{
-    os << dt._abon << std::endl;
-    os << dt._from << std::endl;
-    os << dt._to << std::endl;
-    os << ConvertStr ( dt._date, true ) << std::endl;
-    os << ConvertStr ( dt._adults, true ) << std::endl;
-    os << ConvertStr ( dt._budget, true ) << std::endl;
-    os << dt._payd;
-    return os;
-}
-
-std::istream& operator>> ( std::istream& is, CWUser::SAbon& dt )
-{
-    is >> dt._abon;
-    is >> dt._from;
-    is >> dt._to;
-
-    is >> dt._date;
-    dt._date = ConvertStr ( dt._date, false );
-
-    is >> dt._adults;
-    dt._adults = ConvertStr ( dt._adults, false );
-
-    is >> dt._budget;
-    dt._budget = ConvertStr ( dt._budget, false );
-
-    is >> dt._payd;
-    return is;
-}
-
-std::ostream& operator<< ( std::ostream& os, const CWUser::SContiCtry& dt )
-{
-    os << ConvertStr ( dt._conti, true ) << std::endl;
-    os << ConvertStr ( dt._ctry, true ) << std::endl;
-    os << ConvertStr ( dt._city, true );
-    return os;
-}
-
-std::istream& operator>> ( std::istream& is, CWUser::SContiCtry& dt )
-{
-    is >> dt._conti;
-    dt._conti = ConvertStr ( dt._conti, false );
-
-    is >> dt._ctry;
-    dt._ctry = ConvertStr ( dt._ctry, false );
-
-    is >> dt._city;
-    dt._city = ConvertStr ( dt._city, false );
-
-    return is;
-}
-
-void CWUser::SAbon::Normalize()
-{
-    if ( _from._city.empty() )
-        _from._city = "n/a";
-
-    if ( _to._city.empty() )
-        _to._city = "n/a";
-
-    if ( _adults.empty() )
-        _adults = "n/a";
-
-    if ( _budget.empty() )
-        _budget = "n/a";
-}
-
-std::vector<std::string> CWUser::SAbon::Export ( unsigned int id )
-{
-    std::vector<std::string> abonam = { "2.99$", "4.99$", "9.99$" };
-    std::stringstream ss;
-    ss << id;
-
-
-    std::vector<std::string> v;
-    v.push_back ( ss.str() );
-    v.push_back ( _from.Export() );
-    v.push_back ( _to.Export() );
-    v.push_back ( _date );
-    v.push_back ( _adults );
-    v.push_back ( _budget );
-    v.push_back ( abonam[_abon] );
-    return v;
-}
-
-std::vector<std::string> CWUser::SAbon::GetHeaders()
-{
-    std::vector<std::string> v;
-    v.push_back ( "#" );
-    v.push_back ( "From" );
-    v.push_back ( "To" );
-    v.push_back ( "Date" );
-    v.push_back ( "Adults" );
-    v.push_back ( "Budget" );
-    v.push_back ( "Price" );
-    return v;
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
