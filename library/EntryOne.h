@@ -3,13 +3,19 @@
 
 #include <Wt/WApplication>
 #include <Wt/WContainerWidget>
-#include "IWidgetData.h"
+
+namespace Wt
+{
+class WTableCell;
+}
 
 class EntryOne : public Wt::WContainerWidget
 {
+    Wt::WTableCell * m_pCell = nullptr;
 public:
     friend class Factory;
     EntryOne ( Wt::WApplication * pApp );
+    void CreateEntry ( std::string strUserHash );
 };
 
 #endif // ENTRYONE_H

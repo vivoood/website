@@ -5,13 +5,11 @@ echo '#ifndef '${filename^^}'_H
 
 #include <Wt/WContainerWidget>
 
-#include "IWidgetData.h"
-
 class '${filename}' : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    '${filename}' ( IWidgetData * pD, Wt::WContainerWidget* parent = 0 );
+    '${filename}' ( std::string usrhash, Wt::WContainerWidget* parent = 0 );
 };
 
 #endif //'${filename^^}'_H
@@ -19,12 +17,10 @@ private:
 
 echo '#include "'${filename}'.h"
 
-'${filename}'::'${filename}' ( IWidgetData * pD, Wt::WContainerWidget* parent ) : WContainerWidget ( parent )
-{
-    WidgetData::X * p = dynamic_cast<WidgetData::X*> ( pD );
-    if ( p != nullptr )
-    {
+#include <Wt/WText>
 
-    }
+'${filename}'::'${filename}' ( std::string usrhash, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
+{
+    this->addWidget ( new Wt::WText ("'${filename}'") );
 }
 ' > ${filename}.cpp
