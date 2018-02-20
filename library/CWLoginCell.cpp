@@ -34,7 +34,7 @@ CWLoginCell::CWLoginCell ( std::string usrhash, Wt::WContainerWidget* parent ) :
         pLoginBtn->clicked().connect ( std::bind ( [=]()
         {
             std::string mail = usrn->Value();
-            std::string pass = usrn->Value();
+            std::string pass = passwd->Value();
             std::string uhash = CWUser::CreateHash ( mail + pass );
             if ( CWUser::CheckUserExist ( uhash ) )
             {
