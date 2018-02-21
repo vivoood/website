@@ -6,6 +6,9 @@
 #include "CWLoginCell.h"
 #include "CWIntroPage.h"
 #include "CWSignIn.h"
+#include "CWOwnerPage.h"
+#include "CWFreeOffers.h"
+#include "CWFreeOffersView.h"
 
 Wt::WWidget * Factory::Create ( std::string strWidget, std::string strUserHash, Wt::WContainerWidget * parent )
 {
@@ -20,6 +23,15 @@ Wt::WWidget * Factory::Create ( std::string strWidget, std::string strUserHash, 
 
     if ( strWidget == "CWSignIn" )
         return new CWSignIn ( strUserHash, parent );
+
+    if ( strWidget == "CWOwnerPage" )
+        return new CWOwnerPage ( strUserHash, parent );
+
+    if ( strWidget == "CWFreeOffers" )
+        return new CWFreeOffers ( strUserHash, parent );
+
+    if ( strWidget == "CWFreeOffersView" )
+        return new CWFreeOffersView ( strUserHash, parent );
 
     return new Wt::WText ( "Factory could not create " + strWidget );
 }
