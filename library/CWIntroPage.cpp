@@ -104,6 +104,20 @@ CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WCon
         }
     }
     this->addWidget ( pTableSuccessStories );
+
+
+    CWTable * pTableTasks = new CWTable();
+    pTableTasks->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
+    pTableTasks->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "Additional Tasks" ) );
+    pTableTasks->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
+    pTableTasks->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
+
+    pTableTasks->elementAt ( 1, 0 )->addWidget ( new Wt::WText ( "Validation of all input fields" ) );
+    pTableTasks->elementAt ( 2, 0 )->addWidget ( new Wt::WText ( "Remove WT signals" ) );
+    pTableTasks->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Check all static functions" ) );
+    this->addWidget ( pTableTasks );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
+
