@@ -22,35 +22,49 @@ public:
     static bool CheckOwner ( std::string filename );
     static std::string CreateHash ( std::string s );
 
-    std::string _user = "n/a";
-    std::string _pass = "n/a";
-    std::string _mail = "n/a";
-    std::string _country = "n/a";
-    std::string _gender = "n/a";
+    std::string _user = "unknown_user";
+    std::string _pass = "unknown_pass";
+    std::string _mail = "unknown_mail";
+    std::string _country = "unknown_country";
+    std::string _gender = "unknown_gender";
 
     std::mutex mtx;
     friend std::ostream& operator<< ( std::ostream& os, const CWUser& dt );
     friend std::istream& operator>> ( std::istream& is, CWUser& dt );
 };
 
-class FreeOffersData
+class OffersBase
+{
+protected:
+    std::string filename = "unknown_file";
+public:
+    OffersBase ( std::string fname ) : filename ( fname ) {}
+};
+
+class OffersData : public OffersBase
 {
 public:
 
     struct SOffer
     {
         SOffer() {}
-        SOffer ( std::string d, std::string a, std::string cp, std::string np ) : departure ( d ), arrival ( a ), cheap_price ( cp ), normal_price ( np ) {}
+        void set ( std::string d, std::string a, std::string cp, std::string np )
+        {
+            departure = d;
+            arrival = a;
+            cheap_price = cp;
+            normal_price = np;
+        }
 
-        std::string departure = "n/a";
-        std::string arrival = "n/a";
-        std::string cheap_price = "n/a";
-        std::string normal_price = "n/a";
+        std::string departure = "unknown_departure";
+        std::string arrival = "unknown_arrival";
+        std::string cheap_price = "unknown_price";
+        std::string normal_price = "unknown_price";
         friend std::ostream& operator<< ( std::ostream& os, const SOffer& dt );
         friend std::istream& operator>> ( std::istream& is, SOffer& dt );
     };
 
-    FreeOffersData() {}
+    OffersData ( std::string fname ) : OffersBase ( fname ) {}
     void add ( SOffer o );
     std::mutex mtx;
     void save();
@@ -59,11 +73,13 @@ public:
     int offer_count = 0;
     std::vector<SOffer> vFreeOffers;
 
-    friend std::ostream& operator<< ( std::ostream& os, const FreeOffersData& dt );
-    friend std::istream& operator>> ( std::istream& is, FreeOffersData& dt );
+    friend std::ostream& operator<< ( std::ostream& os, const OffersData& dt );
+    friend std::istream& operator>> ( std::istream& is, OffersData& dt );
 };
 
 #endif //CWUSER_H
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
+
 

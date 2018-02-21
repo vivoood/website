@@ -6,6 +6,7 @@
 #include <crypto++/sha.h>
 
 #include "CWUser.h"
+#include "Debug.h"
 
 namespace
 {
@@ -139,7 +140,7 @@ std::istream& operator>> ( std::istream& is, CWUser& dt )
 /** ### ############################################################################# */
 /** ### ############################################################################# */
 
-std::ostream& operator<< ( std::ostream& os, const FreeOffersData::SOffer& dt )
+std::ostream& operator<< ( std::ostream& os, const OffersData::SOffer& dt )
 {
     os << ConvertStr ( dt.departure, true ) << std::endl;
     os << ConvertStr ( dt.arrival, true ) << std::endl;
@@ -148,7 +149,7 @@ std::ostream& operator<< ( std::ostream& os, const FreeOffersData::SOffer& dt )
     return os;
 }
 
-std::istream& operator>> ( std::istream& is, FreeOffersData::SOffer& dt )
+std::istream& operator>> ( std::istream& is, OffersData::SOffer& dt )
 {
     is >> dt.departure;
     dt.departure = ConvertStr ( dt.departure, false );
@@ -165,7 +166,7 @@ std::istream& operator>> ( std::istream& is, FreeOffersData::SOffer& dt )
     return is;
 }
 
-void FreeOffersData::add ( FreeOffersData::SOffer o )
+void OffersData::add ( OffersData::SOffer o )
 {
     load();
     vFreeOffers.push_back ( o );
@@ -173,24 +174,24 @@ void FreeOffersData::add ( FreeOffersData::SOffer o )
     save();
 }
 
-void FreeOffersData::save()
+void OffersData::save()
 {
     std::lock_guard<std::mutex> lock ( mtx );
-    std::ofstream outfile ( "owner/free_offers" );
+    std::ofstream outfile ( filename );
     outfile << *this;
     outfile.close();
 }
 
-bool FreeOffersData::load()
+bool OffersData::load()
 {
-    std::string dir ( "owner/free_offers" );
+    std::string dir ( filename );
     std::ifstream infile ( dir );
     infile >> *this;
     infile.close();
     return true;
 }
 
-std::ostream& operator<< ( std::ostream& os, const FreeOffersData& dt )
+std::ostream& operator<< ( std::ostream& os, const OffersData& dt )
 {
     os << dt.offer_count << std::endl;
     for ( auto it : dt.vFreeOffers )
@@ -198,12 +199,12 @@ std::ostream& operator<< ( std::ostream& os, const FreeOffersData& dt )
     return os;
 }
 
-std::istream& operator>> ( std::istream& is, FreeOffersData& dt )
+std::istream& operator>> ( std::istream& is, OffersData& dt )
 {
     is >> dt.offer_count;
     for ( int i = 0; i < dt.offer_count; i++ )
     {
-        FreeOffersData::SOffer tmp;
+        OffersData::SOffer tmp;
         is >> tmp;
         dt.vFreeOffers.push_back ( tmp );
     }

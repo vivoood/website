@@ -7,7 +7,7 @@ class CWOwnerPage : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    CWOwnerPage ( std::string usrhash, Wt::WContainerWidget* parent = 0 );
+    CWOwnerPage ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent = 0 );
 };
 
 #endif //CWOWNERPAGE_H

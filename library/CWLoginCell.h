@@ -7,7 +7,7 @@ class CWLoginCell : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    CWLoginCell ( std::string usrhash, Wt::WContainerWidget* parent = 0 );
+    CWLoginCell ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent = 0 );
 };
 
 #endif //CWLOGINCELL_H

@@ -1,4 +1,4 @@
-#include "CWFreeOffers.h"
+#include "CWOffersInserter.h"
 
 #include <Wt/WText>
 #include <Wt/WPushButton>
@@ -8,12 +8,20 @@
 #include "CWLineEditField.h"
 #include "CWSignals.h"
 
-CWFreeOffers::CWFreeOffers ( std::string usrhash, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
+CWOffersInserter::CWOffersInserter ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
     CWTable * pTable = new CWTable();
 
     pTable->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "empty" ) );
-    pTable->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "Add FREE offers" ) );
+
+    if ( strPayload == "owner/free_offers" )
+        pTable->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "Add FREE offers" ) );
+    else if ( strPayload == "owner/main_offers" )
+        pTable->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "Add MAIN offers" ) );
+    else
+        pTable->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "Title is not set" ) );
+
+
     pTable->elementAt ( 0, 4 )->addWidget ( new Wt::WText ( "empty" ) );
 
     CWLineEditField * pDep = new CWLineEditField ( "Departure", pTable->elementAt ( 1, 2 ) );
@@ -31,8 +39,9 @@ CWFreeOffers::CWFreeOffers ( std::string usrhash, Wt::WContainerWidget* parent )
     Wt::WPushButton * pAddBtn = new Wt::WPushButton ( "Add" );
     pAddBtn->clicked().connect ( std::bind ( [=]()
     {
-        FreeOffersData::SOffer offer = { pDep->Value(), pArriv->Value(), pChp->Value(), pNorp->Value() };
-        FreeOffersData ofrs;
+        OffersData::SOffer offer;
+        offer.set ( pDep->Value(), pArriv->Value(), pChp->Value(), pNorp->Value() );
+        OffersData ofrs ( strPayload );
         ofrs.add ( offer );
         gCWSignals.signal_create_center_column.emit ( usrhash );
 

@@ -7,19 +7,19 @@
 #include "Factory.h"
 #include "CWUser.h"
 
-CWCenterColumn::CWCenterColumn ( std::string usrhash, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
+CWCenterColumn::CWCenterColumn ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
 //     if ( usrhash == "SignIn" )
 //     {
-//         this->addWidget ( Factory::Create ( "CWSignIn", usrhash ) );
+//         this->addWidget ( Factory::Create ( "CWSignIn", "no_payload", usrhash ) );
 //     }
 //     else if ( CWUser::CheckOwner ( usrhash ) )
 //     {
-        this->addWidget ( Factory::Create ( "CWOwnerPage", usrhash ) );
+        this->addWidget ( Factory::Create ( "CWOwnerPage", "no_payload", usrhash ) );
 //     }
 //     else
 //     {
-//         this->addWidget ( Factory::Create ( "CWIntroPage", usrhash ) );
+//         this->addWidget ( Factory::Create ( "CWIntroPage", "no_payload", usrhash ) );
 //     }
 }
 

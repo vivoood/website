@@ -7,7 +7,7 @@ class CWIntroPage : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    CWIntroPage ( std::string usrhash, Wt::WContainerWidget* parent = 0 );
+    CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent = 0 );
 };
 
 #endif //CWINTROPAGE_H

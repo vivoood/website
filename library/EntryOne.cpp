@@ -35,7 +35,7 @@ EntryOne::EntryOne ( Wt::WApplication * pApp )
 void EntryOne::CreateEntry ( std::string strUserHash )
 {
     m_pCell->clear();
-    m_pCell->addWidget ( Factory::Create ( "CWCenterColumn", strUserHash ) );
+    m_pCell->addWidget ( Factory::Create ( "CWCenterColumn", "no_payload", strUserHash ) );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

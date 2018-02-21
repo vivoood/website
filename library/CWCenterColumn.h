@@ -7,7 +7,7 @@ class CWCenterColumn : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    CWCenterColumn ( std::__cxx11::string usrhash, Wt::WContainerWidget* parent = 0 );
+    CWCenterColumn ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent = 0 );
 };
 
 #endif //CWCENTERCOLUMN_H

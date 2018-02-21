@@ -6,12 +6,12 @@
 #include "CWTable.h"
 #include "Factory.h"
 
-CWIntroPage::CWIntroPage ( std::string usrhash, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
+CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
     CWTable * pTable = new CWTable();
     pTable->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "empty" ) );
     pTable->elementAt ( 0, 3 )->addWidget ( new Wt::WText ( "logo" ) );
-    pTable->elementAt ( 0, 5 )->addWidget ( Factory::Create ( "CWLoginCell", usrhash, pTable->elementAt ( 0, 5 ) ) );
+    pTable->elementAt ( 0, 5 )->addWidget ( Factory::Create ( "CWLoginCell", "no_payload", usrhash, pTable->elementAt ( 0, 5 ) ) );
     this->addWidget ( pTable );
 
     CWTable * pTableContinentLocation = new CWTable();
