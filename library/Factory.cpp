@@ -9,6 +9,8 @@
 #include "CWOwnerPage.h"
 #include "CWOffersInserter.h"
 #include "CWOffersView.h"
+#include "CWPublicOffersView.h"
+
 
 Wt::WWidget * Factory::Create ( std::string strWidget, std::string strWidgetPayload, std::string strUserHash, Wt::WContainerWidget * parent )
 {
@@ -32,6 +34,9 @@ Wt::WWidget * Factory::Create ( std::string strWidget, std::string strWidgetPayl
 
     if ( strWidget == "CWOffersView" )
         return new CWOffersView ( strUserHash, strWidgetPayload, parent );
+
+    if ( strWidget == "CWPublicOffersView" )
+        return new CWPublicOffersView ( strUserHash, strWidgetPayload, parent );
 
     return new Wt::WText ( "Factory could not create " + strWidget );
 }

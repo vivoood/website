@@ -29,17 +29,7 @@ CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WCon
     pTableContinentLocation->elementAt ( 0, 8 )->addWidget ( new Wt::WText ( "empty" ) );
     this->addWidget ( pTableContinentLocation );
 
-    CWTable * pTableFreeOffers = new CWTable();
-    for ( int i = 0; i < 8; ++i )
-    {
-        for ( int j = 0; j < 5; j++ )
-            pTableFreeOffers->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
-
-        std::stringstream ss;
-        ss << "offer - " << i + 1;
-        pTableFreeOffers->elementAt ( i, 0 )->addWidget ( new Wt::WText ( ss.str() ) );
-    }
-    this->addWidget ( pTableFreeOffers );
+    this->addWidget ( Factory::Create ( "CWPublicOffersView", "show_free_offers_random", usrhash, this ) );
 
     CWTable * pTableHowItWork = new CWTable();
     for ( int i = 0; i < 5; i++ )
@@ -115,6 +105,9 @@ CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WCon
     pTableTasks->elementAt ( 1, 0 )->addWidget ( new Wt::WText ( "Validation of all input fields" ) );
     pTableTasks->elementAt ( 2, 0 )->addWidget ( new Wt::WText ( "Remove WT signals" ) );
     pTableTasks->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Check all static functions" ) );
+    pTableTasks->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Referance vs copy" ) );
+    pTableTasks->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Smart pointers" ) );
+    pTableTasks->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Add system info for sessions" ) );
     this->addWidget ( pTableTasks );
 }
 

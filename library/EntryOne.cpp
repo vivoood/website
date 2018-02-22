@@ -2,6 +2,7 @@
 
 #include <Wt/WBreak>
 #include <Wt/WText>
+#include <Wt/WCssDecorationStyle>
 
 #include "Factory.h"
 #include "CWTable.h"
@@ -9,6 +10,8 @@
 
 EntryOne::EntryOne ( Wt::WApplication * pApp )
 {
+    this->decorationStyle().setCursor ( Wt::PointingHandCursor );
+
     gCWSignals.signal_create_center_column.connect ( this, &EntryOne::CreateEntry );
 
     pApp->setTitle ( "Change Title" );
