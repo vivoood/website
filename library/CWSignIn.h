@@ -10,7 +10,7 @@ class CWSignIn : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    CWSignIn ( std::string usrhash, Wt::WContainerWidget* parent = 0 );
+    CWSignIn ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent = 0 );
     void FillData(CWUser &);
     
     std::map<std::string, CWLineEditField*> vData = { {"e-mail", nullptr}, {"Password", nullptr}, {"Username", nullptr}, {"Country", nullptr}, {"Gender", nullptr} };

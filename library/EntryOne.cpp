@@ -2,6 +2,7 @@
 
 #include <Wt/WBreak>
 #include <Wt/WText>
+#include <Wt/WCssDecorationStyle>
 
 #include "Factory.h"
 #include "CWTable.h"
@@ -9,6 +10,8 @@
 
 EntryOne::EntryOne ( Wt::WApplication * pApp )
 {
+    this->decorationStyle().setCursor ( Wt::PointingHandCursor );
+
     gCWSignals.signal_create_center_column.connect ( this, &EntryOne::CreateEntry );
 
     pApp->setTitle ( "Change Title" );
@@ -35,7 +38,7 @@ EntryOne::EntryOne ( Wt::WApplication * pApp )
 void EntryOne::CreateEntry ( std::string strUserHash )
 {
     m_pCell->clear();
-    m_pCell->addWidget ( Factory::Create ( "CWCenterColumn", strUserHash ) );
+    m_pCell->addWidget ( Factory::Create ( "CWCenterColumn", "no_payload", strUserHash ) );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

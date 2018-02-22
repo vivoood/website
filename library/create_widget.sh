@@ -9,7 +9,7 @@ class '${filename}' : public Wt::WContainerWidget
 {
 private:
     friend class Factory;
-    '${filename}' ( std::string usrhash, Wt::WContainerWidget* parent = 0 );
+    '${filename}' ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent = 0 );
 };
 
 #endif //'${filename^^}'_H
@@ -19,7 +19,7 @@ echo '#include "'${filename}'.h"
 
 #include <Wt/WText>
 
-'${filename}'::'${filename}' ( std::string usrhash, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
+'${filename}'::'${filename}' ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
     this->addWidget ( new Wt::WText ("'${filename}'") );
 }

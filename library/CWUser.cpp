@@ -6,6 +6,7 @@
 #include <crypto++/sha.h>
 
 #include "CWUser.h"
+#include "Debug.h"
 
 namespace
 {
@@ -81,7 +82,7 @@ bool CWUser::CheckUserExist ( std::string filename )
 
 bool CWUser::CheckOwner ( std::string filename )
 {
-    if ( filename == "43e0f29aa1f2e636542c65cbaa8690ca97749b4d" )
+    if ( filename == "9d4dc8d5d3bc30dfe5db75d9934be33b9e8d949b" )
         return true;
     return false;
 }
@@ -135,5 +136,80 @@ std::istream& operator>> ( std::istream& is, CWUser& dt )
     return is;
 }
 
-// kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+/** ### ############################################################################# */
+/** ### ############################################################################# */
+/** ### ############################################################################# */
 
+std::ostream& operator<< ( std::ostream& os, const OffersData::SOffer& dt )
+{
+    os << ConvertStr ( dt.departure, true ) << std::endl;
+    os << ConvertStr ( dt.arrival, true ) << std::endl;
+    os << ConvertStr ( dt.cheap_price, true ) << std::endl;
+    os << ConvertStr ( dt.normal_price, true ) << std::endl;
+    return os;
+}
+
+std::istream& operator>> ( std::istream& is, OffersData::SOffer& dt )
+{
+    is >> dt.departure;
+    dt.departure = ConvertStr ( dt.departure, false );
+
+    is >> dt.arrival;
+    dt.arrival = ConvertStr ( dt.arrival, false );
+
+    is >> dt.cheap_price;
+    dt.cheap_price = ConvertStr ( dt.cheap_price, false );
+
+    is >> dt.normal_price;
+    dt.normal_price = ConvertStr ( dt.normal_price, false );
+
+    return is;
+}
+
+void OffersData::add ( OffersData::SOffer o )
+{
+    load();
+    vFreeOffers.push_back ( o );
+    offer_count = vFreeOffers.size();
+    save();
+}
+
+void OffersData::save()
+{
+    std::lock_guard<std::mutex> lock ( mtx );
+    std::ofstream outfile ( filename );
+    outfile << *this;
+    outfile.close();
+}
+
+bool OffersData::load()
+{
+    std::string dir ( filename );
+    std::ifstream infile ( dir );
+    infile >> *this;
+    infile.close();
+    return true;
+}
+
+std::ostream& operator<< ( std::ostream& os, const OffersData& dt )
+{
+    os << dt.offer_count << std::endl;
+    for ( auto it : dt.vFreeOffers )
+        os << it << std::endl;
+    return os;
+}
+
+std::istream& operator>> ( std::istream& is, OffersData& dt )
+{
+    is >> dt.offer_count;
+    for ( int i = 0; i < dt.offer_count; i++ )
+    {
+        OffersData::SOffer tmp;
+        is >> tmp;
+        dt.vFreeOffers.push_back ( tmp );
+    }
+
+    return is;
+}
+
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

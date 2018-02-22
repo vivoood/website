@@ -9,7 +9,7 @@
 #include "CWLineEditField.h"
 #include "CWSignals.h"
 
-CWLoginCell::CWLoginCell ( std::string usrhash, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
+CWLoginCell::CWLoginCell ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
     parent->setContentAlignment ( Wt::AlignRight );
 

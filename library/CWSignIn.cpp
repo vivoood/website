@@ -8,7 +8,7 @@
 #include "CWUser.h"
 #include "CWLineEditField.h"
 
-CWSignIn::CWSignIn ( std::string usrhash, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
+CWSignIn::CWSignIn ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
     CWTable * pTable = new CWTable();
 
