@@ -18,6 +18,8 @@ CWOffersInserter::CWOffersInserter ( std::string usrhash, std::string strPayload
         pTable->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "Add FREE offers" ) );
     else if ( strPayload == "owner/main_offers" )
         pTable->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "Add MAIN offers" ) );
+    else if ( strPayload == "owner/best_offers" )
+        pTable->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "Add BEST offers" ) );
     else
         pTable->elementAt ( 0, 2 )->addWidget ( new Wt::WText ( "Title is not set" ) );
 

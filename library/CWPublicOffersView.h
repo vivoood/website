@@ -10,13 +10,18 @@ class CWPublicOffersView : public Wt::WContainerWidget
 private:
     friend class Factory;
     CWPublicOffersView ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent = 0 );
-    void CreateView ( Wt::WContainerWidget * p, std::vector<OffersData::SOffer> & v );
+    void CreateView ( Wt::WContainerWidget * p, std::vector<OffersData::SOffer> & v, unsigned int uiShownElements );
+    void show_free_offers_random();
+    void show_best_offers();
     
     std::vector<OffersData::SOffer> vOfData;
-    unsigned int uiMaxVisibleOffers = 4;
+    unsigned int uiMaxFreeVisibleOffers = 5;
+    unsigned int uiMaxBestVisibleOffers = 5;
     int nChangeTimeDuration = 2000;
+    unsigned int uiShownElementsPerInstance = 0;
 };
 
 #endif //CWPUBLICOFFERSVIEW_H
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+

@@ -13,36 +13,27 @@
 
 CWPublicOffersView::CWPublicOffersView ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
-    this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/tmpbgr.png" ) );
-
     if ( strPayload == "show_free_offers_random" )
     {
-        OffersData ofdata ( "owner/free_offers" );
-        ofdata.load();
-
-        vOfData = ofdata.vFreeOffers;
-        CreateView ( this, vOfData );
-
-        Wt::WTimer * t = new Wt::WTimer ( this );
-        t->setInterval ( nChangeTimeDuration );
-        t->start();
-        t->timeout().connect ( std::bind ( [&]()
-        {
-            CreateView ( this, vOfData );
-        } ) );
+        show_free_offers_random ();
+    }
+    else if ( strPayload == "show_best_offers" )
+    {
+        show_best_offers ();
+    }
+    else
+    {
+        this->addWidget ( new Wt::WText ( "CWPublicOffersView - Can't recognize payload" ) );
     }
 }
 
-void CWPublicOffersView::CreateView ( Wt::WContainerWidget * p, std::vector<OffersData::SOffer> & v )
+void CWPublicOffersView::CreateView ( Wt::WContainerWidget * p, std::vector<OffersData::SOffer> & v, unsigned int uiShownElements )
 {
     p->clear();
 
-    std::random_shuffle ( v.begin(), v.end() );
-
     CWTable * pTable = new CWTable();
 
-    unsigned int uiElementCount = v.size();
-    for ( int i = 0; i < std::min ( uiElementCount, uiMaxVisibleOffers ); ++i )
+    for ( int i = 0; i < uiShownElements; ++i )
     {
         pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
@@ -75,6 +66,47 @@ void CWPublicOffersView::CreateView ( Wt::WContainerWidget * p, std::vector<Offe
 
     }
     p->addWidget ( pTable );
+}
+
+void CWPublicOffersView::show_free_offers_random ()
+{
+    this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/tmpbgr.png" ) );
+
+    OffersData ofdata ( "owner/free_offers" );
+    ofdata.load();
+
+    vOfData = ofdata.vFreeOffers;
+
+    std::random_shuffle ( vOfData.begin(), vOfData.end() );
+    unsigned int uiElementCount = vOfData.size();
+    uiShownElementsPerInstance = std::min ( uiElementCount, uiMaxFreeVisibleOffers );
+    CreateView ( this, vOfData, uiShownElementsPerInstance );
+
+    Wt::WTimer * t = new Wt::WTimer ( this );
+    t->setInterval ( nChangeTimeDuration );
+    t->start();
+    t->timeout().connect ( std::bind ( [&]()
+    {
+        std::random_shuffle ( vOfData.begin(), vOfData.end() );
+        unsigned int uiElementCount = vOfData.size();
+        uiShownElementsPerInstance = std::min ( uiElementCount, uiMaxFreeVisibleOffers );
+        CreateView ( this, vOfData, uiShownElementsPerInstance );
+    } ) );
+}
+
+void CWPublicOffersView::show_best_offers ()
+{
+    this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/tmpbgr.png" ) );
+
+    this->addWidget ( new Wt::WText ( "Top 5 best deals" ) );
+
+    OffersData ofdata ( "owner/best_offers" );
+    ofdata.load();
+
+    vOfData = ofdata.vFreeOffers;
+    unsigned int uiElementCount = vOfData.size();
+    uiShownElementsPerInstance = std::min ( uiElementCount, uiMaxFreeVisibleOffers );
+    CreateView ( this, vOfData, uiShownElementsPerInstance );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

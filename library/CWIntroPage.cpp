@@ -8,6 +8,7 @@
 
 CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
+    /** ### Login */
     CWTable * pTable = new CWTable();
     pTable->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "empty" ) );
     pTable->elementAt ( 0, 3 )->addWidget ( new Wt::WText ( "logo" ) );
@@ -29,6 +30,7 @@ CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WCon
     pTableContinentLocation->elementAt ( 0, 8 )->addWidget ( new Wt::WText ( "empty" ) );
     this->addWidget ( pTableContinentLocation );
 
+    /** ### Random free offers */
     this->addWidget ( Factory::Create ( "CWPublicOffersView", "show_free_offers_random", usrhash, this ) );
 
     CWTable * pTableHowItWork = new CWTable();
@@ -55,30 +57,8 @@ CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WCon
         pTablePrices->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
     this->addWidget ( pTablePrices );
 
-    CWTable * pTableBestDeals = new CWTable();
-
-    for ( int i = 0; i < 2; i++ )
-        pTableBestDeals->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
-    pTableBestDeals->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 1)......." ) );
-
-    for ( int i = 0; i < 2; i++ )
-        pTableBestDeals->elementAt ( 1, 0 )->addWidget ( new Wt::WBreak() );
-    pTableBestDeals->elementAt ( 1, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 2)......." ) );
-
-    for ( int i = 0; i < 2; i++ )
-        pTableBestDeals->elementAt ( 2, 0 )->addWidget ( new Wt::WBreak() );
-    pTableBestDeals->elementAt ( 2, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 3)......." ) );
-
-    for ( int i = 0; i < 2; i++ )
-        pTableBestDeals->elementAt ( 3, 0 )->addWidget ( new Wt::WBreak() );
-    pTableBestDeals->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 4)......." ) );
-
-    for ( int i = 0; i < 2; i++ )
-        pTableBestDeals->elementAt ( 4, 0 )->addWidget ( new Wt::WBreak() );
-    pTableBestDeals->elementAt ( 4, 0 )->addWidget ( new Wt::WText ( "Top 5 best deals 5)......." ) );
-
-    this->addWidget ( pTableBestDeals );
-
+    /** ### Top 5 best offers */
+    this->addWidget ( Factory::Create ( "CWPublicOffersView", "show_best_offers", usrhash, this ) );
 
     CWTable * pTableSuccessStories = new CWTable();
     for ( int i = 0; i < 2; i++ )
@@ -105,9 +85,9 @@ CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WCon
     pTableTasks->elementAt ( 1, 0 )->addWidget ( new Wt::WText ( "Validation of all input fields" ) );
     pTableTasks->elementAt ( 2, 0 )->addWidget ( new Wt::WText ( "Remove WT signals" ) );
     pTableTasks->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Check all static functions" ) );
-    pTableTasks->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Referance vs copy" ) );
-    pTableTasks->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Smart pointers" ) );
-    pTableTasks->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Add system info for sessions" ) );
+    pTableTasks->elementAt ( 4, 0 )->addWidget ( new Wt::WText ( "Referance vs copy" ) );
+    pTableTasks->elementAt ( 5, 0 )->addWidget ( new Wt::WText ( "Smart pointers" ) );
+    pTableTasks->elementAt ( 6, 0 )->addWidget ( new Wt::WText ( "Add system info for sessions" ) );
     this->addWidget ( pTableTasks );
 }
 
