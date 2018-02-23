@@ -10,6 +10,7 @@
 #include "CWTable.h"
 #include "Factory.h"
 #include "CWUser.h"
+#include "CWOfferDetailView.h"
 
 CWPublicOffersView::CWPublicOffersView ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
@@ -35,36 +36,24 @@ void CWPublicOffersView::CreateView ( Wt::WContainerWidget * p, std::vector<Offe
 
     for ( int i = 0; i < uiShownElements; ++i )
     {
-        pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
-//         pTable->elementAt ( i, 0 )->addWidget ( new Wt::WText ( v[i].departure ) );
-        pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
+        CWTable * pTable = new CWTable();
+        CWOfferDetailView * p = nullptr;
 
-        pTable->elementAt ( i, 1 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 1 )->addWidget ( new Wt::WBreak() );
-//         pTable->elementAt ( i, 1 )->addWidget ( new Wt::WText ( v[i].arrival ) );
-        pTable->elementAt ( i, 1 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 1 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 1 )->addWidget ( new Wt::WBreak() );
+        p = new CWOfferDetailView ( "no_hash_public_offers", "departure", v[i] );
+        pTable->elementAt ( 0, 0 )->addWidget ( p );
 
-        pTable->elementAt ( i, 2 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 2 )->addWidget ( new Wt::WBreak() );
-//         pTable->elementAt ( i, 2 )->addWidget ( new Wt::WText ( "$" + v[i].cheap_price ) );
-        pTable->elementAt ( i, 2 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 2 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 2 )->addWidget ( new Wt::WBreak() );
+        p = new CWOfferDetailView ( "no_hash_public_offers", "arrival", v[i] );
+        pTable->elementAt ( 0, 1 )->addWidget ( p );
 
-        pTable->elementAt ( i, 3 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 3 )->addWidget ( new Wt::WBreak() );
-//         pTable->elementAt ( i, 3 )->addWidget ( new Wt::WText ( "$" + v[i].normal_price ) );
-        pTable->elementAt ( i, 3 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 3 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 3 )->addWidget ( new Wt::WBreak() );
+        p = new CWOfferDetailView ( "no_hash_public_offers", "price", v[i] );
+        pTable->elementAt ( 0, 2 )->addWidget ( p );
 
+        p = new CWOfferDetailView ( "no_hash_public_offers", "options", v[i] );
+        pTable->elementAt ( 0, 3 )->addWidget ( p );
 
+        this->addWidget ( pTable );
     }
+
     p->addWidget ( pTable );
 }
 
