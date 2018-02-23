@@ -48,18 +48,57 @@ public:
     struct SOffer
     {
         SOffer() {}
-        void set ( std::string d, std::string a, std::string cp, std::string np )
+
+        void set_departure ( std::string dc, std::string d, std::string dcode, std::string ddate )
         {
-            departure = d;
-            arrival = a;
-            cheap_price = cp;
-            normal_price = np;
+            _departure_continent = dc;
+            _departure_city = d;
+            _departure_code = dcode;
+            _departure_date = ddate;
         }
 
-        std::string departure = "unknown_departure";
-        std::string arrival = "unknown_arrival";
-        std::string cheap_price = "unknown_price";
-        std::string normal_price = "unknown_price";
+        void set_arrival ( std::string ac, std::string a, std::string acode, std::string adate )
+        {
+            _arrival_continent = ac;
+            _arrival_city = a;
+            _arrival_code = acode;
+            _arrival_date = adate;
+        }
+
+        void set_prices ( std::string c, std::string cpr, std::string norpr )
+        {
+            _currency_code = c;
+            _cheap_price = cpr;
+            _normal_price = norpr;
+        }
+
+        void set_options ( std::string a, std::string d, std::string l, std::string p )
+        {
+            _airline = a;
+            _direction = d;
+            _luggage = l;
+            _payload = p;
+        }
+
+        std::string _departure_continent = "unknown_departure_cont";
+        std::string _departure_city = "unknown_departure";
+        std::string _departure_code = "unknown_departure_code";
+        std::string _departure_date = "unknown_departure_date";
+
+        std::string _arrival_continent = "unknown_arrival_cont";
+        std::string _arrival_city = "unknown_arrival";
+        std::string _arrival_code = "unknown_arrival_code";
+        std::string _arrival_date = "unknown_arrival_date";
+
+        std::string _currency_code = "unknown_currency_code";
+        std::string _cheap_price = "unknown_price";
+        std::string _normal_price = "unknown_price";
+
+        std::string _airline = "unknown_airline";
+        std::string _direction = "unknown_direction";
+        std::string _luggage = "unknown_luggage";
+        std::string _payload = "unknown_payload";
+
         friend std::ostream& operator<< ( std::ostream& os, const SOffer& dt );
         friend std::istream& operator>> ( std::istream& is, SOffer& dt );
     };

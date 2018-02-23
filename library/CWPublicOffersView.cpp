@@ -37,28 +37,28 @@ void CWPublicOffersView::CreateView ( Wt::WContainerWidget * p, std::vector<Offe
     {
         pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 0 )->addWidget ( new Wt::WText ( v[i].departure ) );
+//         pTable->elementAt ( i, 0 )->addWidget ( new Wt::WText ( v[i].departure ) );
         pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 0 )->addWidget ( new Wt::WBreak() );
 
         pTable->elementAt ( i, 1 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 1 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 1 )->addWidget ( new Wt::WText ( v[i].arrival ) );
+//         pTable->elementAt ( i, 1 )->addWidget ( new Wt::WText ( v[i].arrival ) );
         pTable->elementAt ( i, 1 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 1 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 1 )->addWidget ( new Wt::WBreak() );
 
         pTable->elementAt ( i, 2 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 2 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 2 )->addWidget ( new Wt::WText ( "$" + v[i].cheap_price ) );
+//         pTable->elementAt ( i, 2 )->addWidget ( new Wt::WText ( "$" + v[i].cheap_price ) );
         pTable->elementAt ( i, 2 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 2 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 2 )->addWidget ( new Wt::WBreak() );
 
         pTable->elementAt ( i, 3 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 3 )->addWidget ( new Wt::WBreak() );
-        pTable->elementAt ( i, 3 )->addWidget ( new Wt::WText ( "$" + v[i].normal_price ) );
+//         pTable->elementAt ( i, 3 )->addWidget ( new Wt::WText ( "$" + v[i].normal_price ) );
         pTable->elementAt ( i, 3 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 3 )->addWidget ( new Wt::WBreak() );
         pTable->elementAt ( i, 3 )->addWidget ( new Wt::WBreak() );

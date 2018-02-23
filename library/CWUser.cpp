@@ -142,26 +142,63 @@ std::istream& operator>> ( std::istream& is, CWUser& dt )
 
 std::ostream& operator<< ( std::ostream& os, const OffersData::SOffer& dt )
 {
-    os << ConvertStr ( dt.departure, true ) << std::endl;
-    os << ConvertStr ( dt.arrival, true ) << std::endl;
-    os << ConvertStr ( dt.cheap_price, true ) << std::endl;
-    os << ConvertStr ( dt.normal_price, true ) << std::endl;
+    os << ConvertStr ( dt._departure_continent, true ) << std::endl;
+    os << ConvertStr ( dt._departure_city, true ) << std::endl;
+    os << ConvertStr ( dt._departure_code, true ) << std::endl;
+    os << ConvertStr ( dt._departure_date, true ) << std::endl;
+
+    os << ConvertStr ( dt._arrival_continent, true ) << std::endl;
+    os << ConvertStr ( dt._arrival_city, true ) << std::endl;
+    os << ConvertStr ( dt._arrival_code, true ) << std::endl;
+    os << ConvertStr ( dt._arrival_date, true ) << std::endl;
+
+    os << ConvertStr ( dt._currency_code, true ) << std::endl;
+    os << ConvertStr ( dt._cheap_price, true ) << std::endl;
+    os << ConvertStr ( dt._normal_price, true ) << std::endl;
+
+    os << ConvertStr ( dt._airline, true ) << std::endl;
+    os << ConvertStr ( dt._direction, true ) << std::endl;
+    os << ConvertStr ( dt._luggage, true ) << std::endl;
+    os << ConvertStr ( dt._payload, true ) << std::endl;
+
     return os;
 }
 
 std::istream& operator>> ( std::istream& is, OffersData::SOffer& dt )
 {
-    is >> dt.departure;
-    dt.departure = ConvertStr ( dt.departure, false );
+    is >> dt._departure_continent;
+    dt._departure_continent = ConvertStr ( dt._departure_continent, false );
+    is >> dt._departure_city;
+    dt._departure_city = ConvertStr ( dt._departure_city, false );
+    is >> dt._departure_code;
+    dt._departure_code = ConvertStr ( dt._departure_code, false );
+    is >> dt._departure_date;
+    dt._departure_date = ConvertStr ( dt._departure_date, false );
 
-    is >> dt.arrival;
-    dt.arrival = ConvertStr ( dt.arrival, false );
+    is >> dt._arrival_continent;
+    dt._arrival_continent = ConvertStr ( dt._arrival_continent, false );
+    is >> dt._arrival_city;
+    dt._arrival_city = ConvertStr ( dt._arrival_city, false );
+    is >> dt._arrival_code;
+    dt._arrival_code = ConvertStr ( dt._arrival_code, false );
+    is >> dt._arrival_date;
+    dt._arrival_date = ConvertStr ( dt._arrival_date, false );
 
-    is >> dt.cheap_price;
-    dt.cheap_price = ConvertStr ( dt.cheap_price, false );
+    is >> dt._currency_code;
+    dt._currency_code = ConvertStr ( dt._currency_code, false );
+    is >> dt._cheap_price;
+    dt._cheap_price = ConvertStr ( dt._cheap_price, false );
+    is >> dt._normal_price;
+    dt._normal_price = ConvertStr ( dt._normal_price, false );
 
-    is >> dt.normal_price;
-    dt.normal_price = ConvertStr ( dt.normal_price, false );
+    is >> dt._airline;
+    dt._airline = ConvertStr ( dt._airline, false );
+    is >> dt._direction;
+    dt._direction = ConvertStr ( dt._direction, false );
+    is >> dt._luggage;
+    dt._luggage = ConvertStr ( dt._luggage, false );
+    is >> dt._arrival_date;
+    dt._payload = ConvertStr ( dt._payload, false );
 
     return is;
 }

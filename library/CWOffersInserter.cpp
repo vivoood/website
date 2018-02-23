@@ -42,7 +42,7 @@ CWOffersInserter::CWOffersInserter ( std::string usrhash, std::string strPayload
     pAddBtn->clicked().connect ( std::bind ( [=]()
     {
         OffersData::SOffer offer;
-        offer.set ( pDep->Value(), pArriv->Value(), pChp->Value(), pNorp->Value() );
+//         offer.set ( pDep->Value(), pArriv->Value(), pChp->Value(), pNorp->Value() );
         OffersData ofrs ( strPayload );
         ofrs.add ( offer );
         gCWSignals.signal_create_center_column.emit ( usrhash );
