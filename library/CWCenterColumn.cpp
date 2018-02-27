@@ -11,15 +11,15 @@ CWCenterColumn::CWCenterColumn ( std::string usrhash, std::string strPayload, Wt
 {
     if ( usrhash == "SignIn" )
     {
-        this->addWidget ( Factory::Create ( "CWSignIn", "no_payload", usrhash ) );
+        this->addWidget ( Factory::Create ( "CWSignIn", strPayload, usrhash ) );
     }
     else if ( CWUser::CheckOwner ( usrhash ) )
     {
-        this->addWidget ( Factory::Create ( "CWOwnerPage", "no_payload", usrhash ) );
+        this->addWidget ( Factory::Create ( "CWOwnerPage", strPayload, usrhash ) );
     }
     else
     {
-        this->addWidget ( Factory::Create ( "CWIntroPage", "no_payload", usrhash ) );
+        this->addWidget ( Factory::Create ( "CWIntroPage", strPayload, usrhash ) );
     }
 }
 

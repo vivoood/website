@@ -28,7 +28,7 @@ CWSignIn::CWSignIn ( std::string usrhash, std::string strPayload, Wt::WContainer
     Wt::WPushButton * pBackBtn = new Wt::WPushButton ( "<-Back" );
     pBackBtn->clicked().connect ( std::bind ( [=]()
     {
-        gCWSignals.signal_create_center_column.emit ( "Guest" );
+        gCWSignals.signal_create_center_column.emit ( "Guest", "show_free_offers_random" );
     } ) );
     pTable->elementAt ( 5, 3 )->addWidget ( pBackBtn );
 
@@ -39,7 +39,7 @@ CWSignIn::CWSignIn ( std::string usrhash, std::string strPayload, Wt::WContainer
         FillData ( u );
         u.save();
         
-        gCWSignals.signal_create_center_column.emit ( u.hash() );
+        gCWSignals.signal_create_center_column.emit ( u.hash(), "no_payload" );
     } ) );
     pTable->elementAt ( 5, 3 )->addWidget ( pRegBtn );
 

@@ -29,16 +29,16 @@ EntryOne::EntryOne ( Wt::WApplication * pApp )
     m_pCell->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/bluebgr.png" ) );
 
     m_pCell = table->elementAt ( 0, 1 );
-    gCWSignals.signal_create_center_column.emit ( "Guest" );
+    gCWSignals.signal_create_center_column.emit ( "Guest", "show_free_offers_random" );
     m_pCell->setWidth ( Wt::WLength ( "76%" ) );
 
     this->addWidget ( table );
 }
 
-void EntryOne::CreateEntry ( std::string strUserHash )
+void EntryOne::CreateEntry ( std::string strUserHash, std::string strPayLoad )
 {
     m_pCell->clear();
-    m_pCell->addWidget ( Factory::Create ( "CWCenterColumn", "no_payload", strUserHash ) );
+    m_pCell->addWidget ( Factory::Create ( "CWCenterColumn", strPayLoad, strUserHash ) );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

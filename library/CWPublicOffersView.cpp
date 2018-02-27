@@ -22,6 +22,10 @@ CWPublicOffersView::CWPublicOffersView ( std::string usrhash, std::string strPay
     {
         show_best_offers ();
     }
+    else if ( strPayload == "Africa" )
+    {
+        this->addWidget ( new Wt::WText ( "AAAAAAAAAA" ) );
+    }
     else
     {
         this->addWidget ( new Wt::WText ( "CWPublicOffersView - Can't recognize payload" ) );

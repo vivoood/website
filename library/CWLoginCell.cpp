@@ -38,7 +38,7 @@ CWLoginCell::CWLoginCell ( std::string usrhash, std::string strPayload, Wt::WCon
             std::string uhash = CWUser::CreateHash ( mail + pass );
             if ( CWUser::CheckUserExist ( uhash ) )
             {
-                gCWSignals.signal_create_center_column.emit ( uhash );
+                gCWSignals.signal_create_center_column.emit ( uhash, "no_payload" );
             }
             else
             {
@@ -50,7 +50,7 @@ CWLoginCell::CWLoginCell ( std::string usrhash, std::string strPayload, Wt::WCon
 
         pSigninBtn->clicked().connect ( std::bind ( [=]()
         {
-            gCWSignals.signal_create_center_column.emit ( "SignIn" );
+            gCWSignals.signal_create_center_column.emit ( "SignIn", "no_payload" );
         } ) );
 
     }
@@ -65,7 +65,7 @@ CWLoginCell::CWLoginCell ( std::string usrhash, std::string strPayload, Wt::WCon
         Wt::WPushButton * pLogoutBtn = new Wt::WPushButton ( "Logout" );
         pLogoutBtn->clicked().connect ( std::bind ( [=]()
         {
-            gCWSignals.signal_create_center_column.emit ( "Guest" );
+            gCWSignals.signal_create_center_column.emit ( "Guest", "show_free_offers_random" );
         } ) );
         this->addWidget ( pLogoutBtn );
     }

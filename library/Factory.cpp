@@ -10,6 +10,10 @@
 #include "CWOffersInserter.h"
 #include "CWOffersView.h"
 #include "CWPublicOffersView.h"
+#include "CWChooseContinent.h"
+#include "CWHowItWorks.h"
+#include "CWFaq.h"
+#include "CWAbonaments.h"
 
 Wt::WWidget * Factory::Create ( std::string strWidget, std::string strWidgetPayload, std::string strUserHash, Wt::WContainerWidget * parent )
 {
@@ -37,7 +41,20 @@ Wt::WWidget * Factory::Create ( std::string strWidget, std::string strWidgetPayl
     if ( strWidget == "CWPublicOffersView" )
         return new CWPublicOffersView ( strUserHash, strWidgetPayload, parent );
 
+    if ( strWidget == "CWChooseContinent" )
+        return new CWChooseContinent ( strUserHash, strWidgetPayload, parent );
+
+    if ( strWidget == "CWHowItWorks" )
+        return new CWHowItWorks ( strUserHash, strWidgetPayload, parent );
+
+    if ( strWidget == "CWFaq" )
+        return new CWFaq ( strUserHash, strWidgetPayload, parent );
+
+    if ( strWidget == "CWAbonaments" )
+        return new CWAbonaments ( strUserHash, strWidgetPayload, parent );
+
     return new Wt::WText ( "Factory could not create " + strWidget );
 }
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+
 

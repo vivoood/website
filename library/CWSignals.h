@@ -7,7 +7,7 @@
 class CWSignals
 {
 public:
-    Wt::Signal<std::string> signal_create_center_column;
+    Wt::Signal<std::string, std::string> signal_create_center_column;
 };
 
 extern CWSignals gCWSignals;

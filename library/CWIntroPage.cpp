@@ -8,56 +8,12 @@
 
 CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
-    /** ### Login */
-    CWTable * pTable = new CWTable();
-    pTable->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "empty" ) );
-    pTable->elementAt ( 0, 3 )->addWidget ( new Wt::WText ( "logo" ) );
-    pTable->elementAt ( 0, 5 )->addWidget ( Factory::Create ( "CWLoginCell", "no_payload", usrhash, pTable->elementAt ( 0, 5 ) ) );
-    this->addWidget ( pTable );
-
-    CWTable * pTableContinentLocation = new CWTable();
-    pTableContinentLocation->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "empty" ) );
-
-    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
-    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
-    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
-    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WText ( "Choose your continent location to see cheap flights" ) );
-    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
-    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
-    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
-    pTableContinentLocation->elementAt ( 0, 4 )->addWidget ( new Wt::WBreak() );
-
-    pTableContinentLocation->elementAt ( 0, 8 )->addWidget ( new Wt::WText ( "empty" ) );
-    this->addWidget ( pTableContinentLocation );
-
-    /** ### Random free offers */
-    this->addWidget ( Factory::Create ( "CWPublicOffersView", "show_free_offers_random", usrhash, this ) );
-
-    CWTable * pTableHowItWork = new CWTable();
-    for ( int i = 0; i < 5; i++ )
-        pTableHowItWork->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
-    pTableHowItWork->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "How it works" ) );
-    for ( int i = 0; i < 5; i++ )
-        pTableHowItWork->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
-    this->addWidget ( pTableHowItWork );
-
-    CWTable * pTableFAQ = new CWTable();
-    for ( int i = 0; i < 5; i++ )
-        pTableFAQ->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
-    pTableFAQ->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "FAQ page" ) );
-    for ( int i = 0; i < 5; i++ )
-        pTableFAQ->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
-    this->addWidget ( pTableFAQ );
-
-    CWTable * pTablePrices = new CWTable();
-    for ( int i = 0; i < 5; i++ )
-        pTablePrices->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
-    pTablePrices->elementAt ( 0, 0 )->addWidget ( new Wt::WText ( "Prices abonaments ......." ) );
-    for ( int i = 0; i < 5; i++ )
-        pTablePrices->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
-    this->addWidget ( pTablePrices );
-
-    /** ### Top 5 best offers */
+    this->addWidget ( Factory::Create ( "CWLoginCell", "no_payload", usrhash, this ) );
+    this->addWidget ( Factory::Create ( "CWChooseContinent", "no_payload", usrhash, this ) );
+    this->addWidget ( Factory::Create ( "CWPublicOffersView", strPayload, usrhash, this ) );
+    this->addWidget ( Factory::Create ( "CWHowItWorks", "no_payload", usrhash, this ) );
+    this->addWidget ( Factory::Create ( "CWFaq", "no_payload", usrhash, this ) );
+    this->addWidget ( Factory::Create ( "CWAbonaments", "no_payload", usrhash, this ) );
     this->addWidget ( Factory::Create ( "CWPublicOffersView", "show_best_offers", usrhash, this ) );
 
     CWTable * pTableSuccessStories = new CWTable();

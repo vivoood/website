@@ -15,7 +15,7 @@ class EntryOne : public Wt::WContainerWidget
 public:
     friend class Factory;
     EntryOne ( Wt::WApplication * pApp );
-    void CreateEntry ( std::string strUserHash );
+    void CreateEntry ( std::string strUserHash, std::string strPayLoad );
 };
 
 #endif // ENTRYONE_H

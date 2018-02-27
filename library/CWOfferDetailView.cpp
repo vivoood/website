@@ -176,7 +176,7 @@ CWOfferDetailView::CWOfferDetailView ( std::string usrhash, std::string strPaylo
         offer.set_options ( pAirl->Value(), pFdir->Value(), pLugg->Value(), pPayl->Value() );
         OffersData ofrs ( strPayload );
         ofrs.add ( offer );
-        gCWSignals.signal_create_center_column.emit ( usrhash );
+        gCWSignals.signal_create_center_column.emit ( usrhash, "no_payload" );
 
     } ) );
 
