@@ -1,7 +1,7 @@
 5
-unknown_departure_cont
+Africa
 unknown_departure
-unknown_departure_code
+UTFCS
 unknown_departure_date
 unknown_arrival_cont
 unknown_arrival
@@ -9,7 +9,7 @@ unknown_arrival_code
 unknown_payload
 unknown_currency_code
 unknown_price
-unknown_price
+15646
 unknown_airline
 unknown_direction
 unknown_luggage
@@ -19,14 +19,14 @@ unknown_departure_cont
 unknown_departure
 unknown_departure_code
 unknown_departure_date
-unknown_arrival_cont
+Africa
 unknown_arrival
 unknown_arrival_code
 unknown_payload
 unknown_currency_code
 unknown_price
 unknown_price
-unknown_airline
+WIZZ
 unknown_direction
 unknown_luggage
 unknown_payload

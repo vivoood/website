@@ -11,9 +11,12 @@ private:
     friend class Factory;
     CWPublicOffersView ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent = 0 );
     void CreateView ( Wt::WContainerWidget * p, std::vector<OffersData::SOffer> & v, unsigned int uiShownElements );
+    void GetPayloadHeader ( const std::string & payload, std::string & result );
+    void GetPayloadBody ( const std::string & payload, std::string & result );
     void show_free_offers_random();
     void show_best_offers();
-    
+    void show_offers_by_continent ( const std::string & continent );
+
     std::vector<OffersData::SOffer> vOfData;
     unsigned int uiMaxFreeVisibleOffers = 5;
     unsigned int uiMaxBestVisibleOffers = 5;
