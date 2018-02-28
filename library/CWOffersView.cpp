@@ -3,6 +3,7 @@
 #include <Wt/WText>
 #include <Wt/WPushButton>
 
+#include "Debug.h"
 #include "CWTable.h"
 #include "CWUser.h"
 #include "Factory.h"
@@ -14,29 +15,32 @@ CWOffersView::CWOffersView ( std::string usrhash, std::string strPayload, Wt::WC
     OffersData fod ( strPayload );
     fod.load();
 
-    for( std::vector<OffersData::SOffer>::iterator it = fod.vFreeOffers.begin(); it != fod.vFreeOffers.end(); ++it )
+    for ( unsigned int i = 0; i < fod.vFreeOffers.size(); ++i )
     {
         CWTable * pTable = new CWTable();
         CWOfferDetailView * p = nullptr;
 
-        p = new CWOfferDetailView ( usrhash, "departure", *it );
+        OffersData::SOffer & o = fod.vFreeOffers[i];
+
+        p = new CWOfferDetailView ( usrhash, "departure", o );
         pTable->elementAt ( 0, 0 )->addWidget ( p );
 
-        p = new CWOfferDetailView ( usrhash, "arrival", *it );
+        p = new CWOfferDetailView ( usrhash, "arrival", o );
         pTable->elementAt ( 0, 1 )->addWidget ( p );
 
-        p = new CWOfferDetailView ( usrhash, "price", *it );
+        p = new CWOfferDetailView ( usrhash, "price", o );
         pTable->elementAt ( 0, 2 )->addWidget ( p );
 
-        p = new CWOfferDetailView ( usrhash, "options", *it );
+        p = new CWOfferDetailView ( usrhash, "options", o );
         pTable->elementAt ( 0, 3 )->addWidget ( p );
 
         Wt::WPushButton * del_buttton = new Wt::WPushButton ( "Delete" );
-//         del_buttton->clicked().connect ( std::bind ( [&]()
-//         {
-//             fod.del ( it );
-//             gCWSignals.signal_create_center_column.emit ( usrhash, strPayload );
-//         } ) );
+        del_buttton->clicked().connect ( std::bind ( [=]()
+        {
+            OffersData fod2 ( strPayload );
+            fod2.del ( i );
+            gCWSignals.signal_create_center_column.emit ( usrhash, strPayload );
+        } ) );
 
         pTable->elementAt ( 0, 4 )->addWidget ( del_buttton );
 

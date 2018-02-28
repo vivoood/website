@@ -211,6 +211,17 @@ void OffersData::add ( OffersData::SOffer o )
     save();
 }
 
+void OffersData::del ( unsigned int id )
+{
+    load();
+    if ( ! ( id < vFreeOffers.size() ) )
+        return;
+
+    vFreeOffers.erase ( vFreeOffers.begin() + id );
+    offer_count = vFreeOffers.size();
+    save();
+}
+
 void OffersData::save()
 {
     std::lock_guard<std::mutex> lock ( mtx );

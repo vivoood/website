@@ -105,6 +105,7 @@ public:
 
     OffersData ( std::string fname ) : OffersBase ( fname ) {}
     void add ( SOffer o );
+    void del ( unsigned int id );
     std::mutex mtx;
     void save();
     bool load ();
