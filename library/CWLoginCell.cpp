@@ -54,6 +54,18 @@ CWLoginCell::CWLoginCell ( std::string usrhash, std::string strPayload, Wt::WCon
         } ) );
 
     }
+    else if ( CWUser::CheckOwner ( usrhash ) )
+    {
+        this->addWidget ( new Wt::WText ( std::string ( "Welcome owner" ) ) );
+        this->addWidget ( new Wt::WBreak() );
+
+        Wt::WPushButton * pLogoutBtn = new Wt::WPushButton ( "Logout" );
+        pLogoutBtn->clicked().connect ( std::bind ( [=]()
+        {
+            gCWSignals.signal_create_center_column.emit ( "Guest", "show_free_offers_random" );
+        } ) );
+        this->addWidget ( pLogoutBtn );
+    }
     else
     {
         CWUser u;
@@ -75,5 +87,3 @@ CWLoginCell::CWLoginCell ( std::string usrhash, std::string strPayload, Wt::WCon
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
-

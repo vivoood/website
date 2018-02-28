@@ -4,6 +4,8 @@
 
 CWOwnerPage::CWOwnerPage ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
+    this->addWidget ( Factory::Create ( "CWLoginCell", "no_payload", usrhash, this ) );
+    
     this->addWidget ( Factory::Create ( "CWOffersInserter", "owner/free_offers", usrhash ) );
     this->addWidget ( Factory::Create ( "CWOffersView", "owner/free_offers", usrhash ) );
 
