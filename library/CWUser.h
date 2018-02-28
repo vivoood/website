@@ -81,12 +81,12 @@ public:
         }
 
         std::string _departure_continent = "unknown_departure_cont";
-        std::string _departure_city = "unknown_departure";
+        std::string _departure_city = "unknown_departure_city";
         std::string _departure_code = "unknown_departure_code";
         std::string _departure_date = "unknown_departure_date";
 
         std::string _arrival_continent = "unknown_arrival_cont";
-        std::string _arrival_city = "unknown_arrival";
+        std::string _arrival_city = "unknown_arrival_city";
         std::string _arrival_code = "unknown_arrival_code";
         std::string _arrival_date = "unknown_arrival_date";
 

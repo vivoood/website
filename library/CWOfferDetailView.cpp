@@ -174,8 +174,12 @@ CWOfferDetailView::CWOfferDetailView ( std::string usrhash, std::string strPaylo
         offer.set_arrival ( pContA->Value(), pCityA->Value(), pAirpA->Value(), pDaA->Value() );
         offer.set_prices ( pCurrCode->Value(), pPrice->Value(), pNPrice->Value() );
         offer.set_options ( pAirl->Value(), pFdir->Value(), pLugg->Value(), pPayl->Value() );
+
         OffersData ofrs ( strPayload );
+        ofrs.load();
         ofrs.add ( offer );
+        ofrs.save();
+
         gCWSignals.signal_create_center_column.emit ( usrhash, "no_payload" );
 
     } ) );

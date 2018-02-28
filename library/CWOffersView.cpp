@@ -38,7 +38,10 @@ CWOffersView::CWOffersView ( std::string usrhash, std::string strPayload, Wt::WC
         del_buttton->clicked().connect ( std::bind ( [=]()
         {
             OffersData fod2 ( strPayload );
+            fod2.load();
             fod2.del ( i );
+            fod2.save();
+            
             gCWSignals.signal_create_center_column.emit ( usrhash, strPayload );
         } ) );
 

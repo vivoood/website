@@ -197,7 +197,7 @@ std::istream& operator>> ( std::istream& is, OffersData::SOffer& dt )
     dt._direction = ConvertStr ( dt._direction, false );
     is >> dt._luggage;
     dt._luggage = ConvertStr ( dt._luggage, false );
-    is >> dt._arrival_date;
+    is >> dt._payload;
     dt._payload = ConvertStr ( dt._payload, false );
 
     return is;
@@ -205,21 +205,17 @@ std::istream& operator>> ( std::istream& is, OffersData::SOffer& dt )
 
 void OffersData::add ( OffersData::SOffer o )
 {
-    load();
     vFreeOffers.push_back ( o );
     offer_count = vFreeOffers.size();
-    save();
 }
 
 void OffersData::del ( unsigned int id )
 {
-    load();
     if ( ! ( id < vFreeOffers.size() ) )
         return;
 
     vFreeOffers.erase ( vFreeOffers.begin() + id );
     offer_count = vFreeOffers.size();
-    save();
 }
 
 void OffersData::save()
