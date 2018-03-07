@@ -23,7 +23,7 @@ std::string ConvertStr ( std::string str, bool tofile )
 
 }
 
-CWUser::CWUser ( std::string user, std::string pass, std::string mail, std::string continent, std::string gender )
+CWUser::CWUser ( std::string user, std::string pass, std::string mail, std::string continent, std::string gender, std::string abon )
 {
     if ( !user.empty() )
         _user = user;
@@ -39,6 +39,9 @@ CWUser::CWUser ( std::string user, std::string pass, std::string mail, std::stri
 
     if ( !gender.empty() )
         _gender = gender;
+
+    if ( !abon.empty() )
+        _abonament = abon;
 }
 
 void CWUser::save()
@@ -113,6 +116,7 @@ std::ostream& operator<< ( std::ostream& os, const CWUser& dt )
     os << ConvertStr ( dt._mail, true ) << std::endl;
     os << ConvertStr ( dt._continent, true ) << std::endl;
     os << ConvertStr ( dt._gender, true ) << std::endl;
+    os << ConvertStr ( dt._abonament, true ) << std::endl;
     return os;
 }
 
@@ -132,6 +136,9 @@ std::istream& operator>> ( std::istream& is, CWUser& dt )
 
     is >> dt._gender;
     dt._gender = ConvertStr ( dt._gender, false );
+
+    is >> dt._abonament;
+    dt._abonament = ConvertStr ( dt._abonament, false );
 
     return is;
 }

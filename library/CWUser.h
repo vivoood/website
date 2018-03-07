@@ -13,7 +13,7 @@ class CWUser
 {
 public:
     CWUser() {}
-    CWUser ( std::string user, std::string pass, std::string mail, std::string continent, std::string gender );
+    CWUser ( std::string user, std::string pass, std::string mail, std::string continent, std::string gender, std::string abon );
     void save();
     bool load ( std::string filename );
     std::string hash();
@@ -27,6 +27,7 @@ public:
     std::string _mail = "unknown_mail";
     std::string _continent = "unknown_continent";
     std::string _gender = "unknown_gender";
+    std::string _abonament = "unknown_abonament";
 
     std::mutex mtx;
     friend std::ostream& operator<< ( std::ostream& os, const CWUser& dt );
