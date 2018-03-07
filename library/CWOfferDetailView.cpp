@@ -60,6 +60,9 @@ CWOfferDetailView::CWOfferDetailView ( std::string usrhash, std::string strPaylo
         pTable->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Normal price" ) );
         pTable->elementAt ( 3, 1 )->addWidget ( new Wt::WText ( offr._normal_price ) );
 
+        pTable->elementAt ( 4, 0 )->addWidget ( new Wt::WText ( "Hyperlink" ) );
+        pTable->elementAt ( 4, 1 )->addWidget ( new Wt::WText ( offr._hyperlink ) );
+
         this->addWidget ( pTable );
     }
     else if ( strPayload == "options" )
@@ -134,17 +137,21 @@ CWOfferDetailView::CWOfferDetailView ( std::string usrhash, std::string strPaylo
 
     pTable->elementAt ( 0, 4 )->addWidget ( new Wt::WText ( "Price details" ) );
 
-    pCell = pTable->elementAt ( 2, 4 );
+    pCell = pTable->elementAt ( 1, 4 );
     CWLineEditField * pCurrCode = new CWLineEditField ( "Currency code", pCell );
     pCell->addWidget ( pCurrCode );
 
-    pCell = pTable->elementAt ( 3, 4 );
+    pCell = pTable->elementAt ( 2, 4 );
     CWLineEditField * pPrice = new CWLineEditField ( "Price", pCell );
     pCell->addWidget ( pPrice );
 
-    pCell = pTable->elementAt ( 4, 4 );
+    pCell = pTable->elementAt ( 3, 4 );
     CWLineEditField * pNPrice = new CWLineEditField ( "Normal price", pCell );
     pCell->addWidget ( pNPrice );
+
+    pCell = pTable->elementAt ( 4, 4 );
+    CWLineEditField * pHplink = new CWLineEditField ( "Hyperlink", pCell );
+    pCell->addWidget ( pHplink );
 
     /** ### ####################################################################### */
 
@@ -172,7 +179,7 @@ CWOfferDetailView::CWOfferDetailView ( std::string usrhash, std::string strPaylo
         OffersData::SOffer offer;
         offer.set_departure ( pContD->Value(), pCityD->Value(), pAirpD->Value(), pDaD->Value() );
         offer.set_arrival ( pContA->Value(), pCityA->Value(), pAirpA->Value(), pDaA->Value() );
-        offer.set_prices ( pCurrCode->Value(), pPrice->Value(), pNPrice->Value() );
+        offer.set_prices ( pCurrCode->Value(), pPrice->Value(), pNPrice->Value(), pHplink->Value() );
         offer.set_options ( pAirl->Value(), pFdir->Value(), pLugg->Value(), pPayl->Value() );
 
         OffersData ofrs ( strPayload );

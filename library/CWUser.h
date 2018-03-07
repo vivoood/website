@@ -65,11 +65,12 @@ public:
             _arrival_date = adate;
         }
 
-        void set_prices ( std::string c, std::string cpr, std::string norpr )
+        void set_prices ( std::string c, std::string cpr, std::string norpr, std::string hpl )
         {
             _currency_code = c;
             _cheap_price = cpr;
             _normal_price = norpr;
+            _hyperlink = hpl;
         }
 
         void set_options ( std::string a, std::string d, std::string l, std::string p )
@@ -93,6 +94,7 @@ public:
         std::string _currency_code = "unknown_currency_code";
         std::string _cheap_price = "unknown_price";
         std::string _normal_price = "unknown_price";
+        std::string _hyperlink = "unknown_hyplink";
 
         std::string _airline = "unknown_airline";
         std::string _direction = "unknown_direction";
@@ -120,6 +122,3 @@ public:
 #endif //CWUSER_H
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
-
-
-

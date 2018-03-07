@@ -10,6 +10,7 @@ CWChooseContinent::CWChooseContinent ( std::string usrhash, std::string strPaylo
     if ( usrhash == "Guest" )
     {
         std::vector<Wt::WPushButton *> vb;
+        vb.push_back ( new Wt::WPushButton ( "All" ) );
         vb.push_back ( new Wt::WPushButton ( "Africa" ) );
         vb.push_back ( new Wt::WPushButton ( "Asia" ) );
         vb.push_back ( new Wt::WPushButton ( "Europe" ) );
@@ -21,7 +22,14 @@ CWChooseContinent::CWChooseContinent ( std::string usrhash, std::string strPaylo
         {
             btn->clicked().connect ( std::bind ( [=]()
             {
-                gCWSignals.signal_create_center_column.emit ( usrhash, std::string ( "continent:" ) + btn->text().toUTF8() );
+                if ( btn->text().toUTF8() == "All" )
+                {
+                    gCWSignals.signal_create_center_column.emit ( usrhash, "show_free_offers_random" );
+                }
+                else
+                {
+                    gCWSignals.signal_create_center_column.emit ( usrhash, std::string ( "continent:" ) + btn->text().toUTF8() );
+                }
             } ) );
 
             this->addWidget ( btn );

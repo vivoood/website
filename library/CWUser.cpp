@@ -155,6 +155,7 @@ std::ostream& operator<< ( std::ostream& os, const OffersData::SOffer& dt )
     os << ConvertStr ( dt._currency_code, true ) << std::endl;
     os << ConvertStr ( dt._cheap_price, true ) << std::endl;
     os << ConvertStr ( dt._normal_price, true ) << std::endl;
+    os << ConvertStr ( dt._hyperlink, true ) << std::endl;
 
     os << ConvertStr ( dt._airline, true ) << std::endl;
     os << ConvertStr ( dt._direction, true ) << std::endl;
@@ -190,6 +191,8 @@ std::istream& operator>> ( std::istream& is, OffersData::SOffer& dt )
     dt._cheap_price = ConvertStr ( dt._cheap_price, false );
     is >> dt._normal_price;
     dt._normal_price = ConvertStr ( dt._normal_price, false );
+    is >> dt._hyperlink;
+    dt._hyperlink = ConvertStr ( dt._hyperlink, false );
 
     is >> dt._airline;
     dt._airline = ConvertStr ( dt._airline, false );
