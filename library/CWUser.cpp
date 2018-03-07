@@ -23,7 +23,7 @@ std::string ConvertStr ( std::string str, bool tofile )
 
 }
 
-CWUser::CWUser ( std::string user, std::string pass, std::string mail, std::string coutry, std::string gender )
+CWUser::CWUser ( std::string user, std::string pass, std::string mail, std::string continent, std::string gender )
 {
     if ( !user.empty() )
         _user = user;
@@ -34,8 +34,8 @@ CWUser::CWUser ( std::string user, std::string pass, std::string mail, std::stri
     if ( !mail.empty() )
         _mail = mail;
 
-    if ( !coutry.empty() )
-        _country = coutry;
+    if ( !continent.empty() )
+        _continent = continent;
 
     if ( !gender.empty() )
         _gender = gender;
@@ -111,7 +111,7 @@ std::ostream& operator<< ( std::ostream& os, const CWUser& dt )
     os << ConvertStr ( dt._user, true ) << std::endl;
     os << ConvertStr ( dt._pass, true ) << std::endl;
     os << ConvertStr ( dt._mail, true ) << std::endl;
-    os << ConvertStr ( dt._country, true ) << std::endl;
+    os << ConvertStr ( dt._continent, true ) << std::endl;
     os << ConvertStr ( dt._gender, true ) << std::endl;
     return os;
 }
@@ -127,8 +127,8 @@ std::istream& operator>> ( std::istream& is, CWUser& dt )
     is >> dt._mail;
     dt._mail = ConvertStr ( dt._mail, false );
 
-    is >> dt._country;
-    dt._country = ConvertStr ( dt._country, false );
+    is >> dt._continent;
+    dt._continent = ConvertStr ( dt._continent, false );
 
     is >> dt._gender;
     dt._gender = ConvertStr ( dt._gender, false );

@@ -66,9 +66,9 @@ void CWSignIn::FillData ( CWUser & u )
     if ( it != vData.end() )
         u._user = it->second->Value();
 
-    it = vData.find ( "Country" );
+    it = vData.find ( "Continent" );
     if ( it != vData.end() )
-        u._country = it->second->Value();
+        u._continent = it->second->Value();
 
     it = vData.find ( "Gender" );
     if ( it != vData.end() )

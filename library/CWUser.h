@@ -13,7 +13,7 @@ class CWUser
 {
 public:
     CWUser() {}
-    CWUser ( std::string user, std::string pass, std::string mail, std::string coutry, std::string gender );
+    CWUser ( std::string user, std::string pass, std::string mail, std::string continent, std::string gender );
     void save();
     bool load ( std::string filename );
     std::string hash();
@@ -25,7 +25,7 @@ public:
     std::string _user = "unknown_user";
     std::string _pass = "unknown_pass";
     std::string _mail = "unknown_mail";
-    std::string _country = "unknown_country";
+    std::string _continent = "unknown_continent";
     std::string _gender = "unknown_gender";
 
     std::mutex mtx;

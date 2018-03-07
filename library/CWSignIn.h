@@ -13,7 +13,7 @@ private:
     CWSignIn ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent = 0 );
     void FillData(CWUser &);
     
-    std::map<std::string, CWLineEditField*> vData = { {"e-mail", nullptr}, {"Password", nullptr}, {"Username", nullptr}, {"Country", nullptr}, {"Gender", nullptr} };
+    std::map<std::string, CWLineEditField*> vData = { {"e-mail", nullptr}, {"Password", nullptr}, {"Username", nullptr}, {"Continent", nullptr}, {"Gender", nullptr} };
 };
 
 #endif //CWSIGNIN_H
