@@ -38,7 +38,7 @@ CWLoginCell::CWLoginCell ( std::string usrhash, std::string strPayload, Wt::WCon
             std::string uhash = CWUser::CreateHash ( mail + pass );
             if ( CWUser::CheckUserExist ( uhash ) )
             {
-                gCWSignals.signal_create_center_column.emit ( uhash, "no_payload" );
+                gCWSignals.signal_create_center_column.emit ( uhash, "show_all_offers" );
             }
             else
             {

@@ -2,34 +2,34 @@
 
 #include <Wt/WText>
 #include <Wt/WBreak>
+#include <Wt/WPushButton>
+
+#include "CWTable.h"
 
 CWAbonaments::CWAbonaments ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
+    CWTable * pTable = new CWTable();
+    
+    pTable->elementAt ( 0, 5 )->addWidget ( new Wt::WText ( "Choose your abonament" ) );
 
-    this->addWidget ( new Wt::WText ( "Montly - 999$" ) );
+    for ( unsigned int i = 0; i < _abonaments.size(); i++ )
+    {
+        std::string & val = _abonaments[i];
+        if ( val.empty() )
+        {
+            pTable->elementAt ( 3, i )->addWidget ( new Wt::WText ( "" ) );
+        }
+        else
+        {
+            Wt::WPushButton * pBtn = new Wt::WPushButton ( val );
+            pTable->elementAt ( 3, i )->addWidget ( pBtn );
+            pTable->elementAt ( 3, i )->setContentAlignment ( Wt::AlignCenter );
+            
+//             gCWSignals.signal_create_center_column.emit ( "SignIn", "no_payload" );
+        }
+    }
 
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
-
-    this->addWidget ( new Wt::WText ( "Annual - 99999$" ) );
-
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
-
-    this->addWidget ( new Wt::WText ( "Other offers ???" ) );
-
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
-    this->addWidget ( new Wt::WBreak() );
+    this->addWidget ( pTable );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

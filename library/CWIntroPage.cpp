@@ -13,7 +13,10 @@ CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WCon
     this->addWidget ( Factory::Create ( "CWPublicOffersView", strPayload, usrhash, this ) );
     this->addWidget ( Factory::Create ( "CWHowItWorks", "no_payload", usrhash, this ) );
     this->addWidget ( Factory::Create ( "CWFaq", "no_payload", usrhash, this ) );
-    this->addWidget ( Factory::Create ( "CWAbonaments", "no_payload", usrhash, this ) );
+    if ( usrhash != "Guest" )
+    {
+        this->addWidget ( Factory::Create ( "CWAbonaments", "no_payload", usrhash, this ) );
+    }
     this->addWidget ( Factory::Create ( "CWPublicOffersView", "show_best_offers", usrhash, this ) );
 
     CWTable * pTableTasks = new CWTable();
@@ -22,6 +25,9 @@ CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WCon
     pTableTasks->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
     pTableTasks->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );
 
+    pTableTasks->elementAt ( 1, 0 )->addWidget ( new Wt::WText ( "Add description for each abonament" ) );
+    pTableTasks->elementAt ( 1, 0 )->addWidget ( new Wt::WText ( "Show abonament page if needed and if valid user hash" ) );
+    pTableTasks->elementAt ( 1, 0 )->addWidget ( new Wt::WText ( "Remaining time of abonament" ) );
     pTableTasks->elementAt ( 1, 0 )->addWidget ( new Wt::WText ( "Send mail" ) );
     pTableTasks->elementAt ( 2, 0 )->addWidget ( new Wt::WText ( "Create abonaments" ) );
     pTableTasks->elementAt ( 3, 0 )->addWidget ( new Wt::WText ( "Validation of all input fields" ) );

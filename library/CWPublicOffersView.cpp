@@ -33,15 +33,20 @@ CWPublicOffersView::CWPublicOffersView ( std::string usrhash, std::string strPay
     {
         show_offers_by_continent ( payload_body );
     }
+    else if ( payload_header == "show_all_offers" )
+    {
+        show_all_offers();
+    }
     else
     {
-        this->addWidget ( new Wt::WText ( "CWPublicOffersView - Can't recognize payload" ) );
+        this->addWidget ( new Wt::WText ( "CWPublicOffersView - Can't recognize payload: " + payload_header ) );
     }
 }
 
-void CWPublicOffersView::CreateView ( Wt::WContainerWidget * p, std::vector<OffersData::SOffer> & v, unsigned int uiShownElements )
+void CWPublicOffersView::CreateView ( Wt::WContainerWidget * p, std::vector<OffersData::SOffer> & v, unsigned int uiShownElements, bool bClear )
 {
-    p->clear();
+    if ( bClear )
+        p->clear();
 
     CWTable * pTable = new CWTable();
 
@@ -106,7 +111,7 @@ void CWPublicOffersView::show_free_offers_random ()
     std::random_shuffle ( vOfData.begin(), vOfData.end() );
     unsigned int uiElementCount = vOfData.size();
     uiShownElementsPerInstance = std::min ( uiElementCount, uiMaxFreeVisibleOffers );
-    CreateView ( this, vOfData, uiShownElementsPerInstance );
+    CreateView ( this, vOfData, uiShownElementsPerInstance, true );
 
     Wt::WTimer * t = new Wt::WTimer ( this );
     t->setInterval ( nChangeTimeDuration );
@@ -116,14 +121,14 @@ void CWPublicOffersView::show_free_offers_random ()
         std::random_shuffle ( vOfData.begin(), vOfData.end() );
         unsigned int uiElementCount = vOfData.size();
         uiShownElementsPerInstance = std::min ( uiElementCount, uiMaxFreeVisibleOffers );
-        CreateView ( this, vOfData, uiShownElementsPerInstance );
+        CreateView ( this, vOfData, uiShownElementsPerInstance, true );
     } ) );
 }
 
 void CWPublicOffersView::show_best_offers ()
 {
+    this->clear();
     this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/tmpbgr.png" ) );
-
     this->addWidget ( new Wt::WText ( "Top 5 best deals" ) );
 
     OffersData ofdata ( "owner/best_offers" );
@@ -132,7 +137,7 @@ void CWPublicOffersView::show_best_offers ()
     vOfData = ofdata.vFreeOffers;
     unsigned int uiElementCount = vOfData.size();
     uiShownElementsPerInstance = std::min ( uiElementCount, uiMaxFreeVisibleOffers );
-    CreateView ( this, vOfData, uiShownElementsPerInstance );
+    CreateView ( this, vOfData, uiShownElementsPerInstance, false );
 }
 
 void CWPublicOffersView::show_offers_by_continent ( const std::string & continent )
@@ -153,12 +158,27 @@ void CWPublicOffersView::show_offers_by_continent ( const std::string & continen
         std::random_shuffle ( vOfData.begin(), vOfData.end() );
         unsigned int uiElementCount = vOfData.size();
         uiShownElementsPerInstance = std::min ( uiElementCount, uiMaxFreeVisibleOffers );
-        CreateView ( this, vOfData, uiShownElementsPerInstance );
+        CreateView ( this, vOfData, uiShownElementsPerInstance, true );
     }
     else
     {
         this->addWidget ( new Wt::WText ( std::string ( "Can't find offer for " ) + continent ) );
     }
+}
+
+void CWPublicOffersView::show_all_offers()
+{
+    this->clear();
+    this->decorationStyle().setBackgroundImage ( Wt::WLink ( "pics/tmpbgr.png" ) );
+    this->addWidget ( new Wt::WText ( "Best deals for your trips" ) );
+
+    OffersData ofdata ( "owner/main_offers" );
+    ofdata.load();
+
+    vOfData = ofdata.vFreeOffers;
+    unsigned int uiElementCount = vOfData.size();
+    uiShownElementsPerInstance = std::min ( uiElementCount, uiMaxFreeVisibleOffers );
+    CreateView ( this, vOfData, uiShownElementsPerInstance, false );
 }
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
