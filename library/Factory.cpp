@@ -14,6 +14,7 @@
 #include "CWHowItWorks.h"
 #include "CWFaq.h"
 #include "CWAbonaments.h"
+#include "CWPayStation.h"
 
 Wt::WWidget * Factory::Create ( std::string strWidget, std::string strWidgetPayload, std::string strUserHash, Wt::WContainerWidget * parent )
 {
@@ -52,6 +53,9 @@ Wt::WWidget * Factory::Create ( std::string strWidget, std::string strWidgetPayl
 
     if ( strWidget == "CWAbonaments" )
         return new CWAbonaments ( strUserHash, strWidgetPayload, parent );
+
+    if ( strWidget == "CWPayStation" )
+        return new CWPayStation ( strUserHash, strWidgetPayload, parent );
 
     return new Wt::WText ( "Factory could not create " + strWidget );
 }

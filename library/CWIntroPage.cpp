@@ -9,15 +9,25 @@
 CWIntroPage::CWIntroPage ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
     this->addWidget ( Factory::Create ( "CWLoginCell", "no_payload", usrhash, this ) );
-    this->addWidget ( Factory::Create ( "CWChooseContinent", "no_payload", usrhash, this ) );
-    this->addWidget ( Factory::Create ( "CWPublicOffersView", strPayload, usrhash, this ) );
-    this->addWidget ( Factory::Create ( "CWHowItWorks", "no_payload", usrhash, this ) );
-    this->addWidget ( Factory::Create ( "CWFaq", "no_payload", usrhash, this ) );
-    if ( usrhash != "Guest" )
+
+    if ( strPayload == "PayStation" )
     {
-        this->addWidget ( Factory::Create ( "CWAbonaments", "no_payload", usrhash, this ) );
+        this->addWidget ( Factory::Create ( "CWPayStation", strPayload, usrhash, this ) );
+        this->addWidget ( Factory::Create ( "CWHowItWorks", "no_payload", usrhash, this ) );
+        this->addWidget ( Factory::Create ( "CWFaq", "no_payload", usrhash, this ) );
     }
-    this->addWidget ( Factory::Create ( "CWPublicOffersView", "show_best_offers", usrhash, this ) );
+    else
+    {
+        this->addWidget ( Factory::Create ( "CWChooseContinent", "no_payload", usrhash, this ) );
+        this->addWidget ( Factory::Create ( "CWPublicOffersView", strPayload, usrhash, this ) );
+        this->addWidget ( Factory::Create ( "CWHowItWorks", "no_payload", usrhash, this ) );
+        this->addWidget ( Factory::Create ( "CWFaq", "no_payload", usrhash, this ) );
+        if ( usrhash != "Guest" )
+        {
+            this->addWidget ( Factory::Create ( "CWAbonaments", "no_payload", usrhash, this ) );
+        }
+        this->addWidget ( Factory::Create ( "CWPublicOffersView", "show_best_offers", usrhash, this ) );
+    }
 
     CWTable * pTableTasks = new CWTable();
     pTableTasks->elementAt ( 0, 0 )->addWidget ( new Wt::WBreak() );

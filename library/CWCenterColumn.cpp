@@ -25,3 +25,6 @@ CWCenterColumn::CWCenterColumn ( std::string usrhash, std::string strPayload, Wt
 
 // kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
 
+
+
+

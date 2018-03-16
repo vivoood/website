@@ -5,11 +5,12 @@
 #include <Wt/WPushButton>
 
 #include "CWTable.h"
+#include "CWSignals.h"
 
 CWAbonaments::CWAbonaments ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
     CWTable * pTable = new CWTable();
-    
+
     pTable->elementAt ( 0, 5 )->addWidget ( new Wt::WText ( "Choose your abonament" ) );
 
     for ( unsigned int i = 0; i < _abonaments.size(); i++ )
@@ -24,8 +25,11 @@ CWAbonaments::CWAbonaments ( std::string usrhash, std::string strPayload, Wt::WC
             Wt::WPushButton * pBtn = new Wt::WPushButton ( val );
             pTable->elementAt ( 3, i )->addWidget ( pBtn );
             pTable->elementAt ( 3, i )->setContentAlignment ( Wt::AlignCenter );
-            
-//             gCWSignals.signal_create_center_column.emit ( "SignIn", "no_payload" );
+
+            pBtn->clicked().connect ( std::bind ( [=]()
+            {
+                gCWSignals.signal_create_center_column.emit ( usrhash, "PayStation" );
+            } ) );
         }
     }
 

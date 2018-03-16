@@ -12,14 +12,14 @@
 #include "CWUser.h"
 #include "CWOfferDetailView.h"
 #include "Debug.h"
+#include "SPayload.h"
 
 CWPublicOffersView::CWPublicOffersView ( std::string usrhash, std::string strPayload, Wt::WContainerWidget* parent ) : WContainerWidget ( nullptr )
 {
     std::string payload_header;
-    GetPayloadHeader ( strPayload, payload_header );
-
     std::string payload_body;
-    GetPayloadBody ( strPayload, payload_body );
+    SPayload pld ( strPayload );
+    pld.Dispatch( payload_header, payload_body );
 
     if ( payload_header == "show_free_offers_random" )
     {
@@ -71,32 +71,6 @@ void CWPublicOffersView::CreateView ( Wt::WContainerWidget * p, std::vector<Offe
     }
 
     p->addWidget ( pTable );
-}
-
-void CWPublicOffersView::GetPayloadHeader ( const std::string & payload, std::string & result )
-{
-    int charid = payload.find ( ':' );
-    if ( charid == std::string::npos )
-    {
-        result.assign ( payload );
-    }
-    else
-    {
-        result = payload.substr ( 0, charid );
-    }
-}
-
-void CWPublicOffersView::GetPayloadBody ( const std::string & payload, std::string & result )
-{
-    int charid = payload.find ( ':' );
-    if ( charid == std::string::npos )
-    {
-        result.assign ( payload );
-    }
-    else
-    {
-        result = payload.substr ( charid + 1 );
-    }
 }
 
 void CWPublicOffersView::show_free_offers_random ()
